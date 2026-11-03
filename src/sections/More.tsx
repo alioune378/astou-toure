@@ -1,4 +1,4 @@
-import { BIZ, photo, whatsappLink, type CatId } from '../content';
+import { BIZ, PORTRAIT, photo, whatsappLink, type CatId } from '../content';
 import { useI18n, type L } from '../i18n';
 import { RequestForm } from '../components/RequestForm';
 import { Icon, Img, Kicker, Reveal } from '../components/ui';
@@ -24,21 +24,24 @@ export function Artist() {
   return (
     <section id="artist" className="artist sec" aria-labelledby="artist-h">
       <div className="wrap artist-grid">
-        <div className="artist-imgs">
-          <Reveal className="ai ai-0">
-            <Img p={photo('02')} sizes="(max-width: 899px) 60vw, 26vw" />
+        <figure className="artist-portrait">
+          <Reveal className="ap-main">
+            <Img p={PORTRAIT} sizes="(max-width: 959px) 100vw, 44vw" />
           </Reveal>
-          <Reveal className="ai ai-1" delay={120}>
-            <Img p={photo('08')} sizes="(max-width: 899px) 50vw, 20vw" />
+          <figcaption className="ap-cap">
+            <span className="ap-name">Astou Touré</span>
+            <span className="ap-role">{t({ en: 'Hair artist · Bronx, New York', fr: 'Artiste capillaire · Bronx, New York' })}</span>
+          </figcaption>
+          <Reveal className="ap-detail" delay={140}>
+            <Img p={photo('02')} sizes="(max-width: 959px) 36vw, 13vw" />
           </Reveal>
-          <p className="ai-cap">{t({ en: 'Pattern, line, finish.', fr: 'Motif, ligne, finition.' })}</p>
-        </div>
+        </figure>
         <div className="artist-copy">
-          <Kicker n="03">{t({ en: 'The artist', fr: 'L’artiste' })}</Kicker>
+          <Kicker n="03">{t({ en: 'Meet the artist', fr: 'Rencontrez l’artiste' })}</Kicker>
           <h2 id="artist-h" className="h2 artist-h">
-            {t({ en: 'Meet', fr: 'Découvrez' })}
+            {t({ en: 'The hands', fr: 'Les mains' })}
             <br />
-            <em>Astou Touré</em>
+            <em>{t({ en: 'behind the work', fr: 'derrière l’œuvre' })}</em>
           </h2>
           <p className="artist-lede">
             {t({
@@ -61,7 +64,6 @@ export function Artist() {
               </li>
             ))}
           </ol>
-          <p className="artist-sign">Astou Touré</p>
         </div>
       </div>
     </section>

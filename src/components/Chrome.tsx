@@ -94,7 +94,7 @@ export function Header() {
 
       <div id="menu" className={`menu ${open ? 'is-open' : ''}`} role="dialog" aria-modal="true" aria-label="Menu" hidden={!open}>
         <div className="menu-top">
-          <Monogram size="m" />
+          <span className="menu-brand">Astou Touré</span>
           <button type="button" className="menu-close" onClick={() => setOpen(false)}>
             <span className="sr-only">{t({ en: 'Close menu', fr: 'Fermer le menu' })}</span>
             <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
@@ -129,20 +129,48 @@ export function Header() {
   );
 }
 
-/** Small, quiet action bar on phones: call · Instagram · request. */
+/**
+ * Phone action bar (call · Instagram · request).
+ * It never sits over content while reading: it appears only when the visitor scrolls back UP
+ * (a sign they are looking for something), hides as soon as they scroll down, and stays hidden
+ * over the request form, the visit section, the footer and while typing in any field.
+ */
 export function MobileBar() {
   const { t } = useI18n();
   const [show, setShow] = useState(false);
   useEffect(() => {
-    const on = () => {
-      const req = document.getElementById('request');
-      const r = req?.getBoundingClientRect();
-      const inForm = r ? r.top < window.innerHeight && r.bottom > 0 : false;
-      setShow(window.scrollY > window.innerHeight * 0.7 && !inForm);
+    let last = window.scrollY;
+    let typing = false;
+    const covered = () => {
+      const limit = window.innerHeight - 90;
+      return ['request', 'visit'].some((id) => {
+        const r = document.getElementById(id)?.getBoundingClientRect();
+        return r ? r.top < limit && r.bottom > 0 : false;
+      });
     };
-    on();
+    const on = () => {
+      const y = window.scrollY;
+      const dy = y - last;
+      if (Math.abs(dy) < 6) return;
+      last = y;
+      if (typing || y < window.innerHeight * 0.8 || covered()) return setShow(false);
+      setShow(dy < 0);
+    };
+    const focusIn = (e: FocusEvent) => {
+      if ((e.target as HTMLElement).matches?.('input, select, textarea')) {
+        typing = true;
+        setShow(false);
+      }
+    };
+    const focusOut = () => (typing = false);
     window.addEventListener('scroll', on, { passive: true });
-    return () => window.removeEventListener('scroll', on);
+    document.addEventListener('focusin', focusIn);
+    document.addEventListener('focusout', focusOut);
+    return () => {
+      window.removeEventListener('scroll', on);
+      document.removeEventListener('focusin', focusIn);
+      document.removeEventListener('focusout', focusOut);
+    };
   }, []);
   return (
     <div className={`mbar ${show ? 'is-on' : ''}`} aria-hidden={!show}>

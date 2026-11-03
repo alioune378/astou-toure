@@ -9,6 +9,7 @@ const FILTERS: ('all' | CatId)[] = ['all', 'sculptural', 'braiding', 'editorial'
 export function Portfolio({ onOpen }: { onOpen: (items: Photo[], i: number) => void }) {
   const { t } = useI18n();
   const [f, setF] = useState<'all' | CatId>('all');
+  const [all, setAll] = useState(false);
   const items = useMemo(() => (f === 'all' ? PHOTOS : PHOTOS.filter((p) => p.cats.includes(f))), [f]);
   return (
     <section id="portfolio" className="pf sec" aria-labelledby="pf-h">
@@ -37,7 +38,7 @@ export function Portfolio({ onOpen }: { onOpen: (items: Photo[], i: number) => v
           ))}
         </div>
 
-        <ul className="grid" aria-live="polite">
+        <ul className={`grid ${all || items.length <= 8 ? 'is-all' : ''}`} id="pf-grid" aria-live="polite">
           {items.map((p, i) => (
             <li key={p.file} className={`g g-${i % 7}`}>
               <button type="button" onClick={() => onOpen(items, i)}>
@@ -51,6 +52,11 @@ export function Portfolio({ onOpen }: { onOpen: (items: Photo[], i: number) => v
             </li>
           ))}
         </ul>
+        {!all && items.length > 8 && (
+          <button type="button" className="btn btn-line pf-more" aria-controls="pf-grid" onClick={() => setAll(true)}>
+            {t({ en: `Show all ${items.length} photographs`, fr: `Voir les ${items.length} photographies` })}
+          </button>
+        )}
         <p className="note">
           {t({
             en: 'Photographs are shown as taken, with light colour correction and cropping only.',

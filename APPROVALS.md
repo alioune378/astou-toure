@@ -3,7 +3,7 @@
 1. **Overall approval** of the design, the text (English and French) and the "Meet Astou Touré" copy. Her own story can replace or enrich it.
 2. **Client photo consent.** Written OK from the clients shown, who are recognisable in photos 07, 08, 09 and 10 (05 and 06 are less identifiable). Or confirmation that consent was already given.
 3. **Nappy and Boho photographs.** 4–8 real photos of each specialty, so these two sections show her work instead of "coming soon".
-4. **A portrait of Astou,** or photos of her hands at work, if she's comfortable appearing.
+4. **Portrait:** received and used, as supplied (resized only). Confirm she's happy with it on the site.
 5. **Opening hours** and how appointments work (days, salon versus travel, any deposit policy). Nothing is shown until she confirms.
 6. **Travel.** How far she travels, out-of-state conditions and any travel fees. The site only says "subject to availability".
 7. **WhatsApp.** Is 718-300-3011 on WhatsApp? If yes, the WhatsApp button can be switched on.

@@ -53,7 +53,7 @@
 
   --gutter: max(20px, env(safe-area-inset-left, 0px), 5vw);
   --max: 1360px;
-  --section-y: clamp(80px, 12vw, 168px);
+  --section-y: clamp(64px, 9vw, 128px);
   --header-h: 68px;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);

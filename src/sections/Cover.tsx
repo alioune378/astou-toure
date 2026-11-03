@@ -1,7 +1,7 @@
 import { CATS, photo, type CatId } from '../content';
 import { useI18n } from '../i18n';
 import { CTA, NAV } from '../components/Chrome';
-import { Img, Monogram, goTo } from '../components/ui';
+import { Img, goTo } from '../components/ui';
 
 /** Opening spread: a magazine cover. The wordmark is the masthead; Astou's work is the cover image. */
 export function Cover({ onStyle }: { onStyle: (c: CatId) => void }) {
@@ -67,13 +67,7 @@ export function Cover({ onStyle }: { onStyle: (c: CatId) => void }) {
             <Img p={second} sizes="(max-width: 899px) 40vw, 14vw" />
             <figcaption>{t({ en: 'Braided crown, on a client', fr: 'Couronne tressée, sur une cliente' })}</figcaption>
           </figure>
-          <div className="cover-sign">
-            <Monogram size="m" />
-            <span>
-              Astou Style
-              <br />& Boutique
-            </span>
-          </div>
+          <p className="cover-sign">Astou Style &amp; Boutique</p>
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
-import { CATS, PHOTOS, photo, type CatId, type Photo } from '../content';
+import { BIZ, CATS, PHOTOS, photo, type CatId, type Photo } from '../content';
 import { useI18n } from '../i18n';
-import { Img, Kicker, Monogram, Reveal } from '../components/ui';
+import { Icon, Img, Kicker, Reveal } from '../components/ui';
 
 type Open = (items: Photo[], i: number) => void;
 type Ask = (c: CatId) => void;
@@ -35,14 +35,20 @@ export function Signature({ onOpen, onAsk }: { onOpen: Open; onAsk: Ask }) {
             </h3>
             <p className="spec-title">{t(CATS[c].title)}</p>
             <p className="spec-text">{t(CATS[c].text)}</p>
+            <ul className="spec-how" aria-label={t({ en: 'How to request', fr: 'Comment demander' })}>
+              <li>{t({ en: 'Describe your texture and length', fr: 'Décrivez votre texture et votre longueur' })}</li>
+              <li>{t({ en: 'Add an inspiration photo to your request', fr: 'Ajoutez une photo d’inspiration à votre demande' })}</li>
+              <li>{t({ en: 'Receive a personalised quote', fr: 'Recevez un devis personnalisé' })}</li>
+            </ul>
             <button type="button" className="btn btn-gold" onClick={() => onAsk(c)}>
               {t({ en: 'Request this style', fr: 'Demander ce style' })}
             </button>
-            <div className="spec-frame" aria-hidden="true">
-              <Monogram size="l" />
-            </div>
             <p className="spec-note">
-              {t({ en: 'Portfolio photographs of this specialty: coming soon.', fr: 'Photographies de cette spécialité : bientôt en ligne.' })}
+              {t({ en: 'Dedicated photographs of this specialty are being prepared. Astou shares her latest work on', fr: 'Des photographies dédiées à cette spécialité sont en préparation. Astou partage ses dernières créations sur' })}{' '}
+              <a href={BIZ.instagram} target="_blank" rel="noopener noreferrer">
+                {Icon.ig} Instagram
+              </a>
+              .
             </p>
           </Reveal>
         ))}

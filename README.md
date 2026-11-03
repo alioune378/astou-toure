@@ -71,9 +71,22 @@ The site is set to **noindex** until Astou approves it. At launch:
 
 No ranking is promised. These steps give Google accurate, consistent information.
 
+## Live vs. demo features
+
+| Feature | Status |
+|---|---|
+| Phone, email, Instagram and Google Maps links | Live (tested) |
+| Portfolio, filters and full-screen viewer (swipe on phones) | Live |
+| English / French | Live |
+| Appointment request | Live through the visitor's own email app: the request arrives in astoutoure167@gmail.com once the client presses send. The website itself does not store or send anything yet. |
+| Automatic request delivery (Netlify Forms) | Prepared, not switched on. Turn it on only after a test request is received in Astou's inbox. |
+| WhatsApp button | Prepared, off until the number is confirmed |
+| Boutique | "Coming collection": there are no products yet |
+
 ## Integrity rules followed
 
 - Photos were only cropped and lightly colour-corrected (as supplied). No AI-generated or altered hair, faces or hairlines.
+- Astou's portrait is used exactly as supplied (resized for the web, no retouching).
 - Mannequin studies are labelled as mannequin studies, and client photos as client photos.
 - Nappy and Boho have no matching photos yet, so they're presented typographically, with "coming soon". No unrelated photo is mislabelled to fill the gap.
 - No invented hours, prices, testimonials, awards, press, celebrity clients or biography details.

@@ -81,7 +81,7 @@ export type Photo = {
   h: number;
   widths: number[];
   /** Client = worn by a real client. Study = created on a mannequin head. */
-  kind: 'client' | 'study';
+  kind: 'client' | 'study' | 'artist';
   cats: CatId[];
   title: L;
   alt: L;
@@ -250,7 +250,23 @@ export const PHOTOS: Photo[] = [
 
 export const photo = (id: string) => PHOTOS.find((p) => p.id === id)!;
 
+/** Astou's own portrait, supplied by her. Shown as taken: resized only, no retouching. */
+export const PORTRAIT: Photo = {
+  id: 'portrait',
+  file: 'astou_portrait',
+  ...M['astou_portrait'],
+  kind: 'artist',
+  cats: [],
+  title: { en: 'Astou Touré', fr: 'Astou Touré' },
+  alt: {
+    en: 'Portrait of Astou Touré, hair artist: deep red hair swept back, gold filigree earrings and necklace, white lace top.',
+    fr: 'Portrait d’Astou Touré, artiste capillaire : cheveux rouge profond tirés en arrière, boucles d’oreilles et collier en filigrane doré, haut en dentelle blanche.',
+  },
+  focus: '50% 30%',
+};
+
 export const KIND_LABEL: Record<Photo['kind'], L> = {
   client: { en: 'Client', fr: 'Cliente' },
   study: { en: 'Mannequin study', fr: 'Étude sur tête d’exposition' },
+  artist: { en: 'The artist', fr: 'L’artiste' },
 };

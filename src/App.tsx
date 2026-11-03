@@ -5,6 +5,7 @@ import { Lightbox, goTo } from './components/ui';
 import { Contents, Cover } from './sections/Cover';
 import { Atelier, Signature } from './sections/Signature';
 import { Portfolio } from './sections/Portfolio';
+import { Editorial } from './sections/Editorial';
 import { Artist, Boutique, Private, Request, Visit } from './sections/More';
 
 type Preset = { kind?: 'salon' | 'location'; style?: CatId; n: number };
@@ -33,6 +34,7 @@ export function App() {
         <Signature onOpen={open} onAsk={askStyle} />
         <Atelier onOpen={open} />
         <Portfolio onOpen={open} />
+        <Editorial onOpen={open} />
         <Artist />
         <Private onAsk={() => ask({ kind: 'location' })} />
         <Request preset={preset} />

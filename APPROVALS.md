@@ -12,3 +12,8 @@
 10. **Website address** (domain). Needed for the business-card QR code and the Google Business Profile.
 11. **Business cards.** Approve the proofs, and choose standard print or gold foil. Foil needs a vector redraw of the logo, as the approved logo is a raster image.
 12. **Duplicate photo.** `astou_14` is a near-identical second angle of `astou_11`. Only one is used. Confirm which she prefers.
+13. **Editorial images ("Beyond the salon").**
+   - Confirm the publication name and issue date for "Fractal Affinities". Neither is shown on the site until confirmed.
+   - Get permission to display the pages and photographs on her website. Editorial photos belong to the photographer and the publication, not to Astou.
+   - Confirm which of the five gallery images come from the "Fractal Affinities" shoot, and Astou's role on each (sole hair, or shared with Thomas Dunkin). The site currently says only "From Astou's editorial collaborations" and states the joint credit as printed.
+

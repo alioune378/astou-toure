@@ -37,7 +37,7 @@ export function Artist() {
           </Reveal>
         </figure>
         <div className="artist-copy">
-          <Kicker n="03">{t({ en: 'Meet the artist', fr: 'Rencontrez l’artiste' })}</Kicker>
+          <Kicker n="04">{t({ en: 'Meet the artist', fr: 'Rencontrez l’artiste' })}</Kicker>
           <h2 id="artist-h" className="h2 artist-h">
             {t({ en: 'The hands', fr: 'Les mains' })}
             <br />
@@ -87,7 +87,7 @@ export function Private({ onAsk }: { onAsk: () => void }) {
         <Img p={photo('11')} sizes="(max-width: 899px) 100vw, 45vw" />
       </div>
       <div className="wrap private-in">
-        <Kicker n="04">{t({ en: 'Private clientele', fr: 'Clientèle privée' })}</Kicker>
+        <Kicker n="05">{t({ en: 'Private clientele', fr: 'Clientèle privée' })}</Kicker>
         <h2 id="private-h" className="h2">
           {t({ en: 'By appointment,', fr: 'Sur rendez-vous,' })} <em>{t({ en: 'wherever you are', fr: 'où que vous soyez' })}</em>
         </h2>
@@ -127,7 +127,7 @@ export function Request({ preset }: { preset?: { kind?: 'salon' | 'location'; st
     <section id="request" className="request sec" aria-labelledby="req-h">
       <div className="wrap req-grid">
         <div className="req-intro">
-          <Kicker n="05">{t({ en: 'Appointments', fr: 'Rendez-vous' })}</Kicker>
+          <Kicker n="06">{t({ en: 'Appointments', fr: 'Rendez-vous' })}</Kicker>
           <h2 id="req-h" className="h2">
             {t({ en: 'Request a', fr: 'Demander un' })} <em>{t({ en: 'private appointment', fr: 'rendez-vous privé' })}</em>
           </h2>
@@ -179,7 +179,7 @@ export function Boutique() {
       <div className="wrap">
         <header className="sec-head sec-head-row">
           <div>
-            <Kicker n="06">{t({ en: 'Boutique', fr: 'Boutique' })}</Kicker>
+            <Kicker n="07">{t({ en: 'Boutique', fr: 'Boutique' })}</Kicker>
             <h2 id="bq-h" className="h2">
               {t({ en: 'The coming', fr: 'La collection' })} <em>{t({ en: 'collection', fr: 'à venir' })}</em>
             </h2>

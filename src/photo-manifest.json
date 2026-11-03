@@ -130,5 +130,77 @@
    800,
    1122
   ]
+ },
+ "ed_fractal_affinities_magazine_page": {
+  "w": 1122,
+  "h": 1402,
+  "widths": [
+   480,
+   800,
+   1122
+  ]
+ },
+ "ed_golden_afro_editorial_portrait": {
+  "w": 1122,
+  "h": 1402,
+  "widths": [
+   480,
+   800,
+   1122
+  ]
+ },
+ "ed_golden_afro_glamour_pose": {
+  "w": 1122,
+  "h": 1402,
+  "widths": [
+   480,
+   800,
+   1122
+  ]
+ },
+ "ed_monochrome_editorial_portrait_and_credits": {
+  "w": 1122,
+  "h": 1402,
+  "widths": [
+   480,
+   800,
+   1122
+  ]
+ },
+ "ed_monochrome_editorial_portrait_credits": {
+  "w": 1122,
+  "h": 1402,
+  "widths": [
+   480,
+   800,
+   1122
+  ]
+ },
+ "ed_neon_pop_art_face_collage": {
+  "w": 1122,
+  "h": 1402,
+  "widths": [
+   480,
+   800,
+   1122
+  ]
+ },
+ "ed_retro_color_blocked_editorial_portrait": {
+  "w": 1122,
+  "h": 1402,
+  "widths": [
+   480,
+   800,
+   1122
+  ]
+ },
+ "ed_symmetrical_vintage_hair_portrait": {
+  "w": 1122,
+  "h": 1402,
+  "widths": [
+   480,
+   800,
+   1122
+  ]
  }
 }

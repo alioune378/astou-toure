@@ -6,6 +6,7 @@ import { Icon, Monogram, goTo, useScrollLock } from './ui';
 export const NAV: { id: string; label: L }[] = [
   { id: 'signature', label: { en: 'Signature', fr: 'Signature' } },
   { id: 'portfolio', label: { en: 'Portfolio', fr: 'Portfolio' } },
+  { id: 'editorial', label: { en: 'Editorial', fr: 'Éditorial' } },
   { id: 'artist', label: { en: 'The Artist', fr: 'L’artiste' } },
   { id: 'private', label: { en: 'Private Clientele', fr: 'Clientèle privée' } },
   { id: 'boutique', label: { en: 'Boutique', fr: 'Boutique' } },

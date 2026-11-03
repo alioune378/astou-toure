@@ -81,7 +81,7 @@ export type Photo = {
   h: number;
   widths: number[];
   /** Client = worn by a real client. Study = created on a mannequin head. */
-  kind: 'client' | 'study' | 'artist';
+  kind: 'client' | 'study' | 'artist' | 'editorial' | 'press';
   cats: CatId[];
   title: L;
   alt: L;
@@ -269,4 +269,117 @@ export const KIND_LABEL: Record<Photo['kind'], L> = {
   client: { en: 'Client', fr: 'Cliente' },
   study: { en: 'Mannequin study', fr: 'Étude sur tête d’exposition' },
   artist: { en: 'The artist', fr: 'L’artiste' },
+  editorial: { en: 'Editorial collaboration', fr: 'Collaboration éditoriale' },
+  press: { en: 'Published page', fr: 'Page publiée' },
 };
+
+/* ------------------------------------------------------------------ Editorial work (published collaborations)
+   Shown as supplied (resized only). Credits are transcribed exactly as printed.
+   The publication name and issue date are NOT stated anywhere: they still need confirming. */
+
+const E = (file: string, kind: Photo['kind'], title: L, alt: L, focus?: string): Photo => ({
+  id: file,
+  file: 'ed_' + file,
+  ...M['ed_' + file],
+  kind,
+  cats: [],
+  title,
+  alt,
+  focus,
+});
+
+/** The credited editorial page: the case study's centrepiece. */
+export const ED_FEATURE = E(
+  'monochrome_editorial_portrait_and_credits',
+  'press',
+  { en: 'The credited portrait', fr: 'Le portrait crédité' },
+  {
+    en: 'Black-and-white editorial portrait: a model with sleek, sculpted black hair swept up into a high, curved form. Printed credits beneath include “Hair: Astou Touré and Thomas Dunkin at the Wall Group”.',
+    fr: 'Portrait éditorial en noir et blanc : une mannequin aux cheveux noirs lissés et sculptés en une forme haute et courbe. Les crédits imprimés dessous incluent « Hair: Astou Touré and Thomas Dunkin at the Wall Group ».',
+  },
+  '50% 30%',
+);
+
+/** A second scan of the same page with larger credit text — used only to read the credits, not shown as a separate project. */
+export const ED_CREDITS = E(
+  'monochrome_editorial_portrait_credits',
+  'press',
+  { en: 'Printed credits (archive copy)', fr: 'Crédits imprimés (copie d’archive)' },
+  {
+    en: 'Archive copy of the same page, framed to show the printed credit block in full.',
+    fr: 'Copie d’archive de la même page, cadrée pour lire en entier le bloc de crédits imprimé.',
+  },
+);
+
+/** The published article page naming Astou among the collaborators. */
+export const ED_PAGE = E(
+  'fractal_affinities_magazine_page',
+  'press',
+  { en: '“Fractal Affinities” — the article page', fr: '« Fractal Affinities » — la page de l’article' },
+  {
+    en: 'Magazine page titled “Fractal Affinities”. The text explains that the artist Anna Craycroft designed four hairstyles based on scientific diagrams and that, working alongside Shala Monroque, Elle Muliarchyk, Jenke-Ahmed Tailly and Astou Touré, four models were styled accordingly.',
+    fr: 'Page de magazine intitulée « Fractal Affinities ». Le texte explique que l’artiste Anna Craycroft a conçu quatre coiffures à partir de diagrammes scientifiques et qu’aux côtés de Shala Monroque, Elle Muliarchyk, Jenke-Ahmed Tailly et Astou Touré, quatre mannequins ont été coiffées en conséquence.',
+  },
+  '50% 20%',
+);
+
+/** Editorial gallery (order = layout order). */
+export const ED_GALLERY: Photo[] = [
+  E(
+    'golden_afro_editorial_portrait',
+    'editorial',
+    { en: 'Signature portrait', fr: 'Portrait signature' },
+    {
+      en: 'Fashion portrait on a saffron background: a model with a full, sculpted natural afro, eyes lowered, hand at her chin.',
+      fr: 'Portrait de mode sur fond safran : une mannequin à l’afro naturel ample et sculpté, yeux baissés, la main au menton.',
+    },
+    '45% 30%',
+  ),
+  E(
+    'symmetrical_vintage_hair_portrait',
+    'editorial',
+    { en: 'Experimental symmetry', fr: 'Symétrie expérimentale' },
+    {
+      en: 'Black-and-white mirrored composition: two sculpted, coiled chignons reflected into a symmetrical, almost graphic form.',
+      fr: 'Composition en miroir, en noir et blanc : deux chignons sculptés et enroulés, reflétés en une forme symétrique presque graphique.',
+    },
+  ),
+  E(
+    'retro_color_blocked_editorial_portrait',
+    'editorial',
+    { en: 'Colour feature', fr: 'Sujet couleur' },
+    {
+      en: 'Colour-blocked fashion image: a model with voluminous sculpted curls, in a floral-print dress against blue and red.',
+      fr: 'Image de mode en aplats de couleur : une mannequin aux boucles sculptées et volumineuses, en robe imprimée de fleurs sur fond bleu et rouge.',
+    },
+    '50% 20%',
+  ),
+  E(
+    'neon_pop_art_face_collage',
+    'editorial',
+    { en: 'Pop-art collage', fr: 'Collage pop art' },
+    {
+      en: 'Repeating pop-art collage of a face framed by sculpted curls, in neon yellow, green and red.',
+      fr: 'Collage pop art répétant un visage encadré de boucles sculptées, en jaune, vert et rouge néon.',
+    },
+  ),
+  E(
+    'golden_afro_glamour_pose',
+    'editorial',
+    { en: 'Fashion spread', fr: 'Double page mode' },
+    {
+      en: 'Fashion image seen from behind: a model with a full, rounded afro in a metallic gold bodysuit, posed against yellow and turquoise.',
+      fr: 'Image de mode vue de dos : une mannequin à l’afro rond et ample, en body doré métallisé, posant sur fond jaune et turquoise.',
+    },
+    '50% 35%',
+  ),
+];
+
+/** Credits exactly as printed on the credited page. */
+export const ED_CREDIT_LINES: [string, string][] = [
+  ['Hair', 'Astou Touré and Thomas Dunkin at the Wall Group'],
+  ['Photographer', 'Elle Muliarchyk'],
+  ['Creative Director', 'Shala Monroque'],
+  ['Art Director', 'Anna Craycroft'],
+  ['Stylist', 'Jenke-Ahmed Tailly'],
+];

@@ -83,6 +83,16 @@ No ranking is promised. These steps give Google accurate, consistent information
 | WhatsApp button | Prepared, off until the number is confirmed |
 | Boutique | "Coming collection": there are no products yet |
 
+## Editorial section ("Beyond the salon")
+
+- The credited page (`ed_monochrome_editorial_portrait_and_credits`) is the case study.
+- The second scan (`ed_monochrome_editorial_portrait_credits`) appears only as "Read the printed credits", not as a separate project.
+- The "Fractal Affinities" article page appears as supporting evidence.
+- The five other images form the editorial gallery.
+- Credits are transcribed exactly as printed. The hair credit is shared with Thomas Dunkin, and the site says so.
+- No publication name, date or model or celebrity identity is stated.
+- These images never appear in the bookable style categories, including Nappy and Boho.
+
 ## Integrity rules followed
 
 - Photos were only cropped and lightly colour-corrected (as supplied). No AI-generated or altered hair, faces or hairlines.

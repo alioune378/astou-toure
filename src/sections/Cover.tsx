@@ -1,4 +1,4 @@
-import { CATS, photo, type CatId } from '../content';
+import { CATS, ED_GALLERY, photo, type CatId } from '../content';
 import { useI18n } from '../i18n';
 import { CTA, NAV } from '../components/Chrome';
 import { Img, goTo } from '../components/ui';
@@ -41,6 +41,17 @@ export function Cover({ onStyle }: { onStyle: (c: CatId) => void }) {
               </button>
             </li>
           ))}
+          <li className="cl-ed">
+            <button type="button" onClick={() => goTo('editorial')}>
+              <span className="cl-thumb" aria-hidden="true">
+                <Img p={ED_GALLERY[1]} sizes="64px" />
+              </span>
+              <span className="cl-ed-t">
+                <span className="cl-ed-k">{t({ en: 'Beyond the salon', fr: 'Au-delà du salon' })}</span>
+                <span className="cl-t">{t({ en: 'Editorial work & published credits', fr: 'Travail éditorial & crédits publiés' })}</span>
+              </span>
+            </button>
+          </li>
         </ol>
 
         <div className="cover-aside">
@@ -78,7 +89,7 @@ export function Cover({ onStyle }: { onStyle: (c: CatId) => void }) {
 export function Contents() {
   const { t } = useI18n();
   const items = [{ id: 'request', label: { en: 'Request an appointment', fr: 'Demander un rendez-vous' } }, ...NAV.filter((n) => n.id !== 'visit')];
-  const order = ['signature', 'portfolio', 'artist', 'private', 'request', 'boutique'];
+  const order = ['signature', 'portfolio', 'editorial', 'artist', 'private', 'request', 'boutique'];
   return (
     <nav className="contents" aria-label={t({ en: 'In this issue', fr: 'Dans ce numéro' })}>
       <p className="contents-k">{t({ en: 'In this issue', fr: 'Dans ce numéro' })}</p>

@@ -1,0 +1,256 @@
+<!doctype html>
+<!--
+  ASTOU TOURÉ — business card master (editable).
+  Trim 3.5 × 2 in · bleed 0.125 in each side → page 3.75 × 2.25 in · safe area 0.125 in inside trim.
+  Edit text below, then run: node render-cards.mjs  (outputs PDF + PNG in ./print and ./preview)
+  The QR placeholder is replaced automatically when a website URL is passed: node render-cards.mjs https://…
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Astou Touré — Business card master</title>
+    <style>
+      @font-face {
+        font-family: 'Bodoni Moda';
+        src: url('fonts/BodoniModa[opsz,wght].ttf');
+        font-weight: 400 900;
+      }
+      @font-face {
+        font-family: 'Bodoni Moda';
+        src: url('fonts/BodoniModa-Italic[opsz,wght].ttf');
+        font-weight: 400 900;
+        font-style: italic;
+      }
+      @font-face {
+        font-family: 'Jost';
+        src: url('fonts/Jost[wght].ttf');
+        font-weight: 300 700;
+      }
+      :root {
+        --onyx: #0b0b0b;
+        --ivory: #f7f3e8;
+        --gold: #c6a15b;
+        --bronze: #8a5e3c;
+        --bleed: 0.125in;
+        --safe: 0.125in;
+      }
+      @page {
+        size: 3.75in 2.25in;
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        background: #777;
+      }
+      body.print {
+        background: none;
+      }
+      .card {
+        width: 3.75in;
+        height: 2.25in;
+        position: relative;
+        overflow: hidden;
+        page-break-after: always;
+        break-after: page;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .card:last-child {
+        break-after: auto;
+        page-break-after: auto;
+      }
+      /* Guides (hidden in print output) */
+      .guides .card::before,
+      .guides .card::after {
+        content: '';
+        position: absolute;
+        pointer-events: none;
+        z-index: 9;
+      }
+      .guides .card::before {
+        inset: var(--bleed);
+        outline: 0.5px solid rgba(255, 0, 80, 0.9);
+      }
+      .guides .card::after {
+        inset: calc(var(--bleed) + var(--safe));
+        outline: 0.5px dashed rgba(0, 180, 255, 0.9);
+      }
+
+      /* ---------------- FRONT: onyx, approved logo, descriptor ---------------- */
+      .front {
+        background: var(--onyx);
+        display: grid;
+        place-items: center;
+      }
+      .front-in {
+        display: grid;
+        justify-items: center;
+        gap: 0.075in;
+        transform: translateY(0.02in);
+      }
+      .front-logo {
+        width: 1.9in;
+        height: auto;
+        display: block;
+      }
+      .front-desc {
+        font-family: 'Jost', sans-serif;
+        font-weight: 400;
+        font-size: 5.6pt;
+        letter-spacing: 0.32em;
+        color: var(--gold);
+        text-transform: uppercase;
+        padding-left: 0.32em;
+      }
+      .front-rule {
+        position: absolute;
+        left: calc(var(--bleed) + var(--safe));
+        right: calc(var(--bleed) + var(--safe));
+        bottom: calc(var(--bleed) + 0.16in);
+        height: 0;
+        border-top: 0.4pt solid rgba(198, 161, 91, 0.45);
+      }
+
+      /* ---------------- BACK: ivory, contact, QR ---------------- */
+      .back {
+        background: var(--ivory);
+        color: var(--onyx);
+      }
+      .back-in {
+        position: absolute;
+        inset: calc(var(--bleed) + var(--safe) + 0.03in) calc(var(--bleed) + var(--safe) + 0.03in);
+        display: grid;
+        grid-template-columns: 1fr auto;
+        column-gap: 0.18in;
+      }
+      .back-name {
+        font-family: 'Bodoni Moda', serif;
+        font-weight: 500;
+        font-size: 12.5pt;
+        letter-spacing: 0.16em;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+      .back-role {
+        font-family: 'Bodoni Moda', serif;
+        font-style: italic;
+        font-size: 8.5pt;
+        color: var(--bronze);
+        margin-top: 0.05in;
+      }
+      .back-rule {
+        width: 0.42in;
+        border-top: 0.6pt solid var(--gold);
+        margin: 0.09in 0 0.08in;
+      }
+      .back-list {
+        font-family: 'Jost', sans-serif;
+        font-size: 6.9pt;
+        line-height: 1.5;
+        list-style: none;
+      }
+      .back-list b {
+        display: inline-block;
+        width: 0.2in;
+        font-weight: 500;
+        font-size: 5pt;
+        letter-spacing: 0.14em;
+        color: var(--bronze);
+      }
+      .back-loc {
+        margin-top: 0.05in;
+        font-family: 'Jost', sans-serif;
+        font-size: 6.4pt;
+        line-height: 1.4;
+        padding-left: 0.2in;
+      }
+      .back-side {
+        display: grid;
+        justify-items: end;
+        align-content: space-between;
+      }
+      .back-mono {
+        width: 0.36in;
+        height: 0.36in;
+        border-radius: 0.06in;
+        background: var(--onyx);
+        display: grid;
+        place-items: center;
+      }
+      .back-mono img {
+        width: 72%;
+      }
+      .qr {
+        width: 0.66in;
+        height: 0.66in;
+        display: grid;
+        place-items: center;
+        text-align: center;
+      }
+      .qr.is-placeholder {
+        border: 0.6pt dashed var(--bronze);
+        font-family: 'Jost', sans-serif;
+        font-size: 4.6pt;
+        letter-spacing: 0.08em;
+        line-height: 1.35;
+        color: var(--bronze);
+        text-transform: uppercase;
+        padding: 0.04in;
+      }
+      .qr svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .qr-cap {
+        font-family: 'Jost', sans-serif;
+        font-size: 4.6pt;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--bronze);
+        margin-top: 0.03in;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body class="guides">
+    <section class="card front" id="front">
+      <div class="front-in">
+        <img class="front-logo" src="logo-approved-transparent.png" alt="Astou Touré — Astou Style &amp; Boutique" />
+        <p class="front-desc">Hair Artistry • Beauty • Fashion</p>
+      </div>
+    </section>
+
+    <section class="card back" id="back">
+      <div class="back-in">
+        <div>
+          <p class="back-name">Astou Touré</p>
+          <p class="back-role">Hair Artist</p>
+          <div class="back-rule"></div>
+          <ul class="back-list">
+            <li><b>T</b>718-300-3011</li>
+            <li><b>E</b>astoutoure167@gmail.com</li>
+            <li><b>IG</b>@astou_toure</li>
+          </ul>
+          <p class="back-loc">
+            Bliss Beauty World<br />
+            9 East 167th Street<br />
+            Bronx, NY 10452
+          </p>
+        </div>
+        <div class="back-side">
+          <span class="back-mono"><img src="monogram-approved-transparent.png" alt="" /></span>
+          <div>
+            <div class="qr is-placeholder" id="qr">QR code<br />website<br />to come</div>
+            <p class="qr-cap" id="qr-cap">Scan · Book</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

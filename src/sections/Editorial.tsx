@@ -1,4 +1,4 @@
-import { ED_CREDITS, ED_CREDIT_LINES, ED_FEATURE, ED_GALLERY, ED_PAGE, type Photo } from '../content';
+import { ED_CREDITS, ED_CREDIT_LINES, ED_FEATURE, ED_GALLERY, ED_PAGE, ED_SCULPTURAL, ENCOUNTERS, type Photo } from '../content';
 import { useI18n } from '../i18n';
 import { Img, Kicker, Reveal } from '../components/ui';
 
@@ -15,13 +15,19 @@ export function Editorial({ onOpen }: { onOpen: Open }) {
     <section id="editorial" className="ed sec" aria-labelledby="ed-h">
       <div className="wrap">
         <header className="ed-head">
-          <Kicker n="03">{t({ en: 'Beyond the salon', es: 'Más allá del salón', fr: 'Au-delà du salon' })}</Kicker>
+          <Kicker n="05">{t({ en: 'Editorial & legacy', es: 'Editorial y trayectoria', fr: 'Éditorial & parcours' })}</Kicker>
           <h2 id="ed-h" className="h2 ed-h">
-            {t({ en: 'Hair beyond beauty.', es: 'El cabello más allá de la belleza.', fr: 'La coiffure au-delà de la beauté.' })}
+            {t({ en: 'Beyond the salon.', es: 'Más allá del salón.', fr: 'Au-delà du salon.' })}
             <br />
-            <em>{t({ en: 'Art beyond convention.', es: 'El arte más allá de lo convencional.', fr: 'L’art au-delà des conventions.' })}</em>
+            <em>{t({ en: 'Into the world of fashion.', es: 'Hacia el mundo de la moda.', fr: 'Dans l’univers de la mode.' })}</em>
           </h2>
-          <p className="ed-sub">{t({ en: 'Editorial artistry & creative collaborations', es: 'Arte editorial y colaboraciones creativas', fr: 'Créations éditoriales & collaborations' })}</p>
+          <p className="ed-sub">
+            {t({
+              en: 'An artistic journey through hair, culture and fashion.',
+              es: 'Un recorrido artístico por el cabello, la cultura y la moda.',
+              fr: 'Un parcours artistique entre coiffure, culture et mode.',
+            })}
+          </p>
         </header>
 
         {/* ---------- Case study: the credited, published project ---------- */}
@@ -93,6 +99,53 @@ export function Editorial({ onOpen }: { onOpen: Open }) {
             </Reveal>
           ))}
         </ul>
+        {/* ---------- Feature: sculptural beauty (same credited shoot) ---------- */}
+        <figure className="ed-feat">
+          <Reveal className="ed-feat-img">
+            <button type="button" onClick={() => onOpen([ED_SCULPTURAL], 0)} aria-label={`${t({ en: 'Enlarge', es: 'Ampliar', fr: 'Agrandir' })}: ${t(ED_SCULPTURAL.title)}`}>
+              <Img p={ED_SCULPTURAL} sizes="(max-width: 899px) 100vw, 44vw" />
+            </button>
+          </Reveal>
+          <figcaption className="ed-feat-cap">
+            <p className="case-k">{t({ en: 'Editorial hair artistry', es: 'Arte capilar editorial', fr: 'Coiffure éditoriale' })}</p>
+            <p className="ed-feat-h">{t(ED_SCULPTURAL.title)}</p>
+            <p className="ed-feat-q">
+              {t({
+                en: '“Bold textures and dramatic silhouettes reveal the expressive possibilities of hair.”',
+                es: '“Texturas audaces y siluetas dramáticas que revelan todo lo que el cabello puede expresar.”',
+                fr: '« Des textures audacieuses et des silhouettes spectaculaires révèlent tout ce que la coiffure peut exprimer. »',
+              })}
+            </p>
+            <p className="ed-feat-note">
+              {t({
+                en: 'From the same editorial shoot as the credited page above.',
+                es: 'De la misma sesión editorial que la página con créditos de arriba.',
+                fr: 'Issue de la même séance éditoriale que la page créditée ci-dessus.',
+              })}
+            </p>
+          </figcaption>
+        </figure>
+
+        {/* ---------- Notable encounters: renders only once Astou has confirmed each photograph ---------- */}
+        {ENCOUNTERS.length > 0 && (
+          <div className="enc" aria-labelledby="enc-h">
+            <p className="case-k" id="enc-h">
+              {t({ en: 'Memorable encounters', es: 'Encuentros memorables', fr: 'Rencontres marquantes' })}
+            </p>
+            <ul className="enc-list">
+              {ENCOUNTERS.map((e, i) => (
+                <li key={e.photo.file}>
+                  <button type="button" onClick={() => onOpen(ENCOUNTERS.map((x) => x.photo), i)}>
+                    <Img p={e.photo} sizes="(max-width: 899px) 100vw, 44vw" />
+                  </button>
+                  <p className="ed-feat-h">{t(e.title)}</p>
+                  <p className="edg-lede">{t(e.caption)}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         <p className="ed-foot">
           {t({
             en: 'Editorial images supplied by Astou Touré and shown as published. Hair on collaborative productions is credited jointly where printed. Publication details are being confirmed. These images show editorial work and are not examples of the salon’s bookable styles.',

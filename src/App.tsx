@@ -1,14 +1,17 @@
 import { useCallback, useEffect, useState } from 'react';
 import type { CatId, Photo } from './content';
+import type { L } from './i18n';
 import { Footer, Header, MobileBar } from './components/Chrome';
 import { Lightbox, goTo } from './components/ui';
 import { Contents, Cover } from './sections/Cover';
 import { Atelier, Signature } from './sections/Signature';
 import { Portfolio } from './sections/Portfolio';
 import { Editorial } from './sections/Editorial';
+import { Looks } from './sections/Looks';
+import { Motion } from './sections/Motion';
 import { Artist, Boutique, Private, Request, Visit } from './sections/More';
 
-type Preset = { kind?: 'salon' | 'location'; style?: CatId; n: number };
+type Preset = { kind?: 'salon' | 'location'; style?: CatId; look?: L; n: number };
 
 export function App() {
   const [lb, setLb] = useState<{ items: Photo[]; i: number } | null>(null);
@@ -33,7 +36,9 @@ export function App() {
         <Contents />
         <Signature onOpen={open} onAsk={askStyle} />
         <Atelier onOpen={open} />
+        <Looks onOpen={open} onAsk={(style, look) => ask({ style, look })} />
         <Portfolio onOpen={open} />
+        <Motion />
         <Editorial onOpen={open} />
         <Artist />
         <Private onAsk={() => ask({ kind: 'location' })} />

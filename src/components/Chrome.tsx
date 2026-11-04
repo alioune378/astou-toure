@@ -5,13 +5,18 @@ import { Icon, Monogram, goTo, useScrollLock } from './ui';
 
 export const NAV: { id: string; label: L }[] = [
   { id: 'signature', label: { en: 'Signature', es: 'Arte capilar', fr: 'Signature' } },
+  { id: 'looks', label: { en: 'The Look', es: 'El resultado', fr: 'Le résultat' } },
   { id: 'portfolio', label: { en: 'Portfolio', es: 'Portafolio', fr: 'Portfolio' } },
+  { id: 'motion', label: { en: 'Videos', es: 'Videos', fr: 'Vidéos' } },
   { id: 'editorial', label: { en: 'Editorial', es: 'Editorial', fr: 'Éditorial' } },
   { id: 'artist', label: { en: 'The Artist', es: 'La artista', fr: 'L’artiste' } },
   { id: 'private', label: { en: 'Private Clientele', es: 'Clientela privada', fr: 'Clientèle privée' } },
   { id: 'boutique', label: { en: 'Boutique', es: 'Boutique', fr: 'Boutique' } },
   { id: 'visit', label: { en: 'Visit', es: 'Visítanos', fr: 'Venir' } },
 ];
+
+/** Desktop header keeps a shorter list; the full list lives in the menu and the contents. */
+const NAV_TOP = ['looks', 'portfolio', 'motion', 'editorial', 'artist', 'private', 'visit'];
 
 export const CTA: L = { en: 'Request a private appointment', es: 'Pide una cita privada', fr: 'Demander un rendez-vous' };
 export const CTA_SHORT: L = { en: 'Request', es: 'Pedir cita', fr: 'Rendez-vous' };
@@ -74,7 +79,7 @@ export function Header() {
           <span className="brand-name">Astou Touré</span>
         </a>
         <nav className="nav" aria-label={t({ en: 'Main', es: 'Principal', fr: 'Principale' })}>
-          {NAV.map((n) => (
+          {NAV.filter((n) => NAV_TOP.includes(n.id)).map((n) => (
             <button key={n.id} type="button" onClick={() => go(n.id)}>
               {t(n.label)}
             </button>
@@ -209,6 +214,11 @@ export function Footer() {
         <ul className="foot-links">
           <li>
             <a href={BIZ.tel}>{BIZ.phoneIntl}</a>
+          </li>
+          <li>
+            <a href={BIZ.partner.tel}>
+              {t({ en: 'Style partner', es: 'Estilista asociada', fr: 'Styliste partenaire' })} {BIZ.partner.name} · {BIZ.partner.phoneIntl}
+            </a>
           </li>
           <li>
             <a href={`mailto:${BIZ.email}`}>{BIZ.email}</a>

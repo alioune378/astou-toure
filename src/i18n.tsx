@@ -10,19 +10,19 @@ const META: Record<Lang, { title: string; description: string; locale: string }>
   en: {
     title: 'Astou Touré — The Art of Hair · Hair Artist & Braider, Bronx NY',
     description:
-      'Astou Touré, hair artist and specialist braider at Astou Style & Boutique, Bliss Beauty World, 9 East 167th Street, Bronx, NY. Nappy hairstyles, boho braids, sculptural braided updos and custom braiding. Request a private appointment.',
+      'Astou Touré, hair artist and specialist braider at Astou Style & Boutique, 9 East 167th Street, Bronx, NY. Nappy hairstyles, boho braids, sculptural braided updos and custom braiding. Request a private appointment.',
     locale: 'en_US',
   },
   es: {
     title: 'Astou Touré — El arte del cabello · Trenzas y peinados en el Bronx, NY',
     description:
-      'Astou Touré, artista del cabello y trenzadora en Astou Style & Boutique, Bliss Beauty World, 9 East 167th Street, Bronx, NY. Peinados nappy, trenzas boho, recogidos trenzados esculturales y trenzas a la medida. Pide tu cita privada.',
+      'Astou Touré, artista del cabello y trenzadora en Astou Style & Boutique, 9 East 167th Street, Bronx, NY. Peinados nappy, trenzas boho, recogidos trenzados esculturales y trenzas a la medida. Pide tu cita privada.',
     locale: 'es_US',
   },
   fr: {
     title: 'Astou Touré — L’art de la coiffure · Coiffeuse et tresseuse, Bronx NY',
     description:
-      'Astou Touré, artiste capillaire et tresseuse chez Astou Style & Boutique, Bliss Beauty World, 9 East 167th Street, Bronx, NY. Coiffures nappy, tresses bohèmes, chignons tressés sculpturaux et tresses sur mesure. Demandez un rendez-vous.',
+      'Astou Touré, artiste capillaire et tresseuse chez Astou Style & Boutique, 9 East 167th Street, Bronx, NY. Coiffures nappy, tresses bohèmes, chignons tressés sculpturaux et tresses sur mesure. Demandez un rendez-vous.',
     locale: 'fr_FR',
   },
 };

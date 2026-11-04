@@ -5,7 +5,7 @@ import { Img, Kicker } from '../components/ui';
 
 const FILTERS: ('all' | CatId)[] = ['all', 'sculptural', 'braiding', 'editorial'];
 
-/** 02 — Portfolio: an asymmetric editorial grid, filterable, every image opens full screen. */
+/** 03 — Portfolio: an asymmetric editorial grid, filterable, every image opens full screen. */
 export function Portfolio({ onOpen }: { onOpen: (items: Photo[], i: number) => void }) {
   const { t } = useI18n();
   const [f, setF] = useState<'all' | CatId>('all');
@@ -16,7 +16,7 @@ export function Portfolio({ onOpen }: { onOpen: (items: Photo[], i: number) => v
       <div className="wrap">
         <header className="sec-head sec-head-row">
           <div>
-            <Kicker n="02">{t({ en: 'Portfolio', es: 'Portafolio', fr: 'Portfolio' })}</Kicker>
+            <Kicker n="03">{t({ en: 'Portfolio', es: 'Portafolio', fr: 'Portfolio' })}</Kicker>
             <h2 id="pf-h" className="h2">
               {t({ en: 'The work,', es: 'El trabajo,', fr: 'Le travail,' })} <em>{t({ en: 'up close', es: 'de cerca', fr: 'de près' })}</em>
             </h2>
@@ -60,9 +60,9 @@ export function Portfolio({ onOpen }: { onOpen: (items: Photo[], i: number) => v
         )}
         <p className="note">
           {t({
-            en: 'Photographs are shown as taken, with light colour correction and cropping only.',
-            es: 'Las fotografías se muestran tal como se tomaron, solo con una ligera corrección de color y recorte.',
-            fr: 'Les photographies sont présentées telles quelles, avec seulement une légère correction de couleur et un recadrage.',
+            en: 'Real styles by Astou. Edits are limited to colour, light, sharpness and cropping; no hair, faces or details are generated.',
+            es: 'Estilos reales de Astou. Solo se ajustaron color, luz, nitidez y encuadre; no se generó ningún cabello, rostro ni detalle.',
+            fr: 'De vraies coiffures signées Astou. Seuls la couleur, la lumière, la netteté et le cadrage ont été retouchés ; aucun cheveu, visage ni détail n’a été généré.',
           })}
         </p>
       </div>

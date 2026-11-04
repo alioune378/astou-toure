@@ -17,3 +17,14 @@
    - Get permission to display the pages and photographs on her website. Editorial photos belong to the photographer and the publication, not to Astou.
    - Confirm which of the five gallery images come from the "Fractal Affinities" shoot, and Astou's role on each (sole hair, or shared with Thomas Dunkin). The site currently says only "From Astou's editorial collaborations" and states the joint credit as printed.
 
+14. **New photos and videos (November 2026).** See `MEDIA.md` for every file.
+   - **Memorable encounters (images 05 and 06).** Before anything is published: the original, unretouched photographs (the files received are AI-enhanced reconstructions, so faces and details may not match the real moment); who is pictured; when and where; Astou's role at that moment; and the pictured people's OK to appear on a business website. In New York, using a recognisable person's likeness to promote a business without their written consent can create legal exposure. Captions will say only what Astou confirms, and will never suggest she styled, worked for or was endorsed by anyone unless that is documented.
+   - **Group portrait (image 01).** Names of the four people, the occasion, and their OK to appear.
+   - **Fashion editorial series (images 03, 04, 07, 08).** The publication and issue, the photographer and creative credits, Astou's exact role (hair, headwraps, styling, or not involved), and permission to show the photos. Image 03 contains magazine text that was reconstructed by AI: the original scan is needed if the page is to be shown.
+   - **Image 02 ("Sculptural beauty").** Published as part of the credited "Fractal Affinities" shoot. Confirm Astou worked on this specific look (the printed credit is shared with Thomas Dunkin).
+   - **Client consent** for the new client photos and videos: curved cornrows, highlighted micro braids, rolled updo (other salon customers are visible behind her), and the clients filmed in the eight videos, several of whom show their faces.
+   - **Package F videos.** The "Revised Final Four Videos" ZIP was not received.
+15. **Contact details.**
+   - Style partner Alima (+1 347 814 9472) is now shown in the contact section and footer. Confirm she is happy to be listed by first name.
+   - **hello@astoustyle.com** is not used yet. The domain and mailbox are not configured, so requests still go to astoutoure167@gmail.com. Switch once the domain is live and a test email has arrived.
+   - "Bliss Beauty World" has been removed from the website as instructed. It still appears on the business-card proofs; say if the cards should be updated too.

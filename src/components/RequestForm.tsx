@@ -61,10 +61,11 @@ const today = () => {
 
 type Status = 'idle' | 'invalid' | 'fast' | 'sending' | 'sent' | 'ready' | 'error';
 
-export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string; n: number } }) {
+export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string; look?: L; n: number } }) {
   const { t, lang } = useI18n();
   const [kind, setKind] = useState<Kind>(preset?.kind ?? 'salon');
   const [style, setStyle] = useState(preset?.style ?? '');
+  const [look, setLook] = useState<L | undefined>(preset?.look);
   const [errors, setErrors] = useState<Record<string, L>>({});
   const [status, setStatus] = useState<Status>('idle');
   const [summary, setSummary] = useState<{ name: string; mailto: string } | null>(null);
@@ -77,6 +78,7 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
     if (!preset || !presetKey) return;
     if (preset.kind) setKind(preset.kind);
     if (preset.style) setStyle(preset.style);
+    setLook(preset.look);
     setStatus('idle');
     setSummary(null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -114,6 +116,7 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
             '',
             `Tipo: ${kind === 'salon' ? 'Cita en el salón (Bronx)' : 'Cita privada a domicilio / en el lugar'}`,
             `Peinado: ${styleLabel(v('hairstyle'))}`,
+            look ? `Look de referencia: ${t(look)}` : null,
             `Fecha que prefiero: ${v('preferred-date')}`,
             `Horario: ${label(v('preferred-time'), TIMES)}`,
             `Lugar: ${where}`,
@@ -134,6 +137,7 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
             '',
             `Type : ${kind === 'salon' ? 'Rendez-vous au salon (Bronx)' : 'Rendez-vous privé à domicile / sur place'}`,
             `Coiffure : ${styleLabel(v('hairstyle'))}`,
+            look ? `Look de référence : ${t(look)}` : null,
             `Date souhaitée : ${v('preferred-date')}`,
             `Horaire : ${label(v('preferred-time'), TIMES)}`,
             `Lieu : ${where}`,
@@ -153,6 +157,7 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
             '',
             `Type: ${kind === 'salon' ? 'Salon appointment (Bronx)' : 'Private on-location appointment'}`,
             `Hairstyle: ${styleLabel(v('hairstyle'))}`,
+            look ? `Reference look: ${t(look)}` : null,
             `Preferred date: ${v('preferred-date')}`,
             `Preferred time: ${label(v('preferred-time'), TIMES)}`,
             `Location: ${where}`,
@@ -194,6 +199,7 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
     try {
       fd.set('form-name', 'appointment-request');
       fd.set('language', lang);
+      if (look) fd.set('reference-look', look.en);
       if (kind === 'salon') fd.set('service-place', `${BIZ.venue} (salon)`);
       const res = await fetch('/', { method: 'POST', body: fd });
       if (!res.ok) throw new Error(String(res.status));
@@ -290,7 +296,7 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
   return (
     <form ref={formRef} className="rq" name="appointment-request" encType="multipart/form-data" noValidate onSubmit={onSubmit}>
       <input type="hidden" name="form-name" value="appointment-request" />
-      <input type="hidden" name="appointment-type" value={kind === 'salon' ? 'Salon — Bliss Beauty World, Bronx' : 'Private on-location'} />
+      <input type="hidden" name="appointment-type" value={kind === 'salon' ? 'Salon — 9 East 167th Street, Bronx' : 'Private on-location'} />
       <p className="hp" aria-hidden="true">
         <label>
           Leave empty <input name="bot-field" tabIndex={-1} autoComplete="off" />
@@ -338,6 +344,14 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
               ))}
               <option value="other">{t({ en: 'Something else / not sure', es: 'Otra cosa / todavía no lo sé', fr: 'Autre / je ne sais pas encore' })}</option>
             </select>,
+          )}
+          {look && (
+            <p className="rq-look is-full">
+              <span>{t({ en: 'Reference look', es: 'Look de referencia', fr: 'Look de référence' })}:</span> <strong>{t(look)}</strong>
+              <button type="button" className="rq-look-x" onClick={() => setLook(undefined)}>
+                {t({ en: 'Remove', es: 'Quitar', fr: 'Retirer' })}
+              </button>
+            </p>
           )}
           {field(
             'event-type',

@@ -100,7 +100,7 @@ export function Signature({ onOpen, onAsk }: { onOpen: Open; onAsk: Ask }) {
 /** Cinematic black-and-gold interlude: a photographic collage around the manifesto line. */
 export function Atelier({ onOpen }: { onOpen: Open }) {
   const { t } = useI18n();
-  const set = [photo('15'), photo('02'), photo('12'), photo('01')];
+  const set = [photo('15'), photo('02'), photo('12'), photo('19')];
   return (
     <section className="atelier" aria-labelledby="atelier-q">
       <div className="atelier-in">

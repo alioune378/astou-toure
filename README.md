@@ -43,6 +43,10 @@ Astou gets each request as an email on her phone. She doesn't need a dashboard.
 | Phone, email, Instagram, address | `src/content.ts` → `BIZ` |
 | Style categories and their text | `src/content.ts` → `CATS` |
 | Photos, captions, alt text, categories | `src/content.ts` → `PHOTOS` (image files in `public/photos/`) |
+| Featured collections ("The art of the finished look") | `src/content.ts` → `LOOKS` |
+| Videos ("The artistry in motion") | `src/content.ts` → `CLIP_GROUPS` (files in `public/media/video/`: `.mp4` plus a `.webp` poster) |
+| Memorable encounters (shown only when filled) | `src/content.ts` → `ENCOUNTERS` |
+| Every media file and its status | `MEDIA.md` |
 | Colours, fonts, spacing | `src/styles/tokens.css` |
 | Logo, monogram, favicons | `public/brand/` (from the approved logo kit) |
 
@@ -61,7 +65,7 @@ The site is set to **noindex** until Astou approves it. At launch:
 
 ## Local search: Google Business Profile plan
 
-1. Claim or create **Astou Style & Boutique** at business.google.com. Use the exact address: Bliss Beauty World, 9 East 167th Street, Bronx, NY 10452.
+1. Claim or create **Astou Style & Boutique** at business.google.com. Use the exact address: 9 East 167th Street, Bronx, NY 10452.
    - If she works inside another business's premises, Google may ask her to verify. Use the profile's suite or booth field if she has one.
 2. Primary category: **Hair salon**. Secondary categories: **Braiding service**, **Beauty salon**.
 3. Use the same phone, website and Instagram everywhere: the profile, Instagram bio and website. Search engines match these.
@@ -77,6 +81,9 @@ No ranking is promised. These steps give Google accurate, consistent information
 |---|---|
 | Phone, email, Instagram and Google Maps links | Live (tested) |
 | Portfolio, filters and full-screen viewer (swipe on phones) | Live |
+| Featured looks with "Inquire about a similar style" (pre-fills the form with the look) | Live |
+| Videos: tap to play, one at a time, starts muted, sound and full-screen buttons, pauses when scrolled away | Live |
+| Memorable encounters | Built, hidden until photos are confirmed (see `APPROVALS.md` item 14) |
 | English / Spanish / French | Live |
 | Appointment request | Live through the visitor's own email app: the request arrives in astoutoure167@gmail.com once the client presses send. The website itself does not store or send anything yet. |
 | Automatic request delivery (Netlify Forms) | Prepared, not switched on. Turn it on only after a test request is received in Astou's inbox. |

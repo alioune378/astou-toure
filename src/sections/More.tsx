@@ -34,7 +34,7 @@ export function Artist() {
           </figcaption>
         </figure>
         <div className="artist-copy">
-          <Kicker n="04">{t({ en: 'Meet the artist', es: 'Conoce a la artista', fr: 'Rencontrez l’artiste' })}</Kicker>
+          <Kicker n="06">{t({ en: 'Meet the artist', es: 'Conoce a la artista', fr: 'Rencontrez l’artiste' })}</Kicker>
           <h2 id="artist-h" className="h2 artist-h">
             {t({ en: 'The hands', es: 'Las manos', fr: 'Les mains' })}
             <br />
@@ -86,7 +86,7 @@ export function Private({ onAsk }: { onAsk: () => void }) {
         <Img p={photo('11')} sizes="(max-width: 899px) 100vw, 45vw" />
       </div>
       <div className="wrap private-in">
-        <Kicker n="05">{t({ en: 'Private clientele', es: 'Clientela privada', fr: 'Clientèle privée' })}</Kicker>
+        <Kicker n="07">{t({ en: 'Private clientele', es: 'Clientela privada', fr: 'Clientèle privée' })}</Kicker>
         <h2 id="private-h" className="h2">
           {t({ en: 'By appointment,', es: 'Con cita previa,', fr: 'Sur rendez-vous,' })} <em>{t({ en: 'wherever you are', es: 'donde tú estés', fr: 'où que vous soyez' })}</em>
         </h2>
@@ -116,7 +116,7 @@ export function Private({ onAsk }: { onAsk: () => void }) {
 
 /* ============================================================ 05 — Request */
 
-export function Request({ preset }: { preset?: { kind?: 'salon' | 'location'; style?: CatId; n: number } }) {
+export function Request({ preset }: { preset?: { kind?: 'salon' | 'location'; style?: CatId; look?: L; n: number } }) {
   const { t } = useI18n();
   const steps: L[] = [
     { en: 'Send your request with the style, date and place you have in mind.', es: 'Envía tu solicitud con el estilo, la fecha y el lugar que tienes en mente.', fr: 'Envoyez votre demande avec la coiffure, la date et le lieu envisagés.' },
@@ -127,7 +127,7 @@ export function Request({ preset }: { preset?: { kind?: 'salon' | 'location'; st
     <section id="request" className="request sec" aria-labelledby="req-h">
       <div className="wrap req-grid">
         <div className="req-intro">
-          <Kicker n="06">{t({ en: 'Appointments', es: 'Citas', fr: 'Rendez-vous' })}</Kicker>
+          <Kicker n="08">{t({ en: 'Appointments', es: 'Citas', fr: 'Rendez-vous' })}</Kicker>
           <h2 id="req-h" className="h2">
             {t({ en: 'Request a', es: 'Pide una', fr: 'Demander un' })} <em>{t({ en: 'private appointment', es: 'cita privada', fr: 'rendez-vous privé' })}</em>
           </h2>
@@ -179,7 +179,7 @@ export function Boutique() {
       <div className="wrap">
         <header className="sec-head sec-head-row">
           <div>
-            <Kicker n="07">{t({ en: 'Boutique', es: 'Boutique', fr: 'Boutique' })}</Kicker>
+            <Kicker n="09">{t({ en: 'Boutique', es: 'Boutique', fr: 'Boutique' })}</Kicker>
             <h2 id="bq-h" className="h2">
               {t({ en: 'The coming', es: 'La próxima', fr: 'La collection' })} <em>{t({ en: 'collection', es: 'colección', fr: 'à venir' })}</em>
             </h2>
@@ -240,8 +240,14 @@ export function Visit() {
         </div>
         <ul className="visit-links">
           <li>
-            <span>{t({ en: 'Call or text', es: 'Llamada o mensaje', fr: 'Appel ou SMS' })}</span>
+            <span>{t({ en: 'Astou · call or text', es: 'Astou · llamada o mensaje', fr: 'Astou · appel ou SMS' })}</span>
             <a href={BIZ.tel}>{BIZ.phoneIntl}</a>
+          </li>
+          <li>
+            <span>
+              {t({ en: 'Style partner', es: 'Estilista asociada', fr: 'Styliste partenaire' })} · {BIZ.partner.name}
+            </span>
+            <a href={BIZ.partner.tel}>{BIZ.partner.phoneIntl}</a>
           </li>
           <li>
             <span>{t({ en: 'Email', es: 'Correo', fr: 'E-mail' })}</span>

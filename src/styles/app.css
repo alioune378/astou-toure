@@ -431,10 +431,38 @@ section[id],
     display: none;
   }
 }
-@media (max-width: 370px) {
+/* three languages in the header: keep wordmark, switch and menu on one line */
+.brand-name {
+  overflow: hidden;
+  text-overflow: clip;
+}
+@media (max-width: 479px) {
+  .top {
+    gap: 8px;
+  }
+  .brand {
+    gap: 10px;
+  }
   .brand-name {
-    font-size: 0.86rem;
-    letter-spacing: 0.16em;
+    font-size: 0.9rem;
+    letter-spacing: 0.17em;
+  }
+  .top-r {
+    gap: 4px;
+  }
+  .top .lang button {
+    min-width: 32px;
+    letter-spacing: 0.1em;
+  }
+}
+@media (max-width: 374px) {
+  /* the monogram carries the brand; the full name is the cover title just below */
+  .brand-name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
   }
 }
 

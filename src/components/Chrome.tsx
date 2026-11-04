@@ -1,26 +1,26 @@
 import { useEffect, useState } from 'react';
 import { BIZ } from '../content';
-import { useI18n, type L } from '../i18n';
+import { LANGS, useI18n, type L } from '../i18n';
 import { Icon, Monogram, goTo, useScrollLock } from './ui';
 
 export const NAV: { id: string; label: L }[] = [
-  { id: 'signature', label: { en: 'Signature', fr: 'Signature' } },
-  { id: 'portfolio', label: { en: 'Portfolio', fr: 'Portfolio' } },
-  { id: 'editorial', label: { en: 'Editorial', fr: 'Éditorial' } },
-  { id: 'artist', label: { en: 'The Artist', fr: 'L’artiste' } },
-  { id: 'private', label: { en: 'Private Clientele', fr: 'Clientèle privée' } },
-  { id: 'boutique', label: { en: 'Boutique', fr: 'Boutique' } },
-  { id: 'visit', label: { en: 'Visit', fr: 'Venir' } },
+  { id: 'signature', label: { en: 'Signature', es: 'Arte capilar', fr: 'Signature' } },
+  { id: 'portfolio', label: { en: 'Portfolio', es: 'Portafolio', fr: 'Portfolio' } },
+  { id: 'editorial', label: { en: 'Editorial', es: 'Editorial', fr: 'Éditorial' } },
+  { id: 'artist', label: { en: 'The Artist', es: 'La artista', fr: 'L’artiste' } },
+  { id: 'private', label: { en: 'Private Clientele', es: 'Clientela privada', fr: 'Clientèle privée' } },
+  { id: 'boutique', label: { en: 'Boutique', es: 'Boutique', fr: 'Boutique' } },
+  { id: 'visit', label: { en: 'Visit', es: 'Visítanos', fr: 'Venir' } },
 ];
 
-export const CTA: L = { en: 'Request a private appointment', fr: 'Demander un rendez-vous' };
-export const CTA_SHORT: L = { en: 'Request', fr: 'Rendez-vous' };
+export const CTA: L = { en: 'Request a private appointment', es: 'Pide una cita privada', fr: 'Demander un rendez-vous' };
+export const CTA_SHORT: L = { en: 'Request', es: 'Pedir cita', fr: 'Rendez-vous' };
 
 export function LangSwitch({ className = '' }: { className?: string }) {
   const { lang, setLang } = useI18n();
   return (
-    <div className={`lang ${className}`} role="group" aria-label="Language / Langue">
-      {(['en', 'fr'] as const).map((l) => (
+    <div className={`lang ${className}`} role="group" aria-label="Language / Idioma / Langue">
+      {LANGS.map((l) => (
         <button key={l} type="button" lang={l} aria-pressed={lang === l} className={lang === l ? 'is-on' : ''} onClick={() => setLang(l)}>
           {l.toUpperCase()}
         </button>
@@ -58,7 +58,7 @@ export function Header() {
   return (
     <>
       <a className="skip" href="#main">
-        {t({ en: 'Skip to content', fr: 'Aller au contenu' })}
+        {t({ en: 'Skip to content', es: 'Ir al contenido', fr: 'Aller au contenu' })}
       </a>
       <header className={`top ${solid ? 'is-solid' : ''}`}>
         <a
@@ -73,7 +73,7 @@ export function Header() {
           <Monogram size="s" />
           <span className="brand-name">Astou Touré</span>
         </a>
-        <nav className="nav" aria-label={t({ en: 'Main', fr: 'Principale' })}>
+        <nav className="nav" aria-label={t({ en: 'Main', es: 'Principal', fr: 'Principale' })}>
           {NAV.map((n) => (
             <button key={n.id} type="button" onClick={() => go(n.id)}>
               {t(n.label)}
@@ -86,7 +86,7 @@ export function Header() {
             {t(CTA_SHORT)}
           </button>
           <button type="button" className="burger" aria-expanded={open} aria-controls="menu" onClick={() => setOpen(true)}>
-            <span className="sr-only">{t({ en: 'Open menu', fr: 'Ouvrir le menu' })}</span>
+            <span className="sr-only">{t({ en: 'Open menu', es: 'Abrir menú', fr: 'Ouvrir le menu' })}</span>
             <i />
             <i />
           </button>
@@ -97,7 +97,7 @@ export function Header() {
         <div className="menu-top">
           <span className="menu-brand">Astou Touré</span>
           <button type="button" className="menu-close" onClick={() => setOpen(false)}>
-            <span className="sr-only">{t({ en: 'Close menu', fr: 'Fermer le menu' })}</span>
+            <span className="sr-only">{t({ en: 'Close menu', es: 'Cerrar menú', fr: 'Fermer le menu' })}</span>
             <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
               <path d="M3 3l16 16M19 3L3 19" stroke="currentColor" strokeWidth="1.4" />
             </svg>
@@ -177,7 +177,7 @@ export function MobileBar() {
     <div className={`mbar ${show ? 'is-on' : ''}`} aria-hidden={!show}>
       <a href={BIZ.tel} tabIndex={show ? 0 : -1}>
         {Icon.phone}
-        <span>{t({ en: 'Call', fr: 'Appeler' })}</span>
+        <span>{t({ en: 'Call', es: 'Llamar', fr: 'Appeler' })}</span>
       </a>
       <a href={BIZ.instagram} target="_blank" rel="noopener noreferrer" tabIndex={show ? 0 : -1}>
         {Icon.ig}
@@ -197,7 +197,7 @@ export function Footer() {
       <div className="foot-logo">
         <img src="/brand/logo-onyx-480.webp" srcSet="/brand/logo-onyx-480.webp 480w, /brand/logo-onyx-900.webp 900w" sizes="(max-width: 600px) 70vw, 340px" alt="Astou Touré — Astou Style & Boutique" width="480" height="329" loading="lazy" />
       </div>
-      <p className="foot-line">{t({ en: 'Hair Artistry • Beauty • Fashion', fr: 'Art capillaire • Beauté • Mode' })}</p>
+      <p className="foot-line">{t({ en: 'Hair Artistry • Beauty • Fashion', es: 'Arte capilar • Belleza • Moda', fr: 'Art capillaire • Beauté • Mode' })}</p>
       <div className="foot-grid">
         <address>
           {BIZ.venue}
@@ -220,7 +220,7 @@ export function Footer() {
           </li>
           <li>
             <a href={BIZ.maps} target="_blank" rel="noopener noreferrer">
-              {t({ en: 'Directions', fr: 'Itinéraire' })}
+              {t({ en: 'Directions', es: 'Cómo llegar', fr: 'Itinéraire' })}
             </a>
           </li>
         </ul>
@@ -229,7 +229,7 @@ export function Footer() {
       <div className="foot-base">
         <span>© {new Date().getFullYear()} Astou Touré · Astou Style &amp; Boutique</span>
         <span>
-          {t({ en: 'Website by', fr: 'Site réalisé par' })}{' '}
+          {t({ en: 'Website by', es: 'Sitio web por', fr: 'Site réalisé par' })}{' '}
           <a href="https://dalaltechnologies.com" target="_blank" rel="noopener noreferrer">
             Dalal Technologies
           </a>

@@ -147,7 +147,7 @@ export function Lightbox({ items, index, onClose, onIndex }: { items: Photo[]; i
       className="lb"
       role="dialog"
       aria-modal="true"
-      aria-label={t({ en: 'Photo viewer', fr: 'Visionneuse de photos' })}
+      aria-label={t({ en: 'Photo viewer', es: 'Visor de fotos', fr: 'Visionneuse de photos' })}
       ref={ref}
       onPointerDown={(e) => (start.current = { x: e.clientX, y: e.clientY })}
       onPointerUp={(e) => {
@@ -164,7 +164,7 @@ export function Lightbox({ items, index, onClose, onIndex }: { items: Photo[]; i
         <span className="lb-count">
           {String(index + 1).padStart(2, '0')} <i>/</i> {String(items.length).padStart(2, '0')}
         </span>
-        <button type="button" className="lb-close" onClick={onClose} aria-label={t({ en: 'Close', fr: 'Fermer' })}>
+        <button type="button" className="lb-close" onClick={onClose} aria-label={t({ en: 'Close', es: 'Cerrar', fr: 'Fermer' })}>
           <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
             <path d="M3 3l16 16M19 3L3 19" stroke="currentColor" strokeWidth="1.5" />
           </svg>
@@ -180,12 +180,12 @@ export function Lightbox({ items, index, onClose, onIndex }: { items: Photo[]; i
       </figure>
       {items.length > 1 && (
         <>
-          <button type="button" className="lb-nav lb-prev" onClick={() => go(-1)} aria-label={t({ en: 'Previous photo', fr: 'Photo précédente' })}>
+          <button type="button" className="lb-nav lb-prev" onClick={() => go(-1)} aria-label={t({ en: 'Previous photo', es: 'Foto anterior', fr: 'Photo précédente' })}>
             <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
               <path d="M18 4L8 14l10 10" fill="none" stroke="currentColor" strokeWidth="1.4" />
             </svg>
           </button>
-          <button type="button" className="lb-nav lb-next" onClick={() => go(1)} aria-label={t({ en: 'Next photo', fr: 'Photo suivante' })}>
+          <button type="button" className="lb-nav lb-next" onClick={() => go(1)} aria-label={t({ en: 'Next photo', es: 'Foto siguiente', fr: 'Photo suivante' })}>
             <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
               <path d="M10 4l10 10-10 10" fill="none" stroke="currentColor" strokeWidth="1.4" />
             </svg>

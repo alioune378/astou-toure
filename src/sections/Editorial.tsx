@@ -15,28 +15,29 @@ export function Editorial({ onOpen }: { onOpen: Open }) {
     <section id="editorial" className="ed sec" aria-labelledby="ed-h">
       <div className="wrap">
         <header className="ed-head">
-          <Kicker n="03">{t({ en: 'Beyond the salon', fr: 'Au-delà du salon' })}</Kicker>
+          <Kicker n="03">{t({ en: 'Beyond the salon', es: 'Más allá del salón', fr: 'Au-delà du salon' })}</Kicker>
           <h2 id="ed-h" className="h2 ed-h">
-            {t({ en: 'Hair beyond beauty.', fr: 'La coiffure au-delà de la beauté.' })}
+            {t({ en: 'Hair beyond beauty.', es: 'El cabello más allá de la belleza.', fr: 'La coiffure au-delà de la beauté.' })}
             <br />
-            <em>{t({ en: 'Art beyond convention.', fr: 'L’art au-delà des conventions.' })}</em>
+            <em>{t({ en: 'Art beyond convention.', es: 'El arte más allá de lo convencional.', fr: 'L’art au-delà des conventions.' })}</em>
           </h2>
-          <p className="ed-sub">{t({ en: 'Editorial artistry & creative collaborations', fr: 'Créations éditoriales & collaborations' })}</p>
+          <p className="ed-sub">{t({ en: 'Editorial artistry & creative collaborations', es: 'Arte editorial y colaboraciones creativas', fr: 'Créations éditoriales & collaborations' })}</p>
         </header>
 
         {/* ---------- Case study: the credited, published project ---------- */}
         <article className="case" aria-labelledby="case-h">
           <Reveal className="case-main">
-            <button type="button" onClick={() => onOpen(evidence, 0)} aria-label={t({ en: 'Enlarge the credited editorial page', fr: 'Agrandir la page éditoriale créditée' })}>
+            <button type="button" onClick={() => onOpen(evidence, 0)} aria-label={t({ en: 'Enlarge the credited editorial page', es: 'Ampliar la página editorial con créditos', fr: 'Agrandir la page éditoriale créditée' })}>
               <Img p={ED_FEATURE} sizes="(max-width: 899px) 100vw, 46vw" />
             </button>
           </Reveal>
           <div className="case-copy">
-            <p className="case-k">{t({ en: 'Published credit', fr: 'Crédit publié' })}</p>
+            <p className="case-k">{t({ en: 'Published credit', es: 'Crédito publicado', fr: 'Crédit publié' })}</p>
             <h3 id="case-h" className="case-h">Fractal Affinities</h3>
             <p className="case-text">
               {t({
                 en: 'For this published editorial, the artist Anna Craycroft designed four hairstyles, each drawn from a diagram of a scientific principle. Working alongside the creative team, Astou Touré was one of the hair artists who brought them to life on four models.',
+                es: 'Para este editorial publicado, la artista Anna Craycroft diseñó cuatro peinados, cada uno inspirado en el diagrama de un principio científico. Junto al equipo creativo, Astou Touré fue una de las estilistas que les dio vida en cuatro modelos.',
                 fr: 'Pour cet éditorial publié, l’artiste Anna Craycroft a conçu quatre coiffures, chacune tirée du diagramme d’un principe scientifique. Aux côtés de l’équipe créative, Astou Touré fait partie des coiffeurs qui leur ont donné vie sur quatre mannequins.',
               })}
             </p>
@@ -51,17 +52,18 @@ export function Editorial({ onOpen }: { onOpen: Open }) {
             <p className="case-note">
               {t({
                 en: 'Credits transcribed as printed on the page. Hair credit shared with Thomas Dunkin.',
+                es: 'Créditos transcritos tal como aparecen impresos. Crédito de peinado compartido con Thomas Dunkin.',
                 fr: 'Crédits retranscrits tels qu’imprimés sur la page. Crédit coiffure partagé avec Thomas Dunkin.',
               })}
             </p>
             <div className="case-docs">
               <button type="button" className="doc" onClick={() => onOpen(evidence, 1)}>
                 <Img p={ED_CREDITS} sizes="96px" />
-                <span>{t({ en: 'Read the printed credits', fr: 'Lire les crédits imprimés' })}</span>
+                <span>{t({ en: 'Read the printed credits', es: 'Leer los créditos impresos', fr: 'Lire les crédits imprimés' })}</span>
               </button>
               <button type="button" className="doc" onClick={() => onOpen(evidence, 2)}>
                 <Img p={ED_PAGE} sizes="96px" />
-                <span>{t({ en: 'See the article page', fr: 'Voir la page de l’article' })}</span>
+                <span>{t({ en: 'See the article page', es: 'Ver la página del artículo', fr: 'Voir la page de l’article' })}</span>
               </button>
             </div>
           </div>
@@ -69,10 +71,11 @@ export function Editorial({ onOpen }: { onOpen: Open }) {
 
         {/* ---------- Editorial gallery ---------- */}
         <div className="edg-head">
-          <p className="case-k">{t({ en: 'Editorial gallery', fr: 'Galerie éditoriale' })}</p>
+          <p className="case-k">{t({ en: 'Editorial gallery', es: 'Galería editorial', fr: 'Galerie éditoriale' })}</p>
           <p className="edg-lede">
             {t({
               en: 'From Astou’s editorial collaborations: sculpted volume, natural texture and graphic form in fashion and art imagery.',
+              es: 'De las colaboraciones editoriales de Astou: volumen esculpido, textura natural y forma gráfica en imágenes de moda y arte.',
               fr: 'Issues des collaborations éditoriales d’Astou : volume sculpté, texture naturelle et forme graphique dans l’image de mode et d’art.',
             })}
           </p>
@@ -93,7 +96,8 @@ export function Editorial({ onOpen }: { onOpen: Open }) {
         <p className="ed-foot">
           {t({
             en: 'Editorial images supplied by Astou Touré and shown as published. Hair on collaborative productions is credited jointly where printed. Publication details are being confirmed. These images show editorial work and are not examples of the salon’s bookable styles.',
-            fr: 'Images éditoriales fournies par Astou Touré et présentées telles que publiées. Sur les productions collectives, la coiffure est créditée conjointement lorsque c’est imprimé. Les détails de publication sont en cours de confirmation. Ces images montrent un travail éditorial et ne sont pas des exemples des coiffures réservables au salon.',
+            es: 'Imágenes editoriales proporcionadas por Astou Touré y mostradas tal como se publicaron. En las producciones colectivas, el peinado se acredita en conjunto cuando así aparece impreso. Los datos de la publicación se están confirmando. Estas imágenes muestran trabajo editorial y no son ejemplos de los estilos que se reservan en el salón.',
+            fr: 'Images éditoriales fournies par Astou Touré et présentées telles que publiées. Sur les productions collectives, la coiffure est créditée conjointement lorsque la page l’indique. Les détails de publication sont en cours de confirmation. Ces images montrent un travail éditorial et ne sont pas des exemples des coiffures réservables au salon.',
           })}
         </p>
       </div>

@@ -14,41 +14,42 @@ export const FORMS_MODE: 'demo' | 'netlify' = import.meta.env.VITE_FORMS_MODE ==
 type Kind = 'salon' | 'location';
 
 const T = {
-  required: { en: 'Required.', fr: 'Champ requis.' },
-  email: { en: 'Please enter a valid email, e.g. name@email.com.', fr: 'Adresse e-mail invalide, ex. nom@email.com.' },
-  phone: { en: 'Please enter a phone number we can call or text.', fr: 'Indiquez un numéro joignable par appel ou SMS.' },
-  date: { en: 'Please choose a date from today onwards.', fr: 'Choisissez une date à partir d’aujourd’hui.' },
-  file: { en: 'Please choose an image under 8 MB (JPG, PNG, HEIC or WebP).', fr: 'Choisissez une image de moins de 8 Mo (JPG, PNG, HEIC ou WebP).' },
-  consent: { en: 'Please confirm you understand this is a request.', fr: 'Merci de confirmer qu’il s’agit d’une demande.' },
-  fix: { en: 'Please check the highlighted fields.', fr: 'Merci de vérifier les champs signalés.' },
-  fast: { en: 'That was quick — please check your details and send again.', fr: 'Envoi très rapide : vérifiez vos informations puis renvoyez.' },
-  sending: { en: 'Sending…', fr: 'Envoi…' },
+  required: { en: 'Required.', es: 'Campo obligatorio.', fr: 'Champ requis.' },
+  email: { en: 'Please enter a valid email, e.g. name@email.com.', es: 'Escribe un correo válido, por ejemplo nombre@email.com.', fr: 'Adresse e-mail invalide, ex. nom@email.com.' },
+  phone: { en: 'Please enter a phone number we can call or text.', es: 'Escribe un número al que podamos llamarte o enviarte un mensaje.', fr: 'Indiquez un numéro joignable par appel ou SMS.' },
+  date: { en: 'Please choose a date from today onwards.', es: 'Elige una fecha a partir de hoy.', fr: 'Choisissez une date à partir d’aujourd’hui.' },
+  file: { en: 'Please choose an image under 8 MB (JPG, PNG, HEIC or WebP).', es: 'Elige una imagen de menos de 8 MB (JPG, PNG, HEIC o WebP).', fr: 'Choisissez une image de moins de 8 Mo (JPG, PNG, HEIC ou WebP).' },
+  consent: { en: 'Please confirm you understand this is a request.', es: 'Confirma que entiendes que es una solicitud.', fr: 'Merci de confirmer qu’il s’agit d’une demande.' },
+  fix: { en: 'Please check the highlighted fields.', es: 'Revisa los campos marcados.', fr: 'Vérifiez les champs signalés, s’il vous plaît.' },
+  fast: { en: 'That was quick — please check your details and send again.', es: '¡Qué rápido! Revisa tus datos y vuelve a enviarlo.', fr: 'Envoi un peu trop rapide : vérifiez vos informations, puis réessayez.' },
+  sending: { en: 'Sending…', es: 'Enviando…', fr: 'Envoi…' },
   error: {
     en: 'Your request could not be sent. Please try again, or call or email Astou directly.',
+    es: 'No pudimos enviar tu solicitud. Inténtalo de nuevo, o llama o escribe directamente a Astou.',
     fr: 'La demande n’a pas pu être envoyée. Réessayez, ou contactez Astou par téléphone ou e-mail.',
   },
 } satisfies Record<string, L>;
 
 const TIMES: { v: string; l: L }[] = [
-  { v: 'morning', l: { en: 'Morning (before 12 pm)', fr: 'Matin (avant 12 h)' } },
-  { v: 'afternoon', l: { en: 'Afternoon (12–5 pm)', fr: 'Après-midi (12 h – 17 h)' } },
-  { v: 'evening', l: { en: 'Evening (after 5 pm)', fr: 'Soir (après 17 h)' } },
-  { v: 'flexible', l: { en: 'I’m flexible', fr: 'Je suis flexible' } },
+  { v: 'morning', l: { en: 'Morning (before 12 pm)', es: 'Mañana (antes de las 12 pm)', fr: 'Matin (avant 12 h)' } },
+  { v: 'afternoon', l: { en: 'Afternoon (12–5 pm)', es: 'Tarde (12–5 pm)', fr: 'Après-midi (12 h – 17 h)' } },
+  { v: 'evening', l: { en: 'Evening (after 5 pm)', es: 'Noche (después de las 5 pm)', fr: 'Soir (après 17 h)' } },
+  { v: 'flexible', l: { en: 'I’m flexible', es: 'Me da igual, soy flexible', fr: 'Je suis flexible' } },
 ];
 const PLACES: { v: string; l: L }[] = [
-  { v: 'home', l: { en: 'Private home', fr: 'Domicile' } },
-  { v: 'hotel', l: { en: 'Hotel', fr: 'Hôtel' } },
-  { v: 'venue', l: { en: 'Event venue', fr: 'Lieu de réception' } },
-  { v: 'studio', l: { en: 'Photo or video studio', fr: 'Studio photo ou vidéo' } },
-  { v: 'other', l: { en: 'Other', fr: 'Autre' } },
+  { v: 'home', l: { en: 'Private home', es: 'Casa particular', fr: 'Domicile' } },
+  { v: 'hotel', l: { en: 'Hotel', es: 'Hotel', fr: 'Hôtel' } },
+  { v: 'venue', l: { en: 'Event venue', es: 'Salón de eventos', fr: 'Lieu de réception' } },
+  { v: 'studio', l: { en: 'Photo or video studio', es: 'Estudio de foto o video', fr: 'Studio photo ou vidéo' } },
+  { v: 'other', l: { en: 'Other', es: 'Otro', fr: 'Autre' } },
 ];
 const EVENTS: { v: string; l: L }[] = [
-  { v: 'everyday', l: { en: 'Everyday / protective style', fr: 'Quotidien / coiffure protectrice' } },
-  { v: 'wedding', l: { en: 'Wedding', fr: 'Mariage' } },
-  { v: 'celebration', l: { en: 'Celebration or party', fr: 'Fête ou célébration' } },
-  { v: 'shoot', l: { en: 'Photo shoot or editorial', fr: 'Séance photo ou éditorial' } },
-  { v: 'stage', l: { en: 'Stage or performance', fr: 'Scène ou spectacle' } },
-  { v: 'other', l: { en: 'Other', fr: 'Autre' } },
+  { v: 'everyday', l: { en: 'Everyday / protective style', es: 'Día a día / peinado protector', fr: 'Quotidien / coiffure protectrice' } },
+  { v: 'wedding', l: { en: 'Wedding', es: 'Boda', fr: 'Mariage' } },
+  { v: 'celebration', l: { en: 'Celebration or party', es: 'Fiesta o celebración', fr: 'Fête ou célébration' } },
+  { v: 'shoot', l: { en: 'Photo shoot or editorial', es: 'Sesión de fotos o editorial', fr: 'Séance photo ou éditorial' } },
+  { v: 'stage', l: { en: 'Stage or performance', es: 'Escenario o espectáculo', fr: 'Scène ou spectacle' } },
+  { v: 'other', l: { en: 'Other', es: 'Otro', fr: 'Autre' } },
 ];
 const STYLE_ORDER: CatId[] = ['nappy', 'boho', 'sculptural', 'braiding', 'editorial'];
 
@@ -81,8 +82,8 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [presetKey]);
 
-  const label = (v: string, list: { v: string; l: L }[]) => t(list.find((x) => x.v === v)?.l ?? { en: v, fr: v });
-  const styleLabel = (v: string) => (v === 'other' ? t({ en: 'Something else / not sure', fr: 'Autre / je ne sais pas encore' }) : CATS[v as CatId] ? t(CATS[v as CatId].title) : v);
+  const label = (v: string, list: { v: string; l: L }[]) => t(list.find((x) => x.v === v)?.l ?? { en: v, es: v, fr: v });
+  const styleLabel = (v: string) => (v === 'other' ? t({ en: 'Something else / not sure', es: 'Otra cosa / todavía no lo sé', fr: 'Autre / je ne sais pas encore' }) : CATS[v as CatId] ? t(CATS[v as CatId].title) : v);
 
   const validate = (fd: FormData) => {
     const e: Record<string, L> = {};
@@ -105,7 +106,27 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
         ? `${BIZ.venue}, ${BIZ.street}, ${BIZ.city}`
         : `${v('service-city')}, ${v('service-state')} — ${label(v('service-place'), PLACES)}`;
     const lines =
-      lang === 'fr'
+      lang === 'es'
+        ? [
+            'Hola Astou:',
+            '',
+            'Me gustaría pedir una cita.',
+            '',
+            `Tipo: ${kind === 'salon' ? 'Cita en el salón (Bronx)' : 'Cita privada a domicilio / en el lugar'}`,
+            `Peinado: ${styleLabel(v('hairstyle'))}`,
+            `Fecha que prefiero: ${v('preferred-date')}`,
+            `Horario: ${label(v('preferred-time'), TIMES)}`,
+            `Lugar: ${where}`,
+            v('event-type') ? `Ocasión: ${label(v('event-type'), EVENTS)}` : null,
+            v('hair-notes') ? `Cabello (largo, textura): ${v('hair-notes')}` : null,
+            '',
+            `Detalles: ${v('details')}`,
+            '',
+            `${v('full-name')} · ${v('phone')} · ${v('email')}`,
+            '',
+            '(Adjunto una foto de inspiración si tengo una.)',
+          ]
+        : lang === 'fr'
         ? [
             'Bonjour Astou,',
             '',
@@ -144,7 +165,7 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
             '',
             '(I’ll attach an inspiration photo if I have one.)',
           ];
-    const subject = lang === 'fr' ? `Demande de rendez-vous — ${v('full-name')}` : `Appointment request — ${v('full-name')}`;
+    const subject = lang === 'es' ? `Solicitud de cita — ${v('full-name')}` : lang === 'fr' ? `Demande de rendez-vous — ${v('full-name')}` : `Appointment request — ${v('full-name')}`;
     return `mailto:${BIZ.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.filter((x): x is string => x !== null).join('\n'))}`;
   };
 
@@ -189,7 +210,7 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
     <div className={`field${opts.full ? ' is-full' : ''}${err(k) ? ' has-err' : ''}`}>
       <label htmlFor={`rq-${k}`}>
         {t(lab)}
-        {opts.optional ? <span className="opt"> — {t({ en: 'optional', fr: 'facultatif' })}</span> : <span aria-hidden="true"> *</span>}
+        {opts.optional ? <span className="opt"> — {t({ en: 'optional', es: 'opcional', fr: 'facultatif' })}</span> : <span aria-hidden="true"> *</span>}
       </label>
       {input}
       {opts.hint && !err(k) && (
@@ -214,15 +235,16 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
   if ((status === 'ready' || status === 'sent') && summary) {
     return (
       <div className="rq-done" role="status" aria-live="polite">
-        <p className="rq-done-k">{status === 'sent' ? t({ en: 'Request sent', fr: 'Demande envoyée' }) : t({ en: 'One last step', fr: 'Dernière étape' })}</p>
+        <p className="rq-done-k">{status === 'sent' ? t({ en: 'Request sent', es: 'Solicitud enviada', fr: 'Demande envoyée' }) : t({ en: 'One last step', es: 'Un último paso', fr: 'Dernière étape' })}</p>
         <h3 className="rq-done-h">
-          {t({ en: 'Thank you', fr: 'Merci' })}, {summary.name}.
+          {t({ en: 'Thank you', es: 'Gracias', fr: 'Merci' })}, {summary.name}.
         </h3>
         {status === 'sent' ? (
           <p>
             {t({
               en: 'Your request has been sent to Astou. It is not a confirmed appointment yet: she will contact you by phone or email to confirm her availability and a personalised quote.',
-              fr: 'Votre demande a été transmise à Astou. Ce n’est pas encore un rendez-vous confirmé : elle vous contactera par téléphone ou e-mail pour confirmer sa disponibilité et un devis personnalisé.',
+              es: 'Tu solicitud le llegó a Astou. Todavía no es una cita confirmada: ella te contactará por teléfono o correo para confirmar su disponibilidad y darte un presupuesto a tu medida.',
+              fr: 'Votre demande a été transmise à Astou. Ce n’est pas encore un rendez-vous confirmé : elle vous contactera par téléphone ou e-mail pour confirmer sa disponibilité et vous proposer un devis personnalisé.',
             })}
           </p>
         ) : (
@@ -230,22 +252,24 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
             <p>
               {t({
                 en: 'Your request is ready. Tap below to send it to Astou from your email app — everything you entered is already written for you. You can attach your inspiration photo there.',
+                es: 'Tu solicitud está lista. Toca el botón para enviársela a Astou desde tu correo: todo lo que escribiste ya está redactado. Ahí mismo puedes adjuntar tu foto de inspiración.',
                 fr: 'Votre demande est prête. Touchez le bouton ci-dessous pour l’envoyer à Astou depuis votre messagerie : tout ce que vous avez saisi est déjà rédigé. Vous pourrez y joindre votre photo d’inspiration.',
               })}
             </p>
             <a className="btn btn-gold" href={summary.mailto}>
-              {Icon.mail} {t({ en: 'Send my request by email', fr: 'Envoyer ma demande par e-mail' })}
+              {Icon.mail} {t({ en: 'Send my request by email', es: 'Enviar mi solicitud por correo', fr: 'Envoyer ma demande par e-mail' })}
             </a>
             <p className="rq-small">
               {t({
                 en: 'Nothing has been sent or stored by this website. A request is not a confirmed appointment: Astou will reply to confirm availability and a personalised quote.',
-                fr: 'Ce site n’a rien envoyé ni enregistré. Une demande n’est pas un rendez-vous confirmé : Astou vous répondra pour confirmer sa disponibilité et un devis personnalisé.',
+                es: 'Este sitio no ha enviado ni guardado nada. Una solicitud no es una cita confirmada: Astou te responderá para confirmar su disponibilidad y un presupuesto a tu medida.',
+                fr: 'Ce site n’a rien envoyé ni enregistré. Une demande n’est pas un rendez-vous confirmé : Astou vous répondra pour confirmer sa disponibilité et vous proposer un devis personnalisé.',
               })}
             </p>
           </>
         )}
         <p className="rq-alt">
-          {t({ en: 'Prefer to talk?', fr: 'Vous préférez en parler ?' })}{' '}
+          {t({ en: 'Prefer to talk?', es: '¿Prefieres hablar?', fr: 'Vous préférez en parler ?' })}{' '}
           <a href={BIZ.tel}>{BIZ.phoneDisplay}</a>
         </p>
         <button
@@ -257,7 +281,7 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
             started.current = Date.now();
           }}
         >
-          {t({ en: '← Edit or start a new request', fr: '← Modifier ou faire une nouvelle demande' })}
+          {t({ en: '← Edit or start a new request', es: '← Cambiar o hacer otra solicitud', fr: '← Modifier ou faire une nouvelle demande' })}
         </button>
       </div>
     );
@@ -275,21 +299,21 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
 
       <fieldset className="rq-kind">
         <legend className="rq-step">
-          <span>01</span> {t({ en: 'Where would you like your appointment?', fr: 'Où souhaitez-vous votre rendez-vous ?' })}
+          <span>01</span> {t({ en: 'Where would you like your appointment?', es: '¿Dónde quieres tu cita?', fr: 'Où souhaitez-vous votre rendez-vous ?' })}
         </legend>
         <div className="kind-grid">
           <label className={`kind ${kind === 'salon' ? 'is-on' : ''}`}>
             <input type="radio" name="kind" value="salon" checked={kind === 'salon'} onChange={() => setKind('salon')} />
-            <span className="kind-h">{t({ en: 'At the salon', fr: 'Au salon' })}</span>
+            <span className="kind-h">{t({ en: 'At the salon', es: 'En el salón', fr: 'Au salon' })}</span>
             <span className="kind-p">
               {BIZ.venue} · {BIZ.street}, Bronx
             </span>
           </label>
           <label className={`kind ${kind === 'location' ? 'is-on' : ''}`}>
             <input type="radio" name="kind" value="location" checked={kind === 'location'} onChange={() => setKind('location')} />
-            <span className="kind-h">{t({ en: 'Private, on location', fr: 'Privé, sur place' })}</span>
+            <span className="kind-h">{t({ en: 'Private, on location', es: 'Privada, donde tú estés', fr: 'En privé, là où vous êtes' })}</span>
             <span className="kind-p">
-              {t({ en: 'Astou comes to you — local or out of state, subject to availability.', fr: 'Astou se déplace — à New York ou hors de l’État, selon disponibilité.' })}
+              {t({ en: 'Astou comes to you — local or out of state, subject to availability.', es: 'Astou va a donde estés, en Nueva York o fuera del estado, según disponibilidad.', fr: 'Astou se déplace chez vous, à New York ou hors de l’État, selon ses disponibilités.' })}
             </span>
           </label>
         </div>
@@ -297,27 +321,27 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
 
       <fieldset className="rq-set">
         <legend className="rq-step">
-          <span>02</span> {t({ en: 'Your style', fr: 'Votre coiffure' })}
+          <span>02</span> {t({ en: 'Your style', es: 'Tu estilo', fr: 'Votre coiffure' })}
         </legend>
         <div className="form-grid">
           {field(
             'hairstyle',
-            { en: 'Requested hairstyle', fr: 'Coiffure souhaitée' },
+            { en: 'Requested hairstyle', es: 'Peinado que quieres', fr: 'Coiffure souhaitée' },
             <select {...a('hairstyle')} value={style} onChange={(e) => setStyle(e.target.value)}>
               <option value="" disabled>
-                {t({ en: 'Choose a style', fr: 'Choisir une coiffure' })}
+                {t({ en: 'Choose a style', es: 'Elige un estilo', fr: 'Choisir une coiffure' })}
               </option>
               {STYLE_ORDER.map((c) => (
                 <option key={c} value={c}>
                   {t(CATS[c].title)}
                 </option>
               ))}
-              <option value="other">{t({ en: 'Something else / not sure', fr: 'Autre / je ne sais pas encore' })}</option>
+              <option value="other">{t({ en: 'Something else / not sure', es: 'Otra cosa / todavía no lo sé', fr: 'Autre / je ne sais pas encore' })}</option>
             </select>,
           )}
           {field(
             'event-type',
-            { en: 'Occasion', fr: 'Occasion' },
+            { en: 'Occasion', es: 'Ocasión', fr: 'Occasion' },
             <select {...a('event-type')} defaultValue="">
               <option value="">—</option>
               {EVENTS.map((o) => (
@@ -330,21 +354,21 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
           )}
           {field(
             'hair-notes',
-            { en: 'Your hair: length and texture', fr: 'Vos cheveux : longueur et texture' },
+            { en: 'Your hair: length and texture', es: 'Tu cabello: largo y textura', fr: 'Vos cheveux : longueur et texture' },
             <input {...a('hair-notes', true)} type="text" autoComplete="off" />,
-            { optional: true, full: true, hint: { en: 'e.g. shoulder-length, 4C natural hair', fr: 'ex. aux épaules, cheveux naturels 4C' } },
+            { optional: true, full: true, hint: { en: 'e.g. shoulder-length, 4C natural hair', es: 'p. ej. hasta los hombros, cabello natural 4C', fr: 'ex. aux épaules, cheveux naturels 4C' } },
           )}
           {field(
             'inspiration',
-            { en: 'Inspiration photo', fr: 'Photo d’inspiration' },
+            { en: 'Inspiration photo', es: 'Foto de inspiración', fr: 'Photo d’inspiration' },
             <input {...a('inspiration', true)} type="file" accept="image/*" />,
             {
               optional: true,
               full: true,
               hint:
                 FORMS_MODE === 'netlify'
-                  ? { en: 'One image, up to 8 MB.', fr: 'Une image, 8 Mo maximum.' }
-                  : { en: 'You’ll attach it to the email in the last step.', fr: 'Vous la joindrez à l’e-mail à la dernière étape.' },
+                  ? { en: 'One image, up to 8 MB.', es: 'Una imagen, hasta 8 MB.', fr: 'Une image, 8 Mo maximum.' }
+                  : { en: 'You’ll attach it to the email in the last step.', es: 'La adjuntarás al correo en el último paso.', fr: 'Vous la joindrez à l’e-mail à la dernière étape.' },
             },
           )}
         </div>
@@ -352,13 +376,13 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
 
       <fieldset className="rq-set">
         <legend className="rq-step">
-          <span>03</span> {t({ en: 'When and where', fr: 'Quand et où' })}
+          <span>03</span> {t({ en: 'When and where', es: 'Cuándo y dónde', fr: 'Quand et où' })}
         </legend>
         <div className="form-grid">
-          {field('preferred-date', { en: 'Preferred date', fr: 'Date souhaitée' }, <input {...a('preferred-date')} type="date" min={today()} />)}
+          {field('preferred-date', { en: 'Preferred date', es: 'Fecha que prefieres', fr: 'Date souhaitée' }, <input {...a('preferred-date')} type="date" min={today()} />)}
           {field(
             'preferred-time',
-            { en: 'Preferred time', fr: 'Horaire souhaité' },
+            { en: 'Preferred time', es: 'Horario que prefieres', fr: 'Horaire souhaité' },
             <select {...a('preferred-time')} defaultValue="">
               <option value="" disabled>
                 —
@@ -372,18 +396,18 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
           )}
           {kind === 'salon' ? (
             <div className="field is-full salon-loc">
-              <span className="salon-loc-k">{t({ en: 'Location', fr: 'Lieu' })}</span>
+              <span className="salon-loc-k">{t({ en: 'Location', es: 'Lugar', fr: 'Lieu' })}</span>
               <span>
                 {BIZ.venue}, {BIZ.street}, {BIZ.city}
               </span>
             </div>
           ) : (
             <>
-              {field('service-city', { en: 'City', fr: 'Ville' }, <input {...a('service-city')} type="text" autoComplete="address-level2" />)}
-              {field('service-state', { en: 'State', fr: 'État' }, <input {...a('service-state')} type="text" autoComplete="address-level1" />)}
+              {field('service-city', { en: 'City', es: 'Ciudad', fr: 'Ville' }, <input {...a('service-city')} type="text" autoComplete="address-level2" />)}
+              {field('service-state', { en: 'State', es: 'Estado', fr: 'État' }, <input {...a('service-state')} type="text" autoComplete="address-level1" />)}
               {field(
                 'service-place',
-                { en: 'Type of place', fr: 'Type de lieu' },
+                { en: 'Type of place', es: 'Tipo de lugar', fr: 'Type de lieu' },
                 <select {...a('service-place', true)} defaultValue="">
                   <option value="" disabled>
                     —
@@ -394,7 +418,7 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
                     </option>
                   ))}
                 </select>,
-                { full: true, hint: { en: 'No street address needed yet — city and state are enough for a quote.', fr: 'Pas besoin d’adresse précise pour l’instant : la ville et l’État suffisent pour un devis.' } },
+                { full: true, hint: { en: 'No street address needed yet — city and state are enough for a quote.', es: 'No hace falta la dirección exacta todavía: con la ciudad y el estado basta para el presupuesto.', fr: 'Pas besoin d’adresse précise pour l’instant : la ville et l’État suffisent pour un devis.' } },
               )}
             </>
           )}
@@ -403,24 +427,25 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
 
       <fieldset className="rq-set">
         <legend className="rq-step">
-          <span>04</span> {t({ en: 'About you', fr: 'Vos coordonnées' })}
+          <span>04</span> {t({ en: 'About you', es: 'Sobre ti', fr: 'Vos coordonnées' })}
         </legend>
         <div className="form-grid">
-          {field('full-name', { en: 'Full name', fr: 'Nom complet' }, <input {...a('full-name')} type="text" autoComplete="name" />, { full: true })}
-          {field('phone', { en: 'Phone', fr: 'Téléphone' }, <input {...a('phone')} type="tel" inputMode="tel" autoComplete="tel" />)}
-          {field('email', { en: 'Email', fr: 'E-mail' }, <input {...a('email')} type="email" inputMode="email" autoComplete="email" />)}
+          {field('full-name', { en: 'Full name', es: 'Nombre completo', fr: 'Nom complet' }, <input {...a('full-name')} type="text" autoComplete="name" />, { full: true })}
+          {field('phone', { en: 'Phone', es: 'Teléfono', fr: 'Téléphone' }, <input {...a('phone')} type="tel" inputMode="tel" autoComplete="tel" />)}
+          {field('email', { en: 'Email', es: 'Correo electrónico', fr: 'E-mail' }, <input {...a('email')} type="email" inputMode="email" autoComplete="email" />)}
           {field(
             'details',
-            { en: 'Additional details', fr: 'Précisions' },
+            { en: 'Additional details', es: 'Más detalles', fr: 'Précisions' },
             <textarea {...a('details', true)} rows={4} />,
-            { full: true, hint: { en: 'Length, colour, timing, number of people, anything Astou should know.', fr: 'Longueur, couleur, délai, nombre de personnes : tout ce qu’Astou doit savoir.' } },
+            { full: true, hint: { en: 'Length, colour, timing, number of people, anything Astou should know.', es: 'Largo, color, fecha límite, cuántas personas… todo lo que Astou deba saber.', fr: 'Longueur, couleur, délai, nombre de personnes : tout ce qu’Astou doit savoir.' } },
           )}
           <div className={`field field-check is-full${err('contact-consent') ? ' has-err' : ''}`}>
             <input id="rq-consent" type="checkbox" name="contact-consent" value="yes" aria-invalid={!!err('contact-consent')} aria-describedby={err('contact-consent') ? 'rq-consent-err' : undefined} />
             <label htmlFor="rq-consent">
               {t({
                 en: 'I understand this is a request, not a confirmed appointment. Astou will contact me to confirm availability and a personalised quote.',
-                fr: 'Je comprends qu’il s’agit d’une demande et non d’un rendez-vous confirmé. Astou me contactera pour confirmer sa disponibilité et un devis personnalisé.',
+                es: 'Entiendo que es una solicitud y no una cita confirmada. Astou me contactará para confirmar su disponibilidad y un presupuesto a mi medida.',
+                fr: 'Je comprends qu’il s’agit d’une demande et non d’un rendez-vous confirmé. Astou me contactera pour confirmer sa disponibilité et vous proposer un devis personnalisé.',
               })}
             </label>
             {err('contact-consent') && (
@@ -434,12 +459,13 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
 
       <div className="rq-foot">
         <button className="btn btn-gold btn-lg" type="submit" disabled={status === 'sending'}>
-          {status === 'sending' ? t(T.sending) : t({ en: 'Request an appointment', fr: 'Demander un rendez-vous' })}
+          {status === 'sending' ? t(T.sending) : t({ en: 'Request an appointment', es: 'Pedir una cita', fr: 'Demander un rendez-vous' })}
         </button>
         <p className="rq-small">
           {t({
             en: 'Your details are used only to answer your request. No payment is taken online. Pricing is personalised after Astou understands your style, hair and location.',
-            fr: 'Vos informations servent uniquement à répondre à votre demande. Aucun paiement en ligne. Le prix est personnalisé une fois votre style, vos cheveux et le lieu connus.',
+            es: 'Tus datos solo se usan para responder a tu solicitud. No se cobra nada en línea. El precio se calcula para ti cuando Astou conoce tu estilo, tu cabello y el lugar.',
+            fr: 'Vos informations servent uniquement à répondre à votre demande. Aucun paiement en ligne. Le tarif est établi sur mesure, une fois votre coiffure, vos cheveux et le lieu connus.',
           })}
         </p>
       </div>

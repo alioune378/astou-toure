@@ -1,8 +1,10 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 
-/** English first (New York audience), French second. No other language. */
-export type Lang = 'en' | 'fr';
-export type L = { en: string; fr: string };
+/** English (default), Spanish and French: the three languages of Astou's Bronx clientele. */
+export type Lang = 'en' | 'es' | 'fr';
+export type L = { en: string; es: string; fr: string };
+export const LANGS: readonly Lang[] = ['en', 'es', 'fr'];
+const isLang = (v: string | null): v is Lang => v === 'en' || v === 'es' || v === 'fr';
 
 const META: Record<Lang, { title: string; description: string; locale: string }> = {
   en: {
@@ -10,6 +12,12 @@ const META: Record<Lang, { title: string; description: string; locale: string }>
     description:
       'Astou Touré, hair artist and specialist braider at Astou Style & Boutique, Bliss Beauty World, 9 East 167th Street, Bronx, NY. Nappy hairstyles, boho braids, sculptural braided updos and custom braiding. Request a private appointment.',
     locale: 'en_US',
+  },
+  es: {
+    title: 'Astou Touré — El arte del cabello · Trenzas y peinados en el Bronx, NY',
+    description:
+      'Astou Touré, artista del cabello y trenzadora en Astou Style & Boutique, Bliss Beauty World, 9 East 167th Street, Bronx, NY. Peinados nappy, trenzas boho, recogidos trenzados esculturales y trenzas a la medida. Pide tu cita privada.',
+    locale: 'es_US',
   },
   fr: {
     title: 'Astou Touré — L’art de la coiffure · Coiffeuse et tresseuse, Bronx NY',
@@ -25,10 +33,10 @@ const KEY = 'astou-lang';
 
 function initial(): Lang {
   const q = new URLSearchParams(window.location.search).get('lang');
-  if (q === 'fr' || q === 'en') return q;
+  if (isLang(q)) return q;
   try {
     const s = localStorage.getItem(KEY);
-    if (s === 'fr' || s === 'en') return s;
+    if (isLang(s)) return s;
   } catch {
     /* storage unavailable */
   }

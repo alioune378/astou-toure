@@ -3,7 +3,7 @@
 The website and business cards for **Astou Style & Boutique**, built by **Dalal Technologies**.
 
 - **Brand direction:** Option 2 gives the prestige layer (AT monogram; onyx, ivory, muted gold and bronze). Option 3 gives the editorial layer (the oversized ASTOU TOURÉ wordmark and fashion-magazine layouts).
-- **Languages:** English (default) and French.
+- **Languages:** English (default), Spanish and French. The Spanish and French are written for her Bronx clientele (warm, natural phrasing, "tú" in Spanish, "vous" in French), not translated word for word.
 - **Stack:** React 18 · Vite 5 · TypeScript · plain CSS · Netlify.
 
 ## Run and deploy
@@ -16,7 +16,7 @@ npm run build     # → dist/
 
 To deploy: push to GitHub, then in Netlify choose **Add new site → Import from Git**. `netlify.toml` already sets the build (`npm run build`, publish `dist`, Node 20).
 
-`?lang=fr` opens the French version. The language choice is remembered on the visitor's device.
+`?lang=es` opens the Spanish version and `?lang=fr` the French one. The language choice is remembered on the visitor's device.
 
 ## Appointment requests
 
@@ -77,7 +77,7 @@ No ranking is promised. These steps give Google accurate, consistent information
 |---|---|
 | Phone, email, Instagram and Google Maps links | Live (tested) |
 | Portfolio, filters and full-screen viewer (swipe on phones) | Live |
-| English / French | Live |
+| English / Spanish / French | Live |
 | Appointment request | Live through the visitor's own email app: the request arrives in astoutoure167@gmail.com once the client presses send. The website itself does not store or send anything yet. |
 | Automatic request delivery (Netlify Forms) | Prepared, not switched on. Turn it on only after a test request is received in Astou's inbox. |
 | WhatsApp button | Prepared, off until the number is confirmed |

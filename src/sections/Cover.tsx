@@ -6,8 +6,8 @@ import { Img, goTo } from '../components/ui';
 /** Opening spread: a magazine cover. The wordmark is the masthead; Astou's work is the cover image. */
 export function Cover({ onStyle }: { onStyle: (c: CatId) => void }) {
   const { t } = useI18n();
-  // Hero: a real client's braided crown. The small inset previews the sculptural studies.
-  const hero = photo('07');
+  // Hero: a real client's long braids with curved cornrows (owner's choice). The small inset previews the sculptural studies.
+  const hero = photo('08');
   const second = photo('13');
   const lines: CatId[] = ['nappy', 'boho', 'sculptural'];
   return (
@@ -27,7 +27,7 @@ export function Cover({ onStyle }: { onStyle: (c: CatId) => void }) {
       <div className="cover-body">
         <figure className="cover-photo">
           <Img p={hero} sizes="(max-width: 899px) 100vw, 40vw" eager />
-          <figcaption className="cover-cap">{t({ en: 'Braided crown — on a client', es: 'Corona trenzada, en una clienta', fr: 'Couronne tressée — sur une cliente' })}</figcaption>
+          <figcaption className="cover-cap">{t({ en: 'Long braids, drawn parts — on a client', es: 'Trenzas largas con rayas dibujadas, en una clienta', fr: 'Longues tresses, raies dessinées — sur une cliente' })}</figcaption>
           <p className="cover-overline" aria-hidden="true">
             <em>{t({ en: 'The Art', es: 'El arte', fr: 'L’art' })}</em> {t({ en: 'of Hair', es: 'del cabello', fr: 'de la coiffure' })}
           </p>

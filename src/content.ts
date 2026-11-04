@@ -156,7 +156,7 @@ export const PHOTOS: Photo[] = [
       es: 'Clienta con box braids largas y trenzas pegadas curvas al frente, terminadas con baby hairs esculpidos.',
       fr: 'Cliente avec de longues box braids et des nattes collées courbes sur le devant, finies par des baby hair sculptés.',
     },
-    '50% 20%',
+    '50% 6%',
   ),
   P(
     'astou_03_grid_sculpted_looped_back',
@@ -398,7 +398,7 @@ const CAT_FIX: Record<string, CatId[]> = {
   '20': ['editorial', 'sculptural'],
 };
 /** Display order: client work and studies alternate so neither dominates; within a group the first photo is the cover. */
-const ORDER = ['07', '13', '08', '15', '21', '20', '10', '16', '09', '19', '18', '05', '11', '17', '22', '06', '12', '23', '02', '03', '04'];
+const ORDER = ['07', '13', '10', '15', '21', '20', '08', '16', '09', '19', '18', '05', '11', '17', '22', '06', '12', '23', '02', '03', '04'];
 PHOTOS.forEach((p) => {
   if (GROUPS[p.id]) p.group = GROUPS[p.id];
   if (CAT_FIX[p.id]) p.cats = CAT_FIX[p.id];

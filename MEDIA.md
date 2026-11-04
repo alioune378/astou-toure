@@ -70,14 +70,14 @@ Files were compared by eye and by perceptual hash, not by name. **One hairstyle 
 
 | Hairstyle (entry) | Photos (views) | Client / study | Primary location | Small previews elsewhere |
 |---|---|---|---|---|
-| Braided crown | `astou_07` | Client | Cover hero | Portfolio tile |
+| Braided crown | `astou_07` | Client | Portfolio (first entry) | — |
 | Black sculpture | `astou_13` | Study | Portfolio | Cover inset (small) |
-| Long box braids | `astou_08` | Client | Portfolio | — |
+| Long box braids, drawn parts | `astou_08` | Client | Cover hero (owner's choice) | Portfolio tile |
 | Loops in blue | `astou_15` | Study | Portfolio | — |
 | Rolled updo | `astou_21`, `astou_20` (2 views) | Client | Portfolio (cover `21`) | Private clientele uses `20` |
-| Long braids, drawn parts | `astou_10` | Client | Portfolio | — |
+| Long braids, drawn parts | `astou_10` | Client | Portfolio | Braiding specialty thumbnail |
 | Woven crown | `astou_16` | Study | Portfolio | Sculptural specialty thumbnail |
-| Side braids | `astou_09` | Client | Portfolio | Braiding specialty thumbnail |
+| Side braids | `astou_09` | Client | Portfolio | — |
 | Side-swept braided crown | `astou_19`, `astou_18` (2 views) | Study | Portfolio | — |
 | Silver crown braid | `astou_05` (low resolution) | Client | Portfolio | — |
 | Sleek braided chignon | `astou_11`, `astou_17` (2 views) | Study | Portfolio | — |

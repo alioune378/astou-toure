@@ -61,7 +61,7 @@ export function Signature({ onOpen, onAsk }: { onOpen: Open; onAsk: Ask }) {
         {(
           [
             ['sculptural', ['16'], 'a'],
-            ['braiding', ['09'], 'b'],
+            ['braiding', ['10'], 'b'],
             ['editorial', ['12'], 'c'],
           ] as [CatId, string[], string][]
         ).map(([c, ids, layout], i) => {

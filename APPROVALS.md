@@ -19,9 +19,10 @@
 
 14. **New photos and videos (November 2026).** See `MEDIA.md` for every file.
    - **Editorial chapters.** "Fashion editorial", "Artistic headwraps" and "Memorable encounters" are on the page with a neutral "in preparation" line. They fill in automatically once approved items are added to `ED_CHAPTERS` in `src/content.ts`.
-   - **Memorable encounters (images 05 and 06).** Before anything is published: the original, unretouched photographs (the files received are AI-enhanced reconstructions, so faces and details may not match the real moment); who is pictured; when and where; Astou's role at that moment; and the pictured people's OK to appear on a business website. In New York, using a recognisable person's likeness to promote a business without their written consent can create legal exposure. Captions will say only what Astou confirms, and will never suggest she styled, worked for or was endorsed by anyone unless that is documented.
-   - **Group portrait (image 01).** Names of the four people, the occasion, and their OK to appear.
-   - **Fashion editorial series (images 03, 04, 07, 08).** The publication and issue, the photographer and creative credits, Astou's exact role (hair, headwraps, styling, or not involved), and permission to show the photos. Image 03 contains magazine text that was reconstructed by AI: the original scan is needed if the page is to be shown.
+   - **Archive and editorial images (01, 03–08): published 4 Nov 2026.** The owner confirmed that Astou has authorization to share them, and that she did the hair and headwraps. Still useful:
+     - Which images show which person (Beyoncé ×3, Iman ×2, Astou's daughter and others), so captions can name people accurately. For now, captions name no one.
+     - The original, unrestored photos. The files on the site are AI-enhanced; the page says they were "digitally restored".
+     - Publication and photographer credits for the fashion images.
    - **Image 02 ("Sculptural beauty").** Published as part of the credited "Fractal Affinities" shoot. Confirm Astou worked on this specific look (the printed credit is shared with Thomas Dunkin).
    - **Client consent** for the new client photos and videos: curved cornrows, highlighted micro braids, rolled updo (other salon customers are visible behind her), and the clients filmed in the eight videos, several of whom show their faces.
    - **Videos.** All 12 are published. The night-time cornrow clip (filmed outdoors) shows passers-by in the background.

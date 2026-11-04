@@ -3403,3 +3403,15 @@ section[id],
     display: none;
   }
 }
+.ed-items-encounters .img {
+  aspect-ratio: 1;
+}
+.ed-items-headwraps .img,
+.ed-items-fashion .img {
+  aspect-ratio: 4 / 5;
+}
+@media (min-width: 900px) {
+  .ed-items-encounters {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

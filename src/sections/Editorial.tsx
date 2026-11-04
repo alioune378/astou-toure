@@ -165,9 +165,9 @@ export function Editorial({ onOpen }: { onOpen: Open }) {
 
         <p className="ed-foot">
           {t({
-            en: 'Editorial images supplied by Astou Touré and shown as published. Hair on collaborative productions is credited jointly where printed. Publication details are being confirmed. These images show editorial work and are not examples of the salon’s bookable styles.',
-            es: 'Imágenes editoriales proporcionadas por Astou Touré y mostradas tal como se publicaron. En las producciones colectivas, el peinado se acredita en conjunto cuando así aparece impreso. Los datos de la publicación se están confirmando. Estas imágenes muestran trabajo editorial y no son ejemplos de los estilos que se reservan en el salón.',
-            fr: 'Images éditoriales fournies par Astou Touré et présentées telles que publiées. Sur les productions collectives, la coiffure est créditée conjointement lorsque la page l’indique. Les détails de publication sont en cours de confirmation. Ces images montrent un travail éditorial et ne sont pas des exemples des coiffures réservables au salon.',
+            en: 'All images supplied by Astou Touré and shown with her authorization. Hair on collaborative productions is credited jointly where printed. Archive photographs were digitally restored from her copies. These images show editorial work and are not examples of the salon’s bookable styles.',
+            es: 'Todas las imágenes fueron proporcionadas por Astou Touré y se muestran con su autorización. En las producciones colectivas, el peinado se acredita en conjunto cuando así aparece impreso. Las fotografías de archivo se restauraron digitalmente a partir de sus copias. Estas imágenes muestran trabajo editorial y no son ejemplos de los estilos que se reservan en el salón.',
+            fr: 'Toutes les images sont fournies par Astou Touré et présentées avec son autorisation. Sur les productions collectives, la coiffure est créditée conjointement lorsque la page l’indique. Les photographies d’archives ont été restaurées numériquement à partir de ses tirages. Ces images montrent un travail éditorial et ne sont pas des exemples des coiffures réservables au salon.',
           })}
         </p>
       </div>
@@ -188,7 +188,7 @@ function Chapter({ c, n, onOpen }: { c: EdChapter; n: number; onOpen: Open }) {
         <p className="ed-chap-t">{t(c.intro)}</p>
       </div>
       {c.items.length ? (
-        <ul className={`ed-items ed-items-${Math.min(c.items.length, 3)}`}>
+        <ul className={`ed-items ed-items-${Math.min(c.items.length, 3)} ed-items-${c.id}`}>
           {c.items.map((it, i) => (
             <Reveal as="li" key={it.photo.file} delay={(i % 3) * 90}>
               <button type="button" onClick={() => onOpen(photos, i)} aria-label={`${t({ en: 'Enlarge', es: 'Ampliar', fr: 'Agrandir' })}: ${t(it.photo.title)}`}>
@@ -196,7 +196,7 @@ function Chapter({ c, n, onOpen }: { c: EdChapter; n: number; onOpen: Open }) {
               </button>
               <p className="ed-item-h">{t(it.photo.title)}</p>
               <p className="ed-item-c">{t(it.caption)}</p>
-              {it.credit && <p className="ed-item-cr">{it.credit}</p>}
+              {it.credit && <p className="ed-item-cr">{t(it.credit)}</p>}
             </Reveal>
           ))}
         </ul>

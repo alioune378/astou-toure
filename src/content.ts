@@ -89,7 +89,7 @@ export type Photo = {
   h: number;
   widths: number[];
   /** Client = worn by a real client. Study = created on a mannequin head. */
-  kind: 'client' | 'study' | 'artist' | 'editorial' | 'press';
+  kind: 'client' | 'study' | 'artist' | 'editorial' | 'press' | 'archive';
   cats: CatId[];
   title: L;
   alt: L;
@@ -446,6 +446,7 @@ export const KIND_LABEL: Record<Photo['kind'], L> = {
   artist: { en: 'The artist', es: 'La artista', fr: 'L’artiste' },
   editorial: { en: 'Editorial collaboration', es: 'Colaboración editorial', fr: 'Collaboration éditoriale' },
   press: { en: 'Published page', es: 'Página publicada', fr: 'Page publiée' },
+  archive: { en: 'From Astou’s archive', es: 'Del archivo de Astou', fr: 'Archives d’Astou' },
 };
 
 /* ------------------------------------------------------------------ Editorial work (published collaborations)
@@ -720,7 +721,11 @@ export const CLIP_GROUPS: ClipGroup[] = [
    no names, no claims. To publish an approved image, optimise it into public/photos/, add it to the manifest,
    then add an EdItem below. Captions must state only what Astou has confirmed. Status of every held file: MEDIA.md. */
 
-export type EdItem = { photo: Photo; caption: L; credit?: string };
+export type EdItem = { photo: Photo; caption: L; credit?: L };
+/** Archive images: published with Astou's authorization (confirmed by the owner, 4 Nov 2026). Digitally restored from her copies. */
+const AR = (file: string, kind: Photo['kind'], title: L, alt: L, focus?: string): Photo => ({ id: file, file, ...M[file], kind, cats: [], title, alt, focus });
+const HAIR_WRAP: L = { en: 'Hair and headwrap: Astou Touré', es: 'Peinado y turbante: Astou Touré', fr: 'Coiffure et foulard : Astou Touré' };
+
 export type EdChapter = { id: string; title: L; intro: L; pending: L; items: EdItem[] };
 
 export const ED_CHAPTERS: EdChapter[] = [
@@ -737,7 +742,34 @@ export const ED_CHAPTERS: EdChapter[] = [
       es: 'Estamos preparando trabajos de moda del archivo de Astou con sus créditos de publicación originales.',
       fr: 'Des travaux de mode issus des archives d’Astou sont en préparation, avec leurs crédits de publication d’origine.',
     },
-    items: [],
+    items: [
+      {
+        photo: AR('ar_transformation', 'editorial', { en: 'The art of transformation', es: 'El arte de la transformación', fr: 'L’art de la transformation' }, {
+          en: 'Full-length fashion image on a white and gold backdrop: a model in a sculptural, fan-like headwrap, a statement necklace, a leather corset belt and a long pleated skirt.',
+          es: 'Imagen de moda de cuerpo entero sobre fondo blanco y dorado: una modelo con un turbante escultural en forma de abanico, un collar llamativo, un cinturón corsé de cuero y una falda larga plisada.',
+          fr: 'Image de mode en pied sur fond blanc et or : une mannequin coiffée d’un foulard sculptural en éventail, avec un collier spectaculaire, une ceinture-corset en cuir et une longue jupe plissée.',
+        }, '50% 20%'),
+        caption: {
+          en: 'A striking exploration of headwear, fashion and artistic beauty.',
+          es: 'Una exploración impactante del tocado, la moda y la belleza artística.',
+          fr: 'Une exploration saisissante de la coiffe, de la mode et de la beauté artistique.',
+        },
+        credit: HAIR_WRAP,
+      },
+      {
+        photo: AR('ar_fashion_blue', 'editorial', { en: 'Fashion without boundaries', es: 'Moda sin fronteras', fr: 'La mode sans frontières' }, {
+          en: 'Fashion image against a blue and white textured backdrop: a model with a long braided ponytail, in a multicoloured fur jacket and fringed boots.',
+          es: 'Imagen de moda sobre un fondo texturizado azul y blanco: una modelo con una larga coleta trenzada, chaqueta de piel multicolor y botas con flecos.',
+          fr: 'Image de mode sur fond texturé bleu et blanc : une mannequin à la longue queue-de-cheval tressée, en veste de fourrure multicolore et bottes à franges.',
+        }, '50% 20%'),
+        caption: {
+          en: 'Where artistic hairstyling meets expressive contemporary fashion.',
+          es: 'Donde el peinado artístico se encuentra con la moda contemporánea más expresiva.',
+          fr: 'Là où la coiffure artistique rencontre une mode contemporaine expressive.',
+        },
+        credit: { en: 'Hair: Astou Touré', es: 'Peinado: Astou Touré', fr: 'Coiffure : Astou Touré' },
+      },
+    ],
   },
   {
     id: 'headwraps',
@@ -752,7 +784,34 @@ export const ED_CHAPTERS: EdChapter[] = [
       es: 'Los trabajos con turbantes se mostrarán aquí cuando se confirmen las fotografías originales y los créditos.',
       fr: 'Les créations de foulards seront présentées ici dès que les photographies originales et les crédits seront confirmés.',
     },
-    items: [],
+    items: [
+      {
+        photo: AR('ar_headwrap_purple', 'editorial', { en: 'Sculptural elegance', es: 'Elegancia escultural', fr: 'Élégance sculpturale' }, {
+          en: 'Close portrait: a voluminous purple and gold headwrap sculpted high above the face, with long earrings and a sparkling gown.',
+          es: 'Retrato de cerca: un turbante voluminoso morado y dorado esculpido en lo alto de la cabeza, con aretes largos y un vestido brillante.',
+          fr: 'Portrait rapproché : un foulard volumineux violet et or sculpté au-dessus du visage, avec de longues boucles d’oreilles et une robe scintillante.',
+        }, '50% 25%'),
+        caption: {
+          en: 'An expression of form, texture and the beauty of headwrap artistry.',
+          es: 'Una expresión de forma, textura y de la belleza del arte del turbante.',
+          fr: 'Une expression de la forme, de la matière et de toute la beauté de l’art du foulard.',
+        },
+        credit: { en: 'Headwrap: Astou Touré', es: 'Turbante: Astou Touré', fr: 'Foulard : Astou Touré' },
+      },
+      {
+        photo: AR('ar_two_looks', 'editorial', { en: 'A celebration of expression', es: 'Una celebración de la expresión', fr: 'Une célébration de l’expression' }, {
+          en: 'Two studio looks side by side: dramatic sculpted headwraps paired with bold African-print gowns and accessories.',
+          es: 'Dos looks de estudio uno al lado del otro: turbantes esculpidos y espectaculares con vestidos de estampado africano y accesorios llamativos.',
+          fr: 'Deux looks de studio côte à côte : des foulards sculptés spectaculaires, portés avec des tenues en imprimés africains et des accessoires affirmés.',
+        }, '50% 15%'),
+        caption: {
+          en: 'Striking silhouettes and dramatic headwear inspired by artistic fashion traditions.',
+          es: 'Siluetas impactantes y tocados espectaculares inspirados en las tradiciones de la moda artística.',
+          fr: 'Des silhouettes saisissantes et des coiffes spectaculaires inspirées des traditions de la mode.',
+        },
+        credit: { en: 'Headwraps: Astou Touré', es: 'Turbantes: Astou Touré', fr: 'Foulards : Astou Touré' },
+      },
+    ],
   },
   {
     id: 'encounters',
@@ -767,6 +826,43 @@ export const ED_CHAPTERS: EdChapter[] = [
       es: 'Las fotografías del archivo de Astou se compartirán aquí en cuanto se digitalicen las copias originales.',
       fr: 'Des photographies des archives d’Astou seront partagées ici dès que les tirages originaux seront numérisés.',
     },
-    items: [],
+    items: [
+      {
+        photo: AR('ar_encounter_framed', 'archive', { en: 'A memorable encounter', es: 'Un encuentro memorable', fr: 'Une rencontre marquante' }, {
+          en: 'Framed colour photograph of two women arm in arm: one dressed in black, the other in a ruffled yellow gown and beaded belt.',
+          es: 'Fotografía a color enmarcada de dos mujeres del brazo: una vestida de negro y la otra con un vestido amarillo con volantes y un cinturón de cuentas.',
+          fr: 'Photographie couleur encadrée de deux femmes bras dessus bras dessous : l’une en noir, l’autre en robe jaune à volants et ceinture perlée.',
+        }, '50% 30%'),
+        caption: {
+          en: 'A treasured photograph from a journey shaped by creativity, beauty and cultural connection.',
+          es: 'Una fotografía muy querida de un camino marcado por la creatividad, la belleza y el encuentro entre culturas.',
+          fr: 'Une photographie précieuse d’un parcours nourri de créativité, de beauté et de rencontres entre les cultures.',
+        },
+      },
+      {
+        photo: AR('ar_encounter_bw', 'archive', { en: 'Connections through creativity', es: 'Conexiones a través de la creatividad', fr: 'Des liens tissés par la création' }, {
+          en: 'Black-and-white photograph of three women smiling together, the woman in the centre wearing a braided headpiece and beaded belt.',
+          es: 'Fotografía en blanco y negro de tres mujeres sonriendo juntas; la del centro lleva un tocado trenzado y un cinturón de cuentas.',
+          fr: 'Photographie en noir et blanc de trois femmes souriantes ; celle du centre porte une coiffe tressée et une ceinture perlée.',
+        }, '50% 30%'),
+        caption: {
+          en: 'Memorable moments that form part of Astou’s personal and creative journey.',
+          es: 'Momentos memorables que forman parte del camino personal y creativo de Astou.',
+          fr: 'Des moments marquants du parcours personnel et créatif d’Astou.',
+        },
+      },
+      {
+        photo: AR('ar_group_portrait', 'archive', { en: 'An unforgettable moment', es: 'Un momento inolvidable', fr: 'Un moment inoubliable' }, {
+          en: 'Group portrait of four women standing together, three in colourful African dress with headwraps and one in a black suit with a sculpted black headwrap.',
+          es: 'Retrato de grupo de cuatro mujeres juntas: tres con vestidos africanos de colores y turbantes, y una con traje negro y un turbante negro esculpido.',
+          fr: 'Portrait de groupe de quatre femmes côte à côte : trois en tenues africaines colorées et foulards, une en tailleur noir avec un foulard noir sculpté.',
+        }, '50% 30%'),
+        caption: {
+          en: 'A moment celebrating African beauty, style and cultural expression.',
+          es: 'Un momento que celebra la belleza, el estilo y la expresión cultural africanos.',
+          fr: 'Un moment qui célèbre la beauté, le style et l’expression culturelle africaine.',
+        },
+      },
+    ],
   },
 ];

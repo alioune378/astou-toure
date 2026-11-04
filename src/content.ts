@@ -723,7 +723,7 @@ export const CLIP_GROUPS: ClipGroup[] = [
 
 export type EdItem = { photo: Photo; caption: L; who?: L; credit?: L };
 /** `credits`: published credits (label, value). `note`: how the information was sourced, shown under the chapter. */
-export type EdChapter = { id: string; title: L; intro: L; pending: L; items: EdItem[]; credits?: [L, string][]; note?: L };
+export type EdChapter = { id: string; title: L; sub?: L; intro: L; pending: L; items: EdItem[]; credits?: [L, string][]; note?: L };
 
 /** Archive images: published with Astou's authorization (confirmed by the owner, 4 Nov 2026). Names as supplied by Astou and her family. Digitally restored from her copies. */
 const AR = (file: string, kind: Photo['kind'], title: L, alt: L, focus?: string): Photo => ({ id: file, file, ...M[file], kind, cats: [], title, alt, focus });
@@ -732,25 +732,18 @@ const AR = (file: string, kind: Photo['kind'], title: L, alt: L, focus?: string)
 export const ED_CHAPTERS: EdChapter[] = [
   {
     id: 'garage',
-    title: { en: 'Garage Magazine, 2012', es: 'Garage Magazine, 2012', fr: 'Garage Magazine, 2012' },
+    // Rendered inside collection 01, after the credited page: same Garage Spring/Summer 2012 editorial.
+    title: { en: 'More from the editorial', es: 'Más del editorial', fr: 'Autres images de l’éditorial' },
     intro: {
-      en: 'Sculptural hair as high fashion: “Masterpiece Theatre”, an avant-garde editorial on extraordinary volume and form. Spring/Summer 2012.',
-      es: 'El cabello escultural como alta moda: “Masterpiece Theatre”, un editorial de vanguardia sobre el volumen y la forma. Primavera/verano 2012.',
-      fr: 'La coiffure sculpturale comme haute couture : « Masterpiece Theatre », un éditorial d’avant-garde sur le volume et la forme. Printemps-été 2012.',
+      en: 'Further images from the same Garage Magazine editorial, Spring/Summer 2012.',
+      es: 'Más imágenes del mismo editorial de Garage Magazine, primavera/verano 2012.',
+      fr: 'D’autres images du même éditorial de Garage Magazine, printemps-été 2012.',
     },
     pending: { en: '', es: '', fr: '' },
-    credits: [
-      [{ en: 'Photography', es: 'Fotografía', fr: 'Photographie' }, 'Elle Muliarchyk'],
-      [{ en: 'Hair', es: 'Peinado', fr: 'Coiffure' }, 'Astou Touré & Thomas Dunkin'],
-      [{ en: 'Fashion styling', es: 'Estilismo', fr: 'Stylisme' }, 'Jenke Ahmed Tailly'],
-      [{ en: 'Hair colour', es: 'Color', fr: 'Couleur' }, 'Aura'],
-      [{ en: 'Make-up', es: 'Maquillaje', fr: 'Maquillage' }, 'Cynthia Rose'],
-      [{ en: 'Manicure', es: 'Manicura', fr: 'Manucure' }, 'Lisa Logan'],
-    ],
     note: {
-      en: 'Published credits. Astou Touré shares the hair credit with Thomas Dunkin.',
-      es: 'Créditos publicados. Astou Touré comparte el crédito de peinado con Thomas Dunkin.',
-      fr: 'Crédits publiés. Astou Touré partage le crédit coiffure avec Thomas Dunkin.',
+      en: 'Models in this editorial: Ataui Deng, Jeneil Williams, Cora Keegan and Nairoby Matos. Hair colour: Aura · Make-up: Cynthia Rose · Manicure: Lisa Logan. Hair: Astou Touré & Thomas Dunkin.',
+      es: 'Modelos de este editorial: Ataui Deng, Jeneil Williams, Cora Keegan y Nairoby Matos. Color: Aura · Maquillaje: Cynthia Rose · Manicura: Lisa Logan. Peinado: Astou Touré y Thomas Dunkin.',
+      fr: 'Mannequins de cet éditorial : Ataui Deng, Jeneil Williams, Cora Keegan et Nairoby Matos. Couleur : Aura · Maquillage : Cynthia Rose · Manucure : Lisa Logan. Coiffure : Astou Touré & Thomas Dunkin.',
     },
     items: [
       {
@@ -778,6 +771,7 @@ export const ED_CHAPTERS: EdChapter[] = [
   {
     id: 'couture',
     title: { en: 'African headwear & couture', es: 'Tocados africanos y alta costura', fr: 'Coiffes africaines & couture' },
+    sub: { en: 'The creative artistry', es: 'El arte creativo', fr: 'L’art de la création' },
     intro: {
       en: 'The architecture of elegance: sculptural headwear, rich textiles and dramatic silhouettes in African-inspired fashion.',
       es: 'La arquitectura de la elegancia: tocados esculturales, telas ricas y siluetas dramáticas en la moda de inspiración africana.',
@@ -785,9 +779,9 @@ export const ED_CHAPTERS: EdChapter[] = [
     },
     pending: { en: '', es: '', fr: '' },
     note: {
-      en: 'Images and identification supplied by Astou Touré. Her specific styling contribution and the original production credits are being confirmed.',
-      es: 'Imágenes e identificación proporcionadas por Astou Touré. Se están confirmando su aporte específico al estilismo y los créditos originales de producción.',
-      fr: 'Images et identification fournies par Astou Touré. Sa contribution précise au stylisme et les crédits de production d’origine sont en cours de confirmation.',
+      en: 'Images and identification supplied by Astou Touré. Astou’s family identifies headwrap and hairstyling work by her on these images; which pieces she created, wrapped or styled on set is being confirmed, together with the original production credits.',
+      es: 'Imágenes e identificación proporcionadas por Astou Touré. La familia de Astou identifica en estas imágenes trabajo suyo de turbantes y peinado; se está confirmando qué piezas creó, envolvió o peinó en la sesión, junto con los créditos originales de producción.',
+      fr: 'Images et identification fournies par Astou Touré. Sa famille lui attribue un travail de foulards et de coiffure sur ces images ; les pièces qu’elle a créées, nouées ou coiffées sur le plateau sont en cours de confirmation, avec les crédits de production d’origine.',
     },
     items: [
       {
@@ -834,6 +828,7 @@ export const ED_CHAPTERS: EdChapter[] = [
   {
     id: 'encounters',
     title: { en: 'Memorable encounters', es: 'Encuentros memorables', fr: 'Rencontres marquantes' },
+    sub: { en: 'The personal journey', es: 'El camino personal', fr: 'Le parcours personnel' },
     intro: {
       en: 'The people behind the journey: personal photographs from Astou’s own collection.',
       es: 'Las personas detrás del camino: fotografías personales de la colección de Astou.',

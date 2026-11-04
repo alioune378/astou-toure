@@ -30,9 +30,12 @@
    - Style partner Alima (+1 347 814 9472) is now shown in the contact section and footer. Confirm she is happy to be listed by first name.
    - **hello@astoustyle.com** is not used yet. The domain and mailbox are not configured, so requests still go to astoutoure167@gmail.com. Switch once the domain is live and a test email has arrived.
    - "Bliss Beauty World" has been removed from the website as instructed. It still appears on the business-card proofs; say if the cards should be updated too.
-16. **Editorial collections (4 Nov 2026).**
-   - Garage Magazine "Masterpiece Theatre" vs "Fractal Affinities": image 02 shows the same model and styling as the pop-art collage in the "Fractal Affinities" gallery. Confirm whether these are one editorial or two in the same issue.
-   - Model names for 02 (Cora Keegan) and 07 (Jeneil Williams): not shown until checked against the original image sequence.
-   - African headwear & couture: on 4 Nov the owner said Astou made the purple headwrap and both headwraps in the two-look image. The later brief asks to treat this as unconfirmed, so no styling credit is shown. Restoring it is a one-line change.
-   - Encounter with Beyoncé: the owner said Astou did her hair. The later brief asks for neutral wording, so the caption does not say so.
-   - Original photographs and magazine scans: still preferred over the AI-enhanced copies. The page says several images are digitally enhanced copies.
+16. **Editorial: facts still to confirm with Astou** (updated 4 Nov 2026)
+   1. **Couture images (03, 04, 08).** For each image: did she design the headpiece, make it, wrap it on set, or style the hair? Images 04 and 08 were described as "made by Astou"; she still needs to confirm which of these roles applies. No individual credit is shown until then.
+   2. **Encounter with Beyoncé (05).** Did she do Beyoncé's hair for that occasion? Also the date, place and occasion.
+   3. **Model per image (02, 07).** The printed page and Fashion Gone Rogue (March 2012) list the four models: Ataui Deng, Jeneil Williams, Cora Keegan, Nairoby Matos. The site names them for the editorial as a whole, not per image. Check 02 (Cora Keegan?) and 07 (Jeneil Williams?) against the original magazine pages.
+   4. **L'Officiel Paris, March 2011 (03).** Confirm that this image comes from that issue. Confirm whether 04 and 08 do too; they are not labelled with it.
+   5. **Originals.** Original photographs or magazine scans to replace the AI-enhanced copies, especially for 01, 05 and 06 (personal photos with real people) and 03 (magazine image).
+   6. **Display rights.** Astou's authorization is confirmed. For the magazine images (02, 03, 04, 07, 08 and the "Fractal Affinities" pages), the photographs belong to the photographers and publications: confirm that portfolio use on a business website is covered. For 01, 05 and 06, confirm that the people pictured agreed to the photos being shared.
+
+    "Masterpiece Theatre" vs "Fractal Affinities" is resolved. The printed "Fractal Affinities" credit block lists the same photographer, hair team, stylist, colourist, make-up artist, manicurist and the four models as the Garage Spring/Summer 2012 coverage, so it is one editorial. The site now shows it as one collection, one credit. "Masterpiece Theatre" was not found in published coverage, so it is not used on the site.

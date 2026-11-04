@@ -3457,3 +3457,18 @@ section[id],
     gap: 36px 28px;
   }
 }
+.ed-chap-sub {
+  display: block;
+  margin-top: 6px;
+  font-style: italic;
+  font-size: 0.42em;
+  color: var(--gold-soft);
+}
+.ed-chap.is-inline {
+  border-top: 0;
+  padding-top: 0;
+  margin-top: clamp(48px, 7vw, 88px);
+}
+.ed-chap.is-inline .edg-head {
+  margin-bottom: 24px;
+}

@@ -6,9 +6,13 @@ type Open = (items: Photo[], i: number) => void;
 
 /**
  * 03 — Beyond the salon. Published editorial work, kept separate from the bookable specialties.
- * Only printed credits are stated; nothing about the publication or the people photographed is added.
+ * Published credits are stated as printed; family-supplied information is labelled as such.
  */
-const SCULPTURAL_TITLE = { en: 'Sculptural hair artistry', es: 'Arte capilar escultural', fr: 'Coiffure sculpturale' };
+const GARAGE_TITLE = { en: 'Garage Magazine', es: 'Garage Magazine', fr: 'Garage Magazine' };
+const GARAGE_SUB = { en: 'The editorial work', es: 'El trabajo editorial', fr: 'Le travail éditorial' };
+/** Collections after Garage. The Garage collection is the credited case study plus its extra images (the 'garage' entry). */
+const OTHERS = ED_CHAPTERS.filter((c) => c.id !== 'garage');
+const GARAGE = ED_CHAPTERS.find((c) => c.id === 'garage');
 
 export function Editorial({ onOpen }: { onOpen: Open }) {
   const { t } = useI18n();
@@ -35,29 +39,33 @@ export function Editorial({ onOpen }: { onOpen: Open }) {
         <nav className="ed-index" aria-label={t({ en: 'Editorial chapters', es: 'Capítulos editoriales', fr: 'Chapitres éditoriaux' })}>
           <ol>
             <li>
-              <button type="button" onClick={() => goTo('ed-sculptural')}>
-                <span className="ed-index-n">01</span> {t(SCULPTURAL_TITLE)}
+              <button type="button" onClick={() => goTo('ed-garage')}>
+                <span className="ed-index-n">01</span> {t(GARAGE_TITLE)}
+                <span className="ed-index-s">{t(GARAGE_SUB)}</span>
               </button>
             </li>
-            {ED_CHAPTERS.map((c, i) => (
+            {OTHERS.map((c, i) => (
               <li key={c.id}>
                 <button type="button" onClick={() => goTo(`ed-${c.id}`)}>
                   <span className="ed-index-n">{String(i + 2).padStart(2, '0')}</span> {t(c.title)}
-                  {c.items.length === 0 && <span className="ed-index-s">{t({ en: 'In preparation', es: 'En preparación', fr: 'En préparation' })}</span>}
+                  {c.sub && <span className="ed-index-s">{t(c.sub)}</span>}
                 </button>
               </li>
             ))}
           </ol>
         </nav>
 
-        <div className="ed-chap-head" id="ed-sculptural">
+        <div className="ed-chap-head" id="ed-garage">
           <p className="ed-chap-n">01</p>
-          <h3 className="ed-chap-h">{t(SCULPTURAL_TITLE)}</h3>
+          <h3 className="ed-chap-h">
+            {t(GARAGE_TITLE)}
+            <span className="ed-chap-sub">{t(GARAGE_SUB)}</span>
+          </h3>
           <p className="ed-chap-t">
             {t({
-              en: 'Hair treated as sculpture: volume, line and texture built for the camera.',
-              es: 'El cabello tratado como escultura: volumen, línea y textura construidos para la cámara.',
-              fr: 'La coiffure traitée comme une sculpture : volume, ligne et texture construits pour l’objectif.',
+              en: 'Spring/Summer 2012. One editorial, “Fractal Affinities”: four hairstyles drawn from scientific diagrams, sculpted for the camera.',
+              es: 'Primavera/verano 2012. Un editorial, “Fractal Affinities”: cuatro peinados inspirados en diagramas científicos, esculpidos para la cámara.',
+              fr: 'Printemps-été 2012. Un éditorial, « Fractal Affinities » : quatre coiffures tirées de diagrammes scientifiques, sculptées pour l’objectif.',
             })}
           </p>
         </div>
@@ -109,7 +117,7 @@ export function Editorial({ onOpen }: { onOpen: Open }) {
 
         {/* ---------- Editorial gallery ---------- */}
         <div className="edg-head">
-          <p className="case-k">{t({ en: 'Editorial gallery', es: 'Galería editorial', fr: 'Galerie éditoriale' })}</p>
+          <p className="case-k">{t({ en: 'From the editorial', es: 'Del editorial', fr: 'Extraits de l’éditorial' })}</p>
           <p className="edg-lede">
             {t({
               en: 'From Astou’s editorial collaborations: sculpted volume, natural texture and graphic form in fashion and art imagery.',
@@ -131,16 +139,19 @@ export function Editorial({ onOpen }: { onOpen: Open }) {
             </Reveal>
           ))}
         </ul>
-        {/* ---------- Further chapters: shown with their images once approved, otherwise a neutral line ---------- */}
-        {ED_CHAPTERS.map((c, i) => (
+        {/* ---------- More images from the same Garage editorial (same assignment, not a second credit) ---------- */}
+        {GARAGE && <Chapter c={GARAGE} n={0} onOpen={onOpen} inline />}
+
+        {/* ---------- Further collections ---------- */}
+        {OTHERS.map((c, i) => (
           <Chapter key={c.id} c={c} n={i + 2} onOpen={onOpen} />
         ))}
 
         <p className="ed-foot">
           {t({
-            en: 'All images supplied by Astou Touré and shown with her authorization. Hair on collaborative productions is credited jointly where printed. Several images are digitally enhanced copies, not original prints or magazine scans. These images show editorial work and are not examples of the salon’s bookable styles.',
-            es: 'Todas las imágenes fueron proporcionadas por Astou Touré y se muestran con su autorización. En las producciones colectivas, el peinado se acredita en conjunto cuando así aparece impreso. Varias imágenes son copias mejoradas digitalmente, no copias originales ni escaneos de revista. Estas imágenes muestran trabajo editorial y no son ejemplos de los estilos que se reservan en el salón.',
-            fr: 'Toutes les images sont fournies par Astou Touré et présentées avec son autorisation. Sur les productions collectives, la coiffure est créditée conjointement lorsque la page l’indique. Plusieurs images sont des copies retouchées numériquement, et non des tirages originaux ou des scans de magazine. Ces images montrent un travail éditorial et ne sont pas des exemples des coiffures réservables au salon.',
+            en: 'All images supplied by Astou Touré and shown with her authorization. Hair on collaborative productions is credited jointly where printed. The images in this section are digitally enhanced copies, not original prints or magazine scans; originals or faithful restorations will replace them where available. These images show editorial work and are not examples of the salon’s bookable styles.',
+            es: 'Todas las imágenes fueron proporcionadas por Astou Touré y se muestran con su autorización. En las producciones colectivas, el peinado se acredita en conjunto cuando así aparece impreso. Las imágenes de esta sección son copias mejoradas digitalmente, no copias originales ni escaneos de revista; se reemplazarán por originales o restauraciones fieles cuando estén disponibles. Estas imágenes muestran trabajo editorial y no son ejemplos de los estilos que se reservan en el salón.',
+            fr: 'Toutes les images sont fournies par Astou Touré et présentées avec son autorisation. Sur les productions collectives, la coiffure est créditée conjointement lorsque la page l’indique. Les images de cette section sont des copies retouchées numériquement, et non des tirages originaux ou des scans de magazine ; elles seront remplacées par les originaux ou des restaurations fidèles dès que possible. Ces images montrent un travail éditorial et ne sont pas des exemples des coiffures réservables au salon.',
           })}
         </p>
       </div>
@@ -148,18 +159,28 @@ export function Editorial({ onOpen }: { onOpen: Open }) {
   );
 }
 
-function Chapter({ c, n, onOpen }: { c: EdChapter; n: number; onOpen: Open }) {
+function Chapter({ c, n, onOpen, inline }: { c: EdChapter; n: number; onOpen: Open; inline?: boolean }) {
   const { t } = useI18n();
   const photos = c.items.map((x) => x.photo);
   return (
-    <section className={`ed-chap ${c.items.length ? '' : 'is-pending'}`} id={`ed-${c.id}`} aria-labelledby={`ed-${c.id}-h`}>
-      <div className="ed-chap-head">
-        <p className="ed-chap-n">{String(n).padStart(2, '0')}</p>
-        <h3 id={`ed-${c.id}-h`} className="ed-chap-h">
-          {t(c.title)}
-        </h3>
-        <p className="ed-chap-t">{t(c.intro)}</p>
-      </div>
+    <section className={`ed-chap ${c.items.length ? '' : 'is-pending'} ${inline ? 'is-inline' : ''}`} id={inline ? undefined : `ed-${c.id}`} aria-labelledby={`ed-${c.id}-h`}>
+      {inline ? (
+        <div className="edg-head">
+          <p className="case-k" id={`ed-${c.id}-h`}>
+            {t(c.title)}
+          </p>
+          <p className="edg-lede">{t(c.intro)}</p>
+        </div>
+      ) : (
+        <div className="ed-chap-head">
+          <p className="ed-chap-n">{String(n).padStart(2, '0')}</p>
+          <h3 id={`ed-${c.id}-h`} className="ed-chap-h">
+            {t(c.title)}
+            {c.sub && <span className="ed-chap-sub">{t(c.sub)}</span>}
+          </h3>
+          <p className="ed-chap-t">{t(c.intro)}</p>
+        </div>
+      )}
       {c.items.length ? (
         <ul className={`ed-items ed-items-${Math.min(c.items.length, 3)} ed-items-${c.id}`}>
           {c.items.map((it, i) => (

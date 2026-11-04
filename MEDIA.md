@@ -110,8 +110,7 @@ Files were compared by eye and by perceptual hash, not by name. **One hairstyle 
 
 | Collection | Images | Credits shown |
 |---|---|---|
-| 01 Sculptural hair artistry | "Fractal Affinities" page + 5-image gallery (unchanged) | Printed credits |
-| 02 Garage Magazine, Spring/Summer 2012 ("Masterpiece Theatre") | `ed_sculptural_beauty_portrait` (02), `ar_fashion_blue` (07) | Published credits as supplied: Elle Muliarchyk; Astou Touré & Thomas Dunkin; Jenke Ahmed Tailly; Aura; Cynthia Rose; Lisa Logan |
+| 01 Garage Magazine — The editorial work (Spring/Summer 2012, "Fractal Affinities": page, gallery and two further images) | "Fractal Affinities" page + 5-image gallery, plus | `ed_sculptural_beauty_portrait` (02), `ar_fashion_blue` (07) | Published credits as supplied: Elle Muliarchyk; Astou Touré & Thomas Dunkin; Jenke Ahmed Tailly; Aura; Cynthia Rose; Lisa Logan |
 | 03 African headwear & couture | `ar_transformation` (03), `ar_headwrap_purple` (04), `ar_two_looks` (08) | No styling credit. Note: Astou's contribution and production credits being confirmed. 03 is labelled "L'Officiel Paris, March 2011" as supplied |
 | 04 Memorable encounters | `ar_group_portrait` (01), `ar_encounter_framed` (05), `ar_encounter_bw` (06) | Names as given by Astou and her family. Note: no endorsement implied |
 

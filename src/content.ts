@@ -722,7 +722,7 @@ export const CLIP_GROUPS: ClipGroup[] = [
    then add an EdItem below. Captions must state only what Astou has confirmed. Status of every held file: MEDIA.md. */
 
 export type EdItem = { photo: Photo; caption: L; credit?: L };
-/** Archive images: published with Astou's authorization (confirmed by the owner, 4 Nov 2026). Digitally restored from her copies. */
+/** Archive images: published with Astou's authorization (confirmed by the owner, 4 Nov 2026). Names and roles as confirmed by the owner. Digitally restored from her copies. */
 const AR = (file: string, kind: Photo['kind'], title: L, alt: L, focus?: string): Photo => ({ id: file, file, ...M[file], kind, cats: [], title, alt, focus });
 const HAIR_WRAP: L = { en: 'Hair and headwrap: Astou Touré', es: 'Peinado y turbante: Astou Touré', fr: 'Coiffure et foulard : Astou Touré' };
 
@@ -787,29 +787,29 @@ export const ED_CHAPTERS: EdChapter[] = [
     items: [
       {
         photo: AR('ar_headwrap_purple', 'editorial', { en: 'Sculptural elegance', es: 'Elegancia escultural', fr: 'Élégance sculpturale' }, {
-          en: 'Close portrait: a voluminous purple and gold headwrap sculpted high above the face, with long earrings and a sparkling gown.',
-          es: 'Retrato de cerca: un turbante voluminoso morado y dorado esculpido en lo alto de la cabeza, con aretes largos y un vestido brillante.',
-          fr: 'Portrait rapproché : un foulard volumineux violet et or sculpté au-dessus du visage, avec de longues boucles d’oreilles et une robe scintillante.',
+          en: 'Close portrait of Beyoncé in a voluminous purple and gold headwrap made by Astou Touré, with long earrings and a sparkling gown.',
+          es: 'Retrato de cerca de Beyoncé con un turbante voluminoso morado y dorado hecho por Astou Touré, aretes largos y un vestido brillante.',
+          fr: 'Portrait rapproché de Beyoncé, coiffée d’un foulard volumineux violet et or réalisé par Astou Touré, avec de longues boucles d’oreilles et une robe scintillante.',
         }, '50% 25%'),
         caption: {
-          en: 'An expression of form, texture and the beauty of headwrap artistry.',
-          es: 'Una expresión de forma, textura y de la belleza del arte del turbante.',
-          fr: 'Une expression de la forme, de la matière et de toute la beauté de l’art du foulard.',
+          en: 'Beyoncé in a headwrap made by Astou: form, texture and the beauty of headwrap artistry.',
+          es: 'Beyoncé con un turbante hecho por Astou: forma, textura y la belleza del arte del turbante.',
+          fr: 'Beyoncé dans un foulard réalisé par Astou : la forme, la matière et toute la beauté de l’art du foulard.',
         },
         credit: { en: 'Headwrap: Astou Touré', es: 'Turbante: Astou Touré', fr: 'Foulard : Astou Touré' },
       },
       {
         photo: AR('ar_two_looks', 'editorial', { en: 'A celebration of expression', es: 'Una celebración de la expresión', fr: 'Une célébration de l’expression' }, {
-          en: 'Two studio looks side by side: dramatic sculpted headwraps paired with bold African-print gowns and accessories.',
-          es: 'Dos looks de estudio uno al lado del otro: turbantes esculpidos y espectaculares con vestidos de estampado africano y accesorios llamativos.',
-          fr: 'Deux looks de studio côte à côte : des foulards sculptés spectaculaires, portés avec des tenues en imprimés africains et des accessoires affirmés.',
+          en: 'Two studio portraits of Beyoncé side by side, in African-inspired fashion with dramatic sculpted headwraps by Astou Touré.',
+          es: 'Dos retratos de estudio de Beyoncé, uno al lado del otro, con moda de inspiración africana y turbantes esculpidos y espectaculares de Astou Touré.',
+          fr: 'Deux portraits de studio de Beyoncé côte à côte, en tenues d’inspiration africaine, coiffée de foulards sculptés spectaculaires signés Astou Touré.',
         }, '50% 15%'),
         caption: {
-          en: 'Striking silhouettes and dramatic headwear inspired by artistic fashion traditions.',
-          es: 'Siluetas impactantes y tocados espectaculares inspirados en las tradiciones de la moda artística.',
-          fr: 'Des silhouettes saisissantes et des coiffes spectaculaires inspirées des traditions de la mode.',
+          en: 'Beyoncé in two African-inspired looks; Astou created both headwraps.',
+          es: 'Beyoncé en dos looks de inspiración africana; Astou creó ambos turbantes.',
+          fr: 'Beyoncé dans deux looks d’inspiration africaine ; Astou a réalisé les deux foulards.',
         },
-        credit: { en: 'Headwraps: Astou Touré', es: 'Turbantes: Astou Touré', fr: 'Foulards : Astou Touré' },
+        credit: { en: 'Both headwraps: Astou Touré', es: 'Ambos turbantes: Astou Touré', fr: 'Les deux foulards : Astou Touré' },
       },
     ],
   },
@@ -829,38 +829,38 @@ export const ED_CHAPTERS: EdChapter[] = [
     items: [
       {
         photo: AR('ar_encounter_framed', 'archive', { en: 'A memorable encounter', es: 'Un encuentro memorable', fr: 'Une rencontre marquante' }, {
-          en: 'Framed colour photograph of two women arm in arm: one dressed in black, the other in a ruffled yellow gown and beaded belt.',
-          es: 'Fotografía a color enmarcada de dos mujeres del brazo: una vestida de negro y la otra con un vestido amarillo con volantes y un cinturón de cuentas.',
-          fr: 'Photographie couleur encadrée de deux femmes bras dessus bras dessous : l’une en noir, l’autre en robe jaune à volants et ceinture perlée.',
+          en: 'Framed colour photograph: Beyoncé, in a ruffled yellow gown and beaded belt, arm in arm with Astou Touré, dressed in black.',
+          es: 'Fotografía a color enmarcada: Beyoncé, con un vestido amarillo con volantes y un cinturón de cuentas, del brazo de Astou Touré, vestida de negro.',
+          fr: 'Photographie couleur encadrée : Beyoncé, en robe jaune à volants et ceinture perlée, bras dessus bras dessous avec Astou Touré, vêtue de noir.',
         }, '50% 30%'),
         caption: {
-          en: 'A treasured photograph from a journey shaped by creativity, beauty and cultural connection.',
-          es: 'Una fotografía muy querida de un camino marcado por la creatividad, la belleza y el encuentro entre culturas.',
-          fr: 'Une photographie précieuse d’un parcours nourri de créativité, de beauté et de rencontres entre les cultures.',
+          en: 'Astou Touré with Beyoncé, whose hair she styled.',
+          es: 'Astou Touré con Beyoncé, a quien peinó.',
+          fr: 'Astou Touré avec Beyoncé, qu’elle a coiffée.',
         },
       },
       {
         photo: AR('ar_encounter_bw', 'archive', { en: 'Connections through creativity', es: 'Conexiones a través de la creatividad', fr: 'Des liens tissés par la création' }, {
-          en: 'Black-and-white photograph of three women smiling together, the woman in the centre wearing a braided headpiece and beaded belt.',
-          es: 'Fotografía en blanco y negro de tres mujeres sonriendo juntas; la del centro lleva un tocado trenzado y un cinturón de cuentas.',
-          fr: 'Photographie en noir et blanc de trois femmes souriantes ; celle du centre porte une coiffe tressée et une ceinture perlée.',
+          en: 'Black-and-white photograph: Astou Touré (left), Beyoncé (centre), in a braided headpiece and beaded belt, and Alima (right), smiling together.',
+          es: 'Fotografía en blanco y negro: Astou Touré (izquierda), Beyoncé (centro), con un tocado trenzado y un cinturón de cuentas, y Alima (derecha), sonriendo juntas.',
+          fr: 'Photographie en noir et blanc : Astou Touré (à gauche), Beyoncé (au centre), coiffe tressée et ceinture perlée, et Alima (à droite), toutes trois souriantes.',
         }, '50% 30%'),
         caption: {
-          en: 'Memorable moments that form part of Astou’s personal and creative journey.',
-          es: 'Momentos memorables que forman parte del camino personal y creativo de Astou.',
-          fr: 'Des moments marquants du parcours personnel et créatif d’Astou.',
+          en: 'Astou Touré and her style partner Alima with Beyoncé.',
+          es: 'Astou Touré y su estilista asociada, Alima, con Beyoncé.',
+          fr: 'Astou Touré et sa styliste partenaire, Alima, avec Beyoncé.',
         },
       },
       {
         photo: AR('ar_group_portrait', 'archive', { en: 'An unforgettable moment', es: 'Un momento inolvidable', fr: 'Un moment inoubliable' }, {
-          en: 'Group portrait of four women standing together, three in colourful African dress with headwraps and one in a black suit with a sculpted black headwrap.',
-          es: 'Retrato de grupo de cuatro mujeres juntas: tres con vestidos africanos de colores y turbantes, y una con traje negro y un turbante negro esculpido.',
-          fr: 'Portrait de groupe de quatre femmes côte à côte : trois en tenues africaines colorées et foulards, une en tailleur noir avec un foulard noir sculpté.',
+          en: 'Group portrait, left to right: Amy, Astou’s daughter; Alima, her style partner; Iman, in a black suit and white shirt with a sculpted black headwrap; and Astou Touré in an orange African dress.',
+          es: 'Retrato de grupo, de izquierda a derecha: Amy, la hija de Astou; Alima, su estilista asociada; Iman, con traje negro, camisa blanca y un turbante negro esculpido; y Astou Touré con un vestido africano naranja.',
+          fr: 'Portrait de groupe, de gauche à droite : Amy, la fille d’Astou ; Alima, sa styliste partenaire ; Iman, en tailleur noir et chemise blanche, coiffée d’un foulard noir sculpté ; et Astou Touré en robe africaine orange.',
         }, '50% 30%'),
         caption: {
-          en: 'A moment celebrating African beauty, style and cultural expression.',
-          es: 'Un momento que celebra la belleza, el estilo y la expresión cultural africanos.',
-          fr: 'Un moment qui célèbre la beauté, le style et l’expression culturelle africaine.',
+          en: 'Astou with her daughter Amy, her style partner Alima and Iman, whose headwrap Astou created.',
+          es: 'Astou con su hija Amy, su estilista asociada Alima e Iman, cuyo turbante creó Astou.',
+          fr: 'Astou avec sa fille Amy, sa styliste partenaire Alima et Iman, dont Astou a réalisé le foulard.',
         },
       },
     ],

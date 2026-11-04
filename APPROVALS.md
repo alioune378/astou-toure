@@ -20,7 +20,7 @@
 14. **New photos and videos (November 2026).** See `MEDIA.md` for every file.
    - **Editorial chapters.** "Fashion editorial", "Artistic headwraps" and "Memorable encounters" are on the page with a neutral "in preparation" line. They fill in automatically once approved items are added to `ED_CHAPTERS` in `src/content.ts`.
    - **Archive and editorial images (01, 03–08): published 4 Nov 2026.** The owner confirmed that Astou has authorization to share them, and that she did the hair and headwraps. Still useful:
-     - Which images show which person (Beyoncé ×3, Iman ×2, Astou's daughter and others), so captions can name people accurately. For now, captions name no one.
+     - Names: added 4 Nov 2026 as the owner confirmed them (group portrait: Amy, Alima, Iman, Astou; framed photo: Beyoncé and Astou; black-and-white: Astou, Beyoncé, Alima; purple headwrap and the two-look image: Beyoncé). The two other fashion images (full-length look, blue backdrop) name no one; say if they should.
      - The original, unrestored photos. The files on the site are AI-enhanced; the page says they were "digitally restored".
      - Publication and photographer credits for the fashion images.
    - **Image 02 ("Sculptural beauty").** Published as part of the credited "Fractal Affinities" shoot. Confirm Astou worked on this specific look (the printed credit is shared with Thomas Dunkin).

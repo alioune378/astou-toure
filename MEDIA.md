@@ -7,12 +7,12 @@ Packages: Website Images (8), Two Braiding Photos (2), 4 New Photos (4), Final 1
 
 | # | Source file | Published as | Where on the site | Status |
 |---|---|---|---|---|
-| A1 | 01_Astou_Group_Portrait_With_Editorial_Model | `ar_group_portrait` | Editorial → Memorable encounters | Published (owner confirmed authorization, 4 Nov 2026). Names not shown until matched to each image |
+| A1 | 01_Astou_Group_Portrait_With_Editorial_Model | `ar_group_portrait` | Editorial → Memorable encounters | Published (owner confirmed authorization, 4 Nov 2026). Names added as confirmed by the owner (Amy, Alima, Iman, Astou) |
 | A2 | 02_Avant_Garde_Fashion_Portrait | `ed_sculptural_beauty_portrait` | Editorial & legacy → "Sculptural beauty" feature | Published. Same shoot as the credited "Fractal Affinities" page (same model and styling as the pop-art collage) |
 | A3 | 03_Editorial_Full_Length_Look | `ar_transformation` | Editorial → Fashion editorial | Published. Cropped to remove the AI-reconstructed magazine text; credit "Hair and headwrap: Astou Touré" |
 | A4 | 04_Purple_Headwrap_Close_Portrait | `ar_headwrap_purple` | Editorial → Artistic headwraps | Published; credit "Headwrap: Astou Touré" |
-| A5 | 05_Astou_With_[public figure]_Framed_Photo | `ar_encounter_framed` | Editorial → Memorable encounters | Published (authorization confirmed). Caption names no one yet |
-| A6 | 06_Astou_Group_With_[public figure]_Black_White | `ar_encounter_bw` | Editorial → Memorable encounters | Published (authorization confirmed). Caption names no one yet |
+| A5 | 05_Astou_With_[public figure]_Framed_Photo | `ar_encounter_framed` | Editorial → Memorable encounters | Published (authorization confirmed). Names added as confirmed by the owner |
+| A6 | 06_Astou_Group_With_[public figure]_Black_White | `ar_encounter_bw` | Editorial → Memorable encounters | Published (authorization confirmed). Names added as confirmed by the owner |
 | A7 | 07_Fashion_Editorial_Blue_Textured_Backdrop | `ar_fashion_blue` | Editorial → Fashion editorial | Published; credit "Hair: Astou Touré" |
 | A8 | 08_Two_Editorial_Looks_Studio_Composite | `ar_two_looks` | Editorial → Artistic headwraps | Published; credit "Headwraps: Astou Touré" |
 | B1 | Astou_Curved_Cornrows_Front_View | `lk_cornrows_front` | The finished look → "Precision in every parting" | Published (client) |

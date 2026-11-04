@@ -1768,8 +1768,7 @@ section[id],
 }
 .artist-portrait {
   position: relative;
-  margin: 0 calc(-1 * var(--gutter)) 0 0;
-  padding-bottom: 64px;
+  margin: 0;
   min-width: 0;
 }
 .ap-main .img {
@@ -1777,10 +1776,7 @@ section[id],
   background: #e2d6c2;
 }
 .ap-cap {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 58%;
+  margin-top: 16px;
   display: grid;
   gap: 2px;
   padding-top: 12px;
@@ -1797,16 +1793,6 @@ section[id],
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--bronze);
-}
-.ap-detail {
-  position: absolute;
-  right: var(--gutter);
-  bottom: 0;
-  width: 34%;
-  border: 6px solid var(--ivory);
-}
-.ap-detail .img {
-  aspect-ratio: 1;
 }
 .artist-copy {
   display: grid;
@@ -1881,10 +1867,6 @@ section[id],
     margin: 0;
     position: sticky;
     top: calc(var(--header-h) + 24px);
-  }
-  .ap-detail {
-    right: -8%;
-    width: 30%;
   }
 }
 

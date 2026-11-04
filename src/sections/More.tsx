@@ -32,9 +32,6 @@ export function Artist() {
             <span className="ap-name">Astou Touré</span>
             <span className="ap-role">{t({ en: 'Hair artist · Bronx, New York', es: 'Artista del cabello · Bronx, Nueva York', fr: 'Artiste capillaire · Bronx, New York' })}</span>
           </figcaption>
-          <Reveal className="ap-detail" delay={140}>
-            <Img p={photo('02')} sizes="(max-width: 959px) 36vw, 13vw" />
-          </Reveal>
         </figure>
         <div className="artist-copy">
           <Kicker n="04">{t({ en: 'Meet the artist', es: 'Conoce a la artista', fr: 'Rencontrez l’artiste' })}</Kicker>

@@ -78,17 +78,20 @@ export function Private({ onAsk }: { onAsk: () => void }) {
     [{ en: 'Event styling', es: 'Peinado para eventos', fr: 'Coiffure d’événement' }, { en: 'Weddings, celebrations and gatherings — for one guest or several.', es: 'Bodas, fiestas y reuniones, para una invitada o para varias.', fr: 'Mariages, fêtes et réceptions : pour une invitée ou plusieurs.' }],
     [{ en: 'Editorial sessions', es: 'Sesiones editoriales', fr: 'Séances éditoriales' }, { en: 'Hair for photo shoots, campaigns, video and stage.', es: 'Peinado para sesiones de fotos, campañas, video y escenario.', fr: 'Coiffure pour séances photo, campagnes, vidéo et scène.' }],
     [{ en: 'Special occasions', es: 'Ocasiones especiales', fr: 'Grandes occasions' }, { en: 'Statement styles for the days you want to remember.', es: 'Peinados que dejan huella para los días que quieres recordar.', fr: 'Des coiffures marquantes pour les jours qui comptent.' }],
-    [{ en: 'On-location services', es: 'Servicio a domicilio', fr: 'Déplacements' }, { en: 'At home, in a hotel or at your venue — in New York or beyond, subject to availability.', es: 'En tu casa, en un hotel o en el lugar de tu evento, en Nueva York o más allá, según disponibilidad.', fr: 'À domicile, à l’hôtel ou sur le lieu de l’événement, à New York ou ailleurs, selon disponibilité.' }],
+    [{ en: 'On-location services', es: 'Servicio a domicilio', fr: 'Déplacements' }, { en: 'At home, in a hotel or at your venue, in New York or beyond, subject to availability.', es: 'En tu casa, en un hotel o en el lugar de tu evento, en Nueva York o más allá, según disponibilidad.', fr: 'À domicile, à l’hôtel ou sur le lieu de l’événement, à New York ou ailleurs, selon disponibilité.' }],
+    [{ en: 'Travelling clients', es: 'Clientas que viajan', fr: 'Clientes de passage' }, { en: 'Visiting New York, or planning an event out of state? Send your dates and location for a personal quote.', es: '¿Estás de visita en Nueva York o tienes un evento fuera del estado? Envía tus fechas y el lugar para un presupuesto personal.', fr: 'De passage à New York, ou un événement hors de l’État ? Envoyez vos dates et le lieu pour un devis personnalisé.' }],
   ];
   return (
     <section id="private" className="private sec" aria-labelledby="private-h">
-      <div className="private-photo" aria-hidden="true">
-        <Img p={photo('11')} sizes="(max-width: 899px) 100vw, 45vw" />
-      </div>
+      {/* A real client's special-occasion style; not presented as a record of a private appointment. */}
+      <figure className="private-photo">
+        <Img p={photo('20')} sizes="(max-width: 899px) 100vw, 45vw" />
+        <figcaption className="private-cap">{t({ en: 'Rolled updo, on a client', es: 'Recogido de rizos, en una clienta', fr: 'Chignon roulé, sur une cliente' })}</figcaption>
+      </figure>
       <div className="wrap private-in">
         <Kicker n="07">{t({ en: 'Private clientele', es: 'Clientela privada', fr: 'Clientèle privée' })}</Kicker>
         <h2 id="private-h" className="h2">
-          {t({ en: 'By appointment,', es: 'Con cita previa,', fr: 'Sur rendez-vous,' })} <em>{t({ en: 'wherever you are', es: 'donde tú estés', fr: 'où que vous soyez' })}</em>
+          {t({ en: 'By appointment.', es: 'Con cita previa.', fr: 'Sur rendez-vous.' })} <em>{t({ en: 'Wherever you are.', es: 'Donde tú estés.', fr: 'Où que vous soyez.' })}</em>
         </h2>
         <p className="lede">
           {t({

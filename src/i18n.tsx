@@ -1,9 +1,9 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 
-/** English (default), Spanish and French: the three languages of Astou's Bronx clientele. */
+/** English (default) and French are the primary languages; Spanish is kept as a courtesy for Bronx clients. */
 export type Lang = 'en' | 'es' | 'fr';
 export type L = { en: string; es: string; fr: string };
-export const LANGS: readonly Lang[] = ['en', 'es', 'fr'];
+export const LANGS: readonly Lang[] = ['en', 'fr', 'es'];
 const isLang = (v: string | null): v is Lang => v === 'en' || v === 'es' || v === 'fr';
 
 const META: Record<Lang, { title: string; description: string; locale: string }> = {

@@ -1,6 +1,6 @@
-import { BIZ, CATS, PHOTOS, photo, type CatId, type Photo } from '../content';
+import { BIZ, CATS, STYLES, photo, type CatId, type Photo } from '../content';
 import { useI18n } from '../i18n';
-import { Icon, Img, Kicker, Reveal } from '../components/ui';
+import { Icon, Img, Kicker, Reveal, goTo } from '../components/ui';
 
 type Open = (items: Photo[], i: number) => void;
 type Ask = (c: CatId) => void;
@@ -45,7 +45,9 @@ export function Signature({ onOpen, onAsk }: { onOpen: Open; onAsk: Ask }) {
               {t({ en: 'Request this style', es: 'Pedir este estilo', fr: 'Demander ce style' })}
             </button>
             <p className="spec-note">
-              {t({ en: 'Dedicated photographs of this specialty are being prepared. Astou shares her latest work on', es: 'Se están preparando fotografías de esta especialidad. Astou comparte sus trabajos más recientes en', fr: 'Des photographies dédiées à cette spécialité sont en préparation. Astou partage ses dernières créations sur' })}{' '}
+              {c === 'boho'
+                ? t({ en: 'See braids with soft curly ends in the videos below, or Astou’s latest work on', es: 'Mira trenzas con puntas rizadas en los videos de abajo, o los trabajos más recientes de Astou en', fr: 'Voyez des tresses aux pointes bouclées dans les vidéos plus bas, ou les dernières créations d’Astou sur' })
+                : t({ en: 'Astou shares her latest natural-texture work on', es: 'Astou comparte sus trabajos más recientes de textura natural en', fr: 'Astou partage ses dernières créations sur cheveux naturels sur' })}{' '}
               <a href={BIZ.instagram} target="_blank" rel="noopener noreferrer">
                 {Icon.ig} Instagram
               </a>
@@ -58,12 +60,14 @@ export function Signature({ onOpen, onAsk }: { onOpen: Open; onAsk: Ask }) {
       <div className="wrap feats">
         {(
           [
-            ['sculptural', ['07', '15', '03'], 'a'],
-            ['braiding', ['08', '10', '09'], 'b'],
-            ['editorial', ['13', '12', '11'], 'c'],
+            ['sculptural', ['16'], 'a'],
+            ['braiding', ['09'], 'b'],
+            ['editorial', ['12'], 'c'],
           ] as [CatId, string[], string][]
         ).map(([c, ids, layout], i) => {
-          const gallery = PHOTOS.filter((p) => p.cats.includes(c));
+          // One small preview per specialty; the full set lives in the portfolio, grouped by hairstyle.
+          const gallery = STYLES.filter((st) => st.photos[0].cats.includes(c)).flatMap((st) => st.photos);
+          const nStyles = STYLES.filter((st) => st.photos[0].cats.includes(c)).length;
           const shown = ids.map(photo);
           return (
             <article key={c} id={`style-${c}`} className={`feat feat-${layout}`}>
@@ -76,7 +80,7 @@ export function Signature({ onOpen, onAsk }: { onOpen: Open; onAsk: Ask }) {
                     {t({ en: 'Request this style', es: 'Pedir este estilo', fr: 'Demander ce style' })}
                   </button>
                   <button type="button" className="link-btn" onClick={() => onOpen(gallery, 0)}>
-                    {t({ en: 'View the gallery', es: 'Ver la galería', fr: 'Voir la galerie' })} <span className="mono-n">({gallery.length})</span>
+                    {t({ en: `View ${nStyles} creations`, es: `Ver ${nStyles} creaciones`, fr: `Voir ${nStyles} créations` })}
                   </button>
                 </div>
               </Reveal>
@@ -84,7 +88,7 @@ export function Signature({ onOpen, onAsk }: { onOpen: Open; onAsk: Ask }) {
                 {shown.map((p, k) => (
                   <Reveal key={p.id} className={`feat-img fi-${k}`} delay={k * 90}>
                     <button type="button" onClick={() => onOpen(gallery, gallery.indexOf(p))} aria-label={`${t({ en: 'Enlarge', es: 'Ampliar', fr: 'Agrandir' })}: ${t(p.title)}`}>
-                      <Img p={p} sizes={k === 0 ? '(max-width: 899px) 90vw, 34vw' : '(max-width: 899px) 45vw, 17vw'} />
+                      <Img p={p} sizes="(max-width: 899px) 40vw, 220px" />
                     </button>
                   </Reveal>
                 ))}
@@ -97,12 +101,11 @@ export function Signature({ onOpen, onAsk }: { onOpen: Open; onAsk: Ask }) {
   );
 }
 
-/** Cinematic black-and-gold interlude: a photographic collage around the manifesto line. */
-export function Atelier({ onOpen }: { onOpen: Open }) {
+/** Black-and-gold typographic interlude around the manifesto line (no photographs, so no image repeats here). */
+export function Atelier() {
   const { t } = useI18n();
-  const set = [photo('15'), photo('02'), photo('12'), photo('19')];
   return (
-    <section className="atelier" aria-labelledby="atelier-q">
+    <section className="atelier atelier-type" aria-labelledby="atelier-q">
       <div className="atelier-in">
         <p className="atelier-k">{t({ en: 'The atelier', es: 'El taller', fr: 'L’atelier' })}</p>
         <blockquote id="atelier-q" className="atelier-q">
@@ -112,18 +115,12 @@ export function Atelier({ onOpen }: { onOpen: Open }) {
             fr: '« Là où la coiffure devient une expression de beauté, de personnalité et d’art. »',
           })}
         </blockquote>
-        <div className="collage">
-          {set.map((p, i) => (
-            <Reveal key={p.id} className={`cl cl-${i}`} delay={i * 110}>
-              <button type="button" onClick={() => onOpen(set, i)} aria-label={`${t({ en: 'Enlarge', es: 'Ampliar', fr: 'Agrandir' })}: ${t(p.title)}`}>
-                <Img p={p} sizes={i === 0 ? '(max-width: 899px) 70vw, 36vw' : '(max-width: 899px) 40vw, 20vw'} />
-              </button>
-            </Reveal>
-          ))}
-          <p className="collage-word" aria-hidden="true">
-            Astou
-          </p>
-        </div>
+        <p className="atelier-sign" aria-hidden="true">
+          Astou
+        </p>
+        <button type="button" className="btn btn-line atelier-btn" onClick={() => goTo('motion')}>
+          {t({ en: 'Watch the work in motion', es: 'Ver el trabajo en movimiento', fr: 'Voir le travail en mouvement' })}
+        </button>
       </div>
     </section>
   );

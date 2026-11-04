@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
-import { CLIP_GROUPS, type Clip } from '../content';
-import { useI18n } from '../i18n';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { CLIP_GROUPS, type CatId, type Clip, type ClipGroup } from '../content';
+import { useI18n, type L } from '../i18n';
 import { Kicker, goTo } from '../components/ui';
 
 const src = (c: Clip) => `/media/video/${c.file}.mp4`;
@@ -10,7 +10,7 @@ const poster = (c: Clip) => `/media/video/${c.file}.webp`;
  * 04 — The artistry in motion. One video plays at a time, only after a tap, starting muted;
  * the visitor turns the sound on. Leaving the card, or the tab, pauses it. Nothing preloads.
  */
-export function Motion() {
+export function Motion({ onAsk }: { onAsk: (cat: CatId, look: L) => void }) {
   const { t } = useI18n();
   const [active, setActive] = useState<string | null>(null);
   const [sound, setSound] = useState(false);
@@ -42,29 +42,29 @@ export function Motion() {
               </h3>
               <p className="mo-gt">{t(g.text)}</p>
             </div>
-            <ul className="mo-strip">
-              {g.clips.map((c, i) => (
-                <li key={c.file} className="mo-card">
-                  <VideoCard
-                    clip={c}
-                    n={i + 1}
-                    playing={active === c.file}
-                    sound={sound}
-                    onPlay={() => setActive(c.file)}
-                    onStop={() => setActive((a) => (a === c.file ? null : a))}
-                    onSound={setSound}
-                  />
-                </li>
-              ))}
-            </ul>
+            <ClipStrip
+              group={g}
+              render={(c, i) => (
+                <VideoCard
+                  clip={c}
+                  n={i + 1}
+                  playing={active === c.file}
+                  sound={sound}
+                  onPlay={() => setActive(c.file)}
+                  onStop={() => setActive((a) => (a === c.file ? null : a))}
+                  onSound={setSound}
+                  onAsk={() => onAsk(c.cat ?? g.cat, c.title)}
+                />
+              )}
+            />
           </div>
         ))}
 
         <p className="note">
           {t({
-            en: 'Filmed in the salon by Astou and her team. Colour lightly adjusted; the phone audio is replaced by an original instrumental.',
-            es: 'Grabados en el salón por Astou y su equipo. Color ligeramente ajustado; el audio del teléfono se sustituyó por una pieza instrumental original.',
-            fr: 'Filmées au salon par Astou et son équipe. Couleurs légèrement ajustées ; le son du téléphone est remplacé par une musique instrumentale originale.',
+            en: 'Filmed by Astou and her team. Colour lightly adjusted; the phone audio is replaced by an original instrumental.',
+            es: 'Grabados por Astou y su equipo. Color ligeramente ajustado; el audio del teléfono se sustituyó por una pieza instrumental original.',
+            fr: 'Filmées par Astou et son équipe. Couleurs légèrement ajustées ; le son du téléphone est remplacé par une musique instrumentale originale.',
           })}
         </p>
       </div>
@@ -98,6 +98,7 @@ function VideoCard({
   onPlay,
   onStop,
   onSound,
+  onAsk,
 }: {
   clip: Clip;
   n: number;
@@ -106,6 +107,7 @@ function VideoCard({
   onPlay: () => void;
   onStop: () => void;
   onSound: (s: boolean) => void;
+  onAsk: () => void;
 }) {
   const { t } = useI18n();
   const box = useRef<HTMLDivElement>(null);
@@ -195,6 +197,11 @@ function VideoCard({
         <p className="vc-t">
           <span className="vc-n">{String(n).padStart(2, '0')}</span> {title}
         </p>
+        {clip.rel && <p className="vc-rel">{t(clip.rel)}</p>}
+        <button type="button" className="vc-ask" onClick={onAsk}>
+          {t({ en: 'Request this style', es: 'Pedir este estilo', fr: 'Demander ce style' })} <span aria-hidden="true">→</span>
+          <span className="sr-only">: {title}</span>
+        </button>
         {playing && (
           <div className="vc-tools">
             <button type="button" className="vc-tool" aria-pressed={sound} onClick={() => onSound(!sound)}>
@@ -207,5 +214,54 @@ function VideoCard({
         )}
       </div>
     </div>
+  );
+}
+
+/** Phones: one full card per slide (no clipped neighbours), with previous/next buttons and a counter. Desktop: a grid. */
+function ClipStrip({ group, render }: { group: ClipGroup; render: (c: Clip, i: number) => ReactNode }) {
+  const { t } = useI18n();
+  const ref = useRef<HTMLUListElement>(null);
+  const [i, setI] = useState(0);
+  const n = group.clips.length;
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const on = () => setI(Math.round(el.scrollLeft / Math.max(1, el.clientWidth)));
+    el.addEventListener('scroll', on, { passive: true });
+    return () => el.removeEventListener('scroll', on);
+  }, []);
+  const go = (d: number) => {
+    const el = ref.current;
+    if (!el) return;
+    const k = Math.min(n - 1, Math.max(0, i + d));
+    el.scrollTo({ left: k * el.clientWidth, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  };
+  return (
+    <>
+      <ul className="mo-strip" ref={ref} aria-label={t(group.title)}>
+        {group.clips.map((c, k) => (
+          <li key={c.file} className="mo-card" aria-roledescription="slide" aria-label={`${k + 1} / ${n}`}>
+            {render(c, k)}
+          </li>
+        ))}
+      </ul>
+      {n > 1 && (
+        <div className="mo-nav">
+          <button type="button" className="mo-nav-b" onClick={() => go(-1)} disabled={i <= 0} aria-label={t({ en: 'Previous video', es: 'Video anterior', fr: 'Vidéo précédente' })}>
+            <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M12.5 4L6.5 10l6 6" fill="none" stroke="currentColor" strokeWidth="1.5" />
+            </svg>
+          </button>
+          <span className="mo-nav-c" aria-live="polite">
+            {String(i + 1).padStart(2, '0')} <i>/</i> {String(n).padStart(2, '0')}
+          </span>
+          <button type="button" className="mo-nav-b" onClick={() => go(1)} disabled={i >= n - 1} aria-label={t({ en: 'Next video', es: 'Video siguiente', fr: 'Vidéo suivante' })}>
+            <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M7.5 4l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="1.5" />
+            </svg>
+          </button>
+        </div>
+      )}
+    </>
   );
 }

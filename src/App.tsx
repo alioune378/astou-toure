@@ -35,10 +35,10 @@ export function App() {
         <Cover onStyle={(c) => (c === 'nappy' || c === 'boho' ? goTo('nappy-boho') : goTo(`style-${c}`))} />
         <Contents />
         <Signature onOpen={open} onAsk={askStyle} />
-        <Atelier onOpen={open} />
+        <Atelier />
         <Looks onOpen={open} onAsk={(style, look) => ask({ style, look })} />
         <Portfolio onOpen={open} />
-        <Motion />
+        <Motion onAsk={(style, look) => ask({ style, look })} />
         <Editorial onOpen={open} />
         <Artist />
         <Private onAsk={() => ask({ kind: 'location' })} />
@@ -48,7 +48,12 @@ export function App() {
       </main>
       <Footer />
       <MobileBar />
-      <Lightbox items={lb?.items ?? []} index={lb ? lb.i : null} onClose={() => setLb(null)} onIndex={(i) => setLb((s) => (s ? { ...s, i } : s))} />
+      <Lightbox items={lb?.items ?? []} index={lb ? lb.i : null} onClose={() => setLb(null)} onIndex={(i) => setLb((s) => (s ? { ...s, i } : s))}
+        onAsk={(p) => {
+          setLb(null);
+          ask({ style: p.cats[0], look: p.title });
+        }}
+      />
     </>
   );
 }

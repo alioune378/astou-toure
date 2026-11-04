@@ -94,6 +94,8 @@ export type Photo = {
   title: L;
   alt: L;
   focus?: string;
+  /** Photos sharing a group are different views of the same hairstyle: one tile in the grid, all views in the viewer. */
+  group?: string;
 };
 
 const P = (file: string, kind: Photo['kind'], cats: CatId[], title: L, alt: L, focus?: string): Photo => ({
@@ -355,6 +357,71 @@ export const PHOTOS: Photo[] = [
   ),
 ];
 
+/* ------------------------------------------------------------------ Curation
+   Visual audit (see MEDIA.md): several files are different views of one hairstyle. Each hairstyle is one entry
+   ("creation"); its other photographs are views inside that entry. Categories follow what each photo really shows. */
+
+/** Photo id → hairstyle id, for hairstyles photographed from more than one angle. */
+const GROUPS: Record<string, string> = {
+  '02': 'fishbone-updo',
+  '03': 'fishbone-updo',
+  '04': 'fishbone-updo',
+  '11': 'sleek-chignon',
+  '17': 'sleek-chignon',
+  '19': 'side-crown',
+  '18': 'side-crown',
+  '21': 'rolled-updo',
+  '20': 'rolled-updo',
+};
+/** Corrected categories: client braids in "braids", studies in "sculptural", event-ready styles also in "editorial" (special occasions). */
+const CAT_FIX: Record<string, CatId[]> = {
+  '07': ['editorial', 'sculptural'],
+  '08': ['braiding'],
+  '09': ['braiding'],
+  '10': ['braiding'],
+  '05': ['braiding'],
+  '06': ['braiding'],
+  '13': ['sculptural'],
+  '15': ['sculptural'],
+  '16': ['sculptural'],
+  '23': ['sculptural'],
+  '22': ['sculptural'],
+  '02': ['sculptural'],
+  '03': ['sculptural'],
+  '04': ['sculptural'],
+  '19': ['sculptural'],
+  '18': ['sculptural'],
+  '11': ['sculptural', 'editorial'],
+  '17': ['sculptural', 'editorial'],
+  '12': ['sculptural', 'editorial'],
+  '21': ['editorial', 'sculptural'],
+  '20': ['editorial', 'sculptural'],
+};
+/** Display order: client work and studies alternate so neither dominates; within a group the first photo is the cover. */
+const ORDER = ['07', '13', '08', '15', '21', '20', '10', '16', '09', '19', '18', '05', '11', '17', '22', '06', '12', '23', '02', '03', '04'];
+PHOTOS.forEach((p) => {
+  if (GROUPS[p.id]) p.group = GROUPS[p.id];
+  if (CAT_FIX[p.id]) p.cats = CAT_FIX[p.id];
+});
+PHOTOS.sort((a, b) => ORDER.indexOf(a.id) - ORDER.indexOf(b.id));
+
+/** One entry per distinct hairstyle. */
+export type Style = { id: string; title: L; photos: Photo[] };
+const GROUP_TITLE: Record<string, L> = {
+  'fishbone-updo': { en: 'Fishbone braided updo', es: 'Recogido de trenzas espiga', fr: 'Chignon en arête de poisson' },
+  'sleek-chignon': { en: 'Sleek braided chignon', es: 'Moño trenzado liso', fr: 'Chignon tressé lissé' },
+  'side-crown': { en: 'Side-swept braided crown', es: 'Corona trenzada de lado', fr: 'Couronne tressée de côté' },
+  'rolled-updo': { en: 'Rolled updo', es: 'Recogido de rizos', fr: 'Chignon roulé' },
+};
+export const STYLES: Style[] = PHOTOS.reduce<Style[]>((acc, p) => {
+  if (p.group) {
+    const g = acc.find((s) => s.id === p.group);
+    if (g) g.photos.push(p);
+    else acc.push({ id: p.group, title: GROUP_TITLE[p.group] ?? p.title, photos: [p] });
+  } else acc.push({ id: p.id, title: p.title, photos: [p] });
+  return acc;
+}, []);
+
 export const photo = (id: string) => PHOTOS.find((p) => p.id === id)!;
 
 /** Astou's own portrait, supplied by her. Shown as taken: resized only, no retouching. */
@@ -593,12 +660,14 @@ export const LOOKS: Look[] = [
 /* ------------------------------------------------------------------ Artistry in motion (edited videos supplied by Astou's team)
    The soundtrack is already part of each file (original instrumental replacing the phone audio). Do not add other music. */
 
-export type Clip = { file: string; title: L; dur: string; w: number; h: number };
-export type ClipGroup = { id: string; title: L; text: L; clips: Clip[] };
+export type Clip = { file: string; title: L; dur: string; w: number; h: number; cat?: CatId; /** Marks a clip of the same hairstyle as another clip. */ rel?: L };
+/** `cat` is the style pre-selected in the request form when a visitor asks for a similar look. */
+export type ClipGroup = { id: string; title: L; text: L; cat: CatId; clips: Clip[] };
 
 export const CLIP_GROUPS: ClipGroup[] = [
   {
     id: 'braids',
+    cat: 'braiding',
     title: { en: 'Braids & protective styles', es: 'Trenzas y peinados protectores', fr: 'Tresses & coiffures protectrices' },
     text: {
       en: 'Long braids, decorative beads and finished looks, filmed in the salon.',
@@ -607,18 +676,19 @@ export const CLIP_GROUPS: ClipGroup[] = [
     },
     clips: [
       { file: 'braids-honey-salon-reveal', dur: '1:01', w: 512, h: 910, title: { en: 'Long honey-brown braids — the reveal', es: 'Trenzas largas color miel: el resultado', fr: 'Longues tresses miel — la révélation' } },
-      { file: 'braids-honey-full-length', dur: '0:13', w: 512, h: 910, title: { en: 'Honey-brown braids, full length', es: 'Trenzas color miel, de largo completo', fr: 'Tresses miel, sur toute la longueur' } },
+      { file: 'braids-honey-full-length', dur: '0:13', w: 512, h: 910, rel: { en: 'Same style as 01, another angle', es: 'El mismo estilo que el 01, desde otro ángulo', fr: 'La même coiffure que la 01, sous un autre angle' }, title: { en: 'Honey-brown braids, full length', es: 'Trenzas color miel, de largo completo', fr: 'Tresses miel, sur toute la longueur' } },
       { file: 'braids-beaded-360', dur: '0:21', w: 512, h: 910, title: { en: 'Braids with decorative beads, all the way round', es: 'Trenzas con cuentas decorativas, en 360°', fr: 'Tresses ornées de perles, à 360°' } },
       { file: 'braids-long-black-finished', dur: '0:19', w: 512, h: 910, title: { en: 'Long black braids, finished', es: 'Trenzas largas negras, terminadas', fr: 'Longues tresses noires, terminées' } },
     ],
   },
   {
     id: 'updo',
+    cat: 'sculptural',
     title: { en: 'A sculptural creation', es: 'Una creación escultural', fr: 'Une création sculpturale' },
     text: {
-      en: 'Four moments from the same braided updo, from styling to the finished look. Highlights, not a full step-by-step tutorial.',
-      es: 'Cuatro momentos del mismo recogido trenzado, desde el peinado hasta el resultado final. Son momentos destacados, no un tutorial paso a paso.',
-      fr: 'Quatre moments du même chignon tressé, de la réalisation au résultat final. Des extraits, pas un tutoriel pas à pas.',
+      en: 'One hairstyle, four clips: from styling to the finished look. Highlights, not a full step-by-step tutorial.',
+      es: 'Un solo peinado, cuatro videos: desde el trenzado hasta el resultado final. Son momentos destacados, no un tutorial paso a paso.',
+      fr: 'Une seule coiffure, quatre vidéos : de la réalisation au résultat final. Des extraits, pas un tutoriel pas à pas.',
     },
     clips: [
       { file: 'updo-in-progress', dur: '0:09', w: 512, h: 776, title: { en: 'In progress', es: 'Manos a la obra', fr: 'En cours de réalisation' } },
@@ -627,12 +697,76 @@ export const CLIP_GROUPS: ClipGroup[] = [
       { file: 'updo-side-back', dur: '0:30', w: 512, h: 910, title: { en: 'Side and back', es: 'De lado y de espaldas', fr: 'De profil et de dos' } },
     ],
   },
+  {
+    id: 'behind',
+    cat: 'braiding',
+    title: { en: 'Behind the artistry', es: 'Detrás del arte', fr: 'Dans les coulisses' },
+    text: {
+      en: 'A closer look at the care, precision and attention behind the finished style.',
+      es: 'Una mirada de cerca al cuidado, la precisión y la atención detrás de cada estilo terminado.',
+      fr: 'Un regard rapproché sur le soin, la précision et l’attention derrière chaque coiffure.',
+    },
+    clips: [
+      { file: 'behind-braiding-process', dur: '0:10', w: 512, h: 910, title: { en: 'The braiding process, in the salon', es: 'El trenzado, en el salón', fr: 'Le tressage, au salon' } },
+      { file: 'behind-finished-braids', dur: '0:09', w: 464, h: 832, title: { en: 'Finished style, in the salon', es: 'Estilo terminado, en el salón', fr: 'Coiffure terminée, au salon' } },
+      { file: 'behind-cornrows-night', dur: '0:16', w: 480, h: 848, title: { en: 'Cornrow detail, at night', es: 'Trenzas pegadas, de noche', fr: 'Nattes collées, de nuit' } },
+      { file: 'behind-honey-blonde-curls', dur: '0:30', w: 480, h: 848, cat: 'boho', title: { en: 'Honey-blonde braids with curly ends', es: 'Trenzas rubio miel con puntas rizadas', fr: 'Tresses blond miel aux pointes bouclées' } },
+    ],
+  },
 ];
 
-/* ------------------------------------------------------------------ Notable encounters
-   Intentionally empty until Astou confirms who is pictured, the circumstances and her role, and supplies the
-   original (not AI-reconstructed) photographs. A shared photograph must never read as a collaboration or endorsement.
-   The section renders automatically once an entry is added. See APPROVALS.md. */
+/* ------------------------------------------------------------------ Editorial chapters
+   Each chapter shows its items once they are approved. Until then it shows a neutral "in preparation" line:
+   no names, no claims. To publish an approved image, optimise it into public/photos/, add it to the manifest,
+   then add an EdItem below. Captions must state only what Astou has confirmed. Status of every held file: MEDIA.md. */
 
-export type Encounter = { photo: Photo; title: L; caption: L };
-export const ENCOUNTERS: Encounter[] = [];
+export type EdItem = { photo: Photo; caption: L; credit?: string };
+export type EdChapter = { id: string; title: L; intro: L; pending: L; items: EdItem[] };
+
+export const ED_CHAPTERS: EdChapter[] = [
+  {
+    id: 'fashion',
+    title: { en: 'Fashion editorial', es: 'Editorial de moda', fr: 'Éditorial de mode' },
+    intro: {
+      en: 'Hair conceived for the fashion page, where styling, garment and photograph work as one.',
+      es: 'Peinados pensados para la página de moda, donde cabello, prenda y fotografía trabajan juntos.',
+      fr: 'Des coiffures pensées pour la page mode, où cheveux, vêtement et photographie ne font qu’un.',
+    },
+    pending: {
+      en: 'Fashion editorial work from Astou’s archive is being prepared with its original publication credits.',
+      es: 'Estamos preparando trabajos de moda del archivo de Astou con sus créditos de publicación originales.',
+      fr: 'Des travaux de mode issus des archives d’Astou sont en préparation, avec leurs crédits de publication d’origine.',
+    },
+    items: [],
+  },
+  {
+    id: 'headwraps',
+    title: { en: 'Artistic headwraps', es: 'Turbantes artísticos', fr: 'L’art du foulard' },
+    intro: {
+      en: 'Fabric folded, twisted and sculpted around the head: a tradition carried into fashion.',
+      es: 'Tela doblada, torcida y esculpida alrededor de la cabeza: una tradición llevada a la moda.',
+      fr: 'Le tissu plié, torsadé et sculpté autour de la tête : une tradition portée jusqu’à la mode.',
+    },
+    pending: {
+      en: 'Headwrap work will be shown here once the original photographs and credits are confirmed.',
+      es: 'Los trabajos con turbantes se mostrarán aquí cuando se confirmen las fotografías originales y los créditos.',
+      fr: 'Les créations de foulards seront présentées ici dès que les photographies originales et les crédits seront confirmés.',
+    },
+    items: [],
+  },
+  {
+    id: 'encounters',
+    title: { en: 'Memorable encounters', es: 'Encuentros memorables', fr: 'Rencontres marquantes' },
+    intro: {
+      en: 'Moments from a journey shaped by creativity, beauty and cultural connection.',
+      es: 'Momentos de un camino marcado por la creatividad, la belleza y el encuentro entre culturas.',
+      fr: 'Des moments d’un parcours nourri de créativité, de beauté et de rencontres entre les cultures.',
+    },
+    pending: {
+      en: 'Photographs from Astou’s archive will be shared here once the original prints are digitised.',
+      es: 'Las fotografías del archivo de Astou se compartirán aquí en cuanto se digitalicen las copias originales.',
+      fr: 'Des photographies des archives d’Astou seront partagées ici dès que les tirages originaux seront numérisés.',
+    },
+    items: [],
+  },
+];

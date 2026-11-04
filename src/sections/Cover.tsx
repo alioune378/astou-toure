@@ -6,8 +6,9 @@ import { Img, goTo } from '../components/ui';
 /** Opening spread: a magazine cover. The wordmark is the masthead; Astou's work is the cover image. */
 export function Cover({ onStyle }: { onStyle: (c: CatId) => void }) {
   const { t } = useI18n();
-  const hero = photo('13');
-  const second = photo('07');
+  // Hero: a real client's braided crown. The small inset previews the sculptural studies.
+  const hero = photo('07');
+  const second = photo('13');
   const lines: CatId[] = ['nappy', 'boho', 'sculptural'];
   return (
     <section id="top" className="cover" aria-labelledby="mast">
@@ -26,7 +27,7 @@ export function Cover({ onStyle }: { onStyle: (c: CatId) => void }) {
       <div className="cover-body">
         <figure className="cover-photo">
           <Img p={hero} sizes="(max-width: 899px) 100vw, 40vw" eager />
-          <figcaption className="cover-cap">{t({ en: 'Sculpture — mannequin study by Astou Touré', es: 'Escultura: estudio en cabeza de maniquí por Astou Touré', fr: 'Sculpture — étude sur tête d’exposition par Astou Touré' })}</figcaption>
+          <figcaption className="cover-cap">{t({ en: 'Braided crown — on a client', es: 'Corona trenzada, en una clienta', fr: 'Couronne tressée — sur une cliente' })}</figcaption>
           <p className="cover-overline" aria-hidden="true">
             <em>{t({ en: 'The Art', es: 'El arte', fr: 'L’art' })}</em> {t({ en: 'of Hair', es: 'del cabello', fr: 'de la coiffure' })}
           </p>
@@ -80,7 +81,7 @@ export function Cover({ onStyle }: { onStyle: (c: CatId) => void }) {
           </div>
           <figure className="cover-inset">
             <Img p={second} sizes="(max-width: 899px) 40vw, 14vw" />
-            <figcaption>{t({ en: 'Braided crown, on a client', es: 'Corona trenzada, en una clienta', fr: 'Couronne tressée, sur une cliente' })}</figcaption>
+            <figcaption>{t({ en: 'Sculptural study, on a mannequin', es: 'Estudio escultural, en maniquí', fr: 'Étude sculpturale, sur tête d’exposition' })}</figcaption>
           </figure>
           <p className="cover-sign">Astou Style &amp; Boutique</p>
         </div>

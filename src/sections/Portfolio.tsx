@@ -1,16 +1,25 @@
 import { useMemo, useState } from 'react';
-import { CATS, KIND_LABEL, PHOTOS, type CatId, type Photo } from '../content';
-import { useI18n } from '../i18n';
+import { KIND_LABEL, STYLES, type Photo, type Style } from '../content';
+import { useI18n, type L } from '../i18n';
 import { Img, Kicker } from '../components/ui';
 
-const FILTERS: ('all' | CatId)[] = ['all', 'sculptural', 'braiding', 'editorial'];
+type F = 'all' | 'braiding' | 'sculptural' | 'editorial';
+const FILTERS: F[] = ['all', 'braiding', 'sculptural', 'editorial'];
+const FILTER_LABEL: Record<Exclude<F, 'all'>, L> = {
+  braiding: { en: 'Braids & protective styles', es: 'Trenzas y peinados protectores', fr: 'Tresses & coiffures protectrices' },
+  sculptural: { en: 'Sculptural updos', es: 'Recogidos esculturales', fr: 'Chignons sculpturaux' },
+  editorial: { en: 'Special occasions', es: 'Ocasiones especiales', fr: 'Grandes occasions' },
+};
 
-/** 03 — Portfolio: an asymmetric editorial grid, filterable, every image opens full screen. */
+/** 03 — Portfolio: one entry per hairstyle (its other views open with it), filterable, full screen. */
 export function Portfolio({ onOpen }: { onOpen: (items: Photo[], i: number) => void }) {
   const { t } = useI18n();
-  const [f, setF] = useState<'all' | CatId>('all');
+  const [f, setF] = useState<F>('all');
   const [all, setAll] = useState(false);
-  const items = useMemo(() => (f === 'all' ? PHOTOS : PHOTOS.filter((p) => p.cats.includes(f))), [f]);
+  const inCat = (st: Style, c: F) => c === 'all' || st.photos[0].cats.includes(c);
+  const styles = useMemo(() => STYLES.filter((st) => inCat(st, f)), [f]);
+  const flat = useMemo(() => styles.flatMap((st) => st.photos), [styles]);
+  const nPhotos = flat.length;
   return (
     <section id="portfolio" className="pf sec" aria-labelledby="pf-h">
       <div className="wrap">
@@ -23,9 +32,9 @@ export function Portfolio({ onOpen }: { onOpen: (items: Photo[], i: number) => v
           </div>
           <p className="lede">
             {t({
-              en: 'Real styles by Astou: on clients, and as sculptural studies on mannequin heads. Tap any image to see it full screen.',
-              es: 'Estilos reales de Astou: en sus clientas y como estudios esculturales en cabezas de maniquí. Toca cualquier imagen para verla en pantalla completa.',
-              fr: 'De vraies coiffures signées Astou : sur ses clientes, et en études sculpturales sur têtes d’exposition. Touchez une image pour l’afficher en plein écran.',
+              en: 'Client work and sculptural studies on mannequin heads, each labelled. Open a creation to see every view of it full screen.',
+              es: 'Trabajos en clientas y estudios esculturales en cabezas de maniquí, cada uno indicado. Abre una creación para ver todas sus vistas en pantalla completa.',
+              fr: 'Coiffures de clientes et études sculpturales sur têtes d’exposition, chacune indiquée. Ouvrez une création pour en voir toutes les vues en plein écran.',
             })}
           </p>
         </header>
@@ -33,29 +42,42 @@ export function Portfolio({ onOpen }: { onOpen: (items: Photo[], i: number) => v
         <div className="pills" role="group" aria-label={t({ en: 'Filter by style', es: 'Filtrar por estilo', fr: 'Filtrer par style' })}>
           {FILTERS.map((x) => (
             <button key={x} type="button" aria-pressed={f === x} className={f === x ? 'is-on' : ''} onClick={() => setF(x)}>
-              {x === 'all' ? t({ en: 'All work', es: 'Todo', fr: 'Tout' }) : t(CATS[x].title)}
-              <span className="pill-n">{x === 'all' ? PHOTOS.length : PHOTOS.filter((p) => p.cats.includes(x)).length}</span>
+              {x === 'all' ? t({ en: 'All creations', es: 'Todas las creaciones', fr: 'Toutes les créations' }) : t(FILTER_LABEL[x])}
+              <span className="pill-n">{STYLES.filter((st) => inCat(st, x)).length}</span>
             </button>
           ))}
         </div>
+        <p className="pf-count">
+          {t({
+            en: `${styles.length} creations · ${nPhotos} photographs`,
+            es: `${styles.length} creaciones · ${nPhotos} fotografías`,
+            fr: `${styles.length} créations · ${nPhotos} photographies`,
+          })}
+        </p>
 
-        <ul className={`grid ${all || items.length <= 8 ? 'is-all' : ''}`} id="pf-grid" aria-live="polite">
-          {items.map((p, i) => (
-            <li key={p.file} className={`g g-${i % 7}`}>
-              <button type="button" onClick={() => onOpen(items, i)}>
-                <Img p={p} sizes="(max-width: 699px) 50vw, (max-width: 1199px) 33vw, 28vw" />
-                <span className="g-cap">
-                  <span className="g-n">{String(i + 1).padStart(2, '0')}</span>
-                  <span className="g-t">{t(p.title)}</span>
-                  <span className="g-k">{t(KIND_LABEL[p.kind])}</span>
-                </span>
-              </button>
-            </li>
-          ))}
+        <ul className={`grid ${all || styles.length <= 8 ? 'is-all' : ''}`} id="pf-grid" aria-live="polite">
+          {styles.map((st, i) => {
+            const p = st.photos[0];
+            return (
+              <li key={st.id} className={`g g-${i % 7}`}>
+                <button type="button" onClick={() => onOpen(flat, flat.indexOf(p))}>
+                  <Img p={p} sizes="(max-width: 699px) 50vw, (max-width: 1199px) 33vw, 28vw" />
+                  <span className="g-cap">
+                    <span className="g-n">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="g-t">{t(st.title)}</span>
+                    <span className="g-k">
+                      {t(KIND_LABEL[p.kind])}
+                      {st.photos.length > 1 && ` · ${st.photos.length} ${t({ en: 'views', es: 'vistas', fr: 'vues' })}`}
+                    </span>
+                  </span>
+                </button>
+              </li>
+            );
+          })}
         </ul>
-        {!all && items.length > 8 && (
+        {!all && styles.length > 8 && (
           <button type="button" className="btn btn-line pf-more" aria-controls="pf-grid" onClick={() => setAll(true)}>
-            {t({ en: `Show all ${items.length} photographs`, es: `Ver las ${items.length} fotografías`, fr: `Voir les ${items.length} photographies` })}
+            {t({ en: `Show all ${styles.length} creations`, es: `Ver las ${styles.length} creaciones`, fr: `Voir les ${styles.length} créations` })}
           </button>
         )}
         <p className="note">

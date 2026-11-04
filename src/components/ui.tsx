@@ -100,7 +100,7 @@ export function Kicker({ n, children }: { n: string; children: ReactNode }) {
 
 /* ------------------------------------------------------------- Lightbox (full screen, swipe, keys) */
 
-export function Lightbox({ items, index, onClose, onIndex }: { items: Photo[]; index: number | null; onClose: () => void; onIndex: (i: number) => void }) {
+export function Lightbox({ items, index, onClose, onIndex, onAsk }: { items: Photo[]; index: number | null; onClose: () => void; onIndex: (i: number) => void; onAsk?: (p: Photo) => void }) {
   const { t } = useI18n();
   const open = index !== null;
   const ref = useRef<HTMLDivElement>(null);
@@ -176,6 +176,11 @@ export function Lightbox({ items, index, onClose, onIndex }: { items: Photo[]; i
           <span className="lb-kind">{t(KIND_LABEL[p.kind])}</span>
           <span className="lb-title">{t(p.title)}</span>
           <span className="lb-alt">{t(p.alt)}</span>
+          {onAsk && (p.kind === 'client' || p.kind === 'study') && p.cats.length > 0 && (
+            <button type="button" className="lb-ask" onClick={() => onAsk(p)}>
+              {t({ en: 'Request this style', es: 'Pedir este estilo', fr: 'Demander ce style' })} <span aria-hidden="true">→</span>
+            </button>
+          )}
         </figcaption>
       </figure>
       {items.length > 1 && (

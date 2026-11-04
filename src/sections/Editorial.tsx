@@ -1,6 +1,6 @@
-import { ED_CREDITS, ED_CREDIT_LINES, ED_FEATURE, ED_GALLERY, ED_PAGE, ED_SCULPTURAL, ENCOUNTERS, type Photo } from '../content';
+import { ED_CREDITS, ED_CREDIT_LINES, ED_FEATURE, ED_GALLERY, ED_PAGE, ED_SCULPTURAL, ED_CHAPTERS, type EdChapter, type Photo } from '../content';
 import { useI18n } from '../i18n';
-import { Img, Kicker, Reveal } from '../components/ui';
+import { Img, Kicker, Reveal, goTo } from '../components/ui';
 
 type Open = (items: Photo[], i: number) => void;
 
@@ -8,6 +8,8 @@ type Open = (items: Photo[], i: number) => void;
  * 03 — Beyond the salon. Published editorial work, kept separate from the bookable specialties.
  * Only printed credits are stated; nothing about the publication or the people photographed is added.
  */
+const SCULPTURAL_TITLE = { en: 'Sculptural hair artistry', es: 'Arte capilar escultural', fr: 'Coiffure sculpturale' };
+
 export function Editorial({ onOpen }: { onOpen: Open }) {
   const { t } = useI18n();
   const evidence = [ED_FEATURE, ED_CREDITS, ED_PAGE];
@@ -29,6 +31,36 @@ export function Editorial({ onOpen }: { onOpen: Open }) {
             })}
           </p>
         </header>
+
+        <nav className="ed-index" aria-label={t({ en: 'Editorial chapters', es: 'Capítulos editoriales', fr: 'Chapitres éditoriaux' })}>
+          <ol>
+            <li>
+              <button type="button" onClick={() => goTo('ed-sculptural')}>
+                <span className="ed-index-n">01</span> {t(SCULPTURAL_TITLE)}
+              </button>
+            </li>
+            {ED_CHAPTERS.map((c, i) => (
+              <li key={c.id}>
+                <button type="button" onClick={() => goTo(`ed-${c.id}`)}>
+                  <span className="ed-index-n">{String(i + 2).padStart(2, '0')}</span> {t(c.title)}
+                  {c.items.length === 0 && <span className="ed-index-s">{t({ en: 'In preparation', es: 'En preparación', fr: 'En préparation' })}</span>}
+                </button>
+              </li>
+            ))}
+          </ol>
+        </nav>
+
+        <div className="ed-chap-head" id="ed-sculptural">
+          <p className="ed-chap-n">01</p>
+          <h3 className="ed-chap-h">{t(SCULPTURAL_TITLE)}</h3>
+          <p className="ed-chap-t">
+            {t({
+              en: 'Hair treated as sculpture: volume, line and texture built for the camera.',
+              es: 'El cabello tratado como escultura: volumen, línea y textura construidos para la cámara.',
+              fr: 'La coiffure traitée comme une sculpture : volume, ligne et texture construits pour l’objectif.',
+            })}
+          </p>
+        </div>
 
         {/* ---------- Case study: the credited, published project ---------- */}
         <article className="case" aria-labelledby="case-h">
@@ -126,25 +158,10 @@ export function Editorial({ onOpen }: { onOpen: Open }) {
           </figcaption>
         </figure>
 
-        {/* ---------- Notable encounters: renders only once Astou has confirmed each photograph ---------- */}
-        {ENCOUNTERS.length > 0 && (
-          <div className="enc" aria-labelledby="enc-h">
-            <p className="case-k" id="enc-h">
-              {t({ en: 'Memorable encounters', es: 'Encuentros memorables', fr: 'Rencontres marquantes' })}
-            </p>
-            <ul className="enc-list">
-              {ENCOUNTERS.map((e, i) => (
-                <li key={e.photo.file}>
-                  <button type="button" onClick={() => onOpen(ENCOUNTERS.map((x) => x.photo), i)}>
-                    <Img p={e.photo} sizes="(max-width: 899px) 100vw, 44vw" />
-                  </button>
-                  <p className="ed-feat-h">{t(e.title)}</p>
-                  <p className="edg-lede">{t(e.caption)}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        {/* ---------- Further chapters: shown with their images once approved, otherwise a neutral line ---------- */}
+        {ED_CHAPTERS.map((c, i) => (
+          <Chapter key={c.id} c={c} n={i + 2} onOpen={onOpen} />
+        ))}
 
         <p className="ed-foot">
           {t({
@@ -154,6 +171,38 @@ export function Editorial({ onOpen }: { onOpen: Open }) {
           })}
         </p>
       </div>
+    </section>
+  );
+}
+
+function Chapter({ c, n, onOpen }: { c: EdChapter; n: number; onOpen: Open }) {
+  const { t } = useI18n();
+  const photos = c.items.map((x) => x.photo);
+  return (
+    <section className={`ed-chap ${c.items.length ? '' : 'is-pending'}`} id={`ed-${c.id}`} aria-labelledby={`ed-${c.id}-h`}>
+      <div className="ed-chap-head">
+        <p className="ed-chap-n">{String(n).padStart(2, '0')}</p>
+        <h3 id={`ed-${c.id}-h`} className="ed-chap-h">
+          {t(c.title)}
+        </h3>
+        <p className="ed-chap-t">{t(c.intro)}</p>
+      </div>
+      {c.items.length ? (
+        <ul className={`ed-items ed-items-${Math.min(c.items.length, 3)}`}>
+          {c.items.map((it, i) => (
+            <Reveal as="li" key={it.photo.file} delay={(i % 3) * 90}>
+              <button type="button" onClick={() => onOpen(photos, i)} aria-label={`${t({ en: 'Enlarge', es: 'Ampliar', fr: 'Agrandir' })}: ${t(it.photo.title)}`}>
+                <Img p={it.photo} sizes="(max-width: 899px) 100vw, 40vw" />
+              </button>
+              <p className="ed-item-h">{t(it.photo.title)}</p>
+              <p className="ed-item-c">{t(it.caption)}</p>
+              {it.credit && <p className="ed-item-cr">{it.credit}</p>}
+            </Reveal>
+          ))}
+        </ul>
+      ) : (
+        <p className="ed-pending">{t(c.pending)}</p>
+      )}
     </section>
   );
 }

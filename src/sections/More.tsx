@@ -95,9 +95,9 @@ export function Private({ onAsk }: { onAsk: () => void }) {
         </h2>
         <p className="lede">
           {t({
-            en: 'For the days that matter, Astou can come to you. Every private request is considered personally, with discretion and care, and quoted for your style, your guests and your location.',
+            en: 'For the days that matter, Astou can come to you. Every private request is considered individually, with discretion and care, and quoted for your style, your guests and your location.',
             es: 'Para los días importantes, Astou puede ir a ti. Cada solicitud privada se atiende de forma personal, con discreción y cuidado, y se cotiza según tu estilo, tus invitadas y el lugar.',
-            fr: 'Pour les jours importants, Astou peut venir à vous. Chaque demande privée est étudiée personnellement, avec discrétion et soin, et chiffrée selon votre coiffure, vos invitées et le lieu.',
+            fr: 'Pour les jours importants, Astou peut venir à vous. Chaque demande privée est étudiée au cas par cas, avec discrétion et soin, et chiffrée selon votre coiffure, vos invitées et le lieu.',
           })}
         </p>
         <ol className="svc">
@@ -119,11 +119,11 @@ export function Private({ onAsk }: { onAsk: () => void }) {
 
 /* ============================================================ 05 — Request */
 
-export function Request({ preset }: { preset?: { kind?: 'salon' | 'location'; style?: CatId; look?: L; n: number } }) {
+export function Request({ preset }: { preset?: { kind?: 'salon' | 'location'; style?: CatId; look?: L; photo?: string; n: number } }) {
   const { t } = useI18n();
   const steps: L[] = [
     { en: 'Send your request with the style, date and place you have in mind.', es: 'Envía tu solicitud con el estilo, la fecha y el lugar que tienes en mente.', fr: 'Envoyez votre demande avec la coiffure, la date et le lieu envisagés.' },
-    { en: 'Astou replies personally to confirm her availability and a quote made for you.', es: 'Astou te responde personalmente para confirmar su disponibilidad y un presupuesto hecho para ti.', fr: 'Astou vous répond personnellement pour confirmer sa disponibilité et vous proposer un devis sur mesure.' },
+    { en: 'Astou or her team replies to confirm availability and a quote made for you.', es: 'Astou o su equipo te responde para confirmar la disponibilidad y un presupuesto hecho para ti.', fr: 'Astou ou son équipe vous répond pour confirmer la disponibilité et vous proposer un devis sur mesure.' },
     { en: 'Your appointment is confirmed only once you have both agreed.', es: 'Tu cita queda confirmada solo cuando Astou y tú estén de acuerdo.', fr: 'Le rendez-vous n’est confirmé qu’une fois que vous êtes d’accord, Astou et vous.' },
   ];
   return (

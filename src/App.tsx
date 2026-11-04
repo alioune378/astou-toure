@@ -11,7 +11,7 @@ import { Looks } from './sections/Looks';
 import { Motion } from './sections/Motion';
 import { Artist, Boutique, Private, Request, Visit } from './sections/More';
 
-type Preset = { kind?: 'salon' | 'location'; style?: CatId; look?: L; n: number };
+type Preset = { kind?: 'salon' | 'location'; style?: CatId; look?: L; photo?: string; n: number };
 
 export function App() {
   const [lb, setLb] = useState<{ items: Photo[]; i: number } | null>(null);
@@ -36,9 +36,9 @@ export function App() {
         <Contents />
         <Signature onOpen={open} onAsk={askStyle} />
         <Atelier />
-        <Looks onOpen={open} onAsk={(style, look) => ask({ style, look })} />
-        <Portfolio onOpen={open} />
-        <Motion onAsk={(style, look) => ask({ style, look })} />
+        <Looks onOpen={open} onAsk={(style, look, photo) => ask({ style, look, photo })} />
+        <Portfolio onOpen={open} onAsk={(style, look) => ask({ style, look })} />
+        <Motion onAsk={(style, look, photo) => ask({ style, look, photo })} />
         <Editorial onOpen={open} />
         <Artist />
         <Private onAsk={() => ask({ kind: 'location' })} />
@@ -51,7 +51,7 @@ export function App() {
       <Lightbox items={lb?.items ?? []} index={lb ? lb.i : null} onClose={() => setLb(null)} onIndex={(i) => setLb((s) => (s ? { ...s, i } : s))}
         onAsk={(p) => {
           setLb(null);
-          ask({ style: p.cats[0], look: p.title });
+          ask({ style: p.cats[0], look: p.title, photo: `/photos/${p.file}.jpg` });
         }}
       />
     </>

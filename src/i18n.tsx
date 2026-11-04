@@ -46,7 +46,18 @@ function initial(): Lang {
 export function I18nProvider({ children }: { children: ReactNode }) {
   const [lang, setState] = useState<Lang>(initial);
   const setLang = useCallback((l: Lang) => {
+    // Keep the visitor where they are: text lengths differ between languages, so re-anchor on the element at the top of the screen.
+    const probe = document.elementFromPoint(window.innerWidth / 2, 96);
+    const anchor = probe?.closest('h2, h3, figure, li, p, section') ?? null;
+    const before = anchor?.getBoundingClientRect().top ?? 0;
     setState(l);
+    if (anchor)
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => {
+          const d = anchor.getBoundingClientRect().top - before;
+          if (Math.abs(d) > 1) window.scrollBy(0, d);
+        }),
+      );
     try {
       localStorage.setItem(KEY, l);
     } catch {

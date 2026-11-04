@@ -10,7 +10,7 @@ const poster = (c: Clip) => `/media/video/${c.file}.webp`;
  * 04 — The artistry in motion. One video plays at a time, only after a tap, starting muted;
  * the visitor turns the sound on. Leaving the card, or the tab, pauses it. Nothing preloads.
  */
-export function Motion({ onAsk }: { onAsk: (cat: CatId, look: L) => void }) {
+export function Motion({ onAsk }: { onAsk: (cat: CatId, look: L, photo: string) => void }) {
   const { t } = useI18n();
   const [active, setActive] = useState<string | null>(null);
   const [sound, setSound] = useState(false);
@@ -53,7 +53,7 @@ export function Motion({ onAsk }: { onAsk: (cat: CatId, look: L) => void }) {
                   onPlay={() => setActive(c.file)}
                   onStop={() => setActive((a) => (a === c.file ? null : a))}
                   onSound={setSound}
-                  onAsk={() => onAsk(c.cat ?? g.cat, c.title)}
+                  onAsk={() => onAsk(c.cat ?? g.cat, c.title, poster(c))}
                 />
               )}
             />

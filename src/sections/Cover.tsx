@@ -6,9 +6,8 @@ import { Img, goTo } from '../components/ui';
 /** Opening spread: a magazine cover. The wordmark is the masthead; Astou's work is the cover image. */
 export function Cover({ onStyle }: { onStyle: (c: CatId) => void }) {
   const { t } = useI18n();
-  // Hero: a real client's long braids with curved cornrows (owner's choice). The small inset previews the sculptural studies.
+  // Hero: a real client's long braids with curved cornrows (owner's choice).
   const hero = photo('08');
-  const second = photo('13');
   const lines: CatId[] = ['nappy', 'boho', 'sculptural'];
   return (
     <section id="top" className="cover" aria-labelledby="mast">
@@ -62,13 +61,13 @@ export function Cover({ onStyle }: { onStyle: (c: CatId) => void }) {
             {t({ en: 'of Hair', es: 'del cabello', fr: 'de la coiffure' })}
           </p>
           <p className="cover-motto">
-            {t({ en: 'Your beauty. Her signature.', es: 'Tu belleza. Su firma.', fr: 'Votre beauté. Sa signature.' })}
+            {t({ en: 'Hair is her art. Your look is her signature.', es: 'El cabello es su arte. Tu look, su firma.', fr: 'La coiffure est son art. Votre style, sa signature.' })}
           </p>
           <p className="cover-sub">
             {t({
-              en: 'Hair is her art: intricate braids, elegant protective styles, sculptural updos and creative beauty rooted in culture and personal expression.',
-              es: 'El cabello es su arte: trenzas minuciosas, peinados protectores elegantes, recogidos esculturales y una belleza creativa con raíces en la cultura y la expresión personal.',
-              fr: 'La coiffure est son art : tresses minutieuses, coiffures protectrices élégantes, chignons sculpturaux et une beauté créative ancrée dans la culture et l’expression personnelle.',
+              en: 'Intricate braids, elegant protective styles, sculptural updos and creative beauty rooted in culture and personal expression.',
+              es: 'Trenzas minuciosas, peinados protectores elegantes, recogidos esculturales y una belleza creativa con raíces en la cultura y la expresión personal.',
+              fr: 'Tresses minutieuses, coiffures protectrices élégantes, chignons sculpturaux et une beauté créative ancrée dans la culture et l’expression personnelle.',
             })}
           </p>
           <div className="cover-ctas">
@@ -79,10 +78,6 @@ export function Cover({ onStyle }: { onStyle: (c: CatId) => void }) {
               {t({ en: 'Explore her work', es: 'Descubre su trabajo', fr: 'Découvrir son travail' })}
             </button>
           </div>
-          <figure className="cover-inset">
-            <Img p={second} sizes="(max-width: 899px) 40vw, 14vw" />
-            <figcaption>{t({ en: 'Sculptural study, on a mannequin', es: 'Estudio escultural, en maniquí', fr: 'Étude sculpturale, sur tête d’exposition' })}</figcaption>
-          </figure>
           <p className="cover-sign">Astou Style &amp; Boutique</p>
         </div>
       </div>

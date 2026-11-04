@@ -39,3 +39,10 @@
    6. **Display rights.** Astou's authorization is confirmed. For the magazine images (02, 03, 04, 07, 08 and the "Fractal Affinities" pages), the photographs belong to the photographers and publications: confirm that portfolio use on a business website is covered. For 01, 05 and 06, confirm that the people pictured agreed to the photos being shared.
 
     "Masterpiece Theatre" vs "Fractal Affinities" is resolved. The printed "Fractal Affinities" credit block lists the same photographer, hair team, stylist, colourist, make-up artist, manicurist and the four models as the Garage Spring/Summer 2012 coverage, so it is one editorial. The site now shows it as one collection, one credit. "Masterpiece Theatre" was not found in published coverage, so it is not used on the site.
+17. **Authenticity review of the enhanced editorial and celebrity images** (4 Nov 2026). No original prints or scans have been supplied, so nothing could be compared side by side. Every image in the Editorial & legacy section is an AI-enhanced copy. Their faces, hair and fabric textures may be partly reconstructed, so all of them are flagged for replacement. Priority order:
+   1. 05 and 06 (personal photos with Beyoncé), then 01 (group with Iman): documentary photos of real people, so the risk is highest.
+   2. 03 (L'Officiel image): its magazine text was clearly AI-reconstructed and has been cropped out. The image itself should come from an original scan.
+   3. 04 and 08, then the Garage / "Fractal Affinities" images.
+
+   The page says plainly that the images are digitally enhanced copies, not originals.
+18. **Booking.** The form still runs in "demo" mode: it opens the visitor's email app with the request written out to astoutoure167@gmail.com, including the hairstyle, reference look, reference photo link and privacy notes. Switching to automatic Netlify delivery requires a test submission received in that inbox (see README). hello@astoustyle.com is not used until the domain and mailbox work.

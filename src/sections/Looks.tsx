@@ -5,7 +5,7 @@ import { Icon, Img, Kicker, Reveal } from '../components/ui';
 type Open = (items: Photo[], i: number) => void;
 
 /** 02 — The art of the finished look: featured collections of real work, each with a path to a similar request. */
-export function Looks({ onOpen, onAsk }: { onOpen: Open; onAsk: (cat: CatId, look: L) => void }) {
+export function Looks({ onOpen, onAsk }: { onOpen: Open; onAsk: (cat: CatId, look: L, photo: string) => void }) {
   const { t } = useI18n();
   return (
     <section id="looks" className="lk sec" aria-labelledby="lk-h">
@@ -47,7 +47,7 @@ export function Looks({ onOpen, onAsk }: { onOpen: Open; onAsk: (cat: CatId, loo
                 {lk.note && <p className="lk-note">{t(lk.note)}</p>}
                 <div className="lk-ask">
                   <p>{t({ en: 'Inspired by this look?', es: '¿Te inspira este look?', fr: 'Ce look vous inspire ?' })}</p>
-                  <button type="button" className="btn btn-line" onClick={() => onAsk(lk.cat, lk.title)}>
+                  <button type="button" className="btn btn-line" onClick={() => onAsk(lk.cat, lk.title, `/photos/${lk.photos[0].file}.jpg`)}>
                     {t({ en: 'Inquire about a similar style', es: 'Pide un estilo parecido', fr: 'Demander un style similaire' })} {Icon.arrow}
                   </button>
                 </div>

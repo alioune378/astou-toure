@@ -61,11 +61,12 @@ const today = () => {
 
 type Status = 'idle' | 'invalid' | 'fast' | 'sending' | 'sent' | 'ready' | 'error';
 
-export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string; look?: L; n: number } }) {
+export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string; look?: L; photo?: string; n: number } }) {
   const { t, lang } = useI18n();
   const [kind, setKind] = useState<Kind>(preset?.kind ?? 'salon');
   const [style, setStyle] = useState(preset?.style ?? '');
   const [look, setLook] = useState<L | undefined>(preset?.look);
+  const [refPhoto, setRefPhoto] = useState<string | undefined>(preset?.photo);
   const [errors, setErrors] = useState<Record<string, L>>({});
   const [status, setStatus] = useState<Status>('idle');
   const [summary, setSummary] = useState<{ name: string; mailto: string } | null>(null);
@@ -79,6 +80,7 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
     if (preset.kind) setKind(preset.kind);
     if (preset.style) setStyle(preset.style);
     setLook(preset.look);
+    setRefPhoto(preset.photo);
     setStatus('idle');
     setSummary(null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -117,11 +119,13 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
             `Tipo: ${kind === 'salon' ? 'Cita en el salón (Bronx)' : 'Cita privada a domicilio / en el lugar'}`,
             `Peinado: ${styleLabel(v('hairstyle'))}`,
             look ? `Look de referencia: ${t(look)}` : null,
+            refPhoto ? `Foto de referencia: ${refPhoto ? `${window.location.origin}${refPhoto}` : ''}` : null,
             `Fecha que prefiero: ${v('preferred-date')}`,
             `Horario: ${label(v('preferred-time'), TIMES)}`,
             `Lugar: ${where}`,
             v('event-type') ? `Ocasión: ${label(v('event-type'), EVENTS)}` : null,
             v('hair-notes') ? `Cabello (largo, textura): ${v('hair-notes')}` : null,
+            v('discretion') ? `Privacidad / discreción: ${v('discretion')}` : null,
             '',
             `Detalles: ${v('details')}`,
             '',
@@ -138,11 +142,13 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
             `Type : ${kind === 'salon' ? 'Rendez-vous au salon (Bronx)' : 'Rendez-vous privé à domicile / sur place'}`,
             `Coiffure : ${styleLabel(v('hairstyle'))}`,
             look ? `Look de référence : ${t(look)}` : null,
+            refPhoto ? `Photo de référence : ${refPhoto ? `${window.location.origin}${refPhoto}` : ''}` : null,
             `Date souhaitée : ${v('preferred-date')}`,
             `Horaire : ${label(v('preferred-time'), TIMES)}`,
             `Lieu : ${where}`,
             v('event-type') ? `Occasion : ${label(v('event-type'), EVENTS)}` : null,
             v('hair-notes') ? `Cheveux (longueur, texture) : ${v('hair-notes')}` : null,
+            v('discretion') ? `Confidentialité / discrétion : ${v('discretion')}` : null,
             '',
             `Détails : ${v('details')}`,
             '',
@@ -158,11 +164,13 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
             `Type: ${kind === 'salon' ? 'Salon appointment (Bronx)' : 'Private on-location appointment'}`,
             `Hairstyle: ${styleLabel(v('hairstyle'))}`,
             look ? `Reference look: ${t(look)}` : null,
+            refPhoto ? `Reference photo: ${refPhoto ? `${window.location.origin}${refPhoto}` : ''}` : null,
             `Preferred date: ${v('preferred-date')}`,
             `Preferred time: ${label(v('preferred-time'), TIMES)}`,
             `Location: ${where}`,
             v('event-type') ? `Occasion: ${label(v('event-type'), EVENTS)}` : null,
             v('hair-notes') ? `Hair (length, texture): ${v('hair-notes')}` : null,
+            v('discretion') ? `Privacy / discretion: ${v('discretion')}` : null,
             '',
             `Details: ${v('details')}`,
             '',
@@ -200,6 +208,7 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
       fd.set('form-name', 'appointment-request');
       fd.set('language', lang);
       if (look) fd.set('reference-look', look.en);
+      if (refPhoto) fd.set('reference-photo', `${window.location.origin}${refPhoto}`);
       if (kind === 'salon') fd.set('service-place', `${BIZ.venue} (salon)`);
       const res = await fetch('/', { method: 'POST', body: fd });
       if (!res.ok) throw new Error(String(res.status));
@@ -248,9 +257,9 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
         {status === 'sent' ? (
           <p>
             {t({
-              en: 'Your request has been sent to Astou. It is not a confirmed appointment yet: she will contact you by phone or email to confirm her availability and a personalised quote.',
-              es: 'Tu solicitud le llegó a Astou. Todavía no es una cita confirmada: ella te contactará por teléfono o correo para confirmar su disponibilidad y darte un presupuesto a tu medida.',
-              fr: 'Votre demande a été transmise à Astou. Ce n’est pas encore un rendez-vous confirmé : elle vous contactera par téléphone ou e-mail pour confirmer sa disponibilité et vous proposer un devis personnalisé.',
+              en: 'Your request has been sent to Astou. It is not a confirmed appointment yet: Astou or her team will contact you by phone or email to confirm her availability and a personalised quote.',
+              es: 'Tu solicitud le llegó a Astou. Todavía no es una cita confirmada: Astou o su equipo te contactará por teléfono o correo para confirmar su disponibilidad y darte un presupuesto a tu medida.',
+              fr: 'Votre demande a été transmise à Astou. Ce n’est pas encore un rendez-vous confirmé : Astou ou son équipe vous contactera par téléphone ou e-mail pour confirmer sa disponibilité et vous proposer un devis personnalisé.',
             })}
           </p>
         ) : (
@@ -267,9 +276,9 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
             </a>
             <p className="rq-small">
               {t({
-                en: 'Nothing has been sent or stored by this website. A request is not a confirmed appointment: Astou will reply to confirm availability and a personalised quote.',
-                es: 'Este sitio no ha enviado ni guardado nada. Una solicitud no es una cita confirmada: Astou te responderá para confirmar su disponibilidad y un presupuesto a tu medida.',
-                fr: 'Ce site n’a rien envoyé ni enregistré. Une demande n’est pas un rendez-vous confirmé : Astou vous répondra pour confirmer sa disponibilité et vous proposer un devis personnalisé.',
+                en: 'Nothing has been sent or stored by this website. A request is not a confirmed appointment: Astou or her team will reply to confirm availability and a personalised quote.',
+                es: 'Este sitio no ha enviado ni guardado nada. Una solicitud no es una cita confirmada: Astou o su equipo te responderá para confirmar su disponibilidad y un presupuesto a tu medida.',
+                fr: 'Ce site n’a rien envoyé ni enregistré. Une demande n’est pas un rendez-vous confirmé : Astou ou son équipe vous répondra pour confirmer sa disponibilité et vous proposer un devis personnalisé.',
               })}
             </p>
           </>
@@ -347,8 +356,9 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
           )}
           {look && (
             <p className="rq-look is-full">
+              {refPhoto && <img className="rq-look-img" src={refPhoto.endsWith('.jpg') ? refPhoto.replace(/\.jpg$/, '-480.webp') : refPhoto} alt="" width="44" height="56" />}
               <span>{t({ en: 'Reference look', es: 'Look de referencia', fr: 'Look de référence' })}:</span> <strong>{t(look)}</strong>
-              <button type="button" className="rq-look-x" onClick={() => setLook(undefined)}>
+              <button type="button" className="rq-look-x" onClick={() => { setLook(undefined); setRefPhoto(undefined); }}>
                 {t({ en: 'Remove', es: 'Quitar', fr: 'Retirer' })}
               </button>
             </p>
@@ -453,13 +463,19 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
             <textarea {...a('details', true)} rows={4} />,
             { full: true, hint: { en: 'Length, colour, timing, number of people, anything Astou should know.', es: 'Largo, color, fecha límite, cuántas personas… todo lo que Astou deba saber.', fr: 'Longueur, couleur, délai, nombre de personnes : tout ce qu’Astou doit savoir.' } },
           )}
+          {field(
+            'discretion',
+            { en: 'Privacy or discretion', es: 'Privacidad o discreción', fr: 'Confidentialité ou discrétion' },
+            <input {...a('discretion', true)} type="text" />,
+            { full: true, hint: { en: 'For example: discreet arrival, no photos, a name to use on arrival.', es: 'Por ejemplo: llegada discreta, sin fotos, un nombre para la llegada.', fr: 'Par exemple : arrivée discrète, pas de photos, un nom à utiliser à l’arrivée.' } },
+          )}
           <div className={`field field-check is-full${err('contact-consent') ? ' has-err' : ''}`}>
             <input id="rq-consent" type="checkbox" name="contact-consent" value="yes" aria-invalid={!!err('contact-consent')} aria-describedby={err('contact-consent') ? 'rq-consent-err' : undefined} />
             <label htmlFor="rq-consent">
               {t({
-                en: 'I understand this is a request, not a confirmed appointment. Astou will contact me to confirm availability and a personalised quote.',
-                es: 'Entiendo que es una solicitud y no una cita confirmada. Astou me contactará para confirmar su disponibilidad y un presupuesto a mi medida.',
-                fr: 'Je comprends qu’il s’agit d’une demande et non d’un rendez-vous confirmé. Astou me contactera pour confirmer sa disponibilité et vous proposer un devis personnalisé.',
+                en: 'I understand this is a request, not a confirmed appointment. Astou or her team will contact me to confirm availability and a personalised quote.',
+                es: 'Entiendo que es una solicitud y no una cita confirmada. Astou o su equipo me contactará para confirmar su disponibilidad y un presupuesto a mi medida.',
+                fr: 'Je comprends qu’il s’agit d’une demande et non d’un rendez-vous confirmé. Astou ou son équipe me contactera pour confirmer sa disponibilité et vous proposer un devis personnalisé.',
               })}
             </label>
             {err('contact-consent') && (

@@ -721,95 +721,113 @@ export const CLIP_GROUPS: ClipGroup[] = [
    no names, no claims. To publish an approved image, optimise it into public/photos/, add it to the manifest,
    then add an EdItem below. Captions must state only what Astou has confirmed. Status of every held file: MEDIA.md. */
 
-export type EdItem = { photo: Photo; caption: L; credit?: L };
-/** Archive images: published with Astou's authorization (confirmed by the owner, 4 Nov 2026). Names and roles as confirmed by the owner. Digitally restored from her copies. */
-const AR = (file: string, kind: Photo['kind'], title: L, alt: L, focus?: string): Photo => ({ id: file, file, ...M[file], kind, cats: [], title, alt, focus });
-const HAIR_WRAP: L = { en: 'Hair and headwrap: Astou Touré', es: 'Peinado y turbante: Astou Touré', fr: 'Coiffure et foulard : Astou Touré' };
+export type EdItem = { photo: Photo; caption: L; who?: L; credit?: L };
+/** `credits`: published credits (label, value). `note`: how the information was sourced, shown under the chapter. */
+export type EdChapter = { id: string; title: L; intro: L; pending: L; items: EdItem[]; credits?: [L, string][]; note?: L };
 
-export type EdChapter = { id: string; title: L; intro: L; pending: L; items: EdItem[] };
+/** Archive images: published with Astou's authorization (confirmed by the owner, 4 Nov 2026). Names as supplied by Astou and her family. Digitally restored from her copies. */
+const AR = (file: string, kind: Photo['kind'], title: L, alt: L, focus?: string): Photo => ({ id: file, file, ...M[file], kind, cats: [], title, alt, focus });
+
 
 export const ED_CHAPTERS: EdChapter[] = [
   {
-    id: 'fashion',
-    title: { en: 'Fashion editorial', es: 'Editorial de moda', fr: 'Éditorial de mode' },
+    id: 'garage',
+    title: { en: 'Garage Magazine, 2012', es: 'Garage Magazine, 2012', fr: 'Garage Magazine, 2012' },
     intro: {
-      en: 'Hair conceived for the fashion page, where styling, garment and photograph work as one.',
-      es: 'Peinados pensados para la página de moda, donde cabello, prenda y fotografía trabajan juntos.',
-      fr: 'Des coiffures pensées pour la page mode, où cheveux, vêtement et photographie ne font qu’un.',
+      en: 'Sculptural hair as high fashion: “Masterpiece Theatre”, an avant-garde editorial on extraordinary volume and form. Spring/Summer 2012.',
+      es: 'El cabello escultural como alta moda: “Masterpiece Theatre”, un editorial de vanguardia sobre el volumen y la forma. Primavera/verano 2012.',
+      fr: 'La coiffure sculpturale comme haute couture : « Masterpiece Theatre », un éditorial d’avant-garde sur le volume et la forme. Printemps-été 2012.',
     },
-    pending: {
-      en: 'Fashion editorial work from Astou’s archive is being prepared with its original publication credits.',
-      es: 'Estamos preparando trabajos de moda del archivo de Astou con sus créditos de publicación originales.',
-      fr: 'Des travaux de mode issus des archives d’Astou sont en préparation, avec leurs crédits de publication d’origine.',
+    pending: { en: '', es: '', fr: '' },
+    credits: [
+      [{ en: 'Photography', es: 'Fotografía', fr: 'Photographie' }, 'Elle Muliarchyk'],
+      [{ en: 'Hair', es: 'Peinado', fr: 'Coiffure' }, 'Astou Touré & Thomas Dunkin'],
+      [{ en: 'Fashion styling', es: 'Estilismo', fr: 'Stylisme' }, 'Jenke Ahmed Tailly'],
+      [{ en: 'Hair colour', es: 'Color', fr: 'Couleur' }, 'Aura'],
+      [{ en: 'Make-up', es: 'Maquillaje', fr: 'Maquillage' }, 'Cynthia Rose'],
+      [{ en: 'Manicure', es: 'Manicura', fr: 'Manucure' }, 'Lisa Logan'],
+    ],
+    note: {
+      en: 'Published credits. Astou Touré shares the hair credit with Thomas Dunkin.',
+      es: 'Créditos publicados. Astou Touré comparte el crédito de peinado con Thomas Dunkin.',
+      fr: 'Crédits publiés. Astou Touré partage le crédit coiffure avec Thomas Dunkin.',
     },
     items: [
       {
-        photo: AR('ar_transformation', 'editorial', { en: 'The art of transformation', es: 'El arte de la transformación', fr: 'L’art de la transformation' }, {
-          en: 'Full-length fashion image on a white and gold backdrop: a model in a sculptural, fan-like headwrap, a statement necklace, a leather corset belt and a long pleated skirt.',
-          es: 'Imagen de moda de cuerpo entero sobre fondo blanco y dorado: una modelo con un turbante escultural en forma de abanico, un collar llamativo, un cinturón corsé de cuero y una falda larga plisada.',
-          fr: 'Image de mode en pied sur fond blanc et or : une mannequin coiffée d’un foulard sculptural en éventail, avec un collier spectaculaire, une ceinture-corset en cuir et une longue jupe plissée.',
-        }, '50% 20%'),
+        photo: ED_SCULPTURAL,
         caption: {
-          en: 'A striking exploration of headwear, fashion and artistic beauty.',
-          es: 'Una exploración impactante del tocado, la moda y la belleza artística.',
-          fr: 'Une exploration saisissante de la coiffe, de la mode et de la beauté artistique.',
+          en: 'Hair as sculpture: oversized forms, architectural volume and dramatic colour turn hairstyling into high-fashion visual art.',
+          es: 'El cabello como escultura: formas enormes, volumen arquitectónico y color intenso convierten el peinado en arte visual de alta moda.',
+          fr: 'La coiffure comme sculpture : des formes démesurées, un volume architectural et des couleurs intenses font du cheveu un art visuel de haute couture.',
         },
-        credit: HAIR_WRAP,
       },
       {
         photo: AR('ar_fashion_blue', 'editorial', { en: 'Fashion without boundaries', es: 'Moda sin fronteras', fr: 'La mode sans frontières' }, {
-          en: 'Fashion image against a blue and white textured backdrop: a model with a long braided ponytail, in a multicoloured fur jacket and fringed boots.',
-          es: 'Imagen de moda sobre un fondo texturizado azul y blanco: una modelo con una larga coleta trenzada, chaqueta de piel multicolor y botas con flecos.',
-          fr: 'Image de mode sur fond texturé bleu et blanc : une mannequin à la longue queue-de-cheval tressée, en veste de fourrure multicolore et bottes à franges.',
-        }, '50% 20%'),
+          en: 'Full-length fashion image in profile against a blue and ivory textured backdrop: a model with an exceptionally long, sleek braid falling past the waist, in a multicoloured statement jacket and cropped trousers.',
+          es: 'Imagen de moda de cuerpo entero, de perfil, sobre un fondo texturizado azul y marfil: una modelo con una trenza lisa y larguísima que cae más abajo de la cintura, chaqueta multicolor y pantalón corto.',
+          fr: 'Image de mode en pied, de profil, sur fond texturé bleu et ivoire : une mannequin à la tresse lisse et extrêmement longue qui descend sous la taille, en veste multicolore et pantalon court.',
+        }, '50% 50%'),
         caption: {
-          en: 'Where artistic hairstyling meets expressive contemporary fashion.',
-          es: 'Donde el peinado artístico se encuentra con la moda contemporánea más expresiva.',
-          fr: 'Là où la coiffure artistique rencontre une mode contemporaine expressive.',
+          en: 'An extraordinary elongated braid becomes the defining line of the fashion composition.',
+          es: 'Una trenza extraordinariamente larga se convierte en la línea que define toda la composición.',
+          fr: 'Une tresse d’une longueur extraordinaire devient la ligne maîtresse de toute la composition.',
         },
-        credit: { en: 'Hair: Astou Touré', es: 'Peinado: Astou Touré', fr: 'Coiffure : Astou Touré' },
       },
     ],
   },
   {
-    id: 'headwraps',
-    title: { en: 'Artistic headwraps', es: 'Turbantes artísticos', fr: 'L’art du foulard' },
+    id: 'couture',
+    title: { en: 'African headwear & couture', es: 'Tocados africanos y alta costura', fr: 'Coiffes africaines & couture' },
     intro: {
-      en: 'Fabric folded, twisted and sculpted around the head: a tradition carried into fashion.',
-      es: 'Tela doblada, torcida y esculpida alrededor de la cabeza: una tradición llevada a la moda.',
-      fr: 'Le tissu plié, torsadé et sculpté autour de la tête : une tradition portée jusqu’à la mode.',
+      en: 'The architecture of elegance: sculptural headwear, rich textiles and dramatic silhouettes in African-inspired fashion.',
+      es: 'La arquitectura de la elegancia: tocados esculturales, telas ricas y siluetas dramáticas en la moda de inspiración africana.',
+      fr: 'L’architecture de l’élégance : coiffes sculpturales, étoffes riches et silhouettes spectaculaires dans la mode d’inspiration africaine.',
     },
-    pending: {
-      en: 'Headwrap work will be shown here once the original photographs and credits are confirmed.',
-      es: 'Los trabajos con turbantes se mostrarán aquí cuando se confirmen las fotografías originales y los créditos.',
-      fr: 'Les créations de foulards seront présentées ici dès que les photographies originales et les crédits seront confirmés.',
+    pending: { en: '', es: '', fr: '' },
+    note: {
+      en: 'Images and identification supplied by Astou Touré. Her specific styling contribution and the original production credits are being confirmed.',
+      es: 'Imágenes e identificación proporcionadas por Astou Touré. Se están confirmando su aporte específico al estilismo y los créditos originales de producción.',
+      fr: 'Images et identification fournies par Astou Touré. Sa contribution précise au stylisme et les crédits de production d’origine sont en cours de confirmation.',
     },
     items: [
       {
-        photo: AR('ar_headwrap_purple', 'editorial', { en: 'Sculptural elegance', es: 'Elegancia escultural', fr: 'Élégance sculpturale' }, {
-          en: 'Close portrait of Beyoncé in a voluminous purple and gold headwrap made by Astou Touré, with long earrings and a sparkling gown.',
-          es: 'Retrato de cerca de Beyoncé con un turbante voluminoso morado y dorado hecho por Astou Touré, aretes largos y un vestido brillante.',
-          fr: 'Portrait rapproché de Beyoncé, coiffée d’un foulard volumineux violet et or réalisé par Astou Touré, avec de longues boucles d’oreilles et une robe scintillante.',
-        }, '50% 25%'),
+        photo: AR('ar_transformation', 'editorial', { en: 'African Queen — the art of couture headwear', es: 'African Queen: el arte del tocado de alta costura', fr: 'African Queen — l’art de la coiffe couture' }, {
+          en: 'Full-length fashion image of Beyoncé on an ivory and gold backdrop, in a towering sculptural headpiece of folded metallic gold and brown, a statement necklace, a leather corset belt and a long draped skirt.',
+          es: 'Imagen de moda de cuerpo entero de Beyoncé sobre un fondo marfil y dorado, con un tocado escultural altísimo de pliegues metálicos dorados y marrones, un collar llamativo, un cinturón corsé de cuero y una falda larga drapeada.',
+          fr: 'Image de mode en pied de Beyoncé sur fond ivoire et or, coiffée d’une haute coiffe sculpturale aux plis métallisés or et brun, avec un collier spectaculaire, une ceinture-corset en cuir et une longue jupe drapée.',
+        }, '50% 20%'),
+        who: { en: 'Beyoncé · L’Officiel Paris, March 2011 (anniversary issue)', es: 'Beyoncé · L’Officiel Paris, marzo de 2011 (número aniversario)', fr: 'Beyoncé · L’Officiel Paris, mars 2011 (numéro anniversaire)' },
         caption: {
-          en: 'Beyoncé in a headwrap made by Astou: form, texture and the beauty of headwrap artistry.',
-          es: 'Beyoncé con un turbante hecho por Astou: forma, textura y la belleza del arte del turbante.',
-          fr: 'Beyoncé dans un foulard réalisé par Astou : la forme, la matière et toute la beauté de l’art du foulard.',
+          en: 'Regal silhouettes, sculptural headwear and flowing textiles in an editorial celebrating African-inspired fashion.',
+          es: 'Siluetas majestuosas, tocados esculturales y telas fluidas en un editorial que celebra la moda de inspiración africana.',
+          fr: 'Silhouettes royales, coiffes sculpturales et étoffes fluides dans un éditorial qui célèbre la mode d’inspiration africaine.',
         },
-        credit: { en: 'Headwrap: Astou Touré', es: 'Turbante: Astou Touré', fr: 'Foulard : Astou Touré' },
       },
       {
-        photo: AR('ar_two_looks', 'editorial', { en: 'A celebration of expression', es: 'Una celebración de la expresión', fr: 'Une célébration de l’expression' }, {
-          en: 'Two studio portraits of Beyoncé side by side, in African-inspired fashion with dramatic sculpted headwraps by Astou Touré.',
-          es: 'Dos retratos de estudio de Beyoncé, uno al lado del otro, con moda de inspiración africana y turbantes esculpidos y espectaculares de Astou Touré.',
-          fr: 'Deux portraits de studio de Beyoncé côte à côte, en tenues d’inspiration africaine, coiffée de foulards sculptés spectaculaires signés Astou Touré.',
-        }, '50% 15%'),
+        photo: AR('ar_headwrap_purple', 'editorial', { en: 'The art of the headwrap', es: 'El arte del turbante', fr: 'L’art du foulard' }, {
+          en: 'Close beauty portrait of Beyoncé in an oversized metallic purple headwrap with gold accents, long earrings and a shimmering silver-toned outfit.',
+          es: 'Retrato de belleza de cerca de Beyoncé con un enorme turbante morado metálico con detalles dorados, aretes largos y un atuendo plateado brillante.',
+          fr: 'Portrait beauté rapproché de Beyoncé, coiffée d’un immense foulard violet métallisé aux reflets dorés, avec de longues boucles d’oreilles et une tenue argentée scintillante.',
+        }, '50% 25%'),
+        who: { en: 'Beyoncé', es: 'Beyoncé', fr: 'Beyoncé' },
         caption: {
-          en: 'Beyoncé in two African-inspired looks; Astou created both headwraps.',
-          es: 'Beyoncé en dos looks de inspiración africana; Astou creó ambos turbantes.',
-          fr: 'Beyoncé dans deux looks d’inspiration africaine ; Astou a réalisé les deux foulards.',
+          en: 'Metallic fabric, sculptural folds and regal proportions: headwear as the centrepiece of the image.',
+          es: 'Tela metálica, pliegues esculturales y proporciones majestuosas: el tocado como protagonista de la imagen.',
+          fr: 'Étoffe métallisée, plis sculpturaux et proportions royales : la coiffe au cœur de l’image.',
         },
-        credit: { en: 'Both headwraps: Astou Touré', es: 'Ambos turbantes: Astou Touré', fr: 'Les deux foulards : Astou Touré' },
+      },
+      {
+        photo: AR('ar_two_looks', 'editorial', { en: 'Two expressions of African couture', es: 'Dos expresiones de la alta costura africana', fr: 'Deux expressions de la couture africaine' }, {
+          en: 'Two studio photographs of Beyoncé side by side: a layered brown headwrap with a patterned ceremonial gown, and a towering black and red headwrap with a structured top, short patterned skirt and long black boots.',
+          es: 'Dos fotografías de estudio de Beyoncé, una al lado de la otra: un turbante marrón en capas con un vestido ceremonial estampado, y un turbante altísimo negro y rojo con un top estructurado, falda corta estampada y botas negras largas.',
+          fr: 'Deux photographies de studio de Beyoncé côte à côte : un foulard brun en couches avec une robe de cérémonie imprimée, et un haut foulard noir et rouge avec un haut structuré, une jupe courte imprimée et de longues bottes noires.',
+        }, '50% 15%'),
+        who: { en: 'Beyoncé', es: 'Beyoncé', fr: 'Beyoncé' },
+        caption: {
+          en: 'Flowing ceremonial lines and sharp contemporary styling: two bold interpretations of African-inspired fashion.',
+          es: 'Líneas ceremoniales fluidas y un estilo contemporáneo marcado: dos interpretaciones audaces de la moda de inspiración africana.',
+          fr: 'Lignes de cérémonie fluides et allure contemporaine affirmée : deux interprétations audacieuses de la mode d’inspiration africaine.',
+        },
       },
     ],
   },
@@ -817,50 +835,54 @@ export const ED_CHAPTERS: EdChapter[] = [
     id: 'encounters',
     title: { en: 'Memorable encounters', es: 'Encuentros memorables', fr: 'Rencontres marquantes' },
     intro: {
-      en: 'Moments from a journey shaped by creativity, beauty and cultural connection.',
-      es: 'Momentos de un camino marcado por la creatividad, la belleza y el encuentro entre culturas.',
-      fr: 'Des moments d’un parcours nourri de créativité, de beauté et de rencontres entre les cultures.',
+      en: 'The people behind the journey: personal photographs from Astou’s own collection.',
+      es: 'Las personas detrás del camino: fotografías personales de la colección de Astou.',
+      fr: 'Les personnes derrière le parcours : des photographies personnelles de la collection d’Astou.',
     },
-    pending: {
-      en: 'Photographs from Astou’s archive will be shared here once the original prints are digitised.',
-      es: 'Las fotografías del archivo de Astou se compartirán aquí en cuanto se digitalicen las copias originales.',
-      fr: 'Des photographies des archives d’Astou seront partagées ici dès que les tirages originaux seront numérisés.',
+    pending: { en: '', es: '', fr: '' },
+    note: {
+      en: 'Photographs supplied by Astou Touré; names as given by Astou and her family. They record personal moments and do not imply any endorsement.',
+      es: 'Fotografías proporcionadas por Astou Touré; nombres indicados por Astou y su familia. Recogen momentos personales y no implican ningún respaldo.',
+      fr: 'Photographies fournies par Astou Touré ; noms indiqués par Astou et sa famille. Elles témoignent de moments personnels et n’impliquent aucune recommandation.',
     },
     items: [
       {
-        photo: AR('ar_encounter_framed', 'archive', { en: 'A memorable encounter', es: 'Un encuentro memorable', fr: 'Une rencontre marquante' }, {
-          en: 'Framed colour photograph: Beyoncé, in a ruffled yellow gown and beaded belt, arm in arm with Astou Touré, dressed in black.',
-          es: 'Fotografía a color enmarcada: Beyoncé, con un vestido amarillo con volantes y un cinturón de cuentas, del brazo de Astou Touré, vestida de negro.',
-          fr: 'Photographie couleur encadrée : Beyoncé, en robe jaune à volants et ceinture perlée, bras dessus bras dessous avec Astou Touré, vêtue de noir.',
+        photo: AR('ar_group_portrait', 'archive', { en: 'A moment with Iman', es: 'Un momento con Iman', fr: 'Un moment avec Iman' }, {
+          en: 'Group portrait of four women, left to right: Amy, Astou’s daughter; Alima, her style partner, in a pink patterned outfit and headscarf; Iman, in a black jacket and white shirt with a sculpted black headwrap; and Astou Touré in an orange African dress and matching headwrap.',
+          es: 'Retrato de grupo de cuatro mujeres, de izquierda a derecha: Amy, la hija de Astou; Alima, su estilista asociada, con un atuendo rosa estampado y pañuelo; Iman, con chaqueta negra, camisa blanca y un turbante negro esculpido; y Astou Touré con un vestido africano naranja y turbante a juego.',
+          fr: 'Portrait de groupe de quatre femmes, de gauche à droite : Amy, la fille d’Astou ; Alima, sa styliste partenaire, en tenue rose imprimée et foulard ; Iman, en veste noire et chemise blanche, coiffée d’un foulard noir sculpté ; et Astou Touré en robe africaine orange et foulard assorti.',
         }, '50% 30%'),
+        who: { en: 'Amy, Alima, Iman and Astou Touré (left to right)', es: 'Amy, Alima, Iman y Astou Touré (de izquierda a derecha)', fr: 'Amy, Alima, Iman et Astou Touré (de gauche à droite)' },
         caption: {
-          en: 'Astou Touré with Beyoncé, whose hair she styled.',
-          es: 'Astou Touré con Beyoncé, a quien peinó.',
-          fr: 'Astou Touré avec Beyoncé, qu’elle a coiffée.',
+          en: 'Fashion, heritage and connection: a gathering celebrating African beauty, traditional headwear and cultural expression.',
+          es: 'Moda, herencia y conexión: un encuentro que celebra la belleza africana, los tocados tradicionales y la expresión cultural.',
+          fr: 'Mode, héritage et lien : une rencontre qui célèbre la beauté africaine, les coiffes traditionnelles et l’expression culturelle.',
+        },
+      },
+      {
+        photo: AR('ar_encounter_framed', 'archive', { en: 'A memorable encounter with Beyoncé', es: 'Un encuentro memorable con Beyoncé', fr: 'Une rencontre marquante avec Beyoncé' }, {
+          en: 'Framed colour photograph: Beyoncé, in a ruffled yellow-orange outfit with a patterned waistband and a braided updo, embracing Astou Touré, dressed in black.',
+          es: 'Fotografía a color enmarcada: Beyoncé, con un atuendo amarillo anaranjado con volantes, un cinturón estampado y un recogido trenzado, abrazada a Astou Touré, vestida de negro.',
+          fr: 'Photographie couleur encadrée : Beyoncé, en tenue jaune orangé à volants, ceinture à motifs et chignon tressé, enlaçant Astou Touré, vêtue de noir.',
+        }, '50% 30%'),
+        who: { en: 'Beyoncé and Astou Touré', es: 'Beyoncé y Astou Touré', fr: 'Beyoncé et Astou Touré' },
+        caption: {
+          en: 'Beyond the studio: a personal photograph from Astou Touré’s journey through fashion and creative expression.',
+          es: 'Más allá del estudio: una fotografía personal del camino de Astou Touré en la moda y la expresión creativa.',
+          fr: 'Au-delà du studio : une photographie personnelle du parcours d’Astou Touré dans la mode et la création.',
         },
       },
       {
         photo: AR('ar_encounter_bw', 'archive', { en: 'Connections through creativity', es: 'Conexiones a través de la creatividad', fr: 'Des liens tissés par la création' }, {
-          en: 'Black-and-white photograph: Astou Touré (left), Beyoncé (centre), in a braided headpiece and beaded belt, and Alima (right), smiling together.',
-          es: 'Fotografía en blanco y negro: Astou Touré (izquierda), Beyoncé (centro), con un tocado trenzado y un cinturón de cuentas, y Alima (derecha), sonriendo juntas.',
-          fr: 'Photographie en noir et blanc : Astou Touré (à gauche), Beyoncé (au centre), coiffe tressée et ceinture perlée, et Alima (à droite), toutes trois souriantes.',
+          en: 'Black-and-white photograph of three women smiling and embracing: Astou Touré (left), Beyoncé (centre) with an elaborate updo, and Alima (right).',
+          es: 'Fotografía en blanco y negro de tres mujeres sonrientes y abrazadas: Astou Touré (izquierda), Beyoncé (centro) con un recogido elaborado y Alima (derecha).',
+          fr: 'Photographie en noir et blanc de trois femmes souriantes enlacées : Astou Touré (à gauche), Beyoncé (au centre), chignon élaboré, et Alima (à droite).',
         }, '50% 30%'),
+        who: { en: 'Astou Touré, Beyoncé and Alima (left to right)', es: 'Astou Touré, Beyoncé y Alima (de izquierda a derecha)', fr: 'Astou Touré, Beyoncé et Alima (de gauche à droite)' },
         caption: {
-          en: 'Astou Touré and her style partner Alima with Beyoncé.',
-          es: 'Astou Touré y su estilista asociada, Alima, con Beyoncé.',
-          fr: 'Astou Touré et sa styliste partenaire, Alima, avec Beyoncé.',
-        },
-      },
-      {
-        photo: AR('ar_group_portrait', 'archive', { en: 'An unforgettable moment', es: 'Un momento inolvidable', fr: 'Un moment inoubliable' }, {
-          en: 'Group portrait, left to right: Amy, Astou’s daughter; Alima, her style partner; Iman, in a black suit and white shirt with a sculpted black headwrap; and Astou Touré in an orange African dress.',
-          es: 'Retrato de grupo, de izquierda a derecha: Amy, la hija de Astou; Alima, su estilista asociada; Iman, con traje negro, camisa blanca y un turbante negro esculpido; y Astou Touré con un vestido africano naranja.',
-          fr: 'Portrait de groupe, de gauche à droite : Amy, la fille d’Astou ; Alima, sa styliste partenaire ; Iman, en tailleur noir et chemise blanche, coiffée d’un foulard noir sculpté ; et Astou Touré en robe africaine orange.',
-        }, '50% 30%'),
-        caption: {
-          en: 'Astou with her daughter Amy, her style partner Alima and Iman, whose headwrap Astou created.',
-          es: 'Astou con su hija Amy, su estilista asociada Alima e Iman, cuyo turbante creó Astou.',
-          fr: 'Astou avec sa fille Amy, sa styliste partenaire Alima et Iman, dont Astou a réalisé le foulard.',
+          en: 'Some of the most meaningful moments happen away from the finished photographs, in the conversations and connections behind the scenes.',
+          es: 'Algunos de los momentos más significativos ocurren lejos de las fotos finales, en las conversaciones y los vínculos detrás de escena.',
+          fr: 'Certains des moments les plus forts se vivent loin des images finales, dans les échanges et les liens en coulisses.',
         },
       },
     ],

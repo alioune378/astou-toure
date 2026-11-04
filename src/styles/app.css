@@ -3415,3 +3415,45 @@ section[id],
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+/* editorial collections: native proportions, credits and sourcing notes */
+.ed-items {
+  align-items: start;
+}
+.ed-items .img,
+.ed-items-encounters .img,
+.ed-items-headwraps .img,
+.ed-items-fashion .img {
+  aspect-ratio: auto;
+}
+.ed-items .img img {
+  object-fit: contain;
+}
+.ed-item-who {
+  margin-top: 4px;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+}
+.ed-chap-credits {
+  margin-top: 32px;
+  max-width: 640px;
+}
+.ed-chap-note {
+  margin-top: 18px;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: rgba(247, 243, 232, 0.6);
+  max-width: 70ch;
+}
+@media (min-width: 900px) {
+  .ed-items-couture,
+  .ed-items-encounters {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .ed-items-garage {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
+    gap: 36px 28px;
+  }
+}

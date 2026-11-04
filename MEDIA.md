@@ -105,3 +105,16 @@ Files were compared by eye and by perceptual hash, not by name. **One hairstyle 
 - Boho: no photographs yet; text-led panel, linked to the curly-ends videos.
 - Feed-in braids: no dedicated photo.
 - Bridal: not shown as such, because no photo is confirmed as a wedding.
+
+## Editorial collections (4 Nov 2026 brief)
+
+| Collection | Images | Credits shown |
+|---|---|---|
+| 01 Sculptural hair artistry | "Fractal Affinities" page + 5-image gallery (unchanged) | Printed credits |
+| 02 Garage Magazine, Spring/Summer 2012 ("Masterpiece Theatre") | `ed_sculptural_beauty_portrait` (02), `ar_fashion_blue` (07) | Published credits as supplied: Elle Muliarchyk; Astou Touré & Thomas Dunkin; Jenke Ahmed Tailly; Aura; Cynthia Rose; Lisa Logan |
+| 03 African headwear & couture | `ar_transformation` (03), `ar_headwrap_purple` (04), `ar_two_looks` (08) | No styling credit. Note: Astou's contribution and production credits being confirmed. 03 is labelled "L'Officiel Paris, March 2011" as supplied |
+| 04 Memorable encounters | `ar_group_portrait` (01), `ar_encounter_framed` (05), `ar_encounter_bw` (06) | Names as given by Astou and her family. Note: no endorsement implied |
+
+Each image has one placement. "Sculptural beauty" (02) moved from its stand-alone feature into the Garage collection.
+
+**Model names held back (pending verification against the original sequence):** Cora Keegan (02), Jeneil Williams (07).

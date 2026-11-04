@@ -30,3 +30,9 @@
    - Style partner Alima (+1 347 814 9472) is now shown in the contact section and footer. Confirm she is happy to be listed by first name.
    - **hello@astoustyle.com** is not used yet. The domain and mailbox are not configured, so requests still go to astoutoure167@gmail.com. Switch once the domain is live and a test email has arrived.
    - "Bliss Beauty World" has been removed from the website as instructed. It still appears on the business-card proofs; say if the cards should be updated too.
+16. **Editorial collections (4 Nov 2026).**
+   - Garage Magazine "Masterpiece Theatre" vs "Fractal Affinities": image 02 shows the same model and styling as the pop-art collage in the "Fractal Affinities" gallery. Confirm whether these are one editorial or two in the same issue.
+   - Model names for 02 (Cora Keegan) and 07 (Jeneil Williams): not shown until checked against the original image sequence.
+   - African headwear & couture: on 4 Nov the owner said Astou made the purple headwrap and both headwraps in the two-look image. The later brief asks to treat this as unconfirmed, so no styling credit is shown. Restoring it is a one-line change.
+   - Encounter with Beyoncé: the owner said Astou did her hair. The later brief asks for neutral wording, so the caption does not say so.
+   - Original photographs and magazine scans: still preferred over the AI-enhanced copies. The page says several images are digitally enhanced copies.

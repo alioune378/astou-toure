@@ -1,4 +1,4 @@
-import { ED_CREDITS, ED_CREDIT_LINES, ED_FEATURE, ED_GALLERY, ED_PAGE, ED_SCULPTURAL, ED_CHAPTERS, type EdChapter, type Photo } from '../content';
+import { ED_CREDITS, ED_CREDIT_LINES, ED_FEATURE, ED_GALLERY, ED_PAGE, ED_CHAPTERS, type EdChapter, type Photo } from '../content';
 import { useI18n } from '../i18n';
 import { Img, Kicker, Reveal, goTo } from '../components/ui';
 
@@ -131,33 +131,6 @@ export function Editorial({ onOpen }: { onOpen: Open }) {
             </Reveal>
           ))}
         </ul>
-        {/* ---------- Feature: sculptural beauty (same credited shoot) ---------- */}
-        <figure className="ed-feat">
-          <Reveal className="ed-feat-img">
-            <button type="button" onClick={() => onOpen([ED_SCULPTURAL], 0)} aria-label={`${t({ en: 'Enlarge', es: 'Ampliar', fr: 'Agrandir' })}: ${t(ED_SCULPTURAL.title)}`}>
-              <Img p={ED_SCULPTURAL} sizes="(max-width: 899px) 100vw, 44vw" />
-            </button>
-          </Reveal>
-          <figcaption className="ed-feat-cap">
-            <p className="case-k">{t({ en: 'Editorial hair artistry', es: 'Arte capilar editorial', fr: 'Coiffure éditoriale' })}</p>
-            <p className="ed-feat-h">{t(ED_SCULPTURAL.title)}</p>
-            <p className="ed-feat-q">
-              {t({
-                en: '“Bold textures and dramatic silhouettes reveal the expressive possibilities of hair.”',
-                es: '“Texturas audaces y siluetas dramáticas que revelan todo lo que el cabello puede expresar.”',
-                fr: '« Des textures audacieuses et des silhouettes spectaculaires révèlent tout ce que la coiffure peut exprimer. »',
-              })}
-            </p>
-            <p className="ed-feat-note">
-              {t({
-                en: 'From the same editorial shoot as the credited page above.',
-                es: 'De la misma sesión editorial que la página con créditos de arriba.',
-                fr: 'Issue de la même séance éditoriale que la page créditée ci-dessus.',
-              })}
-            </p>
-          </figcaption>
-        </figure>
-
         {/* ---------- Further chapters: shown with their images once approved, otherwise a neutral line ---------- */}
         {ED_CHAPTERS.map((c, i) => (
           <Chapter key={c.id} c={c} n={i + 2} onOpen={onOpen} />
@@ -165,9 +138,9 @@ export function Editorial({ onOpen }: { onOpen: Open }) {
 
         <p className="ed-foot">
           {t({
-            en: 'All images supplied by Astou Touré and shown with her authorization. Hair on collaborative productions is credited jointly where printed. Archive photographs were digitally restored from her copies. These images show editorial work and are not examples of the salon’s bookable styles.',
-            es: 'Todas las imágenes fueron proporcionadas por Astou Touré y se muestran con su autorización. En las producciones colectivas, el peinado se acredita en conjunto cuando así aparece impreso. Las fotografías de archivo se restauraron digitalmente a partir de sus copias. Estas imágenes muestran trabajo editorial y no son ejemplos de los estilos que se reservan en el salón.',
-            fr: 'Toutes les images sont fournies par Astou Touré et présentées avec son autorisation. Sur les productions collectives, la coiffure est créditée conjointement lorsque la page l’indique. Les photographies d’archives ont été restaurées numériquement à partir de ses tirages. Ces images montrent un travail éditorial et ne sont pas des exemples des coiffures réservables au salon.',
+            en: 'All images supplied by Astou Touré and shown with her authorization. Hair on collaborative productions is credited jointly where printed. Several images are digitally enhanced copies, not original prints or magazine scans. These images show editorial work and are not examples of the salon’s bookable styles.',
+            es: 'Todas las imágenes fueron proporcionadas por Astou Touré y se muestran con su autorización. En las producciones colectivas, el peinado se acredita en conjunto cuando así aparece impreso. Varias imágenes son copias mejoradas digitalmente, no copias originales ni escaneos de revista. Estas imágenes muestran trabajo editorial y no son ejemplos de los estilos que se reservan en el salón.',
+            fr: 'Toutes les images sont fournies par Astou Touré et présentées avec son autorisation. Sur les productions collectives, la coiffure est créditée conjointement lorsque la page l’indique. Plusieurs images sont des copies retouchées numériquement, et non des tirages originaux ou des scans de magazine. Ces images montrent un travail éditorial et ne sont pas des exemples des coiffures réservables au salon.',
           })}
         </p>
       </div>
@@ -192,9 +165,11 @@ function Chapter({ c, n, onOpen }: { c: EdChapter; n: number; onOpen: Open }) {
           {c.items.map((it, i) => (
             <Reveal as="li" key={it.photo.file} delay={(i % 3) * 90}>
               <button type="button" onClick={() => onOpen(photos, i)} aria-label={`${t({ en: 'Enlarge', es: 'Ampliar', fr: 'Agrandir' })}: ${t(it.photo.title)}`}>
-                <Img p={it.photo} sizes="(max-width: 899px) 100vw, 40vw" />
+                {/* Shown in each photograph's own proportions, so nothing important is cropped. */}
+                <Img p={it.photo} sizes="(max-width: 899px) 100vw, 40vw" style={{ aspectRatio: `${it.photo.w} / ${it.photo.h}` }} />
               </button>
               <p className="ed-item-h">{t(it.photo.title)}</p>
+              {it.who && <p className="ed-item-who">{t(it.who)}</p>}
               <p className="ed-item-c">{t(it.caption)}</p>
               {it.credit && <p className="ed-item-cr">{t(it.credit)}</p>}
             </Reveal>
@@ -203,6 +178,17 @@ function Chapter({ c, n, onOpen }: { c: EdChapter; n: number; onOpen: Open }) {
       ) : (
         <p className="ed-pending">{t(c.pending)}</p>
       )}
+      {c.credits && (
+        <dl className="credits ed-chap-credits">
+          {c.credits.map(([k, v]) => (
+            <div key={v} className={v.startsWith('Astou') ? 'is-hair' : ''}>
+              <dt>{t(k)}</dt>
+              <dd>{v}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
+      {c.note && <p className="ed-chap-note">{t(c.note)}</p>}
     </section>
   );
 }

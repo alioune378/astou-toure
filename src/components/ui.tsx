@@ -81,7 +81,7 @@ export function Reveal({ children, className = '', as: Tag = 'div', delay = 0 }:
 export function Monogram({ size = 'm' }: { size?: 's' | 'm' | 'l' }) {
   return (
     <span className={`mono-tile mono-${size}`} aria-hidden="true">
-      <img src="/brand/monogram-gold-220.webp" alt="" width="220" height="147" />
+      <img src="/brand/monogram-gold-bright-220.webp" srcSet="/brand/monogram-gold-bright-220.webp 220w, /brand/monogram-gold-bright-600.webp 600w" sizes="120px" alt="" width="220" height="147" />
     </span>
   );
 }

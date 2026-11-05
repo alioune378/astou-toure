@@ -80,7 +80,7 @@ export function Header() {
         </a>
         <nav className="nav" aria-label={t({ en: 'Main', es: 'Principal', fr: 'Principale' })}>
           {NAV.filter((n) => NAV_TOP.includes(n.id)).map((n) => (
-            <button key={n.id} type="button" onClick={() => go(n.id)}>
+            <button key={n.id} type="button" className={`nav-${n.id}`} onClick={() => go(n.id)}>
               {t(n.label)}
             </button>
           ))}

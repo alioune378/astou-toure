@@ -433,8 +433,20 @@ section[id],
 }
 /* three languages in the header: keep wordmark, switch and menu on one line */
 .brand-name {
-  overflow: hidden;
-  text-overflow: clip;
+  /* never clip: the accent on the final É sits above the cap height */
+  flex: none;
+  padding: 2px 0;
+  line-height: 1.3;
+}
+/* header monogram: larger mark, brighter gold, fine gold edge so it reads on any screen */
+.top .mono-s {
+  width: 42px;
+  height: 42px;
+  box-shadow: inset 0 0 0 1px rgba(198, 161, 91, 0.55);
+}
+.top .mono-tile img,
+.menu .mono-tile img {
+  width: 84%;
 }
 @media (max-width: 479px) {
   .top {
@@ -453,6 +465,15 @@ section[id],
   .top .lang button {
     min-width: 32px;
     letter-spacing: 0.1em;
+  }
+}
+@media (max-width: 400px) {
+  .brand-name {
+    font-size: 0.84rem;
+    letter-spacing: 0.13em;
+  }
+  .top .lang button {
+    min-width: 30px;
   }
 }
 @media (max-width: 374px) {
@@ -672,7 +693,9 @@ section[id],
   text-transform: uppercase;
   display: grid;
   margin: 0.12em 0 0;
-  font-optical-sizing: auto;
+  /* Text optical size: at display sizes Bodoni's automatic optical size thins the hairlines until
+     parts of the A and U nearly disappear. A fixed text cut keeps every stroke visible. */
+  font-variation-settings: 'opsz' 11;
 }
 .mast-a {
   justify-self: start;
@@ -3562,5 +3585,35 @@ section[id],
   }
   .ed-index-img .img {
     aspect-ratio: 4 / 3;
+  }
+}
+/* masthead: room for the accent on É below ASTOU on phones */
+@media (max-width: 899px) {
+  .mast-b {
+    margin-top: 0.17em;
+  }
+}
+/* desktop navigation stays on one line in every language */
+@media (min-width: 1200px) {
+  .nav {
+    gap: clamp(14px, 1.5vw, 28px);
+  }
+  .nav button {
+    white-space: nowrap;
+    letter-spacing: 0.16em;
+  }
+}
+/* between 1200 and 1599px the full list does not fit beside the name: keep the core destinations
+   (the rest stay in the menu, the contents and the footer) */
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .nav-looks,
+  .nav-visit,
+  .nav-private {
+    display: none;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .burger {
+    display: inline-grid;
   }
 }

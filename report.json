@@ -1,0 +1,1068 @@
+[
+  {
+    "name": "home en iphone: loads without script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home en iphone: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home en iphone: no broken images",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home en iphone: no horizontal overflow",
+    "ok": true,
+    "evidence": "overflow 0px"
+  },
+  {
+    "name": "home en iphone: every image has alt text",
+    "ok": true,
+    "evidence": "0 without alt"
+  },
+  {
+    "name": "home en iphone: held-back video not published",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home en iphone: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home en iphone: no photograph appears twice on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home en iphone: no prices published",
+    "ok": true,
+    "evidence": "0 price-like strings"
+  },
+  {
+    "name": "home en iphone: no tiny tap targets (< 24px tall, outside running text)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio en iphone: loads without script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio en iphone: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio en iphone: no broken images",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio en iphone: no horizontal overflow",
+    "ok": true,
+    "evidence": "overflow 0px"
+  },
+  {
+    "name": "portfolio en iphone: every image has alt text",
+    "ok": true,
+    "evidence": "0 without alt"
+  },
+  {
+    "name": "portfolio en iphone: held-back video not published",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio en iphone: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio en iphone: no photograph appears twice on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio en iphone: no prices published",
+    "ok": true,
+    "evidence": "0 price-like strings"
+  },
+  {
+    "name": "portfolio en iphone: no tiny tap targets (< 24px tall, outside running text)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial en iphone: loads without script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial en iphone: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial en iphone: no broken images",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial en iphone: no horizontal overflow",
+    "ok": true,
+    "evidence": "overflow 0px"
+  },
+  {
+    "name": "editorial en iphone: every image has alt text",
+    "ok": true,
+    "evidence": "0 without alt"
+  },
+  {
+    "name": "editorial en iphone: held-back video not published",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial en iphone: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial en iphone: no photograph appears twice on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial en iphone: no prices published",
+    "ok": true,
+    "evidence": "0 price-like strings"
+  },
+  {
+    "name": "editorial en iphone: no tiny tap targets (< 24px tall, outside running text)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique en iphone: loads without script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique en iphone: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique en iphone: no broken images",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique en iphone: no horizontal overflow",
+    "ok": true,
+    "evidence": "overflow 0px"
+  },
+  {
+    "name": "boutique en iphone: every image has alt text",
+    "ok": true,
+    "evidence": "0 without alt"
+  },
+  {
+    "name": "boutique en iphone: held-back video not published",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique en iphone: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique en iphone: no photograph appears twice on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique en iphone: no prices published",
+    "ok": true,
+    "evidence": "0 price-like strings"
+  },
+  {
+    "name": "boutique en iphone: no tiny tap targets (< 24px tall, outside running text)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home en narrow: loads without script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home en narrow: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home en narrow: no broken images",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home en narrow: no horizontal overflow",
+    "ok": true,
+    "evidence": "overflow 0px"
+  },
+  {
+    "name": "home en narrow: every image has alt text",
+    "ok": true,
+    "evidence": "0 without alt"
+  },
+  {
+    "name": "home en narrow: held-back video not published",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home en narrow: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home en narrow: no photograph appears twice on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home en narrow: no prices published",
+    "ok": true,
+    "evidence": "0 price-like strings"
+  },
+  {
+    "name": "home en narrow: no tiny tap targets (< 24px tall, outside running text)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio en narrow: loads without script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio en narrow: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio en narrow: no broken images",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio en narrow: no horizontal overflow",
+    "ok": true,
+    "evidence": "overflow 0px"
+  },
+  {
+    "name": "portfolio en narrow: every image has alt text",
+    "ok": true,
+    "evidence": "0 without alt"
+  },
+  {
+    "name": "portfolio en narrow: held-back video not published",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio en narrow: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio en narrow: no photograph appears twice on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio en narrow: no prices published",
+    "ok": true,
+    "evidence": "0 price-like strings"
+  },
+  {
+    "name": "portfolio en narrow: no tiny tap targets (< 24px tall, outside running text)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial en narrow: loads without script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial en narrow: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial en narrow: no broken images",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial en narrow: no horizontal overflow",
+    "ok": true,
+    "evidence": "overflow 0px"
+  },
+  {
+    "name": "editorial en narrow: every image has alt text",
+    "ok": true,
+    "evidence": "0 without alt"
+  },
+  {
+    "name": "editorial en narrow: held-back video not published",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial en narrow: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial en narrow: no photograph appears twice on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial en narrow: no prices published",
+    "ok": true,
+    "evidence": "0 price-like strings"
+  },
+  {
+    "name": "editorial en narrow: no tiny tap targets (< 24px tall, outside running text)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique en narrow: loads without script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique en narrow: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique en narrow: no broken images",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique en narrow: no horizontal overflow",
+    "ok": true,
+    "evidence": "overflow 0px"
+  },
+  {
+    "name": "boutique en narrow: every image has alt text",
+    "ok": true,
+    "evidence": "0 without alt"
+  },
+  {
+    "name": "boutique en narrow: held-back video not published",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique en narrow: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique en narrow: no photograph appears twice on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique en narrow: no prices published",
+    "ok": true,
+    "evidence": "0 price-like strings"
+  },
+  {
+    "name": "boutique en narrow: no tiny tap targets (< 24px tall, outside running text)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home en desktop: loads without script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home en desktop: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home en desktop: no broken images",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home en desktop: no horizontal overflow",
+    "ok": true,
+    "evidence": "overflow 0px"
+  },
+  {
+    "name": "home en desktop: every image has alt text",
+    "ok": true,
+    "evidence": "0 without alt"
+  },
+  {
+    "name": "home en desktop: held-back video not published",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home en desktop: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home en desktop: no photograph appears twice on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home en desktop: no prices published",
+    "ok": true,
+    "evidence": "0 price-like strings"
+  },
+  {
+    "name": "portfolio en desktop: loads without script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio en desktop: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio en desktop: no broken images",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio en desktop: no horizontal overflow",
+    "ok": true,
+    "evidence": "overflow 0px"
+  },
+  {
+    "name": "portfolio en desktop: every image has alt text",
+    "ok": true,
+    "evidence": "0 without alt"
+  },
+  {
+    "name": "portfolio en desktop: held-back video not published",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio en desktop: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio en desktop: no photograph appears twice on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio en desktop: no prices published",
+    "ok": true,
+    "evidence": "0 price-like strings"
+  },
+  {
+    "name": "editorial en desktop: loads without script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial en desktop: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial en desktop: no broken images",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial en desktop: no horizontal overflow",
+    "ok": true,
+    "evidence": "overflow 0px"
+  },
+  {
+    "name": "editorial en desktop: every image has alt text",
+    "ok": true,
+    "evidence": "0 without alt"
+  },
+  {
+    "name": "editorial en desktop: held-back video not published",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial en desktop: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial en desktop: no photograph appears twice on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial en desktop: no prices published",
+    "ok": true,
+    "evidence": "0 price-like strings"
+  },
+  {
+    "name": "boutique en desktop: loads without script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique en desktop: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique en desktop: no broken images",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique en desktop: no horizontal overflow",
+    "ok": true,
+    "evidence": "overflow 0px"
+  },
+  {
+    "name": "boutique en desktop: every image has alt text",
+    "ok": true,
+    "evidence": "0 without alt"
+  },
+  {
+    "name": "boutique en desktop: held-back video not published",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique en desktop: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique en desktop: no photograph appears twice on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique en desktop: no prices published",
+    "ok": true,
+    "evidence": "0 price-like strings"
+  },
+  {
+    "name": "home fr iphone: loads without script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home fr iphone: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home fr iphone: no broken images",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home fr iphone: no horizontal overflow",
+    "ok": true,
+    "evidence": "overflow 0px"
+  },
+  {
+    "name": "home fr iphone: every image has alt text",
+    "ok": true,
+    "evidence": "0 without alt"
+  },
+  {
+    "name": "home fr iphone: held-back video not published",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home fr iphone: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home fr iphone: no photograph appears twice on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home fr iphone: no prices published",
+    "ok": true,
+    "evidence": "0 price-like strings"
+  },
+  {
+    "name": "home fr iphone: no tiny tap targets (< 24px tall, outside running text)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio fr iphone: loads without script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio fr iphone: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio fr iphone: no broken images",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio fr iphone: no horizontal overflow",
+    "ok": true,
+    "evidence": "overflow 0px"
+  },
+  {
+    "name": "portfolio fr iphone: every image has alt text",
+    "ok": true,
+    "evidence": "0 without alt"
+  },
+  {
+    "name": "portfolio fr iphone: held-back video not published",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio fr iphone: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio fr iphone: no photograph appears twice on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio fr iphone: no prices published",
+    "ok": true,
+    "evidence": "0 price-like strings"
+  },
+  {
+    "name": "portfolio fr iphone: no tiny tap targets (< 24px tall, outside running text)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial fr iphone: loads without script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial fr iphone: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial fr iphone: no broken images",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial fr iphone: no horizontal overflow",
+    "ok": true,
+    "evidence": "overflow 0px"
+  },
+  {
+    "name": "editorial fr iphone: every image has alt text",
+    "ok": true,
+    "evidence": "0 without alt"
+  },
+  {
+    "name": "editorial fr iphone: held-back video not published",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial fr iphone: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial fr iphone: no photograph appears twice on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial fr iphone: no prices published",
+    "ok": true,
+    "evidence": "0 price-like strings"
+  },
+  {
+    "name": "editorial fr iphone: no tiny tap targets (< 24px tall, outside running text)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique fr iphone: loads without script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique fr iphone: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique fr iphone: no broken images",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique fr iphone: no horizontal overflow",
+    "ok": true,
+    "evidence": "overflow 0px"
+  },
+  {
+    "name": "boutique fr iphone: every image has alt text",
+    "ok": true,
+    "evidence": "0 without alt"
+  },
+  {
+    "name": "boutique fr iphone: held-back video not published",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique fr iphone: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique fr iphone: no photograph appears twice on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique fr iphone: no prices published",
+    "ok": true,
+    "evidence": "0 price-like strings"
+  },
+  {
+    "name": "boutique fr iphone: no tiny tap targets (< 24px tall, outside running text)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home fr desktop: loads without script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home fr desktop: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home fr desktop: no broken images",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home fr desktop: no horizontal overflow",
+    "ok": true,
+    "evidence": "overflow 0px"
+  },
+  {
+    "name": "home fr desktop: every image has alt text",
+    "ok": true,
+    "evidence": "0 without alt"
+  },
+  {
+    "name": "home fr desktop: held-back video not published",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home fr desktop: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home fr desktop: no photograph appears twice on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home fr desktop: no prices published",
+    "ok": true,
+    "evidence": "0 price-like strings"
+  },
+  {
+    "name": "portfolio fr desktop: loads without script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio fr desktop: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio fr desktop: no broken images",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio fr desktop: no horizontal overflow",
+    "ok": true,
+    "evidence": "overflow 0px"
+  },
+  {
+    "name": "portfolio fr desktop: every image has alt text",
+    "ok": true,
+    "evidence": "0 without alt"
+  },
+  {
+    "name": "portfolio fr desktop: held-back video not published",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio fr desktop: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio fr desktop: no photograph appears twice on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio fr desktop: no prices published",
+    "ok": true,
+    "evidence": "0 price-like strings"
+  },
+  {
+    "name": "editorial fr desktop: loads without script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial fr desktop: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial fr desktop: no broken images",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial fr desktop: no horizontal overflow",
+    "ok": true,
+    "evidence": "overflow 0px"
+  },
+  {
+    "name": "editorial fr desktop: every image has alt text",
+    "ok": true,
+    "evidence": "0 without alt"
+  },
+  {
+    "name": "editorial fr desktop: held-back video not published",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial fr desktop: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial fr desktop: no photograph appears twice on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial fr desktop: no prices published",
+    "ok": true,
+    "evidence": "0 price-like strings"
+  },
+  {
+    "name": "boutique fr desktop: loads without script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique fr desktop: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique fr desktop: no broken images",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique fr desktop: no horizontal overflow",
+    "ok": true,
+    "evidence": "overflow 0px"
+  },
+  {
+    "name": "boutique fr desktop: every image has alt text",
+    "ok": true,
+    "evidence": "0 without alt"
+  },
+  {
+    "name": "boutique fr desktop: held-back video not published",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique fr desktop: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique fr desktop: no photograph appears twice on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique fr desktop: no prices published",
+    "ok": true,
+    "evidence": "0 price-like strings"
+  },
+  {
+    "name": "Homepage collection link opens the portfolio filtered on that collection",
+    "ok": true,
+    "evidence": "http://localhost:4173/?lang=en#/portfolio"
+  },
+  {
+    "name": "Browser back returns to the homepage",
+    "ok": true,
+    "evidence": "http://localhost:4173/?lang=en"
+  },
+  {
+    "name": "Editorial page labels credited work and photographed encounters separately",
+    "ok": true,
+    "evidence": [
+      "Documented collaboration · published credit",
+      "Attribution supplied by Astou’s family · her exact role is being confirmed",
+      "Archive piece · shown, not for sale",
+      "Photographed encounter · not a styling credit"
+    ]
+  },
+  {
+    "name": "Request button reaches the appointment form from the editorial page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "Booking offers three appointment types (salon, private on-location, out-of-state/event)",
+    "ok": true,
+    "evidence": "3 options"
+  },
+  {
+    "name": "Empty form is refused with field errors",
+    "ok": true,
+    "evidence": "8 errors"
+  },
+  {
+    "name": "Out-of-state/event requests require a city and state",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "Demo mode never claims the request was sent; it hands it to the email app",
+    "ok": true,
+    "evidence": "ONE LAST STEP\n\nThank you, Test.\n\nYour request is ready. Tap below to send it to Astou from your email app — everything y"
+  },
+  {
+    "name": "The prepared email carries the appointment type, location and confidentiality request",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "Homepage “Explore the boutique” opens the boutique page",
+    "ok": true,
+    "evidence": "http://localhost:4173/?lang=en#/boutique"
+  },
+  {
+    "name": "Boutique shows 15 pieces: 3 headwraps & turbans, 12 dresses (the heritage headwrap is in Editorial; the second teal-dress view is not used)",
+    "ok": true,
+    "evidence": "15 pieces, 3 + 12"
+  },
+  {
+    "name": "Each boutique photograph is used once",
+    "ok": true,
+    "evidence": "bq_01_burgundy_jeweled_turban, bq_02_mauve_jeweled_turban, bq_03_rust_twist_front_turban, bq_08_teal_floral_dress, bq_11_brown_dress_jeweled_neckline, bq_14_purple_embroidered_dress, bq_17_blue_button_front_dress, bq_09_olive_floral_dress, bq_15_charcoal_embroidered_dress, bq_06_blue_dress_embroidered_yoke, bq_16_brown_black_patterned_dress, bq_13_blue_embroidered_collection_dress, bq_10_blue_dress_round_neck_embroidery, bq_05_blue_dress_minimal_neckline, bq_12_brown_dress_mannequin"
+  },
+  {
+    "name": "No checkout or cart button on the boutique page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "“Ask about this piece” selects that piece in the inquiry form",
+    "ok": true,
+    "evidence": "bq_14_purple_embroidered_dress vs bq_14_purple_embroidered_dress"
+  },
+  {
+    "name": "Empty inquiry is refused (name, phone or email, consent)",
+    "ok": true,
+    "evidence": "3 errors"
+  },
+  {
+    "name": "Demo-mode inquiry never claims it was sent, and the email names the piece",
+    "ok": true,
+    "evidence": "mailto:astoutoure167@gmail.com?subject=Boutique inquiry — Purple embroidered dress&body=Piece: Purple embroidered dress\nName: Test Visitor\nEmail: test@example.c"
+  },
+  {
+    "name": "Boutique page runs without script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "Young-client clip plays, loops, is silent and lasts under 2 s (cut before the head turns)",
+    "ok": true,
+    "evidence": {
+      "loop": true,
+      "muted": true,
+      "ready": 4,
+      "err": null,
+      "dur": 1.8
+    }
+  },
+  {
+    "name": "Magazine cover opens full screen and closes with Escape",
+    "ok": true,
+    "evidence": ""
+  }
+]

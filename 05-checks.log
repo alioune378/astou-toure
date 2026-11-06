@@ -1,0 +1,219 @@
+PASS  home en iphone: loads without script errors
+PASS  home en iphone: no failed requests
+PASS  home en iphone: no broken images
+PASS  home en iphone: no horizontal overflow  — overflow 0px
+PASS  home en iphone: every image has alt text  — 0 without alt
+PASS  home en iphone: held-back video not published
+PASS  home en iphone: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)
+PASS  home en iphone: no photograph appears twice on the page
+PASS  home en iphone: no prices published  — 0 price-like strings
+PASS  home en iphone: no tiny tap targets (< 24px tall, outside running text)
+PASS  portfolio en iphone: loads without script errors
+PASS  portfolio en iphone: no failed requests
+PASS  portfolio en iphone: no broken images
+PASS  portfolio en iphone: no horizontal overflow  — overflow 0px
+PASS  portfolio en iphone: every image has alt text  — 0 without alt
+PASS  portfolio en iphone: held-back video not published
+PASS  portfolio en iphone: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)
+PASS  portfolio en iphone: no photograph appears twice on the page
+PASS  portfolio en iphone: no prices published  — 0 price-like strings
+PASS  portfolio en iphone: no tiny tap targets (< 24px tall, outside running text)
+PASS  editorial en iphone: loads without script errors
+PASS  editorial en iphone: no failed requests
+PASS  editorial en iphone: no broken images
+PASS  editorial en iphone: no horizontal overflow  — overflow 0px
+PASS  editorial en iphone: every image has alt text  — 0 without alt
+PASS  editorial en iphone: held-back video not published
+PASS  editorial en iphone: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)
+PASS  editorial en iphone: no photograph appears twice on the page
+PASS  editorial en iphone: no prices published  — 0 price-like strings
+PASS  editorial en iphone: no tiny tap targets (< 24px tall, outside running text)
+PASS  boutique en iphone: loads without script errors
+PASS  boutique en iphone: no failed requests
+PASS  boutique en iphone: no broken images
+PASS  boutique en iphone: no horizontal overflow  — overflow 0px
+PASS  boutique en iphone: every image has alt text  — 0 without alt
+PASS  boutique en iphone: held-back video not published
+PASS  boutique en iphone: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)
+PASS  boutique en iphone: no photograph appears twice on the page
+PASS  boutique en iphone: no prices published  — 0 price-like strings
+PASS  boutique en iphone: no tiny tap targets (< 24px tall, outside running text)
+PASS  home en narrow: loads without script errors
+PASS  home en narrow: no failed requests
+PASS  home en narrow: no broken images
+PASS  home en narrow: no horizontal overflow  — overflow 0px
+PASS  home en narrow: every image has alt text  — 0 without alt
+PASS  home en narrow: held-back video not published
+PASS  home en narrow: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)
+PASS  home en narrow: no photograph appears twice on the page
+PASS  home en narrow: no prices published  — 0 price-like strings
+PASS  home en narrow: no tiny tap targets (< 24px tall, outside running text)
+PASS  portfolio en narrow: loads without script errors
+PASS  portfolio en narrow: no failed requests
+PASS  portfolio en narrow: no broken images
+PASS  portfolio en narrow: no horizontal overflow  — overflow 0px
+PASS  portfolio en narrow: every image has alt text  — 0 without alt
+PASS  portfolio en narrow: held-back video not published
+PASS  portfolio en narrow: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)
+PASS  portfolio en narrow: no photograph appears twice on the page
+PASS  portfolio en narrow: no prices published  — 0 price-like strings
+PASS  portfolio en narrow: no tiny tap targets (< 24px tall, outside running text)
+PASS  editorial en narrow: loads without script errors
+PASS  editorial en narrow: no failed requests
+PASS  editorial en narrow: no broken images
+PASS  editorial en narrow: no horizontal overflow  — overflow 0px
+PASS  editorial en narrow: every image has alt text  — 0 without alt
+PASS  editorial en narrow: held-back video not published
+PASS  editorial en narrow: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)
+PASS  editorial en narrow: no photograph appears twice on the page
+PASS  editorial en narrow: no prices published  — 0 price-like strings
+PASS  editorial en narrow: no tiny tap targets (< 24px tall, outside running text)
+PASS  boutique en narrow: loads without script errors
+PASS  boutique en narrow: no failed requests
+PASS  boutique en narrow: no broken images
+PASS  boutique en narrow: no horizontal overflow  — overflow 0px
+PASS  boutique en narrow: every image has alt text  — 0 without alt
+PASS  boutique en narrow: held-back video not published
+PASS  boutique en narrow: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)
+PASS  boutique en narrow: no photograph appears twice on the page
+PASS  boutique en narrow: no prices published  — 0 price-like strings
+PASS  boutique en narrow: no tiny tap targets (< 24px tall, outside running text)
+PASS  home en desktop: loads without script errors
+PASS  home en desktop: no failed requests
+PASS  home en desktop: no broken images
+PASS  home en desktop: no horizontal overflow  — overflow 0px
+PASS  home en desktop: every image has alt text  — 0 without alt
+PASS  home en desktop: held-back video not published
+PASS  home en desktop: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)
+PASS  home en desktop: no photograph appears twice on the page
+PASS  home en desktop: no prices published  — 0 price-like strings
+PASS  portfolio en desktop: loads without script errors
+PASS  portfolio en desktop: no failed requests
+PASS  portfolio en desktop: no broken images
+PASS  portfolio en desktop: no horizontal overflow  — overflow 0px
+PASS  portfolio en desktop: every image has alt text  — 0 without alt
+PASS  portfolio en desktop: held-back video not published
+PASS  portfolio en desktop: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)
+PASS  portfolio en desktop: no photograph appears twice on the page
+PASS  portfolio en desktop: no prices published  — 0 price-like strings
+PASS  editorial en desktop: loads without script errors
+PASS  editorial en desktop: no failed requests
+PASS  editorial en desktop: no broken images
+PASS  editorial en desktop: no horizontal overflow  — overflow 0px
+PASS  editorial en desktop: every image has alt text  — 0 without alt
+PASS  editorial en desktop: held-back video not published
+PASS  editorial en desktop: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)
+PASS  editorial en desktop: no photograph appears twice on the page
+PASS  editorial en desktop: no prices published  — 0 price-like strings
+PASS  boutique en desktop: loads without script errors
+PASS  boutique en desktop: no failed requests
+PASS  boutique en desktop: no broken images
+PASS  boutique en desktop: no horizontal overflow  — overflow 0px
+PASS  boutique en desktop: every image has alt text  — 0 without alt
+PASS  boutique en desktop: held-back video not published
+PASS  boutique en desktop: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)
+PASS  boutique en desktop: no photograph appears twice on the page
+PASS  boutique en desktop: no prices published  — 0 price-like strings
+PASS  home fr iphone: loads without script errors
+PASS  home fr iphone: no failed requests
+PASS  home fr iphone: no broken images
+PASS  home fr iphone: no horizontal overflow  — overflow 0px
+PASS  home fr iphone: every image has alt text  — 0 without alt
+PASS  home fr iphone: held-back video not published
+PASS  home fr iphone: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)
+PASS  home fr iphone: no photograph appears twice on the page
+PASS  home fr iphone: no prices published  — 0 price-like strings
+PASS  home fr iphone: no tiny tap targets (< 24px tall, outside running text)
+PASS  portfolio fr iphone: loads without script errors
+PASS  portfolio fr iphone: no failed requests
+PASS  portfolio fr iphone: no broken images
+PASS  portfolio fr iphone: no horizontal overflow  — overflow 0px
+PASS  portfolio fr iphone: every image has alt text  — 0 without alt
+PASS  portfolio fr iphone: held-back video not published
+PASS  portfolio fr iphone: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)
+PASS  portfolio fr iphone: no photograph appears twice on the page
+PASS  portfolio fr iphone: no prices published  — 0 price-like strings
+PASS  portfolio fr iphone: no tiny tap targets (< 24px tall, outside running text)
+PASS  editorial fr iphone: loads without script errors
+PASS  editorial fr iphone: no failed requests
+PASS  editorial fr iphone: no broken images
+PASS  editorial fr iphone: no horizontal overflow  — overflow 0px
+PASS  editorial fr iphone: every image has alt text  — 0 without alt
+PASS  editorial fr iphone: held-back video not published
+PASS  editorial fr iphone: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)
+PASS  editorial fr iphone: no photograph appears twice on the page
+PASS  editorial fr iphone: no prices published  — 0 price-like strings
+PASS  editorial fr iphone: no tiny tap targets (< 24px tall, outside running text)
+PASS  boutique fr iphone: loads without script errors
+PASS  boutique fr iphone: no failed requests
+PASS  boutique fr iphone: no broken images
+PASS  boutique fr iphone: no horizontal overflow  — overflow 0px
+PASS  boutique fr iphone: every image has alt text  — 0 without alt
+PASS  boutique fr iphone: held-back video not published
+PASS  boutique fr iphone: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)
+PASS  boutique fr iphone: no photograph appears twice on the page
+PASS  boutique fr iphone: no prices published  — 0 price-like strings
+PASS  boutique fr iphone: no tiny tap targets (< 24px tall, outside running text)
+PASS  home fr desktop: loads without script errors
+PASS  home fr desktop: no failed requests
+PASS  home fr desktop: no broken images
+PASS  home fr desktop: no horizontal overflow  — overflow 0px
+PASS  home fr desktop: every image has alt text  — 0 without alt
+PASS  home fr desktop: held-back video not published
+PASS  home fr desktop: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)
+PASS  home fr desktop: no photograph appears twice on the page
+PASS  home fr desktop: no prices published  — 0 price-like strings
+PASS  portfolio fr desktop: loads without script errors
+PASS  portfolio fr desktop: no failed requests
+PASS  portfolio fr desktop: no broken images
+PASS  portfolio fr desktop: no horizontal overflow  — overflow 0px
+PASS  portfolio fr desktop: every image has alt text  — 0 without alt
+PASS  portfolio fr desktop: held-back video not published
+PASS  portfolio fr desktop: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)
+PASS  portfolio fr desktop: no photograph appears twice on the page
+PASS  portfolio fr desktop: no prices published  — 0 price-like strings
+PASS  editorial fr desktop: loads without script errors
+PASS  editorial fr desktop: no failed requests
+PASS  editorial fr desktop: no broken images
+PASS  editorial fr desktop: no horizontal overflow  — overflow 0px
+PASS  editorial fr desktop: every image has alt text  — 0 without alt
+PASS  editorial fr desktop: held-back video not published
+PASS  editorial fr desktop: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)
+PASS  editorial fr desktop: no photograph appears twice on the page
+PASS  editorial fr desktop: no prices published  — 0 price-like strings
+PASS  boutique fr desktop: loads without script errors
+PASS  boutique fr desktop: no failed requests
+PASS  boutique fr desktop: no broken images
+PASS  boutique fr desktop: no horizontal overflow  — overflow 0px
+PASS  boutique fr desktop: every image has alt text  — 0 without alt
+PASS  boutique fr desktop: held-back video not published
+PASS  boutique fr desktop: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)
+PASS  boutique fr desktop: no photograph appears twice on the page
+PASS  boutique fr desktop: no prices published  — 0 price-like strings
+PASS  Homepage collection link opens the portfolio filtered on that collection  — http://localhost:4173/?lang=en#/portfolio
+PASS  Browser back returns to the homepage  — http://localhost:4173/?lang=en
+PASS  Editorial page labels credited work and photographed encounters separately  — ["Documented collaboration · published credit","Attribution supplied by Astou’s family · her exact role is being confirmed","Archive piece · shown, not for sale","Photographed encounter · not a styling credit"]
+PASS  Request button reaches the appointment form from the editorial page
+PASS  Booking offers three appointment types (salon, private on-location, out-of-state/event)  — 3 options
+PASS  Empty form is refused with field errors  — 8 errors
+PASS  Out-of-state/event requests require a city and state
+PASS  Demo mode never claims the request was sent; it hands it to the email app  — ONE LAST STEP
+
+Thank you, Test.
+
+Your request is ready. Tap below to send it to Astou from your email app — everything y
+PASS  The prepared email carries the appointment type, location and confidentiality request
+PASS  Homepage “Explore the boutique” opens the boutique page  — http://localhost:4173/?lang=en#/boutique
+PASS  Boutique shows 15 pieces: 3 headwraps & turbans, 12 dresses (the heritage headwrap is in Editorial; the second teal-dress view is not used)  — 15 pieces, 3 + 12
+PASS  Each boutique photograph is used once  — bq_01_burgundy_jeweled_turban, bq_02_mauve_jeweled_turban, bq_03_rust_twist_front_turban, bq_08_teal_floral_dress, bq_11_brown_dress_jeweled_neckline, bq_14_purple_embroidered_dress, bq_17_blue_button_front_dress, bq_09_olive_floral_dress, bq_15_charcoal_embroidered_dress, bq_06_blue_dress_embroidered_yoke, bq_16_brown_black_patterned_dress, bq_13_blue_embroidered_collection_dress, bq_10_blue_dress_round_neck_embroidery, bq_05_blue_dress_minimal_neckline, bq_12_brown_dress_mannequin
+PASS  No checkout or cart button on the boutique page
+PASS  “Ask about this piece” selects that piece in the inquiry form  — bq_14_purple_embroidered_dress vs bq_14_purple_embroidered_dress
+PASS  Empty inquiry is refused (name, phone or email, consent)  — 3 errors
+PASS  Demo-mode inquiry never claims it was sent, and the email names the piece  — mailto:astoutoure167@gmail.com?subject=Boutique inquiry — Purple embroidered dress&body=Piece: Purple embroidered dress
+Name: Test Visitor
+Email: test@example.c
+PASS  Boutique page runs without script errors
+PASS  Young-client clip plays, loops, is silent and lasts under 2 s (cut before the head turns)  — {"loop":true,"muted":true,"ready":4,"err":null,"dur":1.8}
+PASS  Magazine cover opens full screen and closes with Escape
+
+211/211 checks passed

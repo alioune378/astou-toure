@@ -12,18 +12,21 @@
     <meta name="robots" content="noindex" />
     <meta name="theme-color" content="#0B0B0B" />
     <meta name="format-detection" content="telephone=no" />
+    <link rel="canonical" href="https://astoustyle.com/" />
 
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://astoustyle.com/" />
     <meta property="og:site_name" content="Astou Touré — Astou Style &amp; Boutique" />
     <meta property="og:title" content="Astou Touré — The Art of Hair" />
     <meta property="og:description" content="Hair artistry, braiding and sculptural styling in the Bronx, New York." />
-    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:image" content="https://astoustyle.com/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="es_US" />
     <meta property="og:locale:alternate" content="fr_FR" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://astoustyle.com/og-image.jpg" />
 
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png" />
@@ -47,7 +50,8 @@
         "name": "Astou Style & Boutique — Astou Touré",
         "alternateName": "Astou Touré",
         "description": "Hair artist and specialist braider: nappy hairstyles, boho braids, sculptural braided updos, custom braiding and editorial styling.",
-        "image": "/og-image.jpg",
+        "url": "https://astoustyle.com/",
+        "image": "https://astoustyle.com/og-image.jpg",
         "telephone": "+1-718-300-3011",
         "email": "astoutoure167@gmail.com",
         "address": {
@@ -89,6 +93,19 @@
       <input name="reference-photo" />
       <input name="confidential" />
       <input name="discretion" />
+      <input name="contact-consent" />
+      <input name="bot-field" />
+    </form>
+
+    <!-- Static definition for Netlify Forms: boutique inquiries (no checkout). -->
+    <form name="boutique-inquiry" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input name="piece" />
+      <input name="piece-photo" />
+      <input name="full-name" />
+      <input name="phone" type="tel" />
+      <input name="email" type="email" />
+      <textarea name="message"></textarea>
+      <input name="language" />
       <input name="contact-consent" />
       <input name="bot-field" />
     </form>

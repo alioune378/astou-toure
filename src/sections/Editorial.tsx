@@ -40,9 +40,6 @@ export function Editorial({ onOpen }: { onOpen: Open }) {
           <ol>
             <li>
               <button type="button" onClick={() => goTo('ed-garage')}>
-                <span className="ed-index-img" aria-hidden="true">
-                  <Img p={ED_FEATURE} sizes="(max-width: 899px) 30vw, 22vw" />
-                </span>
                 <span className="ed-index-n">01</span> {t(GARAGE_TITLE)}
                 <span className="ed-index-s">{t(GARAGE_SUB)}</span>
               </button>
@@ -50,11 +47,6 @@ export function Editorial({ onOpen }: { onOpen: Open }) {
             {OTHERS.map((c, i) => (
               <li key={c.id}>
                 <button type="button" onClick={() => goTo(`ed-${c.id}`)}>
-                  {c.items[0] && (
-                    <span className="ed-index-img" aria-hidden="true">
-                      <Img p={c.items[0].photo} sizes="(max-width: 899px) 30vw, 22vw" />
-                    </span>
-                  )}
                   <span className="ed-index-n">{String(i + 2).padStart(2, '0')}</span> {t(c.title)}
                   {c.sub && <span className="ed-index-s">{t(c.sub)}</span>}
                 </button>

@@ -15,6 +15,7 @@ const PAGES = [
   ['home', '/'],
   ['portfolio', '/#/portfolio'],
   ['editorial', '/#/editorial'],
+  ['boutique', '/#/boutique'],
 ];
 const VIEWPORTS = [
   ['iphone', { ...devices['iPhone 13'] }],
@@ -64,6 +65,19 @@ try {
             })
             .map((el) => `${el.tagName.toLowerCase()}:${(el.textContent || el.getAttribute('aria-label') || '').trim().slice(0, 30)}`),
           beaded: document.documentElement.innerHTML.includes('braids-beaded-360'),
+          held: ['ar_group_portrait', 'bq_07', 'lk_updo_front'].filter((f) => document.documentElement.innerHTML.includes(f)),
+          // Every photograph on the page, by file (responsive sizes of one file count once). The lightbox is excluded.
+          dupes: (() => {
+            const seen = {};
+            for (const img of document.querySelectorAll('main img')) {
+              if (img.closest('[role=dialog]')) continue;
+              const u = img.currentSrc || img.src;
+              const base = u.split('/').pop().replace(/-\d+\.webp$|\.(jpg|webp)$/, '');
+              seen[base] = (seen[base] || 0) + 1;
+            }
+            return Object.entries(seen).filter(([, n]) => n > 1).map(([f, n]) => `${f}×${n}`);
+          })(),
+          prices: (document.querySelector('main')?.innerText.match(/[$€£]\s?\d/g) || []).length,
         }));
         const tag = `${name} ${lang} ${vpName}`;
         check(`${tag}: loads without script errors`, errors.length === 0, errors.slice(0, 3).join(' | '));
@@ -72,6 +86,9 @@ try {
         check(`${tag}: no horizontal overflow`, info.overflow <= 1, `overflow ${info.overflow}px`);
         check(`${tag}: every image has alt text`, info.noAlt === 0, `${info.noAlt} without alt`);
         check(`${tag}: held-back video not published`, !info.beaded);
+        check(`${tag}: held-back photos not published (AI-enhanced Iman portrait, alternate teal-dress view, mannequin face)`, info.held.length === 0, info.held.join(', '));
+        check(`${tag}: no photograph appears twice on the page`, info.dupes.length === 0, info.dupes.join(', '));
+        check(`${tag}: no prices published`, info.prices === 0, `${info.prices} price-like strings`);
         if (vpName !== 'desktop') check(`${tag}: no tiny tap targets (< 24px tall, outside running text)`, info.small.length === 0, info.small.slice(0, 6).join(', '));
         await page.evaluate(() => window.scrollTo(0, 0));
         await page.waitForTimeout(300);
@@ -142,6 +159,59 @@ try {
     check('Demo mode never claims the request was sent; it hands it to the email app', /Nothing has been sent or stored/.test(done) && !/Request received/.test(done), done.slice(0, 120));
     check('The prepared email carries the appointment type, location and confidentiality request', /Out-of-state or special-event styling/.test(body) && /Atlanta, GA/.test(body) && /CONFIDENTIAL/.test(body));
     await page.screenshot({ path: `${OUT}/shots/form-done.png` });
+    await ctx.close();
+  }
+
+  // Boutique: every piece once, an inquiry button per piece, no checkout, and an honest inquiry form.
+  {
+    const ctx = await browser.newContext({ ...devices['iPhone 13'] });
+    const page = await ctx.newPage();
+    const errors = [];
+    page.on('pageerror', (e) => errors.push(String(e)));
+    await page.goto(`${BASE}/?lang=en`, { waitUntil: 'networkidle' });
+    await page.locator('#boutique .bq-ctas .btn-onyx').click();
+    await page.waitForTimeout(900);
+    check('Homepage “Explore the boutique” opens the boutique page', page.url().includes('#/boutique') && (await page.locator('#bq-catalog').count()) === 1, page.url());
+    const pieces = await page.locator('.bqc-item').count();
+    const turbans = await page.locator('#bq-headwear .bqc-item').count();
+    const dresses = await page.locator('#bq-dresses .bqc-item').count();
+    check('Boutique shows 15 pieces: 3 headwraps & turbans, 12 dresses (the heritage headwrap is in Editorial; the second teal-dress view is not used)', pieces === 15 && turbans === 3 && dresses === 12, `${pieces} pieces, ${turbans} + ${dresses}`);
+    const files = await page.locator('.bqc-item img').evaluateAll((imgs) => imgs.map((i) => (i.currentSrc || i.src).split('/').pop().replace(/-\d+\.webp$|\.(jpg|webp)$/, '')));
+    check('Each boutique photograph is used once', new Set(files).size === files.length, files.join(', '));
+    check('No checkout or cart on the boutique page', (await page.locator('text=/add to (cart|bag)|checkout|buy now/i').count()) === 0);
+    await page.locator('#bq-dresses .bqc-ask').nth(2).click();
+    await page.waitForTimeout(1200);
+    const chosen = await page.locator('#bi-piece').inputValue();
+    check('“Ask about this piece” selects that piece in the inquiry form', chosen === files[3 + 2], `${chosen} vs ${files[5]}`);
+    await page.locator('.bq-form button[type=submit]').click();
+    const bErrs = await page.locator('.bq-form .field-err').count();
+    check('Empty inquiry is refused (name, phone or email, consent)', bErrs >= 3, `${bErrs} errors`);
+    await page.waitForTimeout(3100);
+    await page.fill('#bi-full-name', 'Test Visitor');
+    await page.fill('#bi-email', 'test@example.com');
+    await page.fill('#bi-message', 'CI test inquiry — please ignore.');
+    await page.locator('#bi-contact-consent').check();
+    await page.locator('.bq-form button[type=submit]').click();
+    await page.waitForSelector('#bq-inquiry .rq-done', { timeout: 8000 });
+    const done = await page.locator('#bq-inquiry .rq-done').innerText();
+    const mailto = decodeURIComponent((await page.locator('#bq-inquiry .rq-done a.btn').getAttribute('href').catch(() => '')) ?? '');
+    check('Demo-mode inquiry never claims it was sent, and the email names the piece', /Nothing has been sent or stored/.test(done) && !/Inquiry received/.test(done) && /Piece: /.test(mailto), mailto.slice(0, 160));
+    await page.screenshot({ path: `${OUT}/shots/boutique-inquiry-done.png` });
+    check('Boutique page runs without script errors', errors.length === 0, errors.join(' | '));
+    await ctx.close();
+  }
+
+  // Videos: the clips supplied without sound say so instead of offering a sound button; the short clips loop.
+  {
+    const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+    const page = await ctx.newPage();
+    await page.goto(`${BASE}/?lang=en#/portfolio`, { waitUntil: 'networkidle' });
+    const card = page.locator('.vc', { has: page.locator('button[aria-label*="young client"]') });
+    await card.locator('.vc-poster').click();
+    await page.waitForTimeout(1500);
+    const v = await card.locator('video').evaluate((el) => ({ loop: el.loop, muted: el.muted, ready: el.readyState, err: el.error && el.error.code, dur: el.duration }));
+    const noSound = await card.locator('.vc-tool.is-static').count();
+    check('Young-client clip plays, loops, is silent and lasts under 2 s (cut before the head turns)', v.ready >= 2 && v.loop && v.muted && !v.err && v.dur < 1.9 && noSound === 1, v);
     await ctx.close();
   }
 

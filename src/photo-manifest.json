@@ -293,15 +293,6 @@
       1200
     ]
   },
-  "ar_group_portrait": {
-    "w": 1200,
-    "h": 1200,
-    "widths": [
-      480,
-      800,
-      1200
-    ]
-  },
   "ar_transformation": {
     "w": 810,
     "h": 1402,
@@ -471,6 +462,148 @@
     "widths": [
       480,
       549
+    ]
+  },
+  "bq_01_burgundy_jeweled_turban": {
+    "w": 542,
+    "h": 481,
+    "widths": [
+      480,
+      542
+    ]
+  },
+  "bq_02_mauve_jeweled_turban": {
+    "w": 480,
+    "h": 474,
+    "widths": [
+      480
+    ]
+  },
+  "bq_03_rust_twist_front_turban": {
+    "w": 379,
+    "h": 425,
+    "widths": [
+      379
+    ]
+  },
+  "bq_05_blue_dress_minimal_neckline": {
+    "w": 728,
+    "h": 1315,
+    "widths": [
+      480,
+      728
+    ]
+  },
+  "bq_06_blue_dress_embroidered_yoke": {
+    "w": 728,
+    "h": 1319,
+    "widths": [
+      480,
+      728
+    ]
+  },
+  "bq_08_teal_floral_dress": {
+    "w": 619,
+    "h": 1332,
+    "widths": [
+      480,
+      619
+    ]
+  },
+  "bq_09_olive_floral_dress": {
+    "w": 590,
+    "h": 1008,
+    "widths": [
+      480,
+      590
+    ]
+  },
+  "bq_10_blue_dress_round_neck_embroidery": {
+    "w": 730,
+    "h": 1315,
+    "widths": [
+      480,
+      730
+    ]
+  },
+  "bq_11_brown_dress_jeweled_neckline": {
+    "w": 729,
+    "h": 1315,
+    "widths": [
+      480,
+      729
+    ]
+  },
+  "bq_12_brown_dress_mannequin": {
+    "w": 732,
+    "h": 1575,
+    "widths": [
+      480,
+      732
+    ]
+  },
+  "bq_13_blue_embroidered_collection_dress": {
+    "w": 352,
+    "h": 845,
+    "widths": [
+      352
+    ]
+  },
+  "bq_14_purple_embroidered_dress": {
+    "w": 731,
+    "h": 1440,
+    "widths": [
+      480,
+      731
+    ]
+  },
+  "bq_15_charcoal_embroidered_dress": {
+    "w": 709,
+    "h": 1026,
+    "widths": [
+      480,
+      709
+    ]
+  },
+  "bq_16_brown_black_patterned_dress": {
+    "w": 727,
+    "h": 1028,
+    "widths": [
+      480,
+      727
+    ]
+  },
+  "bq_17_blue_button_front_dress": {
+    "w": 726,
+    "h": 1030,
+    "widths": [
+      480,
+      726
+    ]
+  },
+  "ed_heritage_black_headwrap_cropped": {
+    "w": 600,
+    "h": 420,
+    "widths": [
+      480,
+      600
+    ]
+  },
+  "astou_31_client_braided_updo_back": {
+    "w": 855,
+    "h": 1110,
+    "widths": [
+      480,
+      800,
+      855
+    ]
+  },
+  "astou_32_client_braided_updo_side": {
+    "w": 785,
+    "h": 510,
+    "widths": [
+      480,
+      785
     ]
   }
 }

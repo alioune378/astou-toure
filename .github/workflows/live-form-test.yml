@@ -7,7 +7,7 @@ on:
     inputs:
       url:
         description: Site to test
-        default: https://astou-toure.netlify.app
+        default: https://astoustyle.com
 
 permissions:
   contents: write

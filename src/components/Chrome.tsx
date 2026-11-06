@@ -10,13 +10,13 @@ export const NAV: { id: string; label: L }[] = [
   { id: 'motion', label: { en: 'Videos', es: 'Videos', fr: 'Vidéos' } },
   { id: 'in-print', label: { en: 'In Print', es: 'En papel', fr: 'Presse' } },
   { id: 'editorial-top', label: { en: 'Editorial', es: 'Editorial', fr: 'Éditorial' } },
-  { id: 'boutique', label: { en: 'Boutique', es: 'Boutique', fr: 'Boutique' } },
+  { id: 'boutique-top', label: { en: 'Boutique', es: 'Boutique', fr: 'Boutique' } },
   { id: 'private', label: { en: 'Private Styling', es: 'Peinado privado', fr: 'Coiffure privée' } },
   { id: 'visit', label: { en: 'Visit', es: 'Visítanos', fr: 'Venir' } },
 ];
 
 /** Desktop header keeps a shorter list; the full list lives in the menu. */
-const NAV_TOP = ['artist', 'portfolio-top', 'in-print', 'editorial-top', 'boutique', 'private'];
+const NAV_TOP = ['artist', 'portfolio-top', 'in-print', 'editorial-top', 'boutique-top', 'private'];
 
 export const CTA: L = { en: 'Request a private appointment', es: 'Pide una cita privada', fr: 'Demander un rendez-vous' };
 export const CTA_SHORT: L = { en: 'Request', es: 'Pedir cita', fr: 'Rendez-vous' };

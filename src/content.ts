@@ -89,7 +89,7 @@ export type Photo = {
   h: number;
   widths: number[];
   /** Client = worn by a real client. Study = created on a mannequin head. */
-  kind: 'client' | 'study' | 'artist' | 'editorial' | 'press' | 'archive';
+  kind: 'client' | 'study' | 'artist' | 'editorial' | 'press' | 'archive' | 'boutique';
   cats: CatId[];
   title: L;
   alt: L;
@@ -357,6 +357,30 @@ export const PHOTOS: Photo[] = [
   ),
   /* November 2026 package ("Individual Edits Review 01"), used as supplied by the owner: resized only. */
   P(
+    'astou_31_client_braided_updo_back',
+    'client',
+    ['braiding', 'sculptural'],
+    { en: 'High braided updo', es: 'Recogido alto de trenzas', fr: 'Chignon haut tressé' },
+    {
+      en: 'Client in the salon, seen from behind: braids in black with honey-blonde accents, gathered and woven into a tall, dense updo above neat cornrows at the nape.',
+      es: 'Clienta en el salón, de espaldas: trenzas negras con toques rubio miel, recogidas y entrelazadas en un moño alto y tupido sobre trenzas pegadas en la nuca.',
+      fr: 'Cliente au salon, de dos : tresses noires aux touches blond miel, rassemblées et entrelacées en un haut chignon dense au-dessus de nattes collées sur la nuque.',
+    },
+    '50% 40%',
+  ),
+  P(
+    'astou_32_client_braided_updo_side',
+    'client',
+    ['braiding', 'sculptural'],
+    { en: 'High braided updo — side detail', es: 'Recogido alto de trenzas, detalle lateral', fr: 'Chignon haut tressé — détail de profil' },
+    {
+      en: 'The same updo from the side: the woven braids of the bun and the cornrows sweeping up from the nape.',
+      es: 'El mismo recogido de lado: las trenzas entrelazadas del moño y las trenzas pegadas que suben desde la nuca.',
+      fr: 'Le même chignon de profil : les tresses entrelacées du chignon et les nattes collées qui remontent depuis la nuque.',
+    },
+    '30% 50%',
+  ),
+  P(
     'astou_25_client_gold_ornament_updo_front',
     'client',
     ['editorial', 'sculptural'],
@@ -452,6 +476,8 @@ const GROUPS: Record<string, string> = {
   '03': 'fishbone-updo',
   '04': 'fishbone-updo',
   '11': 'sleek-chignon',
+  // 30 is the same chignon as 11, photographed again from almost the same angle: one tile, both views in the viewer.
+  '30': 'sleek-chignon',
   '17': 'sleek-chignon',
   '19': 'side-crown',
   '18': 'side-crown',
@@ -459,6 +485,8 @@ const GROUPS: Record<string, string> = {
   '20': 'rolled-updo',
   '25': 'gold-ornament-updo',
   '26': 'gold-ornament-updo',
+  '31': 'high-braided-updo',
+  '32': 'high-braided-updo',
 };
 /** Corrected categories: client braids in "braids", studies in "sculptural", event-ready styles also in "editorial" (special occasions). */
 const CAT_FIX: Record<string, CatId[]> = {
@@ -485,7 +513,7 @@ const CAT_FIX: Record<string, CatId[]> = {
   '20': ['editorial', 'sculptural'],
 };
 /** Display order: client work and studies alternate so neither dominates; within a group the first photo is the cover. */
-const ORDER = ['27', '07', '13', '25', '26', '10', '15', '21', '20', '24', '08', '28', '16', '09', '19', '18', '30', '05', '29', '11', '17', '22', '06', '12', '23', '02', '03', '04'];
+const ORDER = ['27', '07', '13', '25', '26', '10', '15', '21', '20', '24', '31', '32', '08', '28', '16', '09', '19', '18', '30', '05', '29', '11', '17', '22', '06', '12', '23', '02', '03', '04'];
 PHOTOS.forEach((p) => {
   if (GROUPS[p.id]) p.group = GROUPS[p.id];
   if (CAT_FIX[p.id]) p.cats = CAT_FIX[p.id];
@@ -500,6 +528,7 @@ const GROUP_TITLE: Record<string, L> = {
   'side-crown': { en: 'Side-swept braided crown', es: 'Corona trenzada de lado', fr: 'Couronne tressée de côté' },
   'rolled-updo': { en: 'Rolled updo', es: 'Recogido de rizos', fr: 'Chignon roulé' },
   'gold-ornament-updo': { en: 'Gold ornament updo', es: 'Recogido con adorno dorado', fr: 'Chignon à l’ornement doré' },
+  'high-braided-updo': { en: 'High braided updo', es: 'Recogido alto de trenzas', fr: 'Chignon haut tressé' },
 };
 
 /** "Signature work" on the homepage: a few standout hairstyles (client work first). Ids are photo ids. */
@@ -538,6 +567,7 @@ export const KIND_LABEL: Record<Photo['kind'], L> = {
   editorial: { en: 'Editorial collaboration', es: 'Colaboración editorial', fr: 'Collaboration éditoriale' },
   press: { en: 'Published page', es: 'Página publicada', fr: 'Page publiée' },
   archive: { en: 'From Astou’s archive', es: 'Del archivo de Astou', fr: 'Archives d’Astou' },
+  boutique: { en: 'Astou Boutique', es: 'Astou Boutique', fr: 'Astou Boutique' },
 };
 
 /* ------------------------------------------------------------------ Editorial work (published collaborations)
@@ -749,7 +779,20 @@ export const LOOKS: Look[] = [
 /* ------------------------------------------------------------------ Artistry in motion (edited videos supplied by Astou's team)
    The soundtrack is already part of each file (original instrumental replacing the phone audio). Do not add other music. */
 
-export type Clip = { file: string; title: L; dur: string; w: number; h: number; cat?: CatId; /** Marks a clip of the same hairstyle as another clip. */ rel?: L };
+export type Clip = {
+  file: string;
+  title: L;
+  dur: string;
+  w: number;
+  h: number;
+  cat?: CatId;
+  /** Marks a clip of the same hairstyle as another clip. */
+  rel?: L;
+  /** The file has no audio track (supplied without sound): no sound button is offered. */
+  silent?: true;
+  /** Very short clip: plays on a loop. */
+  loop?: true;
+};
 /** `cat` is the style pre-selected in the request form when a visitor asks for a similar look. */
 export type ClipGroup = { id: string; title: L; text: L; cat: CatId; clips: Clip[] };
 
@@ -769,6 +812,24 @@ export const CLIP_GROUPS: ClipGroup[] = [
       // 'braids-beaded-360' is held back (Nov 2026): the client's age cannot be confirmed from the footage, and a child may
       // appear in the background. It returns only once Astou confirms the client is an adult and consented (APPROVALS.md).
       { file: 'braids-long-black-finished', dur: '0:19', w: 512, h: 910, title: { en: 'Long black braids, finished', es: 'Trenzas largas negras, terminadas', fr: 'Longues tresses noires, terminées' } },
+      { file: 'braids-curly-finished', dur: '0:52', w: 512, h: 910, cat: 'boho', silent: true, title: { en: 'Braids with curly ends, the finished look', es: 'Trenzas con puntas rizadas, el resultado', fr: 'Tresses aux pointes bouclées, le résultat' } },
+      // Supplied as "rear view only" (Nov 2026). The last half-second of the original turned to show the child's face in
+      // profile, so the clip is cut at 1.8 s: only the back of the head and the braids are visible. Parental consent: APPROVALS.md.
+      { file: 'braids-young-client-back', dur: '0:02', w: 512, h: 910, silent: true, loop: true, title: { en: 'Beaded braids for a young client, from behind', es: 'Trenzas con cuentas para una clienta pequeña, de espaldas', fr: 'Tresses perlées pour une jeune cliente, de dos' } },
+    ],
+  },
+  {
+    id: 'spiral',
+    cat: 'sculptural',
+    title: { en: 'A spiral braided updo', es: 'Un recogido trenzado en espiral', fr: 'Un chignon tressé en spirale' },
+    text: {
+      en: 'Astou at work on a sculpted spiral of twists, and a finished spiral updo seen from behind.',
+      es: 'Astou trabajando en una espiral esculpida de twists, y un recogido en espiral terminado visto de espaldas.',
+      fr: 'Astou à l’œuvre sur une spirale sculptée de vanilles, et un chignon en spirale terminé vu de dos.',
+    },
+    clips: [
+      { file: 'spiral-updo-at-work', dur: '0:21', w: 512, h: 910, silent: true, title: { en: 'Astou at work', es: 'Astou trabajando', fr: 'Astou à l’œuvre' } },
+      { file: 'spiral-updo-finished', dur: '0:05', w: 512, h: 910, silent: true, loop: true, title: { en: 'The finished updo, from behind', es: 'El recogido terminado, de espaldas', fr: 'Le chignon terminé, de dos' } },
     ],
   },
   {
@@ -817,11 +878,12 @@ export type EdItem = { photo: Photo; caption: L; who?: L; credit?: L };
  * credited = Astou's role is printed in the publication; unconfirmed = attribution supplied by her family, role being confirmed;
  * encounter = a personal photograph of a meeting, not a record of professional work.
  */
-export type EdStatus = 'credited' | 'unconfirmed' | 'encounter';
+export type EdStatus = 'credited' | 'unconfirmed' | 'encounter' | 'heritage';
 export const ED_STATUS: Record<EdStatus, L> = {
   credited: { en: 'Documented collaboration · published credit', es: 'Colaboración documentada · crédito publicado', fr: 'Collaboration documentée · crédit publié' },
   unconfirmed: { en: 'Attribution supplied by Astou’s family · her exact role is being confirmed', es: 'Atribución aportada por la familia de Astou · su papel exacto se está confirmando', fr: 'Attribution fournie par la famille d’Astou · son rôle exact est en cours de confirmation' },
   encounter: { en: 'Photographed encounter · not a styling credit', es: 'Encuentro fotografiado · no es un crédito de peinado', fr: 'Rencontre photographiée · pas un crédit de coiffure' },
+  heritage: { en: 'Archive piece · shown, not for sale', es: 'Pieza de archivo · se muestra, no está a la venta', fr: 'Pièce d’archive · présentée, pas à vendre' },
 };
 export type EdChapter = { id: string; title: L; sub?: L; intro: L; pending: L; items: EdItem[]; credits?: [L, string][]; note?: L; status?: EdStatus };
 
@@ -928,6 +990,37 @@ export const ED_CHAPTERS: EdChapter[] = [
     ],
   },
   {
+    id: 'heritage',
+    status: 'heritage',
+    title: { en: 'Heritage pieces', es: 'Piezas de herencia', fr: 'Pièces patrimoniales' },
+    sub: { en: 'From Astou’s archive', es: 'Del archivo de Astou', fr: 'Des archives d’Astou' },
+    intro: {
+      en: 'Ceremonial headwear kept in Astou’s collection: shown for its craftsmanship, not offered in the boutique.',
+      es: 'Tocados ceremoniales de la colección de Astou: se muestran por su artesanía, no se ofrecen en la boutique.',
+      fr: 'Des coiffes de cérémonie conservées dans la collection d’Astou : présentées pour leur savoir-faire, pas proposées à la boutique.',
+    },
+    pending: { en: '', es: '', fr: '' },
+    note: {
+      en: 'Photograph supplied by Astou’s team; the piece’s name is theirs. The photograph is cropped above the display mannequin’s face, as on the rest of the site; nothing in it is generated or retouched.',
+      es: 'Fotografía proporcionada por el equipo de Astou; el nombre de la pieza es el suyo. La foto está recortada por encima del rostro del maniquí, como en el resto del sitio; nada en ella fue generado ni retocado.',
+      fr: 'Photographie fournie par l’équipe d’Astou ; le nom de la pièce est le sien. L’image est recadrée au-dessus du visage de la tête d’exposition, comme sur le reste du site ; rien n’y est généré ni retouché.',
+    },
+    items: [
+      {
+        photo: AR('ed_heritage_black_headwrap_cropped', 'archive', { en: 'The Iman heritage piece', es: 'La pieza de herencia Iman', fr: 'La pièce patrimoniale Iman' }, {
+          en: 'Detail of a large black ceremonial headwrap on a display head: dramatic sculptural folds rising in a fan, printed with silver floral motifs.',
+          es: 'Detalle de un gran turbante ceremonial negro sobre una cabeza de exposición: pliegues esculturales que se abren en abanico, estampados con motivos florales plateados.',
+          fr: 'Détail d’un grand foulard de cérémonie noir sur une tête d’exposition : des plis sculpturaux qui s’ouvrent en éventail, imprimés de motifs floraux argentés.',
+        }, '50% 50%'),
+        caption: {
+          en: 'A black sculptural headwrap with silver floral motifs: an archival showcase of Astou’s craftsmanship.',
+          es: 'Un turbante escultural negro con motivos florales plateados: una muestra de archivo de la artesanía de Astou.',
+          fr: 'Un foulard sculptural noir aux motifs floraux argentés : une pièce d’archive qui témoigne du savoir-faire d’Astou.',
+        },
+      },
+    ],
+  },
+  {
     id: 'encounters',
     status: 'encounter',
     title: { en: 'Memorable encounters', es: 'Encuentros memorables', fr: 'Rencontres marquantes' },
@@ -944,19 +1037,9 @@ export const ED_CHAPTERS: EdChapter[] = [
       fr: 'Photographies fournies par Astou Touré ; noms indiqués par Astou et sa famille. Elles témoignent de moments personnels et n’impliquent aucune recommandation.',
     },
     items: [
-      {
-        photo: AR('ar_group_portrait', 'archive', { en: 'A moment with Iman', es: 'Un momento con Iman', fr: 'Un moment avec Iman' }, {
-          en: 'Group portrait of four women, left to right: Amy, Astou’s daughter; Alima, her style partner, in a pink patterned outfit and headscarf; Iman, in a black jacket and white shirt with a sculpted black headwrap; and Astou Touré in an orange African dress and matching headwrap.',
-          es: 'Retrato de grupo de cuatro mujeres, de izquierda a derecha: Amy, la hija de Astou; Alima, su estilista asociada, con un atuendo rosa estampado y pañuelo; Iman, con chaqueta negra, camisa blanca y un turbante negro esculpido; y Astou Touré con un vestido africano naranja y turbante a juego.',
-          fr: 'Portrait de groupe de quatre femmes, de gauche à droite : Amy, la fille d’Astou ; Alima, sa styliste partenaire, en tenue rose imprimée et foulard ; Iman, en veste noire et chemise blanche, coiffée d’un foulard noir sculpté ; et Astou Touré en robe africaine orange et foulard assorti.',
-        }, '50% 30%'),
-        who: { en: 'Amy, Alima, Iman and Astou Touré (left to right)', es: 'Amy, Alima, Iman y Astou Touré (de izquierda a derecha)', fr: 'Amy, Alima, Iman et Astou Touré (de gauche à droite)' },
-        caption: {
-          en: 'Fashion, heritage and connection: a gathering celebrating African beauty, traditional headwear and cultural expression.',
-          es: 'Moda, herencia y conexión: un encuentro que celebra la belleza africana, los tocados tradicionales y la expresión cultural.',
-          fr: 'Mode, héritage et lien : une rencontre qui célèbre la beauté africaine, les coiffes traditionnelles et l’expression culturelle.',
-        },
-      },
+      // 'ar_group_portrait' (Amy, Alima, Iman and Astou) is held back since 5 Nov 2026: the only copy supplied is AI-enhanced,
+      // so faces may be partly reconstructed, and the site must carry no AI-altered image of Iman. It returns only from an
+      // original, unenhanced photograph (APPROVALS.md item 17). The file is kept in archive/held-2026-11/.
       {
         photo: AR('ar_encounter_framed', 'archive', { en: 'A memorable encounter with Beyoncé', es: 'Un encuentro memorable con Beyoncé', fr: 'Une rencontre marquante avec Beyoncé' }, {
           en: 'Framed colour photograph: Beyoncé, in a ruffled yellow-orange outfit with a patterned waistband and a braided updo, embracing Astou Touré, dressed in black.',
@@ -1026,37 +1109,63 @@ export const PRESS = {
    No product photographs or confirmed inventory have been received yet, so the collections are presented without
    products, prices, sizes or stock. Add items here only for pieces Astou confirms she sells, with their real photographs. */
 
-export type BoutiqueItem = { photo: Photo; name: L; note?: L };
-export type BoutiqueCollection = { id: 'dresses' | 'headwear' | 'accessories'; title: L; text: L; items: BoutiqueItem[] };
+/** Boutique pieces: photographs supplied by Astou's team (Nov 2026), named from what each photograph shows. No prices, sizes,
+ * materials or stock are published until Astou confirms them; every piece is an inquiry, never a checkout. One photograph per piece:
+ * the alternate view of the teal dress (07, portrait detail) is not used. Crops only remove phone-screen overlays and the edge of
+ * a neighbouring image; supplier labels in the photographs are left as they are. Item 04 (black ceremonial headwrap) is not a
+ * boutique piece: it is in Editorial → Heritage pieces. */
+export type BoutiqueItem = { photo: Photo; desc: L };
+export type BoutiqueCollection = { id: 'headwear' | 'dresses' | 'accessories'; title: L; text: L; items: BoutiqueItem[] };
+const BQ = (file: string, name: L, desc: L, focus: string): BoutiqueItem => ({
+  photo: { id: file, file, ...M[file], kind: 'boutique', cats: [], title: name, alt: desc, focus },
+  desc,
+});
 
 export const BOUTIQUE: BoutiqueCollection[] = [
+  {
+    id: 'headwear',
+    title: { en: 'Headwraps & Turbans', es: 'Turbantes y tocados', fr: 'Foulards & turbans' },
+    text: {
+      en: 'Ready-to-wear turbans, from jeweled pleats to a twisted knot, to frame the face and complete a look.',
+      es: 'Turbantes listos para usar, de pliegues con joyas a un nudo torcido, para enmarcar el rostro y completar un look.',
+      fr: 'Des turbans prêts à porter, des plis bijoux au nœud torsadé, pour encadrer le visage et compléter une silhouette.',
+    },
+    items: [
+      BQ('bq_01_burgundy_jeweled_turban', { en: 'Burgundy jeweled turban', es: 'Turbante joya burdeos', fr: 'Turban bijou bordeaux' }, { en: 'Deep burgundy, pleated and layered, with three leaf-shaped crystal embellishments.', es: 'Burdeos intenso, plisado y en capas, con tres adornos de cristal en forma de hoja.', fr: 'Bordeaux profond, plissé et superposé, orné de trois feuilles de cristal.' }, '50% 40%'),
+      BQ('bq_02_mauve_jeweled_turban', { en: 'Mauve jeweled turban', es: 'Turbante joya malva', fr: 'Turban bijou mauve' }, { en: 'Soft mauve with overlapping pleats and crystal leaf details.', es: 'Malva suave con pliegues superpuestos y detalles de hojas de cristal.', fr: 'Mauve doux, plis superposés et feuilles de cristal.' }, '50% 40%'),
+      BQ('bq_03_rust_twist_front_turban', { en: 'Rust twist-front turban', es: 'Turbante óxido con nudo frontal', fr: 'Turban rouille noué devant' }, { en: 'Warm rust, with a twisted knot at the front and soft folds.', es: 'Color óxido cálido, con un nudo torcido al frente y pliegues suaves.', fr: 'Rouille chaud, nœud torsadé sur le devant et plis souples.' }, '50% 35%'),
+    ],
+  },
   {
     id: 'dresses',
     title: { en: 'Dresses & Modest Fashion', es: 'Vestidos y moda modesta', fr: 'Robes & mode modeste' },
     text: {
-      en: 'Dresses and modest fashion, chosen to be worn with a finished hairstyle.',
-      es: 'Vestidos y moda modesta, elegidos para lucir con un peinado terminado.',
-      fr: 'Des robes et une mode modeste, choisies pour accompagner une coiffure achevée.',
+      en: 'Long, flowing dresses with embroidery, beadwork and print, chosen to be worn with a finished hairstyle.',
+      es: 'Vestidos largos y fluidos con bordados, cuentas y estampados, elegidos para lucir con un peinado terminado.',
+      fr: 'Des robes longues et fluides, brodées, perlées ou imprimées, choisies pour accompagner une coiffure achevée.',
     },
-    items: [],
-  },
-  {
-    id: 'headwear',
-    title: { en: 'Scarves, Bonnets & Headwear', es: 'Pañuelos, gorros y tocados', fr: 'Foulards, bonnets & coiffes' },
-    text: {
-      en: 'Scarves, bonnets and head coverings, to frame the face and protect the style.',
-      es: 'Pañuelos, gorros y tocados, para enmarcar el rostro y proteger el peinado.',
-      fr: 'Foulards, bonnets et coiffes, pour encadrer le visage et protéger la coiffure.',
-    },
-    items: [],
+    items: [
+      BQ('bq_08_teal_floral_dress', { en: 'Teal floral dress', es: 'Vestido floral verde azulado', fr: 'Robe fleurie bleu canard' }, { en: 'Deep teal, long-sleeved, with repeating floral motifs and a flowing, generous silhouette.', es: 'Verde azulado intenso, de manga larga, con motivos florales repetidos y una silueta amplia y fluida.', fr: 'Bleu canard profond, manches longues, motifs floraux répétés et silhouette ample et fluide.' }, '50% 30%'),
+      BQ('bq_11_brown_dress_jeweled_neckline', { en: 'Chocolate dress, jeweled neckline', es: 'Vestido chocolate con escote joya', fr: 'Robe chocolat, encolure bijou' }, { en: 'Chocolate brown, with a U-shaped beaded embellishment across the chest, gathered sleeves and loose pleats.', es: 'Marrón chocolate, con un adorno de cuentas en forma de U sobre el pecho, mangas fruncidas y pliegues sueltos.', fr: 'Brun chocolat, broderie perlée en U sur la poitrine, manches froncées et plis souples.' }, '50% 30%'),
+      BQ('bq_14_purple_embroidered_dress', { en: 'Purple embroidered dress', es: 'Vestido morado bordado', fr: 'Robe violette brodée' }, { en: 'Soft purple, with embroidery and beadwork across the chest and sleeves, and a relaxed silhouette.', es: 'Morado suave, con bordados y cuentas en el pecho y las mangas, y una silueta holgada.', fr: 'Violet doux, broderies et perles sur la poitrine et les manches, silhouette décontractée.' }, '50% 30%'),
+      BQ('bq_17_blue_button_front_dress', { en: 'Blue button-front embroidered dress', es: 'Vestido azul bordado con botones', fr: 'Robe bleue brodée boutonnée' }, { en: 'Blue, long-sleeved, with a short button-front neckline and detailed embroidery across the chest and shoulders.', es: 'Azul, de manga larga, con escote corto abotonado y bordado detallado en el pecho y los hombros.', fr: 'Bleue, manches longues, courte patte boutonnée et broderie fine sur la poitrine et les épaules.' }, '50% 30%'),
+      BQ('bq_09_olive_floral_dress', { en: 'Olive floral dress', es: 'Vestido floral verde oliva', fr: 'Robe fleurie olive' }, { en: 'Olive green, with a rounded neckline, voluminous sleeves and delicate repeated floral motifs.', es: 'Verde oliva, con escote redondo, mangas amplias y delicados motivos florales repetidos.', fr: 'Vert olive, encolure ronde, manches volumineuses et délicats motifs floraux répétés.' }, '50% 30%'),
+      BQ('bq_15_charcoal_embroidered_dress', { en: 'Charcoal embroidered dress', es: 'Vestido gris carbón bordado', fr: 'Robe anthracite brodée' }, { en: 'Dark charcoal grey, with ornamental embroidery and beadwork on the chest and sleeves, and decorative cuffs.', es: 'Gris carbón oscuro, con bordado ornamental y cuentas en el pecho y las mangas, y puños decorativos.', fr: 'Gris anthracite, broderies ornementales et perles sur la poitrine et les manches, poignets décoratifs.' }, '50% 30%'),
+      BQ('bq_06_blue_dress_embroidered_yoke', { en: 'Blue dress, embroidered yoke', es: 'Vestido azul con canesú bordado', fr: 'Robe bleue, empiècement brodé' }, { en: 'Flowing blue, with elaborate embroidery and beadwork across the upper chest and shoulders.', es: 'Azul y fluido, con bordado elaborado y cuentas en la parte alta del pecho y los hombros.', fr: 'Bleue et fluide, broderie et perles travaillées en haut de la poitrine et sur les épaules.' }, '50% 30%'),
+      BQ('bq_16_brown_black_patterned_dress', { en: 'Brown and black patterned dress', es: 'Vestido marrón y negro estampado', fr: 'Robe à motifs brun et noir' }, { en: 'Long brown dress with black contrasting fabric at the upper chest and dark geometric motifs throughout.', es: 'Vestido largo marrón con tela negra en contraste en la parte alta del pecho y motivos geométricos oscuros.', fr: 'Robe longue brune, empiècement noir contrasté en haut de la poitrine et motifs géométriques sombres.' }, '50% 30%'),
+      BQ('bq_13_blue_embroidered_collection_dress', { en: 'Blue embroidered collection dress', es: 'Vestido azul bordado de colección', fr: 'Robe bleue brodée de collection' }, { en: 'Full length, with a decorative upper yoke, button-front neckline, embroidery and a flowing silhouette.', es: 'Largo completo, con canesú decorativo, escote abotonado, bordado y una silueta fluida.', fr: 'Longueur maxi, empiècement décoratif, patte boutonnée, broderie et silhouette fluide.' }, '50% 30%'),
+      BQ('bq_10_blue_dress_round_neck_embroidery', { en: 'Blue round-neck embroidered dress', es: 'Vestido azul bordado de cuello redondo', fr: 'Robe bleue brodée à col rond' }, { en: 'Long and gathered, with a rounded neckline and dark embroidery across the upper chest and sleeves.', es: 'Largo y fruncido, con escote redondo y bordado oscuro en la parte alta del pecho y las mangas.', fr: 'Longue et froncée, encolure ronde et broderie sombre en haut de la poitrine et sur les manches.' }, '50% 30%'),
+      BQ('bq_05_blue_dress_minimal_neckline', { en: 'Blue dress, minimal neckline', es: 'Vestido azul de escote sencillo', fr: 'Robe bleue, encolure sobre' }, { en: 'Long and loose, with a simple neckline, a narrow decorative front panel and gathered sleeves.', es: 'Largo y holgado, con un escote sencillo, un estrecho panel decorativo al frente y mangas fruncidas.', fr: 'Longue et ample, encolure simple, étroit plastron décoratif et manches froncées.' }, '50% 30%'),
+      BQ('bq_12_brown_dress_mannequin', { en: 'Dark brown dress', es: 'Vestido marrón oscuro', fr: 'Robe brun foncé' }, { en: 'Long dark brown dress with a textured bodice and a gathered, flowing skirt, shown on a display form.', es: 'Vestido largo marrón oscuro con corpiño texturizado y falda fruncida y fluida, sobre un maniquí.', fr: 'Robe longue brun foncé, corsage texturé et jupe froncée et fluide, présentée sur un mannequin.' }, '50% 35%'),
+    ],
   },
   {
     id: 'accessories',
     title: { en: 'Accessories & Boutique Finds', es: 'Accesorios y hallazgos de la boutique', fr: 'Accessoires & trouvailles' },
     text: {
-      en: 'The finishing details of a look, selected by Astou.',
-      es: 'Los detalles que completan un look, seleccionados por Astou.',
-      fr: 'Les détails qui complètent une silhouette, choisis par Astou.',
+      en: 'Scarves, bonnets and the finishing details of a look, in the boutique at 9 East 167th Street. Ask what is in store.',
+      es: 'Pañuelos, gorros y los detalles que completan un look, en la boutique del 9 East 167th Street. Pregunta qué hay en tienda.',
+      fr: 'Foulards, bonnets et détails qui complètent une silhouette, à la boutique du 9 East 167th Street. Demandez ce qui est en magasin.',
     },
     items: [],
   },

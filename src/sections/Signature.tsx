@@ -1,6 +1,6 @@
-import { BIZ, CATS, STYLES, photo, type CatId, type Photo } from '../content';
+import { BIZ, CATS, STYLES, type CatId, type Photo } from '../content';
 import { useI18n } from '../i18n';
-import { Icon, Img, Kicker, Reveal, goTo } from '../components/ui';
+import { Icon, Kicker, Reveal, goTo } from '../components/ui';
 
 type Open = (items: Photo[], i: number) => void;
 type Ask = (c: CatId) => void;
@@ -60,17 +60,17 @@ export function Signature({ onOpen, onAsk }: { onOpen: Open; onAsk: Ask }) {
       <div className="wrap feats">
         {(
           [
-            ['sculptural', ['16'], 'a'],
-            ['braiding', ['10'], 'b'],
-            ['editorial', ['12'], 'c'],
-          ] as [CatId, string[], string][]
-        ).map(([c, ids, layout], i) => {
-          // One small preview per specialty; the full set lives in the portfolio, grouped by hairstyle.
+            ['sculptural', 'a'],
+            ['braiding', 'b'],
+            ['editorial', 'c'],
+          ] as [CatId, string][]
+        ).map(([c, layout], i) => {
+          // Text only: these hairstyles are already shown in the portfolio grid on this page, and no photograph appears
+          // twice on a page. "View creations" opens the full set for the specialty in the viewer.
           const gallery = STYLES.filter((st) => st.photos[0].cats.includes(c)).flatMap((st) => st.photos);
           const nStyles = STYLES.filter((st) => st.photos[0].cats.includes(c)).length;
-          const shown = ids.map(photo);
           return (
-            <article key={c} id={`style-${c}`} className={`feat feat-${layout}`}>
+            <article key={c} id={`style-${c}`} className={`feat feat-${layout} feat-text-only`}>
               <Reveal className="feat-copy">
                 <p className="feat-n">0{i + 3}</p>
                 <h3 className="h3">{t(CATS[c].title)}</h3>
@@ -84,15 +84,6 @@ export function Signature({ onOpen, onAsk }: { onOpen: Open; onAsk: Ask }) {
                   </button>
                 </div>
               </Reveal>
-              <div className="feat-imgs">
-                {shown.map((p, k) => (
-                  <Reveal key={p.id} className={`feat-img fi-${k}`} delay={k * 90}>
-                    <button type="button" onClick={() => onOpen(gallery, gallery.indexOf(p))} aria-label={`${t({ en: 'Enlarge', es: 'Ampliar', fr: 'Agrandir' })}: ${t(p.title)}`}>
-                      <Img p={p} sizes="(max-width: 899px) 40vw, 220px" />
-                    </button>
-                  </Reveal>
-                ))}
-              </div>
             </article>
           );
         })}

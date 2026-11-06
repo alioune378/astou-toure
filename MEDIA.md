@@ -171,3 +171,21 @@ nothing is redrawn. The uncropped files are kept in `archive/uncropped-2026-11/`
 | `lk_updo_front` Sculpted curl updo, front | **Not shown.** The face is at the centre of the photo and the curls frame it, so no crop works. The look keeps its back and side views |
 
 Cropped files carry a `_cropped` suffix (e.g. `astou_13_mannequin_black_editorial_sculpture_cropped`). Photos are cached by browsers for a year, so a changed photo must always get a new file name.
+
+## Boutique, braided updo and four videos (5 Nov 2026)
+
+Boutique (17 photographs, `archive/boutique-originals-2026-11/`): 15 published on `#/boutique` as `bq_*`, one photograph
+per piece. Not published as products: 04 (black ceremonial headwrap: Editorial → Heritage pieces, as
+`ed_heritage_black_headwrap_cropped`, cropped above the display mannequins' faces) and 07 (second view of the teal dress;
+08 is used). Crops only: 01 (inset thumbnail of another photo, bottom), 03 (strip of other images, bottom), 08 (edge of
+a neighbouring image, left), 09, 15, 16, 17 (phone-screen "Reply" bar and shading, bottom). No colour or content edits.
+
+Braided updo (2 photographs): `astou_31` (back) and `astou_32` (side detail), one hairstyle in the portfolio.
+
+Videos (supplied without sound, re-encoded H.264, no audio track): `spiral-updo-at-work` (21 s), `spiral-updo-finished`
+(5 s, loops), `braids-curly-finished` (52 s), `braids-young-client-back` (cut to 1.8 s from 2.3 s: from 2.0 s the child
+turns and her face shows in profile; loops). The cards say "No sound" instead of offering a sound button.
+
+Repeats audit: a perceptual comparison of every published photo found `astou_30` to be the same chignon as `astou_11`
+(near-identical angle); they are now one hairstyle with two views. On every page, each photograph appears once (checked
+in CI). The portfolio specialties and the editorial index no longer repeat photos shown lower on the same page.

@@ -7,14 +7,21 @@ import { useI18n } from '../i18n';
 export const reducedMotion = () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ------------------------------------------------------------- Pages
-   The site has three pages, addressed by the URL hash: home ("#/"), the full portfolio ("#/portfolio") and the
-   editorial archive ("#/editorial"). goTo() finds the page that holds a section, opens it, then scrolls. */
+   The site has four pages, addressed by the URL hash: home ("#/"), the full portfolio ("#/portfolio"), the
+   editorial archive ("#/editorial") and the boutique ("#/boutique"). goTo() finds the page that holds a section, opens it, then scrolls. */
 
-export type View = 'home' | 'portfolio' | 'editorial';
+export type View = 'home' | 'portfolio' | 'editorial' | 'boutique';
 const PORTFOLIO_IDS = ['portfolio-top', 'portfolio', 'looks', 'motion', 'signature', 'nappy-boho'];
 export const viewOf = (id: string): View =>
-  PORTFOLIO_IDS.includes(id) || id.startsWith('style-') || id.startsWith('cat-') ? 'portfolio' : id.startsWith('editorial') || id.startsWith('ed-') ? 'editorial' : 'home';
-export const viewFromHash = (): View => (location.hash.startsWith('#/portfolio') ? 'portfolio' : location.hash.startsWith('#/editorial') ? 'editorial' : 'home');
+  PORTFOLIO_IDS.includes(id) || id.startsWith('style-') || id.startsWith('cat-')
+    ? 'portfolio'
+    : id.startsWith('editorial') || id.startsWith('ed-')
+      ? 'editorial'
+      : id === 'boutique-top' || id.startsWith('bq-')
+        ? 'boutique'
+        : 'home';
+export const viewFromHash = (): View =>
+  location.hash.startsWith('#/portfolio') ? 'portfolio' : location.hash.startsWith('#/editorial') ? 'editorial' : location.hash.startsWith('#/boutique') ? 'boutique' : 'home';
 let pending: string | null = null;
 /** Called by the App after a page has rendered. */
 export function flushPending() {

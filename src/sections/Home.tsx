@@ -1,6 +1,6 @@
 import { BIZ, BOUTIQUE, ED_CHAPTERS, ED_FEATURE, ED_STATUS, KIND_LABEL, PRESS, SIGNATURE_IDS, STYLES, photo, type Photo } from '../content';
 import { useI18n, type L } from '../i18n';
-import { Icon, Img, Kicker, Reveal, goTo, openView } from '../components/ui';
+import { Icon, Img, Kicker, Reveal, openView } from '../components/ui';
 
 type Open = (items: Photo[], i: number) => void;
 
@@ -182,6 +182,7 @@ export function Encounters({ onOpen }: { onOpen: Open }) {
 
 export function AstouBoutique({ onAsk }: { onAsk: (collection: L) => void }) {
   const { t } = useI18n();
+  const count = (n: number) => `${n} ${n === 1 ? t({ en: 'piece', es: 'pieza', fr: 'pièce' }) : t({ en: 'pieces', es: 'piezas', fr: 'pièces' })}`;
   return (
     <section id="boutique" className="boutique sec" aria-labelledby="bq-h">
       <div className="wrap">
@@ -204,7 +205,10 @@ export function AstouBoutique({ onAsk }: { onAsk: (collection: L) => void }) {
           {BOUTIQUE.map((c, i) => (
             <Reveal as="li" key={c.id} className={`bq-item bq-${c.id}`} delay={i * 100}>
               {c.items[0] ? (
-                <Img p={c.items[0].photo} sizes="(max-width: 899px) 100vw, 30vw" />
+                <button type="button" className="bq-cover" onClick={() => openView('boutique', `bq-${c.id}`)} aria-label={`${t(c.title)} — ${count(c.items.length)}`}>
+                  <Img p={c.items[0].photo} sizes="(max-width: 759px) 100vw, 30vw" />
+                  <span className="bq-count">{count(c.items.length)}</span>
+                </button>
               ) : (
                 <div className="bq-vis" aria-hidden="true">
                   <span className="bq-num">0{i + 1}</span>
@@ -212,9 +216,15 @@ export function AstouBoutique({ onAsk }: { onAsk: (collection: L) => void }) {
               )}
               <h3>{t(c.title)}</h3>
               <p>{t(c.text)}</p>
-              <button type="button" className="link-btn" onClick={() => onAsk(c.title)}>
-                {t({ en: 'Ask about this collection', es: 'Preguntar por esta colección', fr: 'Se renseigner sur cette collection' })} →
-              </button>
+              {c.items.length ? (
+                <button type="button" className="link-btn" onClick={() => openView('boutique', `bq-${c.id}`)}>
+                  {t({ en: 'See the pieces', es: 'Ver las piezas', fr: 'Voir les pièces' })} →
+                </button>
+              ) : (
+                <button type="button" className="link-btn" onClick={() => onAsk(c.title)}>
+                  {t({ en: 'Ask about this collection', es: 'Preguntar por esta colección', fr: 'Se renseigner sur cette collection' })} →
+                </button>
+              )}
             </Reveal>
           ))}
         </ul>
@@ -226,8 +236,8 @@ export function AstouBoutique({ onAsk }: { onAsk: (collection: L) => void }) {
           })}
         </p>
         <div className="bq-ctas">
-          <button type="button" className="btn btn-onyx" onClick={() => goTo('request')}>
-            {t({ en: 'Contact Astou', es: 'Contactar a Astou', fr: 'Contacter Astou' })}
+          <button type="button" className="btn btn-onyx" onClick={() => openView('boutique')}>
+            {t({ en: 'Explore the boutique', es: 'Explorar la boutique', fr: 'Découvrir la boutique' })}
           </button>
           <a className="btn btn-line" href={BIZ.instagram} target="_blank" rel="noopener noreferrer">
             {Icon.ig} Instagram

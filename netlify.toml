@@ -8,6 +8,26 @@
   # "netlify" = requests are submitted to Netlify Forms; turn on email notifications to Astou in Netlify.
   VITE_FORMS_MODE = "netlify"
 
+# Official address: https://astoustyle.com (primary domain in Netlify, Netlify DNS).
+# www and the old netlify.app address answer with a permanent redirect to it, keeping the path and #/ links.
+[[redirects]]
+  from = "https://www.astoustyle.com/*"
+  to = "https://astoustyle.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.astoustyle.com/*"
+  to = "https://astoustyle.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://astou-toure.netlify.app/*"
+  to = "https://astoustyle.com/:splat"
+  status = 301
+  force = true
+
 # Pre-launch: keep the site out of search engines until Astou approves the content.
 # At launch: delete this block AND the robots meta tag in index.html, and update public/robots.txt.
 [[headers]]

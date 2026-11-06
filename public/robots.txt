@@ -1,5 +1,8 @@
+# Pre-launch: the site stays out of search engines until Astou approves it (see README).
 User-agent: *
 Disallow: /
-# At launch replace with:
+# At launch replace the two lines above with:
 # User-agent: *
 # Allow: /
+
+Sitemap: https://astoustyle.com/sitemap.xml

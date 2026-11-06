@@ -1,4 +1,4 @@
-import { PRESS, photo, type CatId } from '../content';
+import { photo, type CatId } from '../content';
 import { useI18n } from '../i18n';
 import { Img, goTo, openView } from '../components/ui';
 
@@ -46,9 +46,6 @@ export function Cover(_: { onStyle?: (c: CatId) => void }) {
           ))}
           <li className="cl-ed">
             <button type="button" onClick={() => goTo('in-print')}>
-              <span className="cl-thumb" aria-hidden="true">
-                <Img p={PRESS.cover} sizes="64px" />
-              </span>
               <span className="cl-ed-t">
                 <span className="cl-ed-k">{t({ en: 'In print · 2007–2008', es: 'En papel · 2007–2008', fr: 'Dans la presse · 2007–2008' })}</span>
                 <span className="cl-t">Salon Digest</span>

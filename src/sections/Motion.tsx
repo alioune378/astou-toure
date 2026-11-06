@@ -62,9 +62,9 @@ export function Motion({ onAsk }: { onAsk: (cat: CatId, look: L, photo: string) 
 
         <p className="note">
           {t({
-            en: 'Filmed by Astou and her team. Colour lightly adjusted; the phone audio is replaced by an original instrumental.',
-            es: 'Grabados por Astou y su equipo. Color ligeramente ajustado; el audio del teléfono se sustituyó por una pieza instrumental original.',
-            fr: 'Filmées par Astou et son équipe. Couleurs légèrement ajustées ; le son du téléphone est remplacé par une musique instrumentale originale.',
+            en: 'Filmed by Astou and her team. Colour lightly adjusted. Where a clip has sound, the phone audio is replaced by an original instrumental; the others play without sound.',
+            es: 'Grabados por Astou y su equipo. Color ligeramente ajustado. Cuando un video tiene sonido, el audio del teléfono se sustituyó por una pieza instrumental original; los demás se reproducen sin sonido.',
+            fr: 'Filmées par Astou et son équipe. Couleurs légèrement ajustées. Quand une vidéo a du son, celui du téléphone est remplacé par une musique instrumentale originale ; les autres sont muettes.',
           })}
         </p>
       </div>
@@ -118,7 +118,7 @@ function VideoCard({
   useEffect(() => {
     const v = vid.current;
     if (!playing || !v) return;
-    v.muted = !sound;
+    v.muted = clip.silent ? true : !sound;
     v.play().catch(() => {
       // Some browsers refuse unmuted playback; fall back to muted rather than failing.
       v.muted = true;
@@ -128,7 +128,8 @@ function VideoCard({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playing]);
   useEffect(() => {
-    if (vid.current) vid.current.muted = !sound;
+    if (vid.current && !clip.silent) vid.current.muted = !sound;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sound]);
 
   // Pause when the card leaves the screen or the page is hidden.
@@ -168,13 +169,15 @@ function VideoCard({
             poster={poster(clip)}
             controls
             playsInline
-            muted={!sound}
+            loop={clip.loop}
+            muted={clip.silent ? true : !sound}
             preload="metadata"
             width={clip.w}
             height={clip.h}
             aria-label={title}
             onEnded={onStop}
             onVolumeChange={(e) => {
+              if (clip.silent) return;
               const m = (e.target as HTMLVideoElement).muted;
               if (m === sound) onSound(!m);
             }}
@@ -204,9 +207,13 @@ function VideoCard({
         </button>
         {playing && (
           <div className="vc-tools">
-            <button type="button" className="vc-tool" aria-pressed={sound} onClick={() => onSound(!sound)}>
-              {sound ? t({ en: 'Sound off', es: 'Quitar sonido', fr: 'Couper le son' }) : t({ en: 'Sound on', es: 'Activar sonido', fr: 'Activer le son' })}
-            </button>
+            {clip.silent ? (
+              <span className="vc-tool is-static">{t({ en: 'No sound', es: 'Sin sonido', fr: 'Sans son' })}</span>
+            ) : (
+              <button type="button" className="vc-tool" aria-pressed={sound} onClick={() => onSound(!sound)}>
+                {sound ? t({ en: 'Sound off', es: 'Quitar sonido', fr: 'Couper le son' }) : t({ en: 'Sound on', es: 'Activar sonido', fr: 'Activer le son' })}
+              </button>
+            )}
             <button type="button" className="vc-tool" onClick={fullscreen}>
               {t({ en: 'Full screen', es: 'Pantalla completa', fr: 'Plein écran' })}
             </button>

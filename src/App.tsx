@@ -11,6 +11,7 @@ import { Looks } from './sections/Looks';
 import { Motion } from './sections/Motion';
 import { Artist, Private, Request, Visit } from './sections/More';
 import { AstouBoutique, Encounters, InPrint, PageHead, SignatureWork } from './sections/Home';
+import { BoutiqueCatalog, BoutiqueInquiry } from './sections/Boutique';
 
 export type Kind = 'salon' | 'location' | 'event';
 type Preset = { kind?: Kind; style?: CatId; look?: L; photo?: string; n: number };
@@ -19,12 +20,14 @@ type Preset = { kind?: Kind; style?: CatId; look?: L; photo?: string; n: number 
  * Three pages (hash-addressed, so links can be shared and the back button works):
  *   home       — the story: opening, artist, signature work, in print, encounters, boutique, private styling, booking.
  *   portfolio  — The Art of Astou in full: every hairstyle by collection, featured looks, videos, specialties.
- *   editorial  — the editorial archive: published credits, couture headwear, notable encounters.
+ *   editorial  — the editorial archive: published credits, couture headwear, heritage pieces, notable encounters.
+ *   boutique   — Astou Boutique: every piece by collection, with an inquiry form (no checkout).
  */
 export function App() {
   const [view, setView] = useState<View>(viewFromHash);
   const [lb, setLb] = useState<{ items: Photo[]; i: number } | null>(null);
   const [preset, setPreset] = useState<Preset | undefined>();
+  const [bqPreset, setBqPreset] = useState<{ file: string; n: number } | undefined>();
 
   useEffect(() => {
     document.documentElement.classList.add('js');
@@ -43,6 +46,10 @@ export function App() {
     window.setTimeout(() => goTo('request'), 40);
   }, []);
   const askStyle = useCallback((c: CatId) => ask({ style: c }), [ask]);
+  const askPiece = useCallback((file: string) => {
+    setBqPreset((old) => ({ file, n: (old?.n ?? 0) + 1 }));
+    window.setTimeout(() => goTo('bq-inquiry'), 40);
+  }, []);
 
   return (
     <>
@@ -96,6 +103,23 @@ export function App() {
             />
             <Editorial onOpen={open} />
             <Request preset={preset} />
+          </>
+        )}
+        {view === 'boutique' && (
+          <>
+            <PageHead
+              id="boutique-top"
+              kicker={{ en: 'Astou Boutique', es: 'Astou Boutique', fr: 'Astou Boutique' }}
+              title={{ en: 'Style', es: 'Estilo', fr: 'Le style' }}
+              em={{ en: 'beyond the salon', es: 'más allá del salón', fr: 'au-delà du salon' }}
+              lede={{
+                en: 'Headwraps, turbans and long, flowing dresses, chosen to complete a finished hairstyle. Each piece is shown once; ask Astou about availability, sizes and price.',
+                es: 'Turbantes y vestidos largos y fluidos, elegidos para completar un peinado terminado. Cada pieza aparece una sola vez; pregunta a Astou por la disponibilidad, las tallas y el precio.',
+                fr: 'Turbans et robes longues et fluides, choisis pour compléter une coiffure achevée. Chaque pièce est présentée une fois ; demandez à Astou disponibilités, tailles et prix.',
+              }}
+            />
+            <BoutiqueCatalog onOpen={open} onAsk={askPiece} />
+            <BoutiqueInquiry preset={bqPreset} />
           </>
         )}
       </main>

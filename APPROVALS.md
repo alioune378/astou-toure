@@ -53,5 +53,5 @@
    4. **Video soundtracks.** Is the music on each clip licensed (or original)? If not, the audio will be removed and replaced with licensed music.
    5. **Salon Digest rights.** The cover and the feature page belong to the publication and its photographer. Astou's authorization covers her own use; confirm that showing the pages on her website is acceptable. "MHB" is printed as the salon; confirm Astou was working there at the time.
    6. **Client consent for the new photos:** gold ornament updo (04, 05; other clients are visible behind her) and crystal ornament chignon (06).
-   7. **Appointment delivery.** See README "Appointment requests": automatic delivery is switched on only after a test request is stored and Astou (or her assistant) receives the email notification.
+   7. **Appointment delivery: one step left.** Requests are now stored in Netlify Forms. Tested 6 Nov 2026 (01:15 UTC) on the live site: the test request was accepted and stored with every field, then deleted. **Add the email notification** (README, "Appointment requests"), otherwise nobody is emailed when a request arrives.
    8. **Custom domain.** astoustyle.com is not connected to the Netlify site yet: add it under Domain management once the DNS is available.

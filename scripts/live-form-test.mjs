@@ -24,7 +24,7 @@ await page.waitForSelector('.rq-done, .rq-status.is-error', { timeout: 20000 });
 const text = (await page.locator('.rq-done, .rq-status').first().innerText()).replace(/\s+/g, ' ');
 console.log(`POST / status: ${post}`);
 console.log(`Page says: ${text.slice(0, 200)}`);
-const ok = post === 200 && /Request received/.test(text);
+const ok = post === 200 && /request received/i.test(text);
 console.log(ok ? 'PASS  the request was accepted by Netlify and the page says so' : 'FAIL  the request was not accepted');
 await browser.close();
 process.exit(ok ? 0 : 1);

@@ -1,0 +1,37 @@
+name: Live site audit
+
+# Run by hand after a deploy: checks https://astoustyle.com as visitors see it (certificate, redirects, SEO tags,
+# every page on phone and desktop, media), and submits one marked test appointment request and one marked test
+# boutique inquiry. Delete the two test entries in Netlify afterwards. Results go to the ci-live-site branch.
+on:
+  workflow_dispatch:
+    inputs:
+      submit:
+        description: Submit the two test forms (yes/no)
+        default: 'yes'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: |
+          mkdir -p ci
+          npm install --no-save --no-audit --no-fund playwright@1.49.1 > /dev/null
+          npx playwright install --with-deps chromium > /dev/null
+          set -o pipefail
+          SUBMIT="${{ inputs.submit }}" node scripts/live-site-audit.mjs 2>&1 | tee ci/live-site.log
+      - name: Publish result
+        if: always()
+        run: |
+          echo "run=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" > ci/00-run.txt
+          cd ci && git init -q && git config user.name astou-ci && git config user.email astou-ci@users.noreply.github.com
+          git checkout -q -b ci-live-site && git add -A && git commit -q -m "Live site audit"
+          git push -q -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" ci-live-site

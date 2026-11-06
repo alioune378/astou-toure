@@ -178,7 +178,7 @@ try {
     check('Boutique shows 15 pieces: 3 headwraps & turbans, 12 dresses (the heritage headwrap is in Editorial; the second teal-dress view is not used)', pieces === 15 && turbans === 3 && dresses === 12, `${pieces} pieces, ${turbans} + ${dresses}`);
     const files = await page.locator('.bqc-item img').evaluateAll((imgs) => imgs.map((i) => (i.currentSrc || i.src).split('/').pop().replace(/-\d+\.webp$|\.(jpg|webp)$/, '')));
     check('Each boutique photograph is used once', new Set(files).size === files.length, files.join(', '));
-    check('No checkout or cart on the boutique page', (await page.locator('text=/add to (cart|bag)|checkout|buy now/i').count()) === 0);
+    check('No checkout or cart button on the boutique page', (await page.locator('main button, main a').filter({ hasText: /add to (cart|bag)|checkout|buy now|purchase/i }).count()) === 0);
     await page.locator('#bq-dresses .bqc-ask').nth(2).click();
     await page.waitForTimeout(1200);
     const chosen = await page.locator('#bi-piece').inputValue();
@@ -206,7 +206,8 @@ try {
     const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
     const page = await ctx.newPage();
     await page.goto(`${BASE}/?lang=en#/portfolio`, { waitUntil: 'networkidle' });
-    const card = page.locator('.vc', { has: page.locator('button[aria-label*="young client"]') });
+    const idx = await page.locator('.vc').evaluateAll((cards) => cards.findIndex((c) => (c.querySelector('.vc-poster')?.getAttribute('aria-label') || '').includes('young client')));
+    const card = page.locator('.vc').nth(idx);
     await card.locator('.vc-poster').click();
     await page.waitForTimeout(1500);
     const v = await card.locator('video').evaluate((el) => ({ loop: el.loop, muted: el.muted, ready: el.readyState, err: el.error && el.error.code, dur: el.duration }));

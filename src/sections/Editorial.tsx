@@ -1,4 +1,4 @@
-import { ED_CREDITS, ED_CREDIT_LINES, ED_FEATURE, ED_GALLERY, ED_PAGE, ED_CHAPTERS, type EdChapter, type Photo } from '../content';
+import { ED_CREDITS, ED_CREDIT_LINES, ED_FEATURE, ED_GALLERY, ED_PAGE, ED_CHAPTERS, ED_STATUS, type EdChapter, type Photo } from '../content';
 import { useI18n } from '../i18n';
 import { Img, Kicker, Reveal, goTo } from '../components/ui';
 
@@ -21,7 +21,7 @@ export function Editorial({ onOpen }: { onOpen: Open }) {
     <section id="editorial" className="ed sec" aria-labelledby="ed-h">
       <div className="wrap">
         <header className="ed-head">
-          <Kicker n="05">{t({ en: 'Editorial & legacy', es: 'Editorial y trayectoria', fr: 'Éditorial & parcours' })}</Kicker>
+          <Kicker n="02">{t({ en: 'Editorial & legacy', es: 'Editorial y trayectoria', fr: 'Éditorial & parcours' })}</Kicker>
           <h2 id="ed-h" className="h2 ed-h">
             {t({ en: 'Beyond the salon.', es: 'Más allá del salón.', fr: 'Au-delà du salon.' })}
             <br />
@@ -87,6 +87,7 @@ export function Editorial({ onOpen }: { onOpen: Open }) {
           </Reveal>
           <div className="case-copy">
             <p className="case-k">{t({ en: 'Published credit', es: 'Crédito publicado', fr: 'Crédit publié' })}</p>
+            <p className="enc-status is-credited">{t(ED_STATUS.credited)}</p>
             <h3 id="case-h" className="case-h">Fractal Affinities</h3>
             <p className="case-text">
               {t({
@@ -187,6 +188,7 @@ function Chapter({ c, n, onOpen, inline }: { c: EdChapter; n: number; onOpen: Op
             {c.sub && <span className="ed-chap-sub">{t(c.sub)}</span>}
           </h3>
           <p className="ed-chap-t">{t(c.intro)}</p>
+          {c.status && <p className={`enc-status is-${c.status}`}>{t(ED_STATUS[c.status])}</p>}
         </div>
       )}
       {c.items.length ? (

@@ -34,7 +34,7 @@ export function Artist() {
           </figcaption>
         </figure>
         <div className="artist-copy">
-          <Kicker n="06">{t({ en: 'Meet the artist', es: 'Conoce a la artista', fr: 'Rencontrez l’artiste' })}</Kicker>
+          <Kicker n="01">{t({ en: 'The artist', es: 'La artista', fr: 'L’artiste' })}</Kicker>
           <h2 id="artist-h" className="h2 artist-h">
             {t({ en: 'The hands', es: 'Las manos', fr: 'Les mains' })}
             <br />
@@ -71,7 +71,7 @@ export function Artist() {
 
 /* ============================================================ 04 — Private clientele */
 
-export function Private({ onAsk }: { onAsk: () => void }) {
+export function Private({ onAsk, onAskEvent }: { onAsk: () => void; onAskEvent?: () => void }) {
   const { t } = useI18n();
   const services: [L, L][] = [
     [{ en: 'Private hairstyling', es: 'Peinado privado', fr: 'Coiffure privée' }, { en: 'One-to-one appointments, in a setting of your choice.', es: 'Citas individuales, en el lugar que elijas.', fr: 'Des rendez-vous en tête-à-tête, dans le lieu de votre choix.' }],
@@ -89,7 +89,7 @@ export function Private({ onAsk }: { onAsk: () => void }) {
         <figcaption className="private-cap">{t({ en: 'Rolled updo, on a client', es: 'Recogido de rizos, en una clienta', fr: 'Chignon roulé, sur une cliente' })}</figcaption>
       </figure>
       <div className="wrap private-in">
-        <Kicker n="07">{t({ en: 'Private clientele', es: 'Clientela privada', fr: 'Clientèle privée' })}</Kicker>
+        <Kicker n="06">{t({ en: 'Private & personal styling', es: 'Peinado privado y personal', fr: 'Coiffure privée & personnalisée' })}</Kicker>
         <h2 id="private-h" className="h2">
           {t({ en: 'By appointment.', es: 'Con cita previa.', fr: 'Sur rendez-vous.' })} <em>{t({ en: 'Wherever you are.', es: 'Donde tú estés.', fr: 'Où que vous soyez.' })}</em>
         </h2>
@@ -109,9 +109,16 @@ export function Private({ onAsk }: { onAsk: () => void }) {
             </Reveal>
           ))}
         </ol>
-        <button type="button" className="btn btn-gold" onClick={onAsk}>
-          {t({ en: 'Request a custom quote', es: 'Pide un presupuesto a tu medida', fr: 'Demander un devis personnalisé' })}
-        </button>
+        <div className="private-ctas">
+          <button type="button" className="btn btn-gold" onClick={onAsk}>
+            {t({ en: 'Request a private appointment', es: 'Pedir una cita privada', fr: 'Demander un rendez-vous privé' })}
+          </button>
+          {onAskEvent && (
+            <button type="button" className="btn btn-line" onClick={onAskEvent}>
+              {t({ en: 'Event or out-of-state styling', es: 'Evento o fuera del estado', fr: 'Événement ou hors de l’État' })}
+            </button>
+          )}
+        </div>
       </div>
     </section>
   );
@@ -119,7 +126,7 @@ export function Private({ onAsk }: { onAsk: () => void }) {
 
 /* ============================================================ 05 — Request */
 
-export function Request({ preset }: { preset?: { kind?: 'salon' | 'location'; style?: CatId; look?: L; photo?: string; n: number } }) {
+export function Request({ preset }: { preset?: { kind?: 'salon' | 'location' | 'event'; style?: CatId; look?: L; photo?: string; n: number } }) {
   const { t } = useI18n();
   const steps: L[] = [
     { en: 'Send your request with the style, date and place you have in mind.', es: 'Envía tu solicitud con el estilo, la fecha y el lugar que tienes en mente.', fr: 'Envoyez votre demande avec la coiffure, la date et le lieu envisagés.' },
@@ -130,7 +137,7 @@ export function Request({ preset }: { preset?: { kind?: 'salon' | 'location'; st
     <section id="request" className="request sec" aria-labelledby="req-h">
       <div className="wrap req-grid">
         <div className="req-intro">
-          <Kicker n="08">{t({ en: 'Appointments', es: 'Citas', fr: 'Rendez-vous' })}</Kicker>
+          <Kicker n="07">{t({ en: 'Booking', es: 'Citas', fr: 'Rendez-vous' })}</Kicker>
           <h2 id="req-h" className="h2">
             {t({ en: 'Request a', es: 'Pide una', fr: 'Demander un' })} <em>{t({ en: 'private appointment', es: 'cita privada', fr: 'rendez-vous privé' })}</em>
           </h2>

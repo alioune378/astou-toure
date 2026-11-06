@@ -12,7 +12,7 @@ export function Signature({ onOpen, onAsk }: { onOpen: Open; onAsk: Ask }) {
     <section id="signature" className="sig sec" aria-labelledby="sig-h">
       <div className="wrap">
         <header className="sec-head">
-          <Kicker n="01">{t({ en: 'Specialties', es: 'Especialidades', fr: 'Spécialités' })}</Kicker>
+          <Kicker n="04">{t({ en: 'Specialties', es: 'Especialidades', fr: 'Spécialités' })}</Kicker>
           <h2 id="sig-h" className="h2">
             {t({ en: 'Signature', es: 'Arte capilar', fr: 'Art capillaire' })} <em>{t({ en: 'hair artistry', es: 'de autor', fr: 'signature' })}</em>
           </h2>

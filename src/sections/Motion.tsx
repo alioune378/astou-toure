@@ -20,7 +20,7 @@ export function Motion({ onAsk }: { onAsk: (cat: CatId, look: L, photo: string) 
       <div className="wrap">
         <header className="sec-head sec-head-row">
           <div>
-            <Kicker n="04">{t({ en: 'Videos', es: 'Videos', fr: 'Vidéos' })}</Kicker>
+            <Kicker n="03">{t({ en: 'Videos', es: 'Videos', fr: 'Vidéos' })}</Kicker>
             <h2 id="mo-h" className="h2">
               {t({ en: 'The artistry', es: 'El arte', fr: 'L’art' })} <em>{t({ en: 'in motion', es: 'en movimiento', fr: 'en mouvement' })}</em>
             </h2>

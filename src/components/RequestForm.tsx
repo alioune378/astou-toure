@@ -11,7 +11,8 @@ import { Icon } from './ui';
  */
 export const FORMS_MODE: 'demo' | 'netlify' = import.meta.env.VITE_FORMS_MODE === 'netlify' ? 'netlify' : 'demo';
 
-type Kind = 'salon' | 'location';
+type Kind = 'salon' | 'location' | 'event';
+const KIND_EN: Record<Kind, string> = { salon: 'Salon appointment — 9 East 167th Street, Bronx', location: 'Private on-location appointment (New York)', event: 'Out-of-state or special-event styling' };
 
 const T = {
   required: { en: 'Required.', es: 'Campo obligatorio.', fr: 'Champ requis.' },
@@ -93,7 +94,7 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
     const e: Record<string, L> = {};
     const v = (k: string) => String(fd.get(k) ?? '').trim();
     for (const k of ['full-name', 'phone', 'email', 'hairstyle', 'preferred-date', 'preferred-time', 'details']) if (!v(k)) e[k] = T.required;
-    if (kind === 'location') for (const k of ['service-city', 'service-state', 'service-place']) if (!v(k)) e[k] = T.required;
+    if (kind !== 'salon') for (const k of ['service-city', 'service-state', 'service-place']) if (!v(k)) e[k] = T.required;
     if (v('email') && !EMAIL_RE.test(v('email'))) e.email = T.email;
     if (v('phone') && v('phone').replace(/\D/g, '').length < 7) e.phone = T.phone;
     if (v('preferred-date') && v('preferred-date') < today()) e['preferred-date'] = T.date;
@@ -116,7 +117,7 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
             '',
             'Me gustaría pedir una cita.',
             '',
-            `Tipo: ${kind === 'salon' ? 'Cita en el salón (Bronx)' : 'Cita privada a domicilio / en el lugar'}`,
+            `Tipo: ${kind === 'salon' ? 'Cita en el salón (Bronx)' : kind === 'location' ? 'Cita privada a domicilio / en el lugar (Nueva York)' : 'Peinado fuera del estado o para un evento especial'}`,
             `Peinado: ${styleLabel(v('hairstyle'))}`,
             look ? `Look de referencia: ${t(look)}` : null,
             refPhoto ? `Foto de referencia: ${refPhoto ? `${window.location.origin}${refPhoto}` : ''}` : null,
@@ -125,6 +126,7 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
             `Lugar: ${where}`,
             v('event-type') ? `Ocasión: ${label(v('event-type'), EVENTS)}` : null,
             v('hair-notes') ? `Cabello (largo, textura): ${v('hair-notes')}` : null,
+            fd.get('confidential') ? 'CONFIDENCIAL: por favor, traten esta solicitud con total discreción.' : null,
             v('discretion') ? `Privacidad / discreción: ${v('discretion')}` : null,
             '',
             `Detalles: ${v('details')}`,
@@ -139,7 +141,7 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
             '',
             'Je souhaite demander un rendez-vous :',
             '',
-            `Type : ${kind === 'salon' ? 'Rendez-vous au salon (Bronx)' : 'Rendez-vous privé à domicile / sur place'}`,
+            `Type : ${kind === 'salon' ? 'Rendez-vous au salon (Bronx)' : kind === 'location' ? 'Rendez-vous privé à domicile / sur place (New York)' : 'Coiffure hors de l’État ou pour un événement'}`,
             `Coiffure : ${styleLabel(v('hairstyle'))}`,
             look ? `Look de référence : ${t(look)}` : null,
             refPhoto ? `Photo de référence : ${refPhoto ? `${window.location.origin}${refPhoto}` : ''}` : null,
@@ -148,6 +150,7 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
             `Lieu : ${where}`,
             v('event-type') ? `Occasion : ${label(v('event-type'), EVENTS)}` : null,
             v('hair-notes') ? `Cheveux (longueur, texture) : ${v('hair-notes')}` : null,
+            fd.get('confidential') ? 'CONFIDENTIEL : merci de traiter cette demande en toute discrétion.' : null,
             v('discretion') ? `Confidentialité / discrétion : ${v('discretion')}` : null,
             '',
             `Détails : ${v('details')}`,
@@ -161,7 +164,7 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
             '',
             'I would like to request an appointment:',
             '',
-            `Type: ${kind === 'salon' ? 'Salon appointment (Bronx)' : 'Private on-location appointment'}`,
+            `Type: ${KIND_EN[kind]}`,
             `Hairstyle: ${styleLabel(v('hairstyle'))}`,
             look ? `Reference look: ${t(look)}` : null,
             refPhoto ? `Reference photo: ${refPhoto ? `${window.location.origin}${refPhoto}` : ''}` : null,
@@ -170,6 +173,7 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
             `Location: ${where}`,
             v('event-type') ? `Occasion: ${label(v('event-type'), EVENTS)}` : null,
             v('hair-notes') ? `Hair (length, texture): ${v('hair-notes')}` : null,
+            fd.get('confidential') ? 'CONFIDENTIAL: please keep this request strictly private.' : null,
             v('discretion') ? `Privacy / discretion: ${v('discretion')}` : null,
             '',
             `Details: ${v('details')}`,
@@ -250,16 +254,16 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
   if ((status === 'ready' || status === 'sent') && summary) {
     return (
       <div className="rq-done" role="status" aria-live="polite">
-        <p className="rq-done-k">{status === 'sent' ? t({ en: 'Request sent', es: 'Solicitud enviada', fr: 'Demande envoyée' }) : t({ en: 'One last step', es: 'Un último paso', fr: 'Dernière étape' })}</p>
+        <p className="rq-done-k">{status === 'sent' ? t({ en: 'Request received', es: 'Solicitud recibida', fr: 'Demande reçue' }) : t({ en: 'One last step', es: 'Un último paso', fr: 'Dernière étape' })}</p>
         <h3 className="rq-done-h">
           {t({ en: 'Thank you', es: 'Gracias', fr: 'Merci' })}, {summary.name}.
         </h3>
         {status === 'sent' ? (
           <p>
             {t({
-              en: 'Your request has been sent to Astou. It is not a confirmed appointment yet: Astou or her team will contact you by phone or email to confirm her availability and a personalised quote.',
-              es: 'Tu solicitud le llegó a Astou. Todavía no es una cita confirmada: Astou o su equipo te contactará por teléfono o correo para confirmar su disponibilidad y darte un presupuesto a tu medida.',
-              fr: 'Votre demande a été transmise à Astou. Ce n’est pas encore un rendez-vous confirmé : Astou ou son équipe vous contactera par téléphone ou e-mail pour confirmer sa disponibilité et vous proposer un devis personnalisé.',
+              en: 'Your request has been received and saved for Astou. It is not a confirmed appointment yet: Astou or her team will contact you by phone or email to confirm her availability and a personalised quote.',
+              es: 'Tu solicitud fue recibida y guardada para Astou. Todavía no es una cita confirmada: Astou o su equipo te contactará por teléfono o correo para confirmar su disponibilidad y darte un presupuesto a tu medida.',
+              fr: 'Votre demande a bien été reçue et enregistrée pour Astou. Ce n’est pas encore un rendez-vous confirmé : Astou ou son équipe vous contactera par téléphone ou e-mail pour confirmer sa disponibilité et vous proposer un devis personnalisé.',
             })}
           </p>
         ) : (
@@ -305,7 +309,7 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
   return (
     <form ref={formRef} className="rq" name="appointment-request" encType="multipart/form-data" noValidate onSubmit={onSubmit}>
       <input type="hidden" name="form-name" value="appointment-request" />
-      <input type="hidden" name="appointment-type" value={kind === 'salon' ? 'Salon — 9 East 167th Street, Bronx' : 'Private on-location'} />
+      <input type="hidden" name="appointment-type" value={KIND_EN[kind]} />
       <p className="hp" aria-hidden="true">
         <label>
           Leave empty <input name="bot-field" tabIndex={-1} autoComplete="off" />
@@ -328,7 +332,14 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
             <input type="radio" name="kind" value="location" checked={kind === 'location'} onChange={() => setKind('location')} />
             <span className="kind-h">{t({ en: 'Private, on location', es: 'Privada, donde tú estés', fr: 'En privé, là où vous êtes' })}</span>
             <span className="kind-p">
-              {t({ en: 'Astou comes to you — local or out of state, subject to availability.', es: 'Astou va a donde estés, en Nueva York o fuera del estado, según disponibilidad.', fr: 'Astou se déplace chez vous, à New York ou hors de l’État, selon ses disponibilités.' })}
+              {t({ en: 'At home, in a hotel or a studio in New York, subject to availability.', es: 'En tu casa, un hotel o un estudio en Nueva York, según disponibilidad.', fr: 'À domicile, à l’hôtel ou en studio à New York, selon ses disponibilités.' })}
+            </span>
+          </label>
+          <label className={`kind ${kind === 'event' ? 'is-on' : ''}`}>
+            <input type="radio" name="kind" value="event" checked={kind === 'event'} onChange={() => setKind('event')} />
+            <span className="kind-h">{t({ en: 'Out of state or special event', es: 'Fuera del estado o evento especial', fr: 'Hors de l’État ou événement' })}</span>
+            <span className="kind-p">
+              {t({ en: 'Weddings, celebrations and shoots, in New York or beyond. Travel is quoted individually.', es: 'Bodas, fiestas y sesiones, en Nueva York o más allá. El viaje se cotiza aparte.', fr: 'Mariages, fêtes et séances photo, à New York ou ailleurs. Le déplacement est chiffré au cas par cas.' })}
             </span>
           </label>
         </div>
@@ -463,6 +474,16 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
             <textarea {...a('details', true)} rows={4} />,
             { full: true, hint: { en: 'Length, colour, timing, number of people, anything Astou should know.', es: 'Largo, color, fecha límite, cuántas personas… todo lo que Astou deba saber.', fr: 'Longueur, couleur, délai, nombre de personnes : tout ce qu’Astou doit savoir.' } },
           )}
+          <div className="field field-check is-full">
+            <input id="rq-confidential" type="checkbox" name="confidential" value="yes" />
+            <label htmlFor="rq-confidential">
+              {t({
+                en: 'Please keep my request confidential.',
+                es: 'Por favor, mantengan mi solicitud en confidencialidad.',
+                fr: 'Merci de traiter ma demande de façon confidentielle.',
+              })}
+            </label>
+          </div>
           {field(
             'discretion',
             { en: 'Privacy or discretion', es: 'Privacidad o discreción', fr: 'Confidentialité ou discrétion' },
@@ -475,7 +496,7 @@ export function RequestForm({ preset }: { preset?: { kind?: Kind; style?: string
               {t({
                 en: 'I understand this is a request, not a confirmed appointment. Astou or her team will contact me to confirm availability and a personalised quote.',
                 es: 'Entiendo que es una solicitud y no una cita confirmada. Astou o su equipo me contactará para confirmar su disponibilidad y un presupuesto a mi medida.',
-                fr: 'Je comprends qu’il s’agit d’une demande et non d’un rendez-vous confirmé. Astou ou son équipe me contactera pour confirmer sa disponibilité et vous proposer un devis personnalisé.',
+                fr: 'Je comprends qu’il s’agit d’une demande et non d’un rendez-vous confirmé. Astou ou son équipe me contactera pour confirmer sa disponibilité et me proposer un devis personnalisé.',
               })}
             </label>
             {err('contact-consent') && (

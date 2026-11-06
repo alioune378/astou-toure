@@ -1,404 +1,481 @@
 {
- "astou_01_grid_sculpted_side_bun": {
-  "w": 392,
-  "h": 425,
-  "widths": [
-   392
-  ]
- },
- "astou_02_grid_cornrow_updo_topview": {
-  "w": 397,
-  "h": 520,
-  "widths": [
-   397
-  ]
- },
- "astou_03_grid_sculpted_looped_back": {
-  "w": 381,
-  "h": 520,
-  "widths": [
-   381
-  ]
- },
- "astou_04_grid_sculpted_roll_updo_front": {
-  "w": 398,
-  "h": 270,
-  "widths": [
-   398
-  ]
- },
- "astou_05_grid_blonde_halfup_braid": {
-  "w": 366,
-  "h": 360,
-  "widths": [
-   366
-  ]
- },
- "astou_06_grid_side_braided_blonde": {
-  "w": 356,
-  "h": 360,
-  "widths": [
-   356
-  ]
- },
- "astou_07_client_sculpted_braided_updo_front": {
-  "w": 1160,
-  "h": 1540,
-  "widths": [
-   480,
-   800,
-   1160
-  ]
- },
- "astou_08_client_long_box_braids_portrait": {
-  "w": 1140,
-  "h": 1590,
-  "widths": [
-   480,
-   800,
-   1140
-  ]
- },
- "astou_09_client_side_braids_white_top": {
-  "w": 1120,
-  "h": 1880,
-  "widths": [
-   480,
-   800,
-   1120
-  ]
- },
- "astou_10_client_braids_yellow_top": {
-  "w": 1180,
-  "h": 1900,
-  "widths": [
-   480,
-   800,
-   1180
-  ]
- },
- "astou_11_mannequin_black_low_knot": {
-  "w": 1050,
-  "h": 1400,
-  "widths": [
-   480,
-   800,
-   1050
-  ]
- },
- "astou_12_mannequin_blonde_low_knot": {
-  "w": 1090,
-  "h": 1540,
-  "widths": [
-   480,
-   800,
-   1090
-  ]
- },
- "astou_13_mannequin_black_editorial_sculpture": {
-  "w": 1100,
-  "h": 1430,
-  "widths": [
-   480,
-   800,
-   1100
-  ]
- },
- "astou_14_mannequin_black_low_knot_alt": {
-  "w": 1140,
-  "h": 1420,
-  "widths": [
-   480,
-   800,
-   1140
-  ]
- },
- "astou_15_mannequin_sculpted_back_loops_blue_garment": {
-  "w": 1120,
-  "h": 1510,
-  "widths": [
-   480,
-   800,
-   1120
-  ]
- },
- "astou_portrait": {
-  "w": 1122,
-  "h": 1402,
-  "widths": [
-   480,
-   800,
-   1122
-  ]
- },
- "ed_fractal_affinities_magazine_page": {
-  "w": 1122,
-  "h": 1402,
-  "widths": [
-   480,
-   800,
-   1122
-  ]
- },
- "ed_golden_afro_editorial_portrait": {
-  "w": 1122,
-  "h": 1402,
-  "widths": [
-   480,
-   800,
-   1122
-  ]
- },
- "ed_golden_afro_glamour_pose": {
-  "w": 1122,
-  "h": 1402,
-  "widths": [
-   480,
-   800,
-   1122
-  ]
- },
- "ed_monochrome_editorial_portrait_and_credits": {
-  "w": 1122,
-  "h": 1402,
-  "widths": [
-   480,
-   800,
-   1122
-  ]
- },
- "ed_monochrome_editorial_portrait_credits": {
-  "w": 1122,
-  "h": 1402,
-  "widths": [
-   480,
-   800,
-   1122
-  ]
- },
- "ed_neon_pop_art_face_collage": {
-  "w": 1122,
-  "h": 1402,
-  "widths": [
-   480,
-   800,
-   1122
-  ]
- },
- "ed_retro_color_blocked_editorial_portrait": {
-  "w": 1122,
-  "h": 1402,
-  "widths": [
-   480,
-   800,
-   1122
-  ]
- },
- "ed_symmetrical_vintage_hair_portrait": {
-  "w": 1122,
-  "h": 1402,
-  "widths": [
-   480,
-   800,
-   1122
-  ]
- },
- "lk_cornrows_front": {
-  "w": 1200,
-  "h": 1229,
-  "widths": [
-   480,
-   800,
-   1200
-  ]
- },
- "lk_cornrows_back": {
-  "w": 1200,
-  "h": 1221,
-  "widths": [
-   480,
-   800,
-   1200
-  ]
- },
- "lk_updo_front": {
-  "w": 900,
-  "h": 1380,
-  "widths": [
-   480,
-   800,
-   900
-  ]
- },
- "lk_updo_back": {
-  "w": 900,
-  "h": 1350,
-  "widths": [
-   480,
-   800,
-   900
-  ]
- },
- "lk_updo_side": {
-  "w": 900,
-  "h": 1370,
-  "widths": [
-   480,
-   800,
-   900
-  ]
- },
- "lk_micro_braids": {
-  "w": 1200,
-  "h": 1600,
-  "widths": [
-   480,
-   800,
-   1200
-  ]
- },
- "astou_16_mannequin_woven_crown": {
-  "w": 1100,
-  "h": 1121,
-  "widths": [
-   480,
-   800,
-   1100
-  ]
- },
- "astou_17_mannequin_sculpted_low_bun": {
-  "w": 1100,
-  "h": 1122,
-  "widths": [
-   480,
-   800,
-   1100
-  ]
- },
- "astou_18_mannequin_braided_crown_side": {
-  "w": 1100,
-  "h": 1122,
-  "widths": [
-   480,
-   800,
-   1100
-  ]
- },
- "astou_19_mannequin_side_braided_crown_front": {
-  "w": 1100,
-  "h": 991,
-  "widths": [
-   480,
-   800,
-   1100
-  ]
- },
- "astou_20_client_rolled_updo_closeup": {
-  "w": 1100,
-  "h": 1468,
-  "widths": [
-   480,
-   800,
-   1100
-  ]
- },
- "astou_21_client_rolled_updo_side": {
-  "w": 1100,
-  "h": 1468,
-  "widths": [
-   480,
-   800,
-   1100
-  ]
- },
- "astou_22_mannequin_blonde_cornrow_updo": {
-  "w": 1100,
-  "h": 1124,
-  "widths": [
-   480,
-   800,
-   1100
-  ]
- },
- "astou_23_mannequin_cornrow_updo_back": {
-  "w": 1100,
-  "h": 1728,
-  "widths": [
-   480,
-   800,
-   1100
-  ]
- },
- "ed_sculptural_beauty_portrait": {
-  "w": 1200,
-  "h": 1200,
-  "widths": [
-   480,
-   800,
-   1200
-  ]
- },
- "ar_group_portrait": {
-  "w": 1200,
-  "h": 1200,
-  "widths": [
-   480,
-   800,
-   1200
-  ]
- },
- "ar_transformation": {
-  "w": 810,
-  "h": 1402,
-  "widths": [
-   480,
-   800,
-   810
-  ]
- },
- "ar_headwrap_purple": {
-  "w": 1200,
-  "h": 1200,
-  "widths": [
-   480,
-   800,
-   1200
-  ]
- },
- "ar_encounter_framed": {
-  "w": 1200,
-  "h": 1200,
-  "widths": [
-   480,
-   800,
-   1200
-  ]
- },
- "ar_encounter_bw": {
-  "w": 1200,
-  "h": 1200,
-  "widths": [
-   480,
-   800,
-   1200
-  ]
- },
- "ar_fashion_blue": {
-  "w": 1122,
-  "h": 1402,
-  "widths": [
-   480,
-   800,
-   1122
-  ]
- },
- "ar_two_looks": {
-  "w": 1122,
-  "h": 1402,
-  "widths": [
-   480,
-   800,
-   1122
-  ]
- }
+  "astou_01_grid_sculpted_side_bun": {
+    "w": 392,
+    "h": 425,
+    "widths": [
+      392
+    ]
+  },
+  "astou_02_grid_cornrow_updo_topview": {
+    "w": 397,
+    "h": 520,
+    "widths": [
+      397
+    ]
+  },
+  "astou_03_grid_sculpted_looped_back": {
+    "w": 381,
+    "h": 520,
+    "widths": [
+      381
+    ]
+  },
+  "astou_04_grid_sculpted_roll_updo_front": {
+    "w": 398,
+    "h": 270,
+    "widths": [
+      398
+    ]
+  },
+  "astou_05_grid_blonde_halfup_braid": {
+    "w": 366,
+    "h": 360,
+    "widths": [
+      366
+    ]
+  },
+  "astou_06_grid_side_braided_blonde": {
+    "w": 356,
+    "h": 360,
+    "widths": [
+      356
+    ]
+  },
+  "astou_07_client_sculpted_braided_updo_front": {
+    "w": 1160,
+    "h": 1540,
+    "widths": [
+      480,
+      800,
+      1160
+    ]
+  },
+  "astou_08_client_long_box_braids_portrait": {
+    "w": 1140,
+    "h": 1590,
+    "widths": [
+      480,
+      800,
+      1140
+    ]
+  },
+  "astou_09_client_side_braids_white_top": {
+    "w": 1120,
+    "h": 1880,
+    "widths": [
+      480,
+      800,
+      1120
+    ]
+  },
+  "astou_10_client_braids_yellow_top": {
+    "w": 1180,
+    "h": 1900,
+    "widths": [
+      480,
+      800,
+      1180
+    ]
+  },
+  "astou_11_mannequin_black_low_knot": {
+    "w": 1050,
+    "h": 1400,
+    "widths": [
+      480,
+      800,
+      1050
+    ]
+  },
+  "astou_12_mannequin_blonde_low_knot": {
+    "w": 1090,
+    "h": 1540,
+    "widths": [
+      480,
+      800,
+      1090
+    ]
+  },
+  "astou_13_mannequin_black_editorial_sculpture": {
+    "w": 1100,
+    "h": 1430,
+    "widths": [
+      480,
+      800,
+      1100
+    ]
+  },
+  "astou_14_mannequin_black_low_knot_alt": {
+    "w": 1140,
+    "h": 1420,
+    "widths": [
+      480,
+      800,
+      1140
+    ]
+  },
+  "astou_15_mannequin_sculpted_back_loops_blue_garment": {
+    "w": 1120,
+    "h": 1510,
+    "widths": [
+      480,
+      800,
+      1120
+    ]
+  },
+  "astou_portrait": {
+    "w": 1122,
+    "h": 1402,
+    "widths": [
+      480,
+      800,
+      1122
+    ]
+  },
+  "ed_fractal_affinities_magazine_page": {
+    "w": 1122,
+    "h": 1402,
+    "widths": [
+      480,
+      800,
+      1122
+    ]
+  },
+  "ed_golden_afro_editorial_portrait": {
+    "w": 1122,
+    "h": 1402,
+    "widths": [
+      480,
+      800,
+      1122
+    ]
+  },
+  "ed_golden_afro_glamour_pose": {
+    "w": 1122,
+    "h": 1402,
+    "widths": [
+      480,
+      800,
+      1122
+    ]
+  },
+  "ed_monochrome_editorial_portrait_and_credits": {
+    "w": 1122,
+    "h": 1402,
+    "widths": [
+      480,
+      800,
+      1122
+    ]
+  },
+  "ed_monochrome_editorial_portrait_credits": {
+    "w": 1122,
+    "h": 1402,
+    "widths": [
+      480,
+      800,
+      1122
+    ]
+  },
+  "ed_neon_pop_art_face_collage": {
+    "w": 1122,
+    "h": 1402,
+    "widths": [
+      480,
+      800,
+      1122
+    ]
+  },
+  "ed_retro_color_blocked_editorial_portrait": {
+    "w": 1122,
+    "h": 1402,
+    "widths": [
+      480,
+      800,
+      1122
+    ]
+  },
+  "ed_symmetrical_vintage_hair_portrait": {
+    "w": 1122,
+    "h": 1402,
+    "widths": [
+      480,
+      800,
+      1122
+    ]
+  },
+  "lk_cornrows_front": {
+    "w": 1200,
+    "h": 1229,
+    "widths": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "lk_cornrows_back": {
+    "w": 1200,
+    "h": 1221,
+    "widths": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "lk_updo_front": {
+    "w": 900,
+    "h": 1380,
+    "widths": [
+      480,
+      800,
+      900
+    ]
+  },
+  "lk_updo_back": {
+    "w": 900,
+    "h": 1350,
+    "widths": [
+      480,
+      800,
+      900
+    ]
+  },
+  "lk_updo_side": {
+    "w": 900,
+    "h": 1370,
+    "widths": [
+      480,
+      800,
+      900
+    ]
+  },
+  "lk_micro_braids": {
+    "w": 1200,
+    "h": 1600,
+    "widths": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "astou_16_mannequin_woven_crown": {
+    "w": 1100,
+    "h": 1121,
+    "widths": [
+      480,
+      800,
+      1100
+    ]
+  },
+  "astou_17_mannequin_sculpted_low_bun": {
+    "w": 1100,
+    "h": 1122,
+    "widths": [
+      480,
+      800,
+      1100
+    ]
+  },
+  "astou_18_mannequin_braided_crown_side": {
+    "w": 1100,
+    "h": 1122,
+    "widths": [
+      480,
+      800,
+      1100
+    ]
+  },
+  "astou_19_mannequin_side_braided_crown_front": {
+    "w": 1100,
+    "h": 991,
+    "widths": [
+      480,
+      800,
+      1100
+    ]
+  },
+  "astou_20_client_rolled_updo_closeup": {
+    "w": 1100,
+    "h": 1468,
+    "widths": [
+      480,
+      800,
+      1100
+    ]
+  },
+  "astou_21_client_rolled_updo_side": {
+    "w": 1100,
+    "h": 1468,
+    "widths": [
+      480,
+      800,
+      1100
+    ]
+  },
+  "astou_22_mannequin_blonde_cornrow_updo": {
+    "w": 1100,
+    "h": 1124,
+    "widths": [
+      480,
+      800,
+      1100
+    ]
+  },
+  "astou_23_mannequin_cornrow_updo_back": {
+    "w": 1100,
+    "h": 1728,
+    "widths": [
+      480,
+      800,
+      1100
+    ]
+  },
+  "ed_sculptural_beauty_portrait": {
+    "w": 1200,
+    "h": 1200,
+    "widths": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "ar_group_portrait": {
+    "w": 1200,
+    "h": 1200,
+    "widths": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "ar_transformation": {
+    "w": 810,
+    "h": 1402,
+    "widths": [
+      480,
+      800,
+      810
+    ]
+  },
+  "ar_headwrap_purple": {
+    "w": 1200,
+    "h": 1200,
+    "widths": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "ar_encounter_framed": {
+    "w": 1200,
+    "h": 1200,
+    "widths": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "ar_encounter_bw": {
+    "w": 1200,
+    "h": 1200,
+    "widths": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "ar_fashion_blue": {
+    "w": 1122,
+    "h": 1402,
+    "widths": [
+      480,
+      800,
+      1122
+    ]
+  },
+  "ar_two_looks": {
+    "w": 1122,
+    "h": 1402,
+    "widths": [
+      480,
+      800,
+      1122
+    ]
+  },
+  "press_salon_digest_2007_cover": {
+    "w": 1122,
+    "h": 1402,
+    "widths": [
+      480,
+      800,
+      1122
+    ]
+  },
+  "press_salon_digest_2007_feature": {
+    "w": 1094,
+    "h": 1438,
+    "widths": [
+      480,
+      800,
+      1094
+    ]
+  },
+  "astou_24_mannequin_sculpted_braided_back": {
+    "w": 738,
+    "h": 987,
+    "widths": [
+      480,
+      738
+    ]
+  },
+  "astou_25_client_gold_ornament_updo_front": {
+    "w": 1005,
+    "h": 1350,
+    "widths": [
+      480,
+      800,
+      1005
+    ]
+  },
+  "astou_26_client_gold_ornament_updo_back": {
+    "w": 1005,
+    "h": 1370,
+    "widths": [
+      480,
+      800,
+      1005
+    ]
+  },
+  "astou_27_client_crystal_ornament_updo": {
+    "w": 1085,
+    "h": 1380,
+    "widths": [
+      480,
+      800,
+      1085
+    ]
+  },
+  "astou_28_mannequin_sculpted_cornrow_wig": {
+    "w": 735,
+    "h": 1070,
+    "widths": [
+      480,
+      735
+    ]
+  },
+  "astou_29_mannequin_swept_braided_wig": {
+    "w": 685,
+    "h": 1110,
+    "widths": [
+      480,
+      685
+    ]
+  },
+  "astou_30_mannequin_smooth_braided_low_bun": {
+    "w": 738,
+    "h": 934,
+    "widths": [
+      480,
+      738
+    ]
+  }
 }

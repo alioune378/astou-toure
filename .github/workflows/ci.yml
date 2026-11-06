@@ -1,0 +1,63 @@
+name: Build and check
+
+# Builds the site and checks it in a real browser (iPhone and desktop sizes, English and French):
+# broken images, console errors, horizontal overflow, small touch targets, navigation between pages,
+# the appointment form, and that held-back media is not published. Results go to the ci-results branch.
+on:
+  push:
+    branches: ['**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install
+        run: |
+          mkdir -p ci
+          set -o pipefail
+          npm install --no-audit --no-fund 2>&1 | tee ci/01-install.log
+      - name: Type check
+        run: |
+          set -o pipefail
+          npm run typecheck 2>&1 | tee ci/02-typecheck.log
+      - name: Build
+        run: |
+          set -o pipefail
+          npm run build 2>&1 | tee ci/03-build.log
+          du -sh dist >> ci/03-build.log
+      - name: Browser checks and screenshots
+        run: |
+          set -o pipefail
+          npm install --no-save --no-audit --no-fund playwright@1.49.1 > /dev/null
+          npx playwright install --with-deps chromium > /dev/null
+          (npx vite preview --port 4173 --strictPort > ci/04-server.log 2>&1 &)
+          npx --yes wait-on@8 http://localhost:4173 -t 60000
+          node scripts/ci-check.mjs 2>&1 | tee ci/05-checks.log
+      - name: Publish results
+        if: always()
+        run: |
+          echo "commit=${GITHUB_SHA}" > ci/00-commit.txt
+          echo "branch=${GITHUB_REF_NAME}" >> ci/00-commit.txt
+          echo "run=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" >> ci/00-commit.txt
+          echo "outcome=${{ job.status }}" >> ci/00-commit.txt
+          cd ci
+          git init -q
+          git config user.name "astou-ci"
+          git config user.email "astou-ci@users.noreply.github.com"
+          git checkout -q -b ci-results
+          git add -A
+          git commit -q -m "CI results for ${GITHUB_SHA}"
+          git push -q -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" ci-results

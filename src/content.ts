@@ -67,8 +67,8 @@ export const CATS: Record<CatId, { title: L; short: L; text: L }> = {
     },
   },
   editorial: {
-    title: { en: 'Editorial & Special Occasion', es: 'Editorial y ocasiones especiales', fr: 'Éditorial & grandes occasions' },
-    short: { en: 'Editorial', es: 'Editorial', fr: 'Éditorial' },
+    title: { en: 'Bridal & Special Occasions', es: 'Novias y ocasiones especiales', fr: 'Mariage & grandes occasions' },
+    short: { en: 'Occasions', es: 'Ocasiones', fr: 'Occasions' },
     text: {
       en: 'Statement hair for weddings, celebrations, photo shoots and stage: polished, architectural and made to be remembered.',
       es: 'Peinados que dejan huella para bodas, fiestas, sesiones de fotos y escenario: pulidos, arquitectónicos y hechos para recordarse.',
@@ -355,6 +355,91 @@ export const PHOTOS: Photo[] = [
     },
     '50% 30%',
   ),
+  /* November 2026 package ("Individual Edits Review 01"), used as supplied by the owner: resized only. */
+  P(
+    'astou_25_client_gold_ornament_updo_front',
+    'client',
+    ['editorial', 'sculptural'],
+    { en: 'Gold ornament updo', es: 'Recogido con adorno dorado', fr: 'Chignon à l’ornement doré' },
+    {
+      en: 'Client in the salon, seen in profile: sleek black hair smoothed up into a tall sculpted roll, set with a gold, crystal-studded flower ornament.',
+      es: 'Clienta en el salón, de perfil: cabello negro liso alzado en un rollo alto y esculpido, adornado con una flor dorada con cristales.',
+      fr: 'Cliente au salon, de profil : cheveux noirs lissés relevés en un haut rouleau sculpté, orné d’une fleur dorée sertie de cristaux.',
+    },
+    '45% 35%',
+  ),
+  P(
+    'astou_26_client_gold_ornament_updo_back',
+    'client',
+    ['editorial', 'sculptural'],
+    { en: 'Gold ornament updo, back view', es: 'Recogido con adorno dorado, de espaldas', fr: 'Chignon à l’ornement doré, de dos' },
+    {
+      en: 'The same client from behind: the hair rises from a smooth nape into folded, overlapping rolls, with the gold ornament at the side.',
+      es: 'La misma clienta de espaldas: el cabello sube desde una nuca lisa hasta rollos plegados y superpuestos, con el adorno dorado al costado.',
+      fr: 'La même cliente de dos : les cheveux montent d’une nuque lisse vers des rouleaux pliés et superposés, l’ornement doré sur le côté.',
+    },
+    '50% 35%',
+  ),
+  P(
+    'astou_27_client_crystal_ornament_updo',
+    'client',
+    ['editorial', 'sculptural'],
+    { en: 'Crystal ornament chignon', es: 'Moño con adorno de cristal', fr: 'Chignon à l’ornement de cristal' },
+    {
+      en: 'Client in profile: glossy black hair swept into a low sculpted chignon, framed by a large silver crystal-and-pearl hair ornament.',
+      es: 'Clienta de perfil: cabello negro brillante recogido en un moño bajo esculpido, enmarcado por un gran adorno plateado de cristales y perlas.',
+      fr: 'Cliente de profil : cheveux noirs brillants ramenés en un chignon bas sculpté, encadré d’un grand ornement argenté de cristaux et de perles.',
+    },
+    '50% 40%',
+  ),
+  P(
+    'astou_24_mannequin_sculpted_braided_back',
+    'study',
+    ['sculptural'],
+    { en: 'Fishbone braids to a woven bun', es: 'Trenzas espiga hasta un moño tejido', fr: 'Tresses en arête jusqu’au chignon tressé' },
+    {
+      en: 'Mannequin study, back view: broad fishbone braids running down the head, separated by clean parts, gathered into a dense bun of woven braids.',
+      es: 'Estudio en cabeza de maniquí, de espaldas: anchas trenzas espiga que bajan por la cabeza, separadas por rayas limpias, reunidas en un moño denso de trenzas tejidas.',
+      fr: 'Étude sur tête d’exposition, vue de dos : de larges tresses en arête de poisson séparées par des raies nettes, réunies en un chignon dense de tresses entrelacées.',
+    },
+    '50% 35%',
+  ),
+  P(
+    'astou_28_mannequin_sculpted_cornrow_wig',
+    'study',
+    ['braiding'],
+    { en: 'Sculpted cornrow unit', es: 'Unidad de trenzas pegadas esculpidas', fr: 'Perruque de nattes collées sculptées' },
+    {
+      en: 'Mannequin study: a braided unit of fine fishbone cornrows that sweep diagonally across the head in parallel curves.',
+      es: 'Estudio en cabeza de maniquí: una unidad trenzada de finas trenzas pegadas tipo espiga que cruzan la cabeza en curvas paralelas.',
+      fr: 'Étude sur tête d’exposition : une perruque tressée de fines nattes collées en arête de poisson, qui traversent la tête en courbes parallèles.',
+    },
+    '50% 30%',
+  ),
+  P(
+    'astou_29_mannequin_swept_braided_wig',
+    'study',
+    ['braiding'],
+    { en: 'Swept braided unit', es: 'Unidad trenzada de lado', fr: 'Perruque tressée balayée' },
+    {
+      en: 'Mannequin study: a braided unit of fishbone cornrows swept from a side part, curving back across the head.',
+      es: 'Estudio en cabeza de maniquí: una unidad trenzada de trenzas pegadas tipo espiga que parten de una raya lateral y se curvan hacia atrás.',
+      fr: 'Étude sur tête d’exposition : une perruque tressée de nattes collées en arête de poisson, partant d’une raie de côté et ramenées vers l’arrière.',
+    },
+    '50% 30%',
+  ),
+  P(
+    'astou_30_mannequin_smooth_braided_low_bun',
+    'study',
+    ['sculptural', 'editorial'],
+    { en: 'Smooth braided low bun', es: 'Moño bajo trenzado y liso', fr: 'Chignon bas tressé et lissé' },
+    {
+      en: 'Mannequin study, back view: smooth glossy black hair drawn down to a large low bun of folded braids at the nape.',
+      es: 'Estudio en cabeza de maniquí, de espaldas: cabello negro liso y brillante recogido en un gran moño bajo de trenzas plegadas en la nuca.',
+      fr: 'Étude sur tête d’exposition, vue de dos : cheveux noirs lissés et brillants ramenés en un grand chignon bas de tresses repliées sur la nuque.',
+    },
+    '50% 45%',
+  ),
 ];
 
 /* ------------------------------------------------------------------ Curation
@@ -372,6 +457,8 @@ const GROUPS: Record<string, string> = {
   '18': 'side-crown',
   '21': 'rolled-updo',
   '20': 'rolled-updo',
+  '25': 'gold-ornament-updo',
+  '26': 'gold-ornament-updo',
 };
 /** Corrected categories: client braids in "braids", studies in "sculptural", event-ready styles also in "editorial" (special occasions). */
 const CAT_FIX: Record<string, CatId[]> = {
@@ -398,7 +485,7 @@ const CAT_FIX: Record<string, CatId[]> = {
   '20': ['editorial', 'sculptural'],
 };
 /** Display order: client work and studies alternate so neither dominates; within a group the first photo is the cover. */
-const ORDER = ['07', '13', '10', '15', '21', '20', '08', '16', '09', '19', '18', '05', '11', '17', '22', '06', '12', '23', '02', '03', '04'];
+const ORDER = ['27', '07', '13', '25', '26', '10', '15', '21', '20', '24', '08', '28', '16', '09', '19', '18', '30', '05', '29', '11', '17', '22', '06', '12', '23', '02', '03', '04'];
 PHOTOS.forEach((p) => {
   if (GROUPS[p.id]) p.group = GROUPS[p.id];
   if (CAT_FIX[p.id]) p.cats = CAT_FIX[p.id];
@@ -412,7 +499,11 @@ const GROUP_TITLE: Record<string, L> = {
   'sleek-chignon': { en: 'Sleek braided chignon', es: 'Moño trenzado liso', fr: 'Chignon tressé lissé' },
   'side-crown': { en: 'Side-swept braided crown', es: 'Corona trenzada de lado', fr: 'Couronne tressée de côté' },
   'rolled-updo': { en: 'Rolled updo', es: 'Recogido de rizos', fr: 'Chignon roulé' },
+  'gold-ornament-updo': { en: 'Gold ornament updo', es: 'Recogido con adorno dorado', fr: 'Chignon à l’ornement doré' },
 };
+
+/** "Signature work" on the homepage: a few standout hairstyles (client work first). Ids are photo ids. */
+export const SIGNATURE_IDS = ['27', '07', '25', '13', '24'];
 export const STYLES: Style[] = PHOTOS.reduce<Style[]>((acc, p) => {
   if (p.group) {
     const g = acc.find((s) => s.id === p.group);
@@ -678,7 +769,8 @@ export const CLIP_GROUPS: ClipGroup[] = [
     clips: [
       { file: 'braids-honey-salon-reveal', dur: '1:01', w: 512, h: 910, title: { en: 'Long honey-brown braids — the reveal', es: 'Trenzas largas color miel: el resultado', fr: 'Longues tresses miel — la révélation' } },
       { file: 'braids-honey-full-length', dur: '0:13', w: 512, h: 910, rel: { en: 'Same style as 01, another angle', es: 'El mismo estilo que el 01, desde otro ángulo', fr: 'La même coiffure que la 01, sous un autre angle' }, title: { en: 'Honey-brown braids, full length', es: 'Trenzas color miel, de largo completo', fr: 'Tresses miel, sur toute la longueur' } },
-      { file: 'braids-beaded-360', dur: '0:21', w: 512, h: 910, title: { en: 'Braids with decorative beads, all the way round', es: 'Trenzas con cuentas decorativas, en 360°', fr: 'Tresses ornées de perles, à 360°' } },
+      // 'braids-beaded-360' is held back (Nov 2026): the client's age cannot be confirmed from the footage, and a child may
+      // appear in the background. It returns only once Astou confirms the client is an adult and consented (APPROVALS.md).
       { file: 'braids-long-black-finished', dur: '0:19', w: 512, h: 910, title: { en: 'Long black braids, finished', es: 'Trenzas largas negras, terminadas', fr: 'Longues tresses noires, terminées' } },
     ],
   },
@@ -723,7 +815,18 @@ export const CLIP_GROUPS: ClipGroup[] = [
 
 export type EdItem = { photo: Photo; caption: L; who?: L; credit?: L };
 /** `credits`: published credits (label, value). `note`: how the information was sourced, shown under the chapter. */
-export type EdChapter = { id: string; title: L; sub?: L; intro: L; pending: L; items: EdItem[]; credits?: [L, string][]; note?: L };
+/**
+ * `status` separates documented work from everything else, so a photograph is never read as a styling credit:
+ * credited = Astou's role is printed in the publication; unconfirmed = attribution supplied by her family, role being confirmed;
+ * encounter = a personal photograph of a meeting, not a record of professional work.
+ */
+export type EdStatus = 'credited' | 'unconfirmed' | 'encounter';
+export const ED_STATUS: Record<EdStatus, L> = {
+  credited: { en: 'Documented collaboration · published credit', es: 'Colaboración documentada · crédito publicado', fr: 'Collaboration documentée · crédit publié' },
+  unconfirmed: { en: 'Attribution supplied by Astou’s family · her exact role is being confirmed', es: 'Atribución aportada por la familia de Astou · su papel exacto se está confirmando', fr: 'Attribution fournie par la famille d’Astou · son rôle exact est en cours de confirmation' },
+  encounter: { en: 'Photographed encounter · not a styling credit', es: 'Encuentro fotografiado · no es un crédito de peinado', fr: 'Rencontre photographiée · pas un crédit de coiffure' },
+};
+export type EdChapter = { id: string; title: L; sub?: L; intro: L; pending: L; items: EdItem[]; credits?: [L, string][]; note?: L; status?: EdStatus };
 
 /** Archive images: published with Astou's authorization (confirmed by the owner, 4 Nov 2026). Names as supplied by Astou and her family. Digitally restored from her copies. */
 const AR = (file: string, kind: Photo['kind'], title: L, alt: L, focus?: string): Photo => ({ id: file, file, ...M[file], kind, cats: [], title, alt, focus });
@@ -732,6 +835,7 @@ const AR = (file: string, kind: Photo['kind'], title: L, alt: L, focus?: string)
 export const ED_CHAPTERS: EdChapter[] = [
   {
     id: 'garage',
+    status: 'credited',
     // Rendered inside collection 01, after the credited page: same Garage Spring/Summer 2012 editorial.
     title: { en: 'More from the editorial', es: 'Más del editorial', fr: 'Autres images de l’éditorial' },
     intro: {
@@ -770,6 +874,7 @@ export const ED_CHAPTERS: EdChapter[] = [
   },
   {
     id: 'couture',
+    status: 'unconfirmed',
     title: { en: 'African headwear & couture', es: 'Tocados africanos y alta costura', fr: 'Coiffes africaines & couture' },
     sub: { en: 'The creative artistry', es: 'El arte creativo', fr: 'L’art de la création' },
     intro: {
@@ -827,6 +932,7 @@ export const ED_CHAPTERS: EdChapter[] = [
   },
   {
     id: 'encounters',
+    status: 'encounter',
     title: { en: 'Memorable encounters', es: 'Encuentros memorables', fr: 'Rencontres marquantes' },
     sub: { en: 'The personal journey', es: 'El camino personal', fr: 'Le parcours personnel' },
     intro: {
@@ -881,5 +987,80 @@ export const ED_CHAPTERS: EdChapter[] = [
         },
       },
     ],
+  },
+];
+
+/* ------------------------------------------------------------------ In print: Salon Digest (archival)
+   The magazine pages are shown as supplied: no reconstruction, no added text. Details below are read from the pages. */
+
+const PR = (file: string, title: L, alt: L): Photo => ({ id: file, file, ...M[file], kind: 'press', cats: [], title, alt, focus: '50% 30%' });
+
+export const PRESS = {
+  publication: 'Salon Digest',
+  edition: { en: 'New York / New Jersey edition', es: 'Edición Nueva York / Nueva Jersey', fr: 'Édition New York / New Jersey' },
+  issue: { en: 'Vol. 1, No. 4 · December 2007 – February 2008', es: 'Vol. 1, n.º 4 · diciembre de 2007 – febrero de 2008', fr: 'Vol. 1, n° 4 · décembre 2007 – février 2008' },
+  /** Credits as printed on the feature page. */
+  credits: [
+    ['Salon', 'MHB'],
+    ['Stylist', 'Astou'],
+    ['Model', 'Fanta Kamara'],
+  ] as [string, string][],
+  cover: PR(
+    'press_salon_digest_2007_cover',
+    { en: 'Salon Digest, cover', es: 'Salon Digest, portada', fr: 'Salon Digest, couverture' },
+    {
+      en: 'Cover of Salon Digest, New York / New Jersey edition, Vol. 1 No. 4, December 2007 to February 2008: the model Fanta Kamara wears a sculptural updo of glossy black and auburn rolls with a sleek swooped fringe, against a green background with snowflakes.',
+      es: 'Portada de Salon Digest, edición Nueva York / Nueva Jersey, vol. 1, n.º 4, diciembre de 2007 a febrero de 2008: la modelo Fanta Kamara lleva un recogido escultural de rollos negros y caoba brillantes con un flequillo liso y curvo, sobre un fondo verde con copos de nieve.',
+      fr: 'Couverture de Salon Digest, édition New York / New Jersey, vol. 1 n° 4, décembre 2007 à février 2008 : la mannequin Fanta Kamara porte un chignon sculptural de rouleaux noirs et auburn brillants, avec une frange lissée en vague, sur un fond vert parsemé de flocons.',
+    },
+  ),
+  feature: PR(
+    'press_salon_digest_2007_feature',
+    { en: 'Salon Digest, the feature page', es: 'Salon Digest, la página del reportaje', fr: 'Salon Digest, la page du sujet' },
+    {
+      en: 'Interior page of Salon Digest: the same model, smiling, with the sculptural updo seen from the front and, in an inset, from the back. The printed credits read: Salon: MHB; Stylist: Astou; Model: Fanta Kamara.',
+      es: 'Página interior de Salon Digest: la misma modelo, sonriente, con el recogido escultural visto de frente y, en un recuadro, de espaldas. Los créditos impresos dicen: Salon: MHB; Stylist: Astou; Model: Fanta Kamara.',
+      fr: 'Page intérieure de Salon Digest : la même mannequin, souriante, avec le chignon sculptural vu de face et, en médaillon, de dos. Les crédits imprimés indiquent : Salon : MHB ; Stylist : Astou ; Model : Fanta Kamara.',
+    },
+  ),
+};
+
+/* ------------------------------------------------------------------ Astou Boutique
+   No product photographs or confirmed inventory have been received yet, so the collections are presented without
+   products, prices, sizes or stock. Add items here only for pieces Astou confirms she sells, with their real photographs. */
+
+export type BoutiqueItem = { photo: Photo; name: L; note?: L };
+export type BoutiqueCollection = { id: 'dresses' | 'headwear' | 'accessories'; title: L; text: L; items: BoutiqueItem[] };
+
+export const BOUTIQUE: BoutiqueCollection[] = [
+  {
+    id: 'dresses',
+    title: { en: 'Dresses & Modest Fashion', es: 'Vestidos y moda modesta', fr: 'Robes & mode modeste' },
+    text: {
+      en: 'Dresses and modest fashion, chosen to be worn with a finished hairstyle.',
+      es: 'Vestidos y moda modesta, elegidos para lucir con un peinado terminado.',
+      fr: 'Des robes et une mode modeste, choisies pour accompagner une coiffure achevée.',
+    },
+    items: [],
+  },
+  {
+    id: 'headwear',
+    title: { en: 'Scarves, Bonnets & Headwear', es: 'Pañuelos, gorros y tocados', fr: 'Foulards, bonnets & coiffes' },
+    text: {
+      en: 'Scarves, bonnets and head coverings, to frame the face and protect the style.',
+      es: 'Pañuelos, gorros y tocados, para enmarcar el rostro y proteger el peinado.',
+      fr: 'Foulards, bonnets et coiffes, pour encadrer le visage et protéger la coiffure.',
+    },
+    items: [],
+  },
+  {
+    id: 'accessories',
+    title: { en: 'Accessories & Boutique Finds', es: 'Accesorios y hallazgos de la boutique', fr: 'Accessoires & trouvailles' },
+    text: {
+      en: 'The finishing details of a look, selected by Astou.',
+      es: 'Los detalles que completan un look, seleccionados por Astou.',
+      fr: 'Les détails qui complètent une silhouette, choisis par Astou.',
+    },
+    items: [],
   },
 ];

@@ -1,14 +1,14 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { KIND_LABEL, STYLES, type CatId, type Photo, type Style } from '../content';
 import { useI18n, type L } from '../i18n';
-import { Img, Kicker, goTo } from '../components/ui';
+import { Img, Kicker, goTo, openView } from '../components/ui';
 
 type F = 'all' | 'braiding' | 'sculptural' | 'editorial';
-const FILTERS: F[] = ['all', 'sculptural', 'braiding', 'editorial'];
+const FILTERS: F[] = ['all', 'sculptural', 'editorial', 'braiding'];
 const FILTER_LABEL: Record<Exclude<F, 'all'>, L> = {
-  sculptural: { en: 'Sculptural braided updos', es: 'Recogidos trenzados esculturales', fr: 'Chignons tressés sculpturaux' },
-  braiding: { en: 'Custom braiding', es: 'Trenzas a la medida', fr: 'Tresses sur mesure' },
-  editorial: { en: 'Special occasion styling', es: 'Peinados para ocasiones especiales', fr: 'Coiffures de grandes occasions' },
+  sculptural: { en: 'Sculptural Hair Art', es: 'Arte capilar escultural', fr: 'Art capillaire sculptural' },
+  braiding: { en: 'Braids & Protective Styling', es: 'Trenzas y peinados protectores', fr: 'Tresses & coiffures protectrices' },
+  editorial: { en: 'Bridal & Special Occasions', es: 'Novias y ocasiones especiales', fr: 'Mariage & grandes occasions' },
 };
 const FILTER_TEXT: Record<Exclude<F, 'all'>, L> = {
   sculptural: {
@@ -17,14 +17,14 @@ const FILTER_TEXT: Record<Exclude<F, 'all'>, L> = {
     fr: 'Des tresses construites en couronnes, rouleaux, boucles et nœuds. Beaucoup sont des études sculpturales sur têtes d’exposition, indiquées comme telles.',
   },
   braiding: {
-    en: 'Box braids, cornrows and patterned parts, worn by clients: protective styles drawn for each face and lifestyle.',
-    es: 'Box braids, trenzas pegadas y rayas con diseño, en clientas reales: peinados protectores pensados para cada cara y estilo de vida.',
-    fr: 'Box braids, nattes collées et raies dessinées, sur de vraies clientes : des coiffures protectrices pensées pour chaque visage et chaque quotidien.',
+    en: 'Box braids, cornrows, patterned parts and braided units: protective styles drawn for each face and lifestyle. Client work and mannequin studies are labelled.',
+    es: 'Box braids, trenzas pegadas, rayas con diseño y unidades trenzadas: peinados protectores pensados para cada cara y estilo de vida. Se indica qué es trabajo en clientas y qué son estudios en maniquí.',
+    fr: 'Box braids, nattes collées, raies dessinées et perruques tressées : des coiffures protectrices pensées pour chaque visage et chaque quotidien. Coiffures de clientes et études sur tête d’exposition sont indiquées.',
   },
   editorial: {
-    en: 'Polished updos and chignons for weddings, celebrations and events.',
-    es: 'Recogidos y moños pulidos para bodas, fiestas y eventos.',
-    fr: 'Chignons et coiffures soignées pour les mariages, les fêtes et les événements.',
+    en: 'Polished updos and chignons, some finished with hair ornaments, for weddings, celebrations and events. Shown as styles, not as records of specific weddings.',
+    es: 'Recogidos y moños pulidos, algunos con adornos para el cabello, para bodas, fiestas y eventos. Se muestran como estilos, no como registros de bodas concretas.',
+    fr: 'Chignons et coiffures soignées, parfois ornés de bijoux de tête, pour les mariages, les fêtes et les événements. Présentés comme des styles, non comme des souvenirs de mariages précis.',
   },
 };
 
@@ -33,6 +33,15 @@ export function Portfolio({ onOpen, onAsk }: { onOpen: (items: Photo[], i: numbe
   const { t } = useI18n();
   const [f, setF] = useState<F>('all');
   const [all, setAll] = useState(false);
+  // The homepage links straight to a collection ("cat-sculptural" …).
+  useEffect(() => {
+    const on = (e: Event) => {
+      const v = (e as CustomEvent<string>).detail as F;
+      if (FILTERS.includes(v)) setF(v);
+    };
+    window.addEventListener('astou:filter', on);
+    return () => window.removeEventListener('astou:filter', on);
+  }, []);
   const inCat = (st: Style, c: F) => c === 'all' || st.photos[0].cats.includes(c);
   const styles = useMemo(() => STYLES.filter((st) => inCat(st, f)), [f]);
   const flat = useMemo(() => styles.flatMap((st) => st.photos), [styles]);
@@ -42,7 +51,7 @@ export function Portfolio({ onOpen, onAsk }: { onOpen: (items: Photo[], i: numbe
       <div className="wrap">
         <header className="sec-head sec-head-row">
           <div>
-            <Kicker n="03">{t({ en: 'Portfolio', es: 'Portafolio', fr: 'Portfolio' })}</Kicker>
+            <Kicker n="01">{t({ en: 'Portfolio', es: 'Portafolio', fr: 'Portfolio' })}</Kicker>
             <h2 id="pf-h" className="h2">
               {t({ en: 'The work,', es: 'El trabajo,', fr: 'Le travail,' })} <em>{t({ en: 'up close', es: 'de cerca', fr: 'de près' })}</em>
             </h2>
@@ -58,11 +67,14 @@ export function Portfolio({ onOpen, onAsk }: { onOpen: (items: Photo[], i: numbe
 
         <div className="pills" role="group" aria-label={t({ en: 'Filter by style', es: 'Filtrar por estilo', fr: 'Filtrer par style' })}>
           {FILTERS.map((x) => (
-            <button key={x} type="button" aria-pressed={f === x} className={f === x ? 'is-on' : ''} onClick={() => setF(x)}>
+            <button key={x} id={`cat-${x}`} type="button" aria-pressed={f === x} className={f === x ? 'is-on' : ''} onClick={() => setF(x)}>
               {x === 'all' ? t({ en: 'All creations', es: 'Todas las creaciones', fr: 'Toutes les créations' }) : t(FILTER_LABEL[x])}
               <span className="pill-n">{STYLES.filter((st) => inCat(st, x)).length}</span>
             </button>
           ))}
+          <button type="button" onClick={() => openView('editorial')}>
+            {t({ en: 'Editorial & Fashion', es: 'Editorial y moda', fr: 'Éditorial & mode' })} →
+          </button>
         </div>
         {f !== 'all' && (
           <div className="pf-cat">

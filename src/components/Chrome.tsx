@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react';
 import { BIZ } from '../content';
 import { LANGS, useI18n, type L } from '../i18n';
-import { Icon, Monogram, goTo, useScrollLock } from './ui';
+import { Icon, Monogram, goTo, openView, useScrollLock, type View } from './ui';
 
 export const NAV: { id: string; label: L }[] = [
-  { id: 'signature', label: { en: 'Signature', es: 'Arte capilar', fr: 'Signature' } },
-  { id: 'looks', label: { en: 'The Look', es: 'El resultado', fr: 'Le résultat' } },
-  { id: 'portfolio', label: { en: 'Portfolio', es: 'Portafolio', fr: 'Portfolio' } },
-  { id: 'motion', label: { en: 'Videos', es: 'Videos', fr: 'Vidéos' } },
-  { id: 'editorial', label: { en: 'Editorial', es: 'Editorial', fr: 'Éditorial' } },
   { id: 'artist', label: { en: 'The Artist', es: 'La artista', fr: 'L’artiste' } },
-  { id: 'private', label: { en: 'Private Clientele', es: 'Clientela privada', fr: 'Clientèle privée' } },
+  { id: 'work', label: { en: 'Signature Work', es: 'Obra destacada', fr: 'Créations signature' } },
+  { id: 'portfolio-top', label: { en: 'Portfolio', es: 'Portafolio', fr: 'Portfolio' } },
+  { id: 'motion', label: { en: 'Videos', es: 'Videos', fr: 'Vidéos' } },
+  { id: 'in-print', label: { en: 'In Print', es: 'En papel', fr: 'Presse' } },
+  { id: 'editorial-top', label: { en: 'Editorial', es: 'Editorial', fr: 'Éditorial' } },
   { id: 'boutique', label: { en: 'Boutique', es: 'Boutique', fr: 'Boutique' } },
+  { id: 'private', label: { en: 'Private Styling', es: 'Peinado privado', fr: 'Coiffure privée' } },
   { id: 'visit', label: { en: 'Visit', es: 'Visítanos', fr: 'Venir' } },
 ];
 
-/** Desktop header keeps a shorter list; the full list lives in the menu and the contents. */
-const NAV_TOP = ['looks', 'portfolio', 'motion', 'editorial', 'artist', 'private', 'visit'];
+/** Desktop header keeps a shorter list; the full list lives in the menu. */
+const NAV_TOP = ['artist', 'portfolio-top', 'in-print', 'editorial-top', 'boutique', 'private'];
 
 export const CTA: L = { en: 'Request a private appointment', es: 'Pide una cita privada', fr: 'Demander un rendez-vous' };
 export const CTA_SHORT: L = { en: 'Request', es: 'Pedir cita', fr: 'Rendez-vous' };
@@ -34,7 +34,7 @@ export function LangSwitch({ className = '' }: { className?: string }) {
   );
 }
 
-export function Header() {
+export function Header({ view = 'home' }: { view?: View }) {
   const { t } = useI18n();
   const [open, setOpen] = useState(false);
   const [solid, setSolid] = useState(false);
@@ -71,7 +71,8 @@ export function Header() {
           href="#top"
           onClick={(e) => {
             e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (view === 'home') window.scrollTo({ top: 0, behavior: 'smooth' });
+            else openView('home');
           }}
           aria-label="Astou Touré — home"
         >

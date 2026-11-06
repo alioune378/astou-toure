@@ -2365,7 +2365,8 @@ section[id],
   .bq {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  .bq-scarf {
+  .bq-scarf,
+  .bq-headwear {
     margin-top: 64px;
   }
 }
@@ -2379,13 +2380,16 @@ section[id],
   aspect-ratio: 4 / 5;
   margin-bottom: 8px;
 }
-.bq-dress .bq-vis {
+.bq-dress .bq-vis,
+.bq-dresses .bq-vis {
   background: repeating-linear-gradient(90deg, var(--onyx) 0 22px, #15120f 22px 23px, var(--onyx) 23px 34px, rgba(198, 161, 91, 0.55) 34px 35px);
 }
-.bq-scarf .bq-vis {
+.bq-scarf .bq-vis,
+.bq-headwear .bq-vis {
   background: repeating-linear-gradient(135deg, var(--bronze) 0 26px, #7b5233 26px 52px), var(--bronze);
 }
-.bq-acc .bq-vis {
+.bq-acc .bq-vis,
+.bq-accessories .bq-vis {
   background: radial-gradient(circle at 50% 46%, transparent 0 25%, var(--gold) 25.4% 26%, transparent 26.4%), radial-gradient(circle at 50% 46%, transparent 0 33%, rgba(198, 161, 91, 0.5) 33.3% 33.6%, transparent 34%), var(--onyx);
 }
 .bq-num {
@@ -3616,4 +3620,257 @@ section[id],
   .burger {
     display: inline-grid;
   }
+}
+
+/* ============================================================ NOVEMBER 2026: pages, signature work, in print, encounters */
+.pagehead {
+  padding-top: calc(var(--header-h) + clamp(40px, 7vw, 88px));
+  padding-bottom: clamp(24px, 4vw, 48px);
+  display: grid;
+  gap: 14px;
+}
+.pagehead-back {
+  justify-self: start;
+}
+.h1-page {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--fs-h2);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+}
+.h1-page em {
+  font-style: italic;
+  color: var(--bronze);
+}
+.pagehead .lede {
+  max-width: 62ch;
+}
+
+/* Signature work: one large piece and four smaller ones, magazine-style. */
+.sw {
+  background: var(--white);
+}
+.sw-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.sw-i button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  cursor: zoom-in;
+}
+.sw-i .img img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: var(--focus);
+  transition: transform 0.9s var(--ease);
+}
+.sw-i button:hover .img img {
+  transform: scale(1.03);
+}
+.sw-i .img {
+  display: block;
+  overflow: hidden;
+}
+.sw-0 {
+  grid-column: 1 / -1;
+}
+.sw-0 .img img {
+  aspect-ratio: 4 / 4.4;
+}
+.sw-cap {
+  display: grid;
+  gap: 2px;
+  padding-top: 10px;
+}
+.sw-t {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  line-height: 1.15;
+}
+.sw-k {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bronze);
+}
+@media (min-width: 900px) {
+  .sw-grid {
+    grid-template-columns: 1.35fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 22px;
+  }
+  .sw-0 {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+  .sw-0 .img img {
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 640px;
+  }
+  .sw-0 button {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .sw-0 .img {
+    flex: 1;
+  }
+  .sw-2,
+  .sw-4 {
+    margin-top: 40px;
+  }
+}
+.sw-cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.sw-cats button {
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--line-2);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  transition: border-color 0.3s, background 0.3s;
+}
+.sw-cats button:hover {
+  border-color: var(--bronze);
+  background: var(--ivory);
+}
+
+/* In print: archival pages on a warm beige ground, the cover large with the feature page overlapping it. */
+.inprint {
+  background: #ece3d1;
+}
+.ip-grid {
+  display: grid;
+  gap: 40px;
+  align-items: center;
+}
+.ip-pages {
+  position: relative;
+  padding-bottom: 18%;
+}
+.ip-cover {
+  width: 78%;
+  box-shadow: 0 30px 60px -30px rgba(11, 11, 11, 0.55);
+}
+.ip-feature {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 46%;
+  box-shadow: 0 24px 48px -24px rgba(11, 11, 11, 0.6);
+  outline: 6px solid #ece3d1;
+}
+.ip-pages button {
+  display: block;
+  width: 100%;
+  cursor: zoom-in;
+}
+.ip-pages .img img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.ip-copy {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+.ip-pub {
+  display: grid;
+  gap: 2px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line-2);
+  border-bottom: 1px solid var(--line-2);
+  font-size: 0.86rem;
+  color: var(--ink-2);
+}
+.ip-name {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  color: var(--ink);
+  font-style: italic;
+}
+.ip-copy .link-btn {
+  justify-self: start;
+}
+@media (min-width: 900px) {
+  .ip-grid {
+    grid-template-columns: 1.05fr 1fr;
+    gap: clamp(48px, 6vw, 96px);
+  }
+}
+
+/* Editorial & notable encounters: each image carries its status. */
+.enc {
+  background: var(--ivory);
+}
+.enc-grid {
+  display: grid;
+  gap: 32px 22px;
+  margin-bottom: 36px;
+}
+@media (min-width: 760px) {
+  .enc-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .enc-grid > li:nth-child(2) {
+    margin-top: 56px;
+  }
+}
+.enc-grid button {
+  display: block;
+  width: 100%;
+  cursor: zoom-in;
+  margin-bottom: 12px;
+}
+.enc-grid .img img {
+  width: 100%;
+  object-fit: cover;
+  object-position: var(--focus);
+}
+.enc-status {
+  display: inline-block;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border: 1px solid currentColor;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+.enc-status.is-credited {
+  color: var(--bronze);
+}
+.enc-status.is-unconfirmed {
+  color: var(--ink-3);
+}
+.enc-status.is-encounter {
+  color: var(--ink-2);
+  border-style: dashed;
+}
+.ed-chap-head .enc-status {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+
+.bq-ctas,
+.private-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.bq-item .link-btn {
+  justify-self: start;
 }

@@ -159,7 +159,9 @@ try {
 
   // A video plays from the live domain.
   {
-    const ctx = await browser.newContext({ ...devices['iPhone 13'] });
+    // Playwright's Chromium has no H.264 decoder; Google Chrome (installed on GitHub runners) plays the MP4s as visitors' browsers do.
+    const chrome = await chromium.launch({ channel: 'chrome' });
+    const ctx = await chrome.newContext({ ...devices['iPhone 13'] });
     const page = await ctx.newPage();
     await page.goto(`${BASE}/?lang=en#/portfolio`, { waitUntil: 'networkidle' });
     const card = page.locator('.vc').first();
@@ -169,6 +171,7 @@ try {
     const v = await card.locator('video').evaluate((el) => ({ t: el.currentTime, ready: el.readyState, err: el.error && el.error.code }));
     check('A video plays on the live site (phone)', v.ready >= 2 && !v.err && v.t > 0, v);
     await ctx.close();
+    await chrome.close();
   }
 
   if (SUBMIT) {

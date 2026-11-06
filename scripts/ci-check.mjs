@@ -203,7 +203,9 @@ try {
 
   // Videos: the clips supplied without sound say so instead of offering a sound button; the short clips loop.
   {
-    const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+    // Playwright's Chromium has no H.264 decoder; Google Chrome (installed on GitHub runners) plays the MP4s as visitors' browsers do.
+    const chrome = await chromium.launch({ channel: 'chrome' });
+    const ctx = await chrome.newContext({ viewport: { width: 1440, height: 900 } });
     const page = await ctx.newPage();
     await page.goto(`${BASE}/?lang=en#/portfolio`, { waitUntil: 'networkidle' });
     const idx = await page.locator('.vc').evaluateAll((cards) => cards.findIndex((c) => (c.querySelector('.vc-poster')?.getAttribute('aria-label') || '').includes('young client')));
@@ -214,6 +216,7 @@ try {
     const noSound = await card.locator('.vc-tool.is-static').count();
     check('Young-client clip plays, loops, is silent and lasts under 2 s (cut before the head turns)', v.ready >= 2 && v.loop && v.muted && !v.err && v.dur < 1.9 && noSound === 1, v);
     await ctx.close();
+    await chrome.close();
   }
 
   // Lightbox opens from the In Print feature and closes with Escape.

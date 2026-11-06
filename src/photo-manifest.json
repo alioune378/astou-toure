@@ -96,12 +96,12 @@
     ]
   },
   "astou_13_mannequin_black_editorial_sculpture": {
-    "w": 1100,
-    "h": 1430,
+    "w": 1000,
+    "h": 611,
     "widths": [
       480,
       800,
-      1100
+      1000
     ]
   },
   "astou_14_mannequin_black_low_knot_alt": {
@@ -240,12 +240,11 @@
     ]
   },
   "lk_updo_side": {
-    "w": 900,
-    "h": 1370,
+    "w": 549,
+    "h": 739,
     "widths": [
       480,
-      800,
-      900
+      549
     ]
   },
   "lk_micro_braids": {
@@ -285,12 +284,10 @@
     ]
   },
   "astou_19_mannequin_side_braided_crown_front": {
-    "w": 1100,
-    "h": 991,
+    "w": 473,
+    "h": 614,
     "widths": [
-      480,
-      800,
-      1100
+      473
     ]
   },
   "astou_20_client_rolled_updo_closeup": {
@@ -312,21 +309,20 @@
     ]
   },
   "astou_22_mannequin_blonde_cornrow_updo": {
-    "w": 1100,
-    "h": 1124,
+    "w": 1012,
+    "h": 416,
     "widths": [
       480,
       800,
-      1100
+      1012
     ]
   },
   "astou_23_mannequin_cornrow_updo_back": {
-    "w": 1100,
-    "h": 1728,
+    "w": 704,
+    "h": 1175,
     "widths": [
       480,
-      800,
-      1100
+      704
     ]
   },
   "ed_sculptural_beauty_portrait": {
@@ -420,11 +416,10 @@
     ]
   },
   "astou_24_mannequin_sculpted_braided_back": {
-    "w": 738,
-    "h": 987,
+    "w": 362,
+    "h": 603,
     "widths": [
-      480,
-      738
+      362
     ]
   },
   "astou_25_client_gold_ornament_updo_front": {
@@ -455,19 +450,19 @@
     ]
   },
   "astou_28_mannequin_sculpted_cornrow_wig": {
-    "w": 735,
-    "h": 1070,
+    "w": 676,
+    "h": 407,
     "widths": [
       480,
-      735
+      676
     ]
   },
   "astou_29_mannequin_swept_braided_wig": {
-    "w": 685,
-    "h": 1110,
+    "w": 514,
+    "h": 310,
     "widths": [
       480,
-      685
+      514
     ]
   },
   "astou_30_mannequin_smooth_braided_low_bun": {

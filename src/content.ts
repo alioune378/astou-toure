@@ -120,7 +120,7 @@ export const PHOTOS: Photo[] = [
       es: 'Estudio en cabeza de maniquí: cabello negro azabache esculpido en grandes rollos brillantes sobre una línea frontal lisa.',
       fr: 'Étude sur tête d’exposition : cheveux noir de jais sculptés en grands rouleaux brillants au-dessus d’une ligne frontale lisse.',
     },
-    '50% 30%',
+    '50% 50%',
   ),
   P(
     'astou_07_client_sculpted_braided_updo_front',
@@ -236,7 +236,7 @@ export const PHOTOS: Photo[] = [
       es: 'Estudio en cabeza de maniquí, de tres cuartos: un barrido lateral liso bordeado por una trenza espiga que rodea la cabeza hasta un moño bajo.',
       fr: 'Étude sur tête d’exposition, de trois quarts : un balayage lisse sur le côté, bordé d’une tresse en arête de poisson qui fait le tour de la tête jusqu’à un chignon bas.',
     },
-    '50% 40%',
+    '50% 50%',
   ),
   P(
     'astou_04_grid_sculpted_roll_updo_front',
@@ -353,7 +353,7 @@ export const PHOTOS: Photo[] = [
       es: 'Estudio en cabeza de maniquí, de frente: trenzas pegadas tipo espiga, rubio platino, que se unen en V en el centro de la línea frontal.',
       fr: 'Étude sur tête d’exposition, de face : des nattes collées en arête de poisson, blond platine, qui se rejoignent en V au milieu du front.',
     },
-    '50% 30%',
+    '50% 50%',
   ),
   /* November 2026 package ("Individual Edits Review 01"), used as supplied by the owner: resized only. */
   P(
@@ -414,7 +414,7 @@ export const PHOTOS: Photo[] = [
       es: 'Estudio en cabeza de maniquí: una unidad trenzada de finas trenzas pegadas tipo espiga que cruzan la cabeza en curvas paralelas.',
       fr: 'Étude sur tête d’exposition : une perruque tressée de fines nattes collées en arête de poisson, qui traversent la tête en courbes parallèles.',
     },
-    '50% 30%',
+    '50% 50%',
   ),
   P(
     'astou_29_mannequin_swept_braided_wig',
@@ -426,7 +426,7 @@ export const PHOTOS: Photo[] = [
       es: 'Estudio en cabeza de maniquí: una unidad trenzada de trenzas pegadas tipo espiga que parten de una raya lateral y se curvan hacia atrás.',
       fr: 'Étude sur tête d’exposition : une perruque tressée de nattes collées en arête de poisson, partant d’une raie de côté et ramenées vers l’arrière.',
     },
-    '50% 30%',
+    '50% 50%',
   ),
   P(
     'astou_30_mannequin_smooth_braided_low_bun',
@@ -707,17 +707,14 @@ export const LOOKS: Look[] = [
     cat: 'sculptural',
     title: { en: 'The art of the updo', es: 'El arte del recogido', fr: 'L’art du chignon' },
     text: {
-      en: 'An intricate sculptural updo of carefully set curls, smooth contours and elegant volume, seen from three angles.',
-      es: 'Un recogido escultural de rizos colocados con cuidado, contornos lisos y un volumen elegante, visto desde tres ángulos.',
-      fr: 'Un chignon sculptural aux boucles soigneusement placées, aux contours lisses et au volume élégant, vu sous trois angles.',
+      en: 'An intricate sculptural updo of carefully set curls, smooth contours and elegant volume, seen from two angles.',
+      es: 'Un recogido escultural de rizos colocados con cuidado, contornos lisos y un volumen elegante, visto desde dos ángulos.',
+      fr: 'Un chignon sculptural aux boucles soigneusement placées, aux contours lisses et au volume élégant, vu sous deux angles.',
     },
     note: { en: 'Styled on a mannequin head.', es: 'Peinado sobre una cabeza de maniquí.', fr: 'Réalisé sur une tête d’exposition.' },
     photos: [
-      LK('lk_updo_front', 'study', { en: 'Sculpted updo — front', es: 'Recogido esculpido, de frente', fr: 'Chignon sculpté — de face' }, {
-        en: 'Mannequin study, front view: black hair set in soft sculpted curls framing the face, with a smooth side part.',
-        es: 'Estudio en cabeza de maniquí, de frente: cabello negro en rizos suaves y esculpidos que enmarcan la cara, con una raya lateral lisa.',
-        fr: 'Étude sur tête d’exposition, de face : cheveux noirs en boucles souples et sculptées autour du visage, avec une raie de côté lisse.',
-      }, '50% 30%'),
+      // 'lk_updo_front' is not shown (owner's request, 5 Nov 2026): the mannequin's face is at the centre and cannot be cropped out
+      // without cutting the curls that frame it. The style is shown from the back and the side.
       LK('lk_updo_back', 'study', { en: 'Sculpted updo — back', es: 'Recogido esculpido, de espaldas', fr: 'Chignon sculpté — de dos' }, {
         en: 'Mannequin study, back view: the curls gathered and pinned into layered rolls at the nape.',
         es: 'Estudio en cabeza de maniquí, de espaldas: los rizos recogidos y sujetos en rollos superpuestos en la nuca.',

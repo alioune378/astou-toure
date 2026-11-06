@@ -152,3 +152,20 @@ with people in the background.
 
 Audio: every clip still carries the soundtrack supplied with it. Its licence is not documented. Videos start muted.
 If any soundtrack contains commercial music, it must be removed or replaced with licensed music (APPROVALS.md item 19).
+
+## Mannequin faces cropped out (owner's request, 5 Nov 2026)
+
+Every photograph where a mannequin's painted face was visible is now cropped to the hairstyle. Cropping only;
+nothing is redrawn. The uncropped files are kept in `archive/uncropped-2026-11/`.
+
+| Photo | Crop |
+|---|---|
+| `astou_13` Black sculpture | Top 47%: the rolls only, above the face |
+| `astou_19` Side-swept braided crown | Right side: the braid, crown and bun, without the face |
+| `astou_22` Blonde fishbone cornrows | Top 37%: the braided pattern, above the eyebrows |
+| `astou_23` Cornrows to a coiled bun | Right edge removed: a second mannequin's face was in the background |
+| `astou_24` Fishbone braids to a woven bun | Right edge removed (same background face); shoulders removed |
+| `astou_28` Sculpted cornrow unit | Above the eyes |
+| `astou_29` Swept braided unit | Above the eyes |
+| `lk_updo_side` Sculpted curl updo, side | Profile removed |
+| `lk_updo_front` Sculpted curl updo, front | **Not shown.** The face is at the centre of the photo and the curls frame it, so no crop works. The look keeps its back and side views |

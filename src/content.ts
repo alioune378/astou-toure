@@ -111,7 +111,7 @@ const P = (file: string, kind: Photo['kind'], cats: CatId[], title: L, alt: L, f
 
 export const PHOTOS: Photo[] = [
   P(
-    'astou_13_mannequin_black_editorial_sculpture',
+    'astou_13_mannequin_black_editorial_sculpture_cropped',
     'study',
     ['editorial', 'sculptural'],
     { en: 'Black sculpture', es: 'Escultura negra', fr: 'Sculpture noire' },
@@ -227,7 +227,7 @@ export const PHOTOS: Photo[] = [
     },
   ),
   P(
-    'astou_19_mannequin_side_braided_crown_front',
+    'astou_19_mannequin_side_braided_crown_front_cropped',
     'study',
     ['sculptural'],
     { en: 'Side sweep', es: 'Barrido lateral', fr: 'Balayage de côté' },
@@ -272,7 +272,7 @@ export const PHOTOS: Photo[] = [
     },
   ),
   P(
-    'astou_23_mannequin_cornrow_updo_back',
+    'astou_23_mannequin_cornrow_updo_back_cropped',
     'study',
     ['sculptural', 'braiding'],
     { en: 'Cornrows to a coiled bun', es: 'Trenzas pegadas hasta un moño', fr: 'Nattes collées jusqu’au chignon' },
@@ -344,7 +344,7 @@ export const PHOTOS: Photo[] = [
     '50% 50%',
   ),
   P(
-    'astou_22_mannequin_blonde_cornrow_updo',
+    'astou_22_mannequin_blonde_cornrow_updo_cropped',
     'study',
     ['braiding', 'sculptural'],
     { en: 'Blonde fishbone cornrows', es: 'Trenzas pegadas rubias', fr: 'Nattes collées blondes' },
@@ -393,7 +393,7 @@ export const PHOTOS: Photo[] = [
     '50% 40%',
   ),
   P(
-    'astou_24_mannequin_sculpted_braided_back',
+    'astou_24_mannequin_sculpted_braided_back_cropped',
     'study',
     ['sculptural'],
     { en: 'Fishbone braids to a woven bun', es: 'Trenzas espiga hasta un moño tejido', fr: 'Tresses en arête jusqu’au chignon tressé' },
@@ -405,7 +405,7 @@ export const PHOTOS: Photo[] = [
     '50% 35%',
   ),
   P(
-    'astou_28_mannequin_sculpted_cornrow_wig',
+    'astou_28_mannequin_sculpted_cornrow_wig_cropped',
     'study',
     ['braiding'],
     { en: 'Sculpted cornrow unit', es: 'Unidad de trenzas pegadas esculpidas', fr: 'Perruque de nattes collées sculptées' },
@@ -417,7 +417,7 @@ export const PHOTOS: Photo[] = [
     '50% 50%',
   ),
   P(
-    'astou_29_mannequin_swept_braided_wig',
+    'astou_29_mannequin_swept_braided_wig_cropped',
     'study',
     ['braiding'],
     { en: 'Swept braided unit', es: 'Unidad trenzada de lado', fr: 'Perruque tressée balayée' },
@@ -720,7 +720,7 @@ export const LOOKS: Look[] = [
         es: 'Estudio en cabeza de maniquí, de espaldas: los rizos recogidos y sujetos en rollos superpuestos en la nuca.',
         fr: 'Étude sur tête d’exposition, vue de dos : les boucles rassemblées et épinglées en rouleaux superposés sur la nuque.',
       }, '50% 30%'),
-      LK('lk_updo_side', 'study', { en: 'Sculpted updo — side', es: 'Recogido esculpido, de lado', fr: 'Chignon sculpté — de profil' }, {
+      LK('lk_updo_side_cropped', 'study', { en: 'Sculpted updo — side', es: 'Recogido esculpido, de lado', fr: 'Chignon sculpté — de profil' }, {
         en: 'Mannequin study in profile: a sleek sweep over the crown flowing into sculpted curls at the back.',
         es: 'Estudio en cabeza de maniquí, de perfil: un barrido liso sobre la coronilla que termina en rizos esculpidos atrás.',
         fr: 'Étude sur tête d’exposition, de profil : un balayage lisse sur le dessus qui se termine en boucles sculptées à l’arrière.',

@@ -169,3 +169,5 @@ nothing is redrawn. The uncropped files are kept in `archive/uncropped-2026-11/`
 | `astou_29` Swept braided unit | Above the eyes |
 | `lk_updo_side` Sculpted curl updo, side | Profile removed |
 | `lk_updo_front` Sculpted curl updo, front | **Not shown.** The face is at the centre of the photo and the curls frame it, so no crop works. The look keeps its back and side views |
+
+Cropped files carry a `_cropped` suffix (e.g. `astou_13_mannequin_black_editorial_sculpture_cropped`). Photos are cached by browsers for a year, so a changed photo must always get a new file name.

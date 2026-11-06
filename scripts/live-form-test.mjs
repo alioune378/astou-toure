@@ -1,0 +1,30 @@
+// Submits one test appointment request on the live site and reports what Netlify answered.
+import { chromium, devices } from 'playwright';
+const BASE = process.env.BASE_URL;
+const browser = await chromium.launch();
+const ctx = await browser.newContext({ ...devices['iPhone 13'] });
+const page = await ctx.newPage();
+let post = null;
+page.on('response', (r) => {
+  if (r.request().method() === 'POST' && new URL(r.url()).pathname === '/') post = r.status();
+});
+await page.goto(`${BASE}/?lang=en`, { waitUntil: 'networkidle' });
+await page.locator('#request').scrollIntoViewIfNeeded();
+await page.waitForTimeout(3200);
+await page.selectOption('#rq-hairstyle', 'sculptural');
+await page.fill('#rq-preferred-date', new Date(Date.now() + 30 * 864e5).toISOString().slice(0, 10));
+await page.selectOption('#rq-preferred-time', 'flexible');
+await page.fill('#rq-full-name', 'TEST — website check (please delete)');
+await page.fill('#rq-phone', '000 000 0000');
+await page.fill('#rq-email', 'test@example.com');
+await page.fill('#rq-details', 'Automated test of the appointment form by the website developer. Not a real request; please delete.');
+await page.locator('#rq-consent').check();
+await page.locator('.rq button[type=submit]').click();
+await page.waitForSelector('.rq-done, .rq-status.is-error', { timeout: 20000 });
+const text = (await page.locator('.rq-done, .rq-status').first().innerText()).replace(/\s+/g, ' ');
+console.log(`POST / status: ${post}`);
+console.log(`Page says: ${text.slice(0, 200)}`);
+const ok = post === 200 && /Request received/.test(text);
+console.log(ok ? 'PASS  the request was accepted by Netlify and the page says so' : 'FAIL  the request was not accepted');
+await browser.close();
+process.exit(ok ? 0 : 1);

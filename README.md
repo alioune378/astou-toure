@@ -22,17 +22,20 @@ To deploy: push to GitHub, then in Netlify choose **Add new site → Import from
 
 A request is never shown as a confirmed booking. There's no payment and no fixed price.
 
+Visitors choose one of three appointment types: salon (Bronx), private on-location (New York), or out-of-state / special event.
+They can tick "Please keep my request confidential" and add discretion notes.
+
 | `VITE_FORMS_MODE` | What happens |
 |---|---|
-| `demo` (current) | The form checks every field, then opens the visitor's email app with a ready-written email to astoutoure167@gmail.com. The website itself stores nothing. |
-| `netlify` | The request, including the optional inspiration photo, is saved in Netlify Forms and emailed to Astou. |
+| `netlify` (current) | The request, including the optional inspiration photo, is stored in Netlify Forms ("appointment-request"). The visitor sees "Request received" only after Netlify accepts it; otherwise they see an error with Astou's phone and email. |
+| `demo` | The form checks every field, then opens the visitor's email app with a ready-written email to astoutoure167@gmail.com. The website stores nothing. |
 
-To switch to `netlify`:
-1. In Netlify, go to **Forms** and enable form detection.
-2. Under **Forms → Form notifications**, add an email notification to astoutoure167@gmail.com.
-3. In `netlify.toml`, set `VITE_FORMS_MODE = "netlify"`, then push.
+**Email to Astou (required):** in Netlify, go to Project configuration → Forms → Form notifications → Add notification → Email notification.
+Set it to astoutoure167@gmail.com (or her assistant's address) for the form "appointment-request". Until this is done,
+requests are stored in Netlify (Forms → appointment-request) but nobody is emailed.
 
-Astou gets each request as an email on her phone. She doesn't need a dashboard.
+**Testing:** run the "Live appointment-form test" workflow in GitHub Actions. It sends one request named
+"TEST — website check (please delete)". Delete it in Netlify afterwards.
 
 **WhatsApp:** the button is built in but turned off. Set `whatsapp: true` in `src/content.ts` only after Astou confirms that 718-300-3011 is on WhatsApp.
 

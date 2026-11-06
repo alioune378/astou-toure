@@ -6,7 +6,7 @@
   NODE_VERSION = "20"
   # "demo"    = the request form validates and offers to send the request by email (nothing is stored).
   # "netlify" = requests are submitted to Netlify Forms; turn on email notifications to Astou in Netlify.
-  VITE_FORMS_MODE = "demo"
+  VITE_FORMS_MODE = "netlify"
 
 # Pre-launch: keep the site out of search engines until Astou approves the content.
 # At launch: delete this block AND the robots meta tag in index.html, and update public/robots.txt.

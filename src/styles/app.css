@@ -4034,3 +4034,7 @@ section[id],
 .feat-text-only .feat-copy {
   align-content: start;
 }
+/* One small archive photograph: shown at a size its resolution supports. */
+.ed-items-heritage {
+  max-width: 560px;
+}

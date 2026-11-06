@@ -28,7 +28,7 @@ for (const host of [DOMAIN, `www.${DOMAIN}`]) {
       s.on('error', rej);
       s.setTimeout(10000, () => rej(new Error('timeout')));
     });
-    check(`HTTPS certificate is valid for ${host}`, r.authorized && (r.san || '').includes(`DNS:${host}`) && new Date(r.validTo) > new Date(Date.now() + 7 * 864e5), r);
+    check(`HTTPS certificate is valid for ${host}`, r.authorized && ((r.san || '').includes(`DNS:${host}`) || (r.san || '').includes(`DNS:*.${DOMAIN}`)) && new Date(r.validTo) > new Date(Date.now() + 7 * 864e5), r);
   } catch (e) {
     check(`HTTPS certificate is valid for ${host}`, false, String(e));
   }

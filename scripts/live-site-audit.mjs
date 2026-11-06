@@ -8,6 +8,10 @@ import { chromium, devices } from 'playwright';
 const DOMAIN = process.env.DOMAIN || 'astoustyle.com';
 const BASE = `https://${DOMAIN}`;
 const SUBMIT = process.env.SUBMIT !== 'no';
+// SUBMIT=boutique sends only the boutique inquiry.
+const SUBMIT_WHAT = process.env.SUBMIT;
+// A headless browser's user agent ("HeadlessChrome") is classed as spam by Netlify Forms; test as a normal desktop Chrome.
+const DESKTOP_UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36';
 const OUT = 'ci';
 mkdirSync(`${OUT}/shots`, { recursive: true });
 const results = [];
@@ -176,7 +180,7 @@ try {
 
   if (SUBMIT) {
     // Appointment request (Netlify form "appointment-request").
-    {
+    if (SUBMIT_WHAT !== 'boutique') {
       const ctx = await browser.newContext({ ...devices['iPhone 13'] });
       const page = await ctx.newPage();
       let post = null;
@@ -201,7 +205,7 @@ try {
     }
     // Boutique inquiry (Netlify form "boutique-inquiry").
     {
-      const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+      const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, userAgent: DESKTOP_UA });
       const page = await ctx.newPage();
       let post = null;
       page.on('response', (r) => r.request().method() === 'POST' && new URL(r.url()).pathname === '/' && (post = r.status()));

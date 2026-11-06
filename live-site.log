@@ -1,0 +1,78 @@
+PASS  HTTPS certificate is valid for astoustyle.com  — {"authorized":true,"error":null,"issuer":"Let's Encrypt","cn":"astoustyle.com","san":"DNS:*.astoustyle.com, DNS:astoustyle.com","validTo":"Feb  4 01:54:03 2027 GMT"}
+PASS  HTTPS certificate is valid for www.astoustyle.com  — {"authorized":true,"error":null,"issuer":"Let's Encrypt","cn":"astoustyle.com","san":"DNS:*.astoustyle.com, DNS:astoustyle.com","validTo":"Feb  4 01:54:03 2027 GMT"}
+PASS  http://astoustyle.com/ redirects permanently to https://astoustyle.com/  — {"first":{"status":301,"location":"https://astoustyle.com/"},"final":{"status":200,"url":"https://astoustyle.com/"}}
+PASS  https://www.astoustyle.com/ redirects permanently to https://astoustyle.com/  — {"first":{"status":301,"location":"https://astoustyle.com/"},"final":{"status":200,"url":"https://astoustyle.com/"}}
+PASS  http://www.astoustyle.com/ redirects permanently to https://astoustyle.com/  — {"first":{"status":301,"location":"https://www.astoustyle.com/"},"final":{"status":200,"url":"https://astoustyle.com/"}}
+PASS  https://astou-toure.netlify.app/ redirects permanently to https://astoustyle.com/  — {"first":{"status":301,"location":"https://astoustyle.com/"},"final":{"status":200,"url":"https://astoustyle.com/"}}
+PASS  https://www.astoustyle.com/robots.txt redirects permanently to https://astoustyle.com/robots.txt  — {"first":{"status":301,"location":"https://astoustyle.com/robots.txt"},"final":{"status":200,"url":"https://astoustyle.com/robots.txt"}}
+PASS  https://astoustyle.com/ answers 200  — 200
+PASS  Canonical URL is https://astoustyle.com/
+PASS  Open Graph url and image use https://astoustyle.com
+PASS  Structured data names https://astoustyle.com/
+PASS  No reference to the old netlify.app address in the page
+PASS  Pre-launch noindex still in place until Astou approves (meta + header)  — noindex
+PASS  /sitemap.xml is served  — 200 application/xml
+PASS  /robots.txt is served  — 200 text/plain; charset=UTF-8
+PASS  /og-image.jpg is served  — 200 image/jpeg
+PASS  All 61 published photographs load (JPG and every WebP size)
+PASS  All 15 videos and their posters load
+PASS  home iphone: no script errors
+PASS  home iphone: no failed requests
+PASS  home iphone: no broken images (15 shown)
+PASS  home iphone: no horizontal overflow  — 0px
+PASS  home iphone: no photograph repeated on the page
+PASS  home iphone: held-back media absent
+PASS  home iphone: no links to the old netlify.app address
+PASS  portfolio iphone: no script errors
+PASS  portfolio iphone: no failed requests
+PASS  portfolio iphone: no broken images (42 shown)
+PASS  portfolio iphone: no horizontal overflow  — 0px
+PASS  portfolio iphone: no photograph repeated on the page
+PASS  portfolio iphone: held-back media absent
+PASS  portfolio iphone: no links to the old netlify.app address
+PASS  editorial iphone: no script errors
+PASS  editorial iphone: no failed requests
+PASS  editorial iphone: no broken images (16 shown)
+PASS  editorial iphone: no horizontal overflow  — 0px
+PASS  editorial iphone: no photograph repeated on the page
+PASS  editorial iphone: held-back media absent
+PASS  editorial iphone: no links to the old netlify.app address
+PASS  boutique iphone: no script errors
+PASS  boutique iphone: no failed requests
+PASS  boutique iphone: no broken images (15 shown)
+PASS  boutique iphone: no horizontal overflow  — 0px
+PASS  boutique iphone: no photograph repeated on the page
+PASS  boutique iphone: held-back media absent
+PASS  boutique iphone: no links to the old netlify.app address
+PASS  home desktop: no script errors
+PASS  home desktop: no failed requests
+PASS  home desktop: no broken images (15 shown)
+PASS  home desktop: no horizontal overflow  — 0px
+PASS  home desktop: no photograph repeated on the page
+PASS  home desktop: held-back media absent
+PASS  home desktop: no links to the old netlify.app address
+PASS  portfolio desktop: no script errors
+PASS  portfolio desktop: no failed requests
+PASS  portfolio desktop: no broken images (42 shown)
+PASS  portfolio desktop: no horizontal overflow  — 0px
+PASS  portfolio desktop: no photograph repeated on the page
+PASS  portfolio desktop: held-back media absent
+PASS  portfolio desktop: no links to the old netlify.app address
+PASS  editorial desktop: no script errors
+PASS  editorial desktop: no failed requests
+PASS  editorial desktop: no broken images (16 shown)
+PASS  editorial desktop: no horizontal overflow  — 0px
+PASS  editorial desktop: no photograph repeated on the page
+PASS  editorial desktop: held-back media absent
+PASS  editorial desktop: no links to the old netlify.app address
+PASS  boutique desktop: no script errors
+PASS  boutique desktop: no failed requests
+PASS  boutique desktop: no broken images (15 shown)
+PASS  boutique desktop: no horizontal overflow  — 0px
+PASS  boutique desktop: no photograph repeated on the page
+PASS  boutique desktop: held-back media absent
+PASS  boutique desktop: no links to the old netlify.app address
+PASS  A video plays on the live site (phone)  — {"t":2.109968,"ready":4,"err":null}
+PASS  Boutique inquiry is accepted by Netlify on astoustyle.com, and only then reported as received  — {"post":200,"text":"INQUIRY RECEIVED Thank you, TEST. Your inquiry has been received and saved for Astou. She or her team will reply by phon"}
+
+76/76 checks passed

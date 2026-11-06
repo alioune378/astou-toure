@@ -1,0 +1,448 @@
+[
+  {
+    "name": "HTTPS certificate is valid for astoustyle.com",
+    "ok": true,
+    "evidence": {
+      "authorized": true,
+      "error": null,
+      "issuer": "Let's Encrypt",
+      "cn": "astoustyle.com",
+      "san": "DNS:*.astoustyle.com, DNS:astoustyle.com",
+      "validTo": "Feb  4 01:54:03 2027 GMT"
+    }
+  },
+  {
+    "name": "HTTPS certificate is valid for www.astoustyle.com",
+    "ok": true,
+    "evidence": {
+      "authorized": true,
+      "error": null,
+      "issuer": "Let's Encrypt",
+      "cn": "astoustyle.com",
+      "san": "DNS:*.astoustyle.com, DNS:astoustyle.com",
+      "validTo": "Feb  4 01:54:03 2027 GMT"
+    }
+  },
+  {
+    "name": "http://astoustyle.com/ redirects permanently to https://astoustyle.com/",
+    "ok": true,
+    "evidence": {
+      "first": {
+        "status": 301,
+        "location": "https://astoustyle.com/"
+      },
+      "final": {
+        "status": 200,
+        "url": "https://astoustyle.com/"
+      }
+    }
+  },
+  {
+    "name": "https://www.astoustyle.com/ redirects permanently to https://astoustyle.com/",
+    "ok": true,
+    "evidence": {
+      "first": {
+        "status": 301,
+        "location": "https://astoustyle.com/"
+      },
+      "final": {
+        "status": 200,
+        "url": "https://astoustyle.com/"
+      }
+    }
+  },
+  {
+    "name": "http://www.astoustyle.com/ redirects permanently to https://astoustyle.com/",
+    "ok": true,
+    "evidence": {
+      "first": {
+        "status": 301,
+        "location": "https://www.astoustyle.com/"
+      },
+      "final": {
+        "status": 200,
+        "url": "https://astoustyle.com/"
+      }
+    }
+  },
+  {
+    "name": "https://astou-toure.netlify.app/ redirects permanently to https://astoustyle.com/",
+    "ok": true,
+    "evidence": {
+      "first": {
+        "status": 301,
+        "location": "https://astoustyle.com/"
+      },
+      "final": {
+        "status": 200,
+        "url": "https://astoustyle.com/"
+      }
+    }
+  },
+  {
+    "name": "https://www.astoustyle.com/robots.txt redirects permanently to https://astoustyle.com/robots.txt",
+    "ok": true,
+    "evidence": {
+      "first": {
+        "status": 301,
+        "location": "https://astoustyle.com/robots.txt"
+      },
+      "final": {
+        "status": 200,
+        "url": "https://astoustyle.com/robots.txt"
+      }
+    }
+  },
+  {
+    "name": "https://astoustyle.com/ answers 200",
+    "ok": true,
+    "evidence": 200
+  },
+  {
+    "name": "Canonical URL is https://astoustyle.com/",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "Open Graph url and image use https://astoustyle.com",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "Structured data names https://astoustyle.com/",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "No reference to the old netlify.app address in the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "Pre-launch noindex still in place until Astou approves (meta + header)",
+    "ok": true,
+    "evidence": "noindex"
+  },
+  {
+    "name": "/sitemap.xml is served",
+    "ok": true,
+    "evidence": "200 application/xml"
+  },
+  {
+    "name": "/robots.txt is served",
+    "ok": true,
+    "evidence": "200 text/plain; charset=UTF-8"
+  },
+  {
+    "name": "/og-image.jpg is served",
+    "ok": true,
+    "evidence": "200 image/jpeg"
+  },
+  {
+    "name": "All 61 published photographs load (JPG and every WebP size)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "All 15 videos and their posters load",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home iphone: no script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home iphone: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home iphone: no broken images (15 shown)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home iphone: no horizontal overflow",
+    "ok": true,
+    "evidence": "0px"
+  },
+  {
+    "name": "home iphone: no photograph repeated on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home iphone: held-back media absent",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home iphone: no links to the old netlify.app address",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio iphone: no script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio iphone: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio iphone: no broken images (42 shown)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio iphone: no horizontal overflow",
+    "ok": true,
+    "evidence": "0px"
+  },
+  {
+    "name": "portfolio iphone: no photograph repeated on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio iphone: held-back media absent",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio iphone: no links to the old netlify.app address",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial iphone: no script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial iphone: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial iphone: no broken images (16 shown)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial iphone: no horizontal overflow",
+    "ok": true,
+    "evidence": "0px"
+  },
+  {
+    "name": "editorial iphone: no photograph repeated on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial iphone: held-back media absent",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial iphone: no links to the old netlify.app address",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique iphone: no script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique iphone: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique iphone: no broken images (15 shown)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique iphone: no horizontal overflow",
+    "ok": true,
+    "evidence": "0px"
+  },
+  {
+    "name": "boutique iphone: no photograph repeated on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique iphone: held-back media absent",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique iphone: no links to the old netlify.app address",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home desktop: no script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home desktop: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home desktop: no broken images (15 shown)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home desktop: no horizontal overflow",
+    "ok": true,
+    "evidence": "0px"
+  },
+  {
+    "name": "home desktop: no photograph repeated on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home desktop: held-back media absent",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "home desktop: no links to the old netlify.app address",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio desktop: no script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio desktop: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio desktop: no broken images (42 shown)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio desktop: no horizontal overflow",
+    "ok": true,
+    "evidence": "0px"
+  },
+  {
+    "name": "portfolio desktop: no photograph repeated on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio desktop: held-back media absent",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "portfolio desktop: no links to the old netlify.app address",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial desktop: no script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial desktop: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial desktop: no broken images (16 shown)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial desktop: no horizontal overflow",
+    "ok": true,
+    "evidence": "0px"
+  },
+  {
+    "name": "editorial desktop: no photograph repeated on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial desktop: held-back media absent",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "editorial desktop: no links to the old netlify.app address",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique desktop: no script errors",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique desktop: no failed requests",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique desktop: no broken images (15 shown)",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique desktop: no horizontal overflow",
+    "ok": true,
+    "evidence": "0px"
+  },
+  {
+    "name": "boutique desktop: no photograph repeated on the page",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique desktop: held-back media absent",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "boutique desktop: no links to the old netlify.app address",
+    "ok": true,
+    "evidence": ""
+  },
+  {
+    "name": "A video plays on the live site (phone)",
+    "ok": true,
+    "evidence": {
+      "t": 2.109968,
+      "ready": 4,
+      "err": null
+    }
+  },
+  {
+    "name": "Boutique inquiry is accepted by Netlify on astoustyle.com, and only then reported as received",
+    "ok": true,
+    "evidence": {
+      "post": 200,
+      "text": "INQUIRY RECEIVED Thank you, TEST. Your inquiry has been received and saved for Astou. She or her team will reply by phon"
+    }
+  }
+]

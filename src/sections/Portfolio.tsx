@@ -51,9 +51,9 @@ export function Portfolio({ onOpen, onAsk }: { onOpen: (items: Photo[], i: numbe
       <div className="wrap">
         <header className="sec-head sec-head-row">
           <div>
-            <Kicker n="01">{t({ en: 'Portfolio', es: 'Portafolio', fr: 'Portfolio' })}</Kicker>
-            <h2 id="pf-h" className="h2">
-              {t({ en: 'The work,', es: 'El trabajo,', fr: 'Le travail,' })} <em>{t({ en: 'up close', es: 'de cerca', fr: 'de près' })}</em>
+            <Kicker n="01">{t({ en: 'Collections', es: 'Colecciones', fr: 'Collections' })}</Kicker>
+            <h2 id="pf-h" className="h3">
+              {t({ en: 'Every creation,', es: 'Cada creación,', fr: 'Chaque création,' })} <em>{t({ en: 'up close', es: 'de cerca', fr: 'de près' })}</em>
             </h2>
           </div>
           <p className="lede">

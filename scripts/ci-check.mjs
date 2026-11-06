@@ -56,6 +56,8 @@ try {
           noAlt: [...document.images].filter((i) => !i.hasAttribute('alt')).length,
           small: [...document.querySelectorAll('a[href], button, input, select, textarea, label.kind')]
             .filter((el) => {
+              // A checkbox or radio is tapped through its label, which is the real target.
+              if (el.matches('input[type=checkbox], input[type=radio]') && (el.labels?.length || el.closest('label'))) return false;
               const r = el.getBoundingClientRect();
               const s = getComputedStyle(el);
               return r.width > 0 && r.height > 0 && s.visibility !== 'hidden' && !el.closest('[hidden], .hp, .sr-only') && r.height < 24 && !el.closest('p, li.foot-li');
@@ -96,7 +98,8 @@ try {
     const statuses = await page.locator('.enc-status').allTextContents();
     check('Editorial page labels credited work and photographed encounters separately', page.url().includes('#/editorial') && statuses.some((s) => /published credit/i.test(s)) && statuses.some((s) => /not a styling credit/i.test(s)), statuses);
     // The appointment button works from another page (form exists there too).
-    await page.locator('.top-cta').click();
+    await page.locator('.burger').click();
+    await page.locator('.menu-cta').click();
     await page.waitForTimeout(1200);
     check('Request button reaches the appointment form from the editorial page', await page.locator('#request form').isVisible());
     await ctx.close();

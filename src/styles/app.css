@@ -3874,3 +3874,37 @@ section[id],
 .bq-item .link-btn {
   justify-self: start;
 }
+/* Light-ground versions of the credit block and captions (In Print, Encounters). */
+.inprint .credits,
+.inprint .credits > div {
+  border-color: var(--line-2);
+}
+.inprint .credits dt {
+  color: var(--ink-3);
+}
+.inprint .credits dd {
+  color: var(--ink);
+}
+.inprint .credits .is-hair {
+  border-left-color: var(--bronze);
+  background: rgba(138, 94, 60, 0.08);
+}
+.inprint .credits .is-hair dt {
+  color: var(--bronze);
+}
+.inprint .case-note {
+  color: var(--ink-3);
+}
+.enc .ed-item-who {
+  color: var(--bronze);
+}
+.enc .ed-item-h {
+  color: var(--ink);
+}
+.boutique .bq-vis {
+  aspect-ratio: 3 / 2;
+}
+.foot-base a {
+  display: inline-block;
+  padding: 10px 0;
+}

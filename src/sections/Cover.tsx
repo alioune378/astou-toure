@@ -35,7 +35,7 @@ export function Cover(_: { onStyle?: (c: CatId) => void }) {
           </p>
         </figure>
 
-        <ol className="coverlines" aria-label={t({ en: 'Specialties', es: 'Especialidades', fr: 'Spécialités' })}>
+        <ol className="coverlines" aria-label={t({ en: 'In this issue', es: 'En esta edición', fr: 'Dans ce numéro' })}>
           {lines.map((l, i) => (
             <li key={i}>
               <button type="button" onClick={l.go}>

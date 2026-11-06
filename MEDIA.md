@@ -1,4 +1,4 @@
-# Media inventory (November 2026 update)
+# Media inventory (November 2026 update; redesign 5 Nov 2026)
 
 Every file from the six packages received, where it is used, and why anything is held back.
 Packages: Website Images (8), Two Braiding Photos (2), 4 New Photos (4), Final 10 Photos (10), 4 Edited Videos (4), 4 New Edited Videos (4).
@@ -117,3 +117,38 @@ Files were compared by eye and by perceptual hash, not by name. **One hairstyle 
 Each image has one placement. "Sculptural beauty" (02) moved from its stand-alone feature into the Garage collection.
 
 **Model names held back (pending verification against the original sequence):** Cora Keegan (02), Jeneil Williams (07).
+
+## Redesign package (5 Nov 2026): "Astou Individual Edits Review 01", 9 photographs
+
+Used as supplied by the owner: resized to 480 / 800 / full-width WebP plus a JPG. No colour, retouching or generative edits by us.
+Untouched originals: `archive/originals-2026-11/` (not published).
+
+| # | Source file | Published as | Where | Client / study | Notes |
+|---|---|---|---|---|---|
+| H1 | 01_Salon_Digest_Cover | `press_salon_digest_2007_cover` | Home → In Print; cover-line thumbnail | Press | Salon Digest, NY/NJ edition, Vol. 1 No. 4, Dec 2007 – Feb 2008. Model: Fanta Kamara. Shown as published |
+| H2 | 02_Salon_Digest_Editorial_Feature | `press_salon_digest_2007_feature` | Home → In Print | Press | Credits printed on the page: Salon: MHB · Stylist: Astou · Model: Fanta Kamara. The page also prints the salon's address and phone number; left as published |
+| H3 | 03_Sculpted_Braided_Back | `astou_24_mannequin_sculpted_braided_back` | Signature work; Portfolio (Sculptural) | Study | Mannequin bust; a wig-shop sign is visible in the background |
+| H4 | 04_Gold_Ornament_Updo_Front | `astou_25_client_gold_ornament_updo_front` | Signature work; Portfolio (Bridal & occasions, Sculptural) | Client | Other salon clients visible in the background (one partly masked). Grouped with H5 |
+| H5 | 05_Gold_Ornament_Updo_Back | `astou_26_client_gold_ornament_updo_back` | Second view of H4 | Client | |
+| H6 | 06_Crystal_Bridal_Updo | `astou_27_client_crystal_ornament_updo` | Signature work (first); Portfolio (Bridal & occasions) | Client | Titled "Crystal ornament chignon": not presented as a specific wedding |
+| H7 | 07_Sculpted_Cornrow_Wig | `astou_28_mannequin_sculpted_cornrow_wig` | Portfolio (Braids) | Study | Braided unit on a mannequin head; a retail tag is visible |
+| H8 | 08_Swept_Braided_Wig | `astou_29_mannequin_swept_braided_wig` | Portfolio (Braids) | Study | Braided unit on a mannequin head |
+| H9 | 09_Smooth_Braided_Low_Bun | `astou_30_mannequin_smooth_braided_low_bun` | Portfolio (Sculptural, Occasions) | Study | |
+
+Not received: boutique merchandise photographs (dresses, scarves, bonnets, turbans). The boutique shows its three
+collections without product images until real photographs of items Astou sells are supplied.
+
+## Video review (5 Nov 2026)
+
+All 12 published clips were reviewed frame by frame at one frame per second, plus full-resolution samples of every clip
+with people in the background.
+
+| Clip | Finding | Action |
+|---|---|---|
+| `braids-beaded-360` | The client may be under 18 (cannot be confirmed from the footage); a small figure, possibly a child, passes in the background | **Removed from the site.** Restore only once Astou confirms the client is an adult and consented, and the background is checked |
+| `braids-honey-salon-reveal`, `updo-side-back`, `braids-honey-full-length` | Adult salon staff and clients in the background, small and unfocused | Kept |
+| `behind-cornrows-night` | Adult passers-by on the street, distant and unidentifiable | Kept |
+| All others | Only the client (adult) and the stylist | Kept |
+
+Audio: every clip still carries the soundtrack supplied with it. Its licence is not documented. Videos start muted.
+If any soundtrack contains commercial music, it must be removed or replaced with licensed music (APPROVALS.md item 19).

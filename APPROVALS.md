@@ -46,3 +46,12 @@
 
    The page says plainly that the images are digitally enhanced copies, not originals.
 18. **Booking.** The form still runs in "demo" mode: it opens the visitor's email app with the request written out to astoutoure167@gmail.com, including the hairstyle, reference look, reference photo link and privacy notes. Switching to automatic Netlify delivery requires a test submission received in that inbox (see README). hello@astoustyle.com is not used until the domain and mailbox work.
+19. **Redesign, 5 Nov 2026: still needed from Astou.**
+   1. **Boutique photographs.** The brief describes dresses, scarves, bonnets and turbans, but no merchandise photographs were in the package. Send the photos of items she actually sells. Each will be shown with "Ask about this item", with no price, size or stock unless she gives them.
+   2. **How the boutique sells.** In person at the salon, by Instagram message, or both? The site currently says only "no online checkout; ask Astou".
+   3. **Video with beaded braids** (`braids-beaded-360`). Removed from the site. Restore only if the client was 18 or over and agreed to be filmed, and the background figure is not a child.
+   4. **Video soundtracks.** Is the music on each clip licensed (or original)? If not, the audio will be removed and replaced with licensed music.
+   5. **Salon Digest rights.** The cover and the feature page belong to the publication and its photographer. Astou's authorization covers her own use; confirm that showing the pages on her website is acceptable. "MHB" is printed as the salon; confirm Astou was working there at the time.
+   6. **Client consent for the new photos:** gold ornament updo (04, 05; other clients are visible behind her) and crystal ornament chignon (06).
+   7. **Appointment delivery.** See README "Appointment requests": automatic delivery is switched on only after a test request is stored and Astou (or her assistant) receives the email notification.
+   8. **Custom domain.** astoustyle.com is not connected to the Netlify site yet: add it under Domain management once the DNS is available.
